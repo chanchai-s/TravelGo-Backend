@@ -1,0 +1,619 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma/client"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+enum PlatformRole {
+  USER
+  ADMIN
+  OWNER
+}
+
+enum PropertyType {
+  HOTEL
+  HOME
+  UNIQUE
+  BUNGALOW
+  WHOLE_HOUSE
+  VILLA
+  APARTMENT
+  RESORT
+}
+
+enum PropertyStatus {
+  DRAFT
+  PENDING
+  PUBLISHED
+  REJECTED
+  SUSPENDED
+}
+
+enum BookingType {
+  STAY
+  FLIGHT
+  ACTIVITY
+  TRANSPORT
+  PACKAGE
+}
+
+enum BookingStatus {
+  UPCOMING
+  COMPLETED
+  CANCELLED
+}
+
+enum HostStatus {
+  PENDING
+  VERIFIED
+  SUSPENDED
+}
+
+enum VerificationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum PayoutStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+model User {
+  id              String       @id @default(cuid())
+  name            String
+  email           String       @unique
+  phone           String?
+  role            PlatformRole @default(USER)
+  tier            String       @default("BRONZE")
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  bookings         Booking[]
+  cartItems        CartItem[]
+  saved            SavedItem[]
+  wallet           VoucherWallet[]
+  plans            TripPlan[]
+  comments         Comment[]
+  likes            Like[]
+  follows          Follow[] @relation("Follower")
+  following      Follow[] @relation("Following")
+  reviewsWritten   Review[]
+  mediaLikes       MediaLike[]   @relation("mediaLikes")
+  mediaComments    MediaComment[] @relation("mediaComments")
+  userPosts        UserPost[]
+  userPostLikes    UserPostLike[] @relation("userPostLikes")
+  voucherAssignments VoucherAssignment[]
+  hostStaff      HostStaff[] @relation("hostStaff")
+  media            Media[]        @relation("media")
+
+  hostProfile     HostProfile?  @relation("hostProfile")
+  driverProfile   DriverProfile? @relation("driverProfile")
+}
+
+model HostProfile {
+  id              String       @id @default(cuid())
+  userId          String       @unique
+  user            User         @relation("hostProfile", fields: [userId], references: [id], onDelete: Cascade)
+  status          HostStatus   @default(PENDING)
+  displayName     String?
+  accountType     String       @default("INDIVIDUAL")
+  taxId           String?
+  contactName     String?
+  contactPhone    String?
+  verifiedAt      DateTime?
+  rejectedReason  String?
+  contractVersion String?
+  contractAcceptedAt DateTime?
+  payoutAccount   PayoutAccount?
+  payouts         Payout[]
+  stays           Stay[]
+  activities      Activity[]
+  staffs          HostStaff[]
+  documents       VerificationDocument[]
+}
+
+model HostStaff {
+  id          String   @id @default(cuid())
+  hostId      String
+  host        HostProfile @relation(fields: [hostId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User     @relation("hostStaff", fields: [userId], references: [id], onDelete: Cascade)
+  role        String   @default("STAFF")
+  createdAt   DateTime @default(now())
+
+  @@unique([hostId, userId])
+}
+
+model VerificationDocument {
+  id          String   @id @default(cuid())
+  hostId      String
+  host        HostProfile @relation(fields: [hostId], references: [id])
+  url         String
+  type        String
+  status      VerificationStatus @default(PENDING)
+  reviewNote  String?
+  reviewedAt  DateTime?
+  createdAt   DateTime @default(now())
+}
+
+model Stay {
+  id              String         @id @default(cuid())
+  name            String
+  propertyType    PropertyType   @default(HOTEL)
+  status          PropertyStatus @default(DRAFT)
+  currentStep     Int            @default(1)
+  location        String
+  addressLine     String?
+  latitude        Float?
+  longitude       Float?
+  tag             String?
+  rating          Float?
+  reviewCount     Int            @default(0)
+  pricePerNight   Int
+  imageUrl        String?
+  description     String?        @db.Text
+  phone           String?
+  email           String?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  stars           Int?
+  frontDesk24h    Boolean        @default(false)
+  breakfastIncluded Boolean       @default(false)
+
+  hostId          String?
+  host            HostProfile?   @relation(fields: [hostId], references: [id])
+  photos          StayPhoto[]
+  amenities       StayAmenity?
+  policies        StayPolicy?
+  nearby          StayNearby[] @relation("StayNearby")
+  uniqueDetails   UniquePropertyDetail?
+  roomTypes       RoomType[]
+  bookings        Booking[]
+  reviews         Review[]
+  inventories     RoomInventory[]
+  nearbyPlaces    StayNearby[] @relation("StayNearbyPlaces")
+}
+
+model StayPhoto {
+  id       String  @id @default(cuid())
+  stayId   String
+  stay     Stay    @relation(fields: [stayId], references: [id], onDelete: Cascade)
+  url      String
+  caption  String?
+  isCover  Boolean @default(false)
+}
+
+model StayAmenity {
+  id               String   @id @default(cuid())
+  stayId           String   @unique
+  stay             Stay     @relation(fields: [stayId], references: [id], onDelete: Cascade)
+  generalAmenities Json?
+  roomAmenities    Json?
+  diningServices   Json?
+  petFriendly      Boolean  @default(false)
+}
+
+model StayPolicy {
+  id            String  @id @default(cuid())
+  stayId        String  @unique
+  stay          Stay    @relation(fields: [stayId], references: [id], onDelete: Cascade)
+  checkIn       String?
+  checkOut      String?
+  cancellation  String?
+  childrenAllowed Boolean @default(true)
+  petsAllowed   Boolean  @default(false)
+  deposit       Int?
+  paymentMethods String?
+  minAge        Int?
+}
+
+model StayNearby {
+  id           String @id @default(cuid())
+  stayId       String
+  stay         Stay   @relation("StayNearby", fields: [stayId], references: [id], onDelete: Cascade, map: "StayNearby_stayId_fkey")
+  stayPlaces   Stay?  @relation("StayNearbyPlaces", fields: [stayId], references: [id], onDelete: Cascade, map: "StayNearbyPlaces_stayId_fkey")
+  label        String
+  category     String
+  distance     String
+}
+
+model UniquePropertyDetail {
+  id          String  @id @default(cuid())
+  stayId      String  @unique
+  stay        Stay    @relation(fields: [stayId], references: [id], onDelete: Cascade)
+  theme       String?
+  highlights  Json?
+  specialNotes String? @db.Text
+}
+
+model RoomType {
+  id            String       @id @default(cuid())
+  stayId        String
+  stay          Stay         @relation(fields: [stayId], references: [id], onDelete: Cascade)
+  name          String
+  description   String?      @db.Text
+  roomSizeSqM   Float?
+  maxGuests     Int          @default(2)
+  basePrice     Int
+  totalRooms    Int          @default(1)
+  inventories   RoomInventory[]
+  beds          RoomBed[]
+}
+
+model RoomInventory {
+  id         String     @id @default(cuid())
+  roomTypeId String
+  roomType   RoomType   @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
+  stayId     String?
+  stay       Stay?      @relation(fields: [stayId], references: [id], onDelete: Cascade)
+  date       DateTime   @db.Date
+  totalRooms Int
+  booked     Int        @default(0)
+
+  @@unique([roomTypeId, date])
+}
+
+model RoomBed {
+  id         String   @id @default(cuid())
+  roomTypeId String
+  roomType   RoomType @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
+  type       String
+  count      Int      @default(1)
+}
+
+model Flight {
+  id            String    @id @default(cuid())
+  airline       String
+  flightNumber  String
+  origin        String
+  destination   String
+  departAt      DateTime
+  arriveAt      DateTime
+  price         Int
+  seats         Int       @default(0)
+  status        String       @default("PUBLISHED")
+  bookings      Booking[]
+  createdAt     DateTime  @default(now())
+}
+
+model Booking {
+  id            String       @id @default(cuid())
+  ref           String       @unique
+  userId        String
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type          BookingType
+  status        BookingStatus @default(UPCOMING)
+  totalPrice    Int
+  voucherId     String?
+  voucher       Voucher?     @relation(fields: [voucherId], references: [id])
+  discountAmount Int         @default(0)
+  travelDate    DateTime?
+  checkIn       DateTime?
+  checkOut      DateTime?
+  stayId        String?
+  stay          Stay?        @relation(fields: [stayId], references: [id])
+  flightId      String?
+  flight        Flight?      @relation(fields: [flightId], references: [id])
+  roomTypeId    String?
+  rooms         Int          @default(1)
+  guests        Int          @default(1)
+  activityId    String?
+  activity      Activity?    @relation(fields: [activityId], references: [id])
+  vehicleId     String?
+  vehicle       Vehicle?     @relation(fields: [vehicleId], references: [id])
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  ownerEarnings OwnerEarning[]
+  review         Review?
+}
+
+model Voucher {
+  id            String       @id @default(cuid())
+  code          String       @unique
+  title         String
+  type          String       @default("PERCENT")
+  value         Int          @default(0)
+  minSpend      Int          @default(0)
+  maxDiscount   Int?
+  category      String       @default("GENERAL")
+  condition     String?
+  scope         String       @default("ALL")
+  stayId        String?
+  hostId        String?
+  restricted    Boolean      @default(false)
+  tier          String?
+  status        String       @default("APPROVED")
+  rejectedReason String?
+  usageLimit    Int          @default(0)
+  usedCount     Int          @default(0)
+  expiresAt     DateTime?
+  createdAt     DateTime     @default(now())
+  wallets       VoucherWallet[]
+  assignments   VoucherAssignment[]
+  bookings      Booking[]
+}
+
+model VoucherWallet {
+  userId      String
+  voucherId   String
+  collectedAt DateTime @default(now())
+  usedAt      DateTime?
+  bookingId   String?
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  voucher     Voucher  @relation(fields: [voucherId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, voucherId])
+}
+
+model VoucherAssignment {
+  id        String   @id @default(cuid())
+  voucherId String
+  voucher   Voucher  @relation(fields: [voucherId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([voucherId, userId])
+}
+
+model Activity {
+  id            String    @id @default(cuid())
+  title         String
+  rating        Float?
+  reviewCount   Int       @default(0)
+  duration      String
+  pricePerPerson Int
+  oldPrice      Int?
+  perks         Json
+  imageUrl      String?
+  status        String       @default("PUBLISHED")
+  hostId        String?
+  host          HostProfile? @relation(fields: [hostId], references: [id])
+  createdBy     String    @default("ADMIN")
+  bookings      Booking[]
+  createdAt     DateTime  @default(now())
+}
+
+model Vehicle {
+  id           String  @id @default(cuid())
+  name         String
+  category     String
+  vendor       String
+  seats        Int
+  bags         Int
+  transmission String
+  fuelType     String
+  pricePerDay  Int
+  imageUrl     String?
+  bookings     Booking[]
+}
+model OwnerEarning {
+  id            String   @id @default(cuid())
+  bookingId     String   @unique
+  booking       Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  stayId        String
+  grossAmount   Int
+  commission    Int
+  netAmount     Int
+  status        String       @default("PENDING")
+  paidAt        DateTime?
+  createdAt     DateTime @default(now())
+}
+
+model PayoutAccount {
+  id              String      @id @default(cuid())
+  hostId          String      @unique
+  host            HostProfile @relation(fields: [hostId], references: [id], onDelete: Cascade)
+  bankName        String
+  accountHolder   String
+  accountNumber   String
+  status          PayoutStatus @default(PENDING)
+  stripeAccountId String?
+  verifiedAt      DateTime?
+  rejectedReason  String?
+  createdAt       DateTime  @default(now())
+}
+
+model Payout {
+  id            String      @id @default(cuid())
+  hostId        String
+  host          HostProfile @relation(fields: [hostId], references: [id], onDelete: Cascade)
+  amount        Int
+  status        PayoutStatus @default(PENDING)
+  requestedAt   DateTime    @default(now())
+  processedAt   DateTime?
+  items         PayoutItem[]
+}
+
+model PayoutItem {
+  id        String   @id @default(cuid())
+  payoutId  String
+  payout    Payout   @relation(fields: [payoutId], references: [id], onDelete: Cascade)
+  bookingId String
+  amount    Int
+}
+
+model ModerationLog {
+  id          String   @id @default(cuid())
+  adminId     String
+  targetType  String
+  targetId    String
+  action      String
+  reason      String?
+  createdAt   DateTime @default(now())
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  bookingId String   @unique
+  booking   Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  stayId    String?
+  stay      Stay?    @relation(fields: [stayId], references: [id])
+  rating    Int
+  text      String?
+  createdAt DateTime @default(now())
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  text      String
+  createdAt DateTime @default(now())
+}
+
+model Like {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  targetType String
+  targetId   String
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, targetType, targetId])
+}
+
+model Follow {
+  id          String   @id @default(cuid())
+  followerId  String
+  follower    User     @relation("Follower", fields: [followerId], references: [id])
+  creatorId   String
+  creator     User     @relation("Following", fields: [creatorId], references: [id])
+  createdAt   DateTime @default(now())
+
+  @@unique([followerId, creatorId])
+}
+
+model SavedItem {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  targetType String
+  targetId   String
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, targetType, targetId])
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  price       Int
+  imageUrl    String?
+  category    String
+  cartItems   CartItem[]
+}
+
+model TripPlan {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  title       String
+  description String?
+  startDate   DateTime
+  endDate     DateTime
+  items       TripPlanItem[]
+  createdAt   DateTime @default(now())
+}
+
+model TripPlanItem {
+  id        String     @id @default(cuid())
+  planId    String
+  plan      TripPlan   @relation(fields: [planId], references: [id], onDelete: Cascade)
+  day       Int
+  order     Int
+  type      String
+  targetId  String
+  note      String?
+}
+
+model UserPost {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  caption   String?
+  mediaUrl  String?
+  comments  MediaComment[] @relation("mediaComments")
+  postLikes  UserPostLike[] @relation("postLikes")
+  mediaLikes MediaLike[] @relation("mediaLikes")
+  createdAt DateTime @default(now())
+}
+
+model MediaLike {
+  id        String   @id @default(cuid())
+  postId    String
+  post      UserPost @relation("mediaLikes", fields: [postId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation("mediaLikes", fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([postId, userId])
+}
+
+model MediaComment {
+  id        String   @id @default(cuid())
+  postId    String
+  post      UserPost @relation("mediaComments", fields: [postId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation("mediaComments", fields: [userId], references: [id])
+  text      String
+  createdAt DateTime @default(now())
+}
+
+model UserPostLike {
+  id        String   @id @default(cuid())
+  postId    String
+  post      UserPost @relation("postLikes", fields: [postId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation("userPostLikes", fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([postId, userId])
+}
+
+model BankPrivilege {
+  id     String @id @default(cuid())
+  bank   String
+  badge  String
+  detail String
+}
+
+model DriverProfile {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation("driverProfile", fields: [userId], references: [id])
+  license   String
+  vehicleId String?
+  status    String       @default("PENDING")
+  createdAt DateTime @default(now())
+}
+
+model Media {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation("media", fields: [userId], references: [id])
+  url       String
+  type      String
+  caption   String?
+  createdAt DateTime @default(now())
+}

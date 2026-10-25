@@ -1,0 +1,101 @@
+### Get me
+GET http://localhost:3000/api/auth/me 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzczMzcyMjQzLCJleHAiOjE3NzQ2NjgyNDN9.cY0kWJpltdX_Av1WzAgokX3CIa4uJZPt8ei6zdAZkpI
+
+
+### Login api
+POST http://localhost:3000/auth/login 
+content-type: application/json
+
+{
+ "identity" : "andy@ggg.mail",
+ "password" : "123456"
+}
+
+### Register api
+POST http://localhost:3000/api/auth/register 
+content-type: application/json
+
+{
+  "firstname": "Nape",
+  "lastname": "Srichan",
+  "email": "Nape@gmail.com",
+  "username": "Nape",
+  "password": "12345"
+}
+
+### Adress api
+
+### Edit Profile 
+PUT http://localhost:3000/api/auth/me 
+content-type: application/json
+
+{
+  "firstname": "Nape",
+  "lastname": "Srichan",
+  "email": "Nape@gmail.com",
+  "username": "Nape"
+}
+
+### Test Payment Stripe
+POST http://localhost:3000/stripe/create
+Content-Type: application/json
+
+{
+  "amount": 1112,
+  "currency": "usd"
+}
+
+### Google Login 
+POST http://localhost:3000/google/create
+Content-Type: application/json
+
+{
+  "email": "testuser@gmail.com",
+  "name": "John Doe",
+  "picture": "https://via.placeholder.com/150"
+}
+
+### find Destination 
+GET http://localhost:3000/rabit/destinations?query=Bangkok
+
+### search Destination 
+GET http://localhost:3000/rabit/search?dest_id=-3414440&search_type=city&arrival_date=2026-11-01&departure_date=2026-11-05
+
+### Search Destination Flight
+GET http://localhost:3000/flights/search?query=new
+Content-Type: application/json
+
+### 1. สร้างที่พักใหม่ (เริ่ม Onboarding Step 1)
+POST http://localhost:3000/host/onboard/new
+Content-Type: application/json
+
+{
+  "hostId": "h_host_check_1",
+  "propertyType": "HOTEL",
+  "currentStep": 1,
+  "name": "สุขสบาย บูติก โฮเทล",
+  "location": "กรุงเทพมหานคร",
+  "addressLine": "สุขุมวิท 21",
+  "pricePerNight": 1200
+}
+
+### แทนที่ ID ด้านล่างด้วย ID ที่ได้จาก Response ของข้อ 1
+@propertyId = cmv3di7710006mso0qy4sdhzi
+
+### Get Property by ID
+GET http://localhost:3000/host/{{propertyId}}
+Content-Type: application/json
+
+### PATCH detail property
+PATCH http://localhost:3000/host/{{propertyId}}
+Content-Type: application/json
+
+{
+  "status": "PUBLISHED",
+  "pricePerNight": 1400
+}
+
+### Delete
+DELETE http://localhost:3000/host/{{propertyId}}
+Content-Type: application/json
