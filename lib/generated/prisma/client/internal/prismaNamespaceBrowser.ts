@@ -91,7 +91,19 @@ export const ModelName = {
   UserPostLike: 'UserPostLike',
   BankPrivilege: 'BankPrivilege',
   DriverProfile: 'DriverProfile',
-  Media: 'Media'
+  Media: 'Media',
+  VehiclePartner: 'VehiclePartner',
+  PartnerBranch: 'PartnerBranch',
+  VehiclePartnerDocument: 'VehiclePartnerDocument',
+  VehicleCategory: 'VehicleCategory',
+  VehiclePhoto: 'VehiclePhoto',
+  VehicleDocument: 'VehicleDocument',
+  VehicleBlock: 'VehicleBlock',
+  RentalDetail: 'RentalDetail',
+  Payment: 'Payment',
+  PartnerEarning: 'PartnerEarning',
+  CommissionChangeLog: 'CommissionChangeLog',
+  PlatformSetting: 'PlatformSetting'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -404,15 +416,35 @@ export type ActivityScalarFieldEnum = (typeof ActivityScalarFieldEnum)[keyof typ
 
 export const VehicleScalarFieldEnum = {
   id: 'id',
+  partnerId: 'partnerId',
+  branchId: 'branchId',
+  categoryId: 'categoryId',
   name: 'name',
   category: 'category',
   vendor: 'vendor',
+  brand: 'brand',
+  modelYear: 'modelYear',
   seats: 'seats',
   bags: 'bags',
+  doors: 'doors',
   transmission: 'transmission',
   fuelType: 'fuelType',
   pricePerDay: 'pricePerDay',
-  imageUrl: 'imageUrl'
+  depositAmount: 'depositAmount',
+  licensePlate: 'licensePlate',
+  description: 'description',
+  specs: 'specs',
+  imageUrl: 'imageUrl',
+  status: 'status',
+  supportsSelfDrive: 'supportsSelfDrive',
+  supportsChauffeur: 'supportsChauffeur',
+  allowOneWay: 'allowOneWay',
+  deliveryAvailable: 'deliveryAvailable',
+  minRentalDays: 'minRentalDays',
+  maxRentalDays: 'maxRentalDays',
+  advanceBookingDays: 'advanceBookingDays',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type VehicleScalarFieldEnum = (typeof VehicleScalarFieldEnum)[keyof typeof VehicleScalarFieldEnum]
@@ -489,6 +521,7 @@ export const ReviewScalarFieldEnum = {
   bookingId: 'bookingId',
   userId: 'userId',
   stayId: 'stayId',
+  vehicleId: 'vehicleId',
   rating: 'rating',
   text: 'text',
   createdAt: 'createdAt'
@@ -662,6 +695,216 @@ export const MediaScalarFieldEnum = {
 } as const
 
 export type MediaScalarFieldEnum = (typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum]
+
+
+export const VehiclePartnerScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  status: 'status',
+  companyName: 'companyName',
+  taxId: 'taxId',
+  companyRegNo: 'companyRegNo',
+  vatRegistered: 'vatRegistered',
+  address: 'address',
+  contactName: 'contactName',
+  contactPhone: 'contactPhone',
+  contactEmail: 'contactEmail',
+  commissionRate: 'commissionRate',
+  autoApprove: 'autoApprove',
+  contractVersion: 'contractVersion',
+  contractAcceptedAt: 'contractAcceptedAt',
+  verifiedAt: 'verifiedAt',
+  rejectedReason: 'rejectedReason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type VehiclePartnerScalarFieldEnum = (typeof VehiclePartnerScalarFieldEnum)[keyof typeof VehiclePartnerScalarFieldEnum]
+
+
+export const PartnerBranchScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  name: 'name',
+  address: 'address',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  phone: 'phone',
+  openHours: 'openHours',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PartnerBranchScalarFieldEnum = (typeof PartnerBranchScalarFieldEnum)[keyof typeof PartnerBranchScalarFieldEnum]
+
+
+export const VehiclePartnerDocumentScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  url: 'url',
+  type: 'type',
+  status: 'status',
+  reviewNote: 'reviewNote',
+  reviewedAt: 'reviewedAt',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+} as const
+
+export type VehiclePartnerDocumentScalarFieldEnum = (typeof VehiclePartnerDocumentScalarFieldEnum)[keyof typeof VehiclePartnerDocumentScalarFieldEnum]
+
+
+export const VehicleCategoryScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt'
+} as const
+
+export type VehicleCategoryScalarFieldEnum = (typeof VehicleCategoryScalarFieldEnum)[keyof typeof VehicleCategoryScalarFieldEnum]
+
+
+export const VehiclePhotoScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  url: 'url',
+  caption: 'caption',
+  isPrimary: 'isPrimary',
+  sortOrder: 'sortOrder'
+} as const
+
+export type VehiclePhotoScalarFieldEnum = (typeof VehiclePhotoScalarFieldEnum)[keyof typeof VehiclePhotoScalarFieldEnum]
+
+
+export const VehicleDocumentScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  url: 'url',
+  type: 'type',
+  status: 'status',
+  expiresAt: 'expiresAt',
+  reviewNote: 'reviewNote',
+  reviewedAt: 'reviewedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type VehicleDocumentScalarFieldEnum = (typeof VehicleDocumentScalarFieldEnum)[keyof typeof VehicleDocumentScalarFieldEnum]
+
+
+export const VehicleBlockScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  startAt: 'startAt',
+  endAt: 'endAt',
+  reason: 'reason',
+  bookingId: 'bookingId',
+  createdBy: 'createdBy',
+  createdAt: 'createdAt'
+} as const
+
+export type VehicleBlockScalarFieldEnum = (typeof VehicleBlockScalarFieldEnum)[keyof typeof VehicleBlockScalarFieldEnum]
+
+
+export const RentalDetailScalarFieldEnum = {
+  id: 'id',
+  bookingId: 'bookingId',
+  status: 'status',
+  rentalMode: 'rentalMode',
+  ratePlan: 'ratePlan',
+  vehicleId: 'vehicleId',
+  branchId: 'branchId',
+  dropoffBranchId: 'dropoffBranchId',
+  pickupAt: 'pickupAt',
+  dropoffAt: 'dropoffAt',
+  days: 'days',
+  pricePerDay: 'pricePerDay',
+  addOns: 'addOns',
+  insuranceType: 'insuranceType',
+  fuelPolicy: 'fuelPolicy',
+  depositAmount: 'depositAmount',
+  depositStatus: 'depositStatus',
+  depositRefundedAt: 'depositRefundedAt',
+  approvedAt: 'approvedAt',
+  approvedBy: 'approvedBy',
+  rejectedReason: 'rejectedReason',
+  paidAt: 'paidAt',
+  pickedUpAt: 'pickedUpAt',
+  returnedAt: 'returnedAt',
+  completedAt: 'completedAt',
+  lateMinutes: 'lateMinutes',
+  lateFee: 'lateFee',
+  mileageOut: 'mileageOut',
+  mileageIn: 'mileageIn',
+  fuelOut: 'fuelOut',
+  fuelIn: 'fuelIn',
+  driverLicenseNo: 'driverLicenseNo',
+  driverName: 'driverName',
+  driverPhone: 'driverPhone',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RentalDetailScalarFieldEnum = (typeof RentalDetailScalarFieldEnum)[keyof typeof RentalDetailScalarFieldEnum]
+
+
+export const PaymentScalarFieldEnum = {
+  id: 'id',
+  rentalId: 'rentalId',
+  type: 'type',
+  method: 'method',
+  amount: 'amount',
+  baseAmount: 'baseAmount',
+  vatAmount: 'vatAmount',
+  receiptNo: 'receiptNo',
+  receivedBy: 'receivedBy',
+  note: 'note',
+  paidAt: 'paidAt'
+} as const
+
+export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
+
+
+export const PartnerEarningScalarFieldEnum = {
+  id: 'id',
+  rentalId: 'rentalId',
+  partnerId: 'partnerId',
+  vehicleId: 'vehicleId',
+  grossAmount: 'grossAmount',
+  commissionRate: 'commissionRate',
+  commission: 'commission',
+  netAmount: 'netAmount',
+  status: 'status',
+  paidAt: 'paidAt',
+  createdAt: 'createdAt'
+} as const
+
+export type PartnerEarningScalarFieldEnum = (typeof PartnerEarningScalarFieldEnum)[keyof typeof PartnerEarningScalarFieldEnum]
+
+
+export const CommissionChangeLogScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  oldRate: 'oldRate',
+  newRate: 'newRate',
+  changedBy: 'changedBy',
+  reason: 'reason',
+  createdAt: 'createdAt'
+} as const
+
+export type CommissionChangeLogScalarFieldEnum = (typeof CommissionChangeLogScalarFieldEnum)[keyof typeof CommissionChangeLogScalarFieldEnum]
+
+
+export const PlatformSettingScalarFieldEnum = {
+  key: 'key',
+  value: 'value',
+  updatedBy: 'updatedBy',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlatformSettingScalarFieldEnum = (typeof PlatformSettingScalarFieldEnum)[keyof typeof PlatformSettingScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -932,11 +1175,17 @@ export type ActivityOrderByRelevanceFieldEnum = (typeof ActivityOrderByRelevance
 
 export const VehicleOrderByRelevanceFieldEnum = {
   id: 'id',
+  partnerId: 'partnerId',
+  branchId: 'branchId',
+  categoryId: 'categoryId',
   name: 'name',
   category: 'category',
   vendor: 'vendor',
+  brand: 'brand',
   transmission: 'transmission',
   fuelType: 'fuelType',
+  licensePlate: 'licensePlate',
+  description: 'description',
   imageUrl: 'imageUrl'
 } as const
 
@@ -1000,6 +1249,7 @@ export const ReviewOrderByRelevanceFieldEnum = {
   bookingId: 'bookingId',
   userId: 'userId',
   stayId: 'stayId',
+  vehicleId: 'vehicleId',
   text: 'text'
 } as const
 
@@ -1153,4 +1403,148 @@ export const MediaOrderByRelevanceFieldEnum = {
 } as const
 
 export type MediaOrderByRelevanceFieldEnum = (typeof MediaOrderByRelevanceFieldEnum)[keyof typeof MediaOrderByRelevanceFieldEnum]
+
+
+export const VehiclePartnerOrderByRelevanceFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  companyName: 'companyName',
+  taxId: 'taxId',
+  companyRegNo: 'companyRegNo',
+  address: 'address',
+  contactName: 'contactName',
+  contactPhone: 'contactPhone',
+  contactEmail: 'contactEmail',
+  contractVersion: 'contractVersion',
+  rejectedReason: 'rejectedReason'
+} as const
+
+export type VehiclePartnerOrderByRelevanceFieldEnum = (typeof VehiclePartnerOrderByRelevanceFieldEnum)[keyof typeof VehiclePartnerOrderByRelevanceFieldEnum]
+
+
+export const PartnerBranchOrderByRelevanceFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  name: 'name',
+  address: 'address',
+  phone: 'phone',
+  openHours: 'openHours'
+} as const
+
+export type PartnerBranchOrderByRelevanceFieldEnum = (typeof PartnerBranchOrderByRelevanceFieldEnum)[keyof typeof PartnerBranchOrderByRelevanceFieldEnum]
+
+
+export const VehiclePartnerDocumentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  url: 'url',
+  type: 'type',
+  reviewNote: 'reviewNote'
+} as const
+
+export type VehiclePartnerDocumentOrderByRelevanceFieldEnum = (typeof VehiclePartnerDocumentOrderByRelevanceFieldEnum)[keyof typeof VehiclePartnerDocumentOrderByRelevanceFieldEnum]
+
+
+export const VehicleCategoryOrderByRelevanceFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name'
+} as const
+
+export type VehicleCategoryOrderByRelevanceFieldEnum = (typeof VehicleCategoryOrderByRelevanceFieldEnum)[keyof typeof VehicleCategoryOrderByRelevanceFieldEnum]
+
+
+export const VehiclePhotoOrderByRelevanceFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  url: 'url',
+  caption: 'caption'
+} as const
+
+export type VehiclePhotoOrderByRelevanceFieldEnum = (typeof VehiclePhotoOrderByRelevanceFieldEnum)[keyof typeof VehiclePhotoOrderByRelevanceFieldEnum]
+
+
+export const VehicleDocumentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  url: 'url',
+  type: 'type',
+  reviewNote: 'reviewNote'
+} as const
+
+export type VehicleDocumentOrderByRelevanceFieldEnum = (typeof VehicleDocumentOrderByRelevanceFieldEnum)[keyof typeof VehicleDocumentOrderByRelevanceFieldEnum]
+
+
+export const VehicleBlockOrderByRelevanceFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  reason: 'reason',
+  bookingId: 'bookingId',
+  createdBy: 'createdBy'
+} as const
+
+export type VehicleBlockOrderByRelevanceFieldEnum = (typeof VehicleBlockOrderByRelevanceFieldEnum)[keyof typeof VehicleBlockOrderByRelevanceFieldEnum]
+
+
+export const RentalDetailOrderByRelevanceFieldEnum = {
+  id: 'id',
+  bookingId: 'bookingId',
+  ratePlan: 'ratePlan',
+  vehicleId: 'vehicleId',
+  branchId: 'branchId',
+  dropoffBranchId: 'dropoffBranchId',
+  insuranceType: 'insuranceType',
+  fuelPolicy: 'fuelPolicy',
+  approvedBy: 'approvedBy',
+  rejectedReason: 'rejectedReason',
+  fuelOut: 'fuelOut',
+  fuelIn: 'fuelIn',
+  driverLicenseNo: 'driverLicenseNo',
+  driverName: 'driverName',
+  driverPhone: 'driverPhone',
+  notes: 'notes'
+} as const
+
+export type RentalDetailOrderByRelevanceFieldEnum = (typeof RentalDetailOrderByRelevanceFieldEnum)[keyof typeof RentalDetailOrderByRelevanceFieldEnum]
+
+
+export const PaymentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  rentalId: 'rentalId',
+  receiptNo: 'receiptNo',
+  receivedBy: 'receivedBy',
+  note: 'note'
+} as const
+
+export type PaymentOrderByRelevanceFieldEnum = (typeof PaymentOrderByRelevanceFieldEnum)[keyof typeof PaymentOrderByRelevanceFieldEnum]
+
+
+export const PartnerEarningOrderByRelevanceFieldEnum = {
+  id: 'id',
+  rentalId: 'rentalId',
+  partnerId: 'partnerId',
+  vehicleId: 'vehicleId',
+  status: 'status'
+} as const
+
+export type PartnerEarningOrderByRelevanceFieldEnum = (typeof PartnerEarningOrderByRelevanceFieldEnum)[keyof typeof PartnerEarningOrderByRelevanceFieldEnum]
+
+
+export const CommissionChangeLogOrderByRelevanceFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  changedBy: 'changedBy',
+  reason: 'reason'
+} as const
+
+export type CommissionChangeLogOrderByRelevanceFieldEnum = (typeof CommissionChangeLogOrderByRelevanceFieldEnum)[keyof typeof CommissionChangeLogOrderByRelevanceFieldEnum]
+
+
+export const PlatformSettingOrderByRelevanceFieldEnum = {
+  key: 'key',
+  value: 'value',
+  updatedBy: 'updatedBy'
+} as const
+
+export type PlatformSettingOrderByRelevanceFieldEnum = (typeof PlatformSettingOrderByRelevanceFieldEnum)[keyof typeof PlatformSettingOrderByRelevanceFieldEnum]
 

@@ -356,6 +356,7 @@ export type BookingWhereInput = {
   vehicle?: Prisma.XOR<Prisma.VehicleNullableScalarRelationFilter, Prisma.VehicleWhereInput> | null
   ownerEarnings?: Prisma.OwnerEarningListRelationFilter
   review?: Prisma.XOR<Prisma.ReviewNullableScalarRelationFilter, Prisma.ReviewWhereInput> | null
+  rentalDetail?: Prisma.XOR<Prisma.RentalDetailNullableScalarRelationFilter, Prisma.RentalDetailWhereInput> | null
 }
 
 export type BookingOrderByWithRelationInput = {
@@ -387,6 +388,7 @@ export type BookingOrderByWithRelationInput = {
   vehicle?: Prisma.VehicleOrderByWithRelationInput
   ownerEarnings?: Prisma.OwnerEarningOrderByRelationAggregateInput
   review?: Prisma.ReviewOrderByWithRelationInput
+  rentalDetail?: Prisma.RentalDetailOrderByWithRelationInput
   _relevance?: Prisma.BookingOrderByRelevanceInput
 }
 
@@ -422,6 +424,7 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   vehicle?: Prisma.XOR<Prisma.VehicleNullableScalarRelationFilter, Prisma.VehicleWhereInput> | null
   ownerEarnings?: Prisma.OwnerEarningListRelationFilter
   review?: Prisma.XOR<Prisma.ReviewNullableScalarRelationFilter, Prisma.ReviewWhereInput> | null
+  rentalDetail?: Prisma.XOR<Prisma.RentalDetailNullableScalarRelationFilter, Prisma.RentalDetailWhereInput> | null
 }, "id" | "ref">
 
 export type BookingOrderByWithAggregationInput = {
@@ -501,6 +504,7 @@ export type BookingCreateInput = {
   vehicle?: Prisma.VehicleCreateNestedOneWithoutBookingsInput
   ownerEarnings?: Prisma.OwnerEarningCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateInput = {
@@ -526,6 +530,7 @@ export type BookingUncheckedCreateInput = {
   updatedAt?: Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUpdateInput = {
@@ -551,6 +556,7 @@ export type BookingUpdateInput = {
   vehicle?: Prisma.VehicleUpdateOneWithoutBookingsNestedInput
   ownerEarnings?: Prisma.OwnerEarningUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateInput = {
@@ -576,6 +582,7 @@ export type BookingUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingCreateManyInput = {
@@ -1033,6 +1040,20 @@ export type BookingUpdateOneRequiredWithoutReviewNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BookingUpdateToOneWithWhereWithoutReviewInput, Prisma.BookingUpdateWithoutReviewInput>, Prisma.BookingUncheckedUpdateWithoutReviewInput>
 }
 
+export type BookingCreateNestedOneWithoutRentalDetailInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutRentalDetailInput, Prisma.BookingUncheckedCreateWithoutRentalDetailInput>
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutRentalDetailInput
+  connect?: Prisma.BookingWhereUniqueInput
+}
+
+export type BookingUpdateOneRequiredWithoutRentalDetailNestedInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutRentalDetailInput, Prisma.BookingUncheckedCreateWithoutRentalDetailInput>
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutRentalDetailInput
+  upsert?: Prisma.BookingUpsertWithoutRentalDetailInput
+  connect?: Prisma.BookingWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BookingUpdateToOneWithWhereWithoutRentalDetailInput, Prisma.BookingUpdateWithoutRentalDetailInput>, Prisma.BookingUncheckedUpdateWithoutRentalDetailInput>
+}
+
 export type BookingCreateWithoutUserInput = {
   id?: string
   ref: string
@@ -1055,6 +1076,7 @@ export type BookingCreateWithoutUserInput = {
   vehicle?: Prisma.VehicleCreateNestedOneWithoutBookingsInput
   ownerEarnings?: Prisma.OwnerEarningCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutUserInput = {
@@ -1079,6 +1101,7 @@ export type BookingUncheckedCreateWithoutUserInput = {
   updatedAt?: Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutUserInput = {
@@ -1155,6 +1178,7 @@ export type BookingCreateWithoutStayInput = {
   vehicle?: Prisma.VehicleCreateNestedOneWithoutBookingsInput
   ownerEarnings?: Prisma.OwnerEarningCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutStayInput = {
@@ -1179,6 +1203,7 @@ export type BookingUncheckedCreateWithoutStayInput = {
   updatedAt?: Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutStayInput = {
@@ -1229,6 +1254,7 @@ export type BookingCreateWithoutFlightInput = {
   vehicle?: Prisma.VehicleCreateNestedOneWithoutBookingsInput
   ownerEarnings?: Prisma.OwnerEarningCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutFlightInput = {
@@ -1253,6 +1279,7 @@ export type BookingUncheckedCreateWithoutFlightInput = {
   updatedAt?: Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutFlightInput = {
@@ -1303,6 +1330,7 @@ export type BookingCreateWithoutVoucherInput = {
   vehicle?: Prisma.VehicleCreateNestedOneWithoutBookingsInput
   ownerEarnings?: Prisma.OwnerEarningCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutVoucherInput = {
@@ -1327,6 +1355,7 @@ export type BookingUncheckedCreateWithoutVoucherInput = {
   updatedAt?: Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutVoucherInput = {
@@ -1377,6 +1406,7 @@ export type BookingCreateWithoutActivityInput = {
   vehicle?: Prisma.VehicleCreateNestedOneWithoutBookingsInput
   ownerEarnings?: Prisma.OwnerEarningCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutActivityInput = {
@@ -1401,6 +1431,7 @@ export type BookingUncheckedCreateWithoutActivityInput = {
   updatedAt?: Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutActivityInput = {
@@ -1451,6 +1482,7 @@ export type BookingCreateWithoutVehicleInput = {
   activity?: Prisma.ActivityCreateNestedOneWithoutBookingsInput
   ownerEarnings?: Prisma.OwnerEarningCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutVehicleInput = {
@@ -1475,6 +1507,7 @@ export type BookingUncheckedCreateWithoutVehicleInput = {
   updatedAt?: Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedCreateNestedManyWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutVehicleInput = {
@@ -1525,6 +1558,7 @@ export type BookingCreateWithoutOwnerEarningsInput = {
   activity?: Prisma.ActivityCreateNestedOneWithoutBookingsInput
   vehicle?: Prisma.VehicleCreateNestedOneWithoutBookingsInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutOwnerEarningsInput = {
@@ -1549,6 +1583,7 @@ export type BookingUncheckedCreateWithoutOwnerEarningsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutOwnerEarningsInput = {
@@ -1589,6 +1624,7 @@ export type BookingUpdateWithoutOwnerEarningsInput = {
   activity?: Prisma.ActivityUpdateOneWithoutBookingsNestedInput
   vehicle?: Prisma.VehicleUpdateOneWithoutBookingsNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutOwnerEarningsInput = {
@@ -1613,6 +1649,7 @@ export type BookingUncheckedUpdateWithoutOwnerEarningsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingCreateWithoutReviewInput = {
@@ -1637,6 +1674,7 @@ export type BookingCreateWithoutReviewInput = {
   activity?: Prisma.ActivityCreateNestedOneWithoutBookingsInput
   vehicle?: Prisma.VehicleCreateNestedOneWithoutBookingsInput
   ownerEarnings?: Prisma.OwnerEarningCreateNestedManyWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutReviewInput = {
@@ -1661,6 +1699,7 @@ export type BookingUncheckedCreateWithoutReviewInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedCreateNestedManyWithoutBookingInput
+  rentalDetail?: Prisma.RentalDetailUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutReviewInput = {
@@ -1701,6 +1740,7 @@ export type BookingUpdateWithoutReviewInput = {
   activity?: Prisma.ActivityUpdateOneWithoutBookingsNestedInput
   vehicle?: Prisma.VehicleUpdateOneWithoutBookingsNestedInput
   ownerEarnings?: Prisma.OwnerEarningUpdateManyWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutReviewInput = {
@@ -1725,6 +1765,123 @@ export type BookingUncheckedUpdateWithoutReviewInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedUpdateManyWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUncheckedUpdateOneWithoutBookingNestedInput
+}
+
+export type BookingCreateWithoutRentalDetailInput = {
+  id?: string
+  ref: string
+  type: $Enums.BookingType
+  status?: $Enums.BookingStatus
+  totalPrice: number
+  discountAmount?: number
+  travelDate?: Date | string | null
+  checkIn?: Date | string | null
+  checkOut?: Date | string | null
+  roomTypeId?: string | null
+  rooms?: number
+  guests?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutBookingsInput
+  voucher?: Prisma.VoucherCreateNestedOneWithoutBookingsInput
+  stay?: Prisma.StayCreateNestedOneWithoutBookingsInput
+  flight?: Prisma.FlightCreateNestedOneWithoutBookingsInput
+  activity?: Prisma.ActivityCreateNestedOneWithoutBookingsInput
+  vehicle?: Prisma.VehicleCreateNestedOneWithoutBookingsInput
+  ownerEarnings?: Prisma.OwnerEarningCreateNestedManyWithoutBookingInput
+  review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
+}
+
+export type BookingUncheckedCreateWithoutRentalDetailInput = {
+  id?: string
+  ref: string
+  userId: string
+  type: $Enums.BookingType
+  status?: $Enums.BookingStatus
+  totalPrice: number
+  voucherId?: string | null
+  discountAmount?: number
+  travelDate?: Date | string | null
+  checkIn?: Date | string | null
+  checkOut?: Date | string | null
+  stayId?: string | null
+  flightId?: string | null
+  roomTypeId?: string | null
+  rooms?: number
+  guests?: number
+  activityId?: string | null
+  vehicleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  ownerEarnings?: Prisma.OwnerEarningUncheckedCreateNestedManyWithoutBookingInput
+  review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
+}
+
+export type BookingCreateOrConnectWithoutRentalDetailInput = {
+  where: Prisma.BookingWhereUniqueInput
+  create: Prisma.XOR<Prisma.BookingCreateWithoutRentalDetailInput, Prisma.BookingUncheckedCreateWithoutRentalDetailInput>
+}
+
+export type BookingUpsertWithoutRentalDetailInput = {
+  update: Prisma.XOR<Prisma.BookingUpdateWithoutRentalDetailInput, Prisma.BookingUncheckedUpdateWithoutRentalDetailInput>
+  create: Prisma.XOR<Prisma.BookingCreateWithoutRentalDetailInput, Prisma.BookingUncheckedCreateWithoutRentalDetailInput>
+  where?: Prisma.BookingWhereInput
+}
+
+export type BookingUpdateToOneWithWhereWithoutRentalDetailInput = {
+  where?: Prisma.BookingWhereInput
+  data: Prisma.XOR<Prisma.BookingUpdateWithoutRentalDetailInput, Prisma.BookingUncheckedUpdateWithoutRentalDetailInput>
+}
+
+export type BookingUpdateWithoutRentalDetailInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ref?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumBookingTypeFieldUpdateOperationsInput | $Enums.BookingType
+  status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+  totalPrice?: Prisma.IntFieldUpdateOperationsInput | number
+  discountAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  travelDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  checkIn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  checkOut?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roomTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rooms?: Prisma.IntFieldUpdateOperationsInput | number
+  guests?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
+  voucher?: Prisma.VoucherUpdateOneWithoutBookingsNestedInput
+  stay?: Prisma.StayUpdateOneWithoutBookingsNestedInput
+  flight?: Prisma.FlightUpdateOneWithoutBookingsNestedInput
+  activity?: Prisma.ActivityUpdateOneWithoutBookingsNestedInput
+  vehicle?: Prisma.VehicleUpdateOneWithoutBookingsNestedInput
+  ownerEarnings?: Prisma.OwnerEarningUpdateManyWithoutBookingNestedInput
+  review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
+}
+
+export type BookingUncheckedUpdateWithoutRentalDetailInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ref?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumBookingTypeFieldUpdateOperationsInput | $Enums.BookingType
+  status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+  totalPrice?: Prisma.IntFieldUpdateOperationsInput | number
+  voucherId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  discountAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  travelDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  checkIn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  checkOut?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stayId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  flightId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rooms?: Prisma.IntFieldUpdateOperationsInput | number
+  guests?: Prisma.IntFieldUpdateOperationsInput | number
+  activityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  ownerEarnings?: Prisma.OwnerEarningUncheckedUpdateManyWithoutBookingNestedInput
+  review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingCreateManyUserInput = {
@@ -1771,6 +1928,7 @@ export type BookingUpdateWithoutUserInput = {
   vehicle?: Prisma.VehicleUpdateOneWithoutBookingsNestedInput
   ownerEarnings?: Prisma.OwnerEarningUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutUserInput = {
@@ -1795,6 +1953,7 @@ export type BookingUncheckedUpdateWithoutUserInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateManyWithoutUserInput = {
@@ -1863,6 +2022,7 @@ export type BookingUpdateWithoutStayInput = {
   vehicle?: Prisma.VehicleUpdateOneWithoutBookingsNestedInput
   ownerEarnings?: Prisma.OwnerEarningUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutStayInput = {
@@ -1887,6 +2047,7 @@ export type BookingUncheckedUpdateWithoutStayInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateManyWithoutStayInput = {
@@ -1955,6 +2116,7 @@ export type BookingUpdateWithoutFlightInput = {
   vehicle?: Prisma.VehicleUpdateOneWithoutBookingsNestedInput
   ownerEarnings?: Prisma.OwnerEarningUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutFlightInput = {
@@ -1979,6 +2141,7 @@ export type BookingUncheckedUpdateWithoutFlightInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateManyWithoutFlightInput = {
@@ -2047,6 +2210,7 @@ export type BookingUpdateWithoutVoucherInput = {
   vehicle?: Prisma.VehicleUpdateOneWithoutBookingsNestedInput
   ownerEarnings?: Prisma.OwnerEarningUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutVoucherInput = {
@@ -2071,6 +2235,7 @@ export type BookingUncheckedUpdateWithoutVoucherInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateManyWithoutVoucherInput = {
@@ -2139,6 +2304,7 @@ export type BookingUpdateWithoutActivityInput = {
   vehicle?: Prisma.VehicleUpdateOneWithoutBookingsNestedInput
   ownerEarnings?: Prisma.OwnerEarningUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutActivityInput = {
@@ -2163,6 +2329,7 @@ export type BookingUncheckedUpdateWithoutActivityInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateManyWithoutActivityInput = {
@@ -2231,6 +2398,7 @@ export type BookingUpdateWithoutVehicleInput = {
   activity?: Prisma.ActivityUpdateOneWithoutBookingsNestedInput
   ownerEarnings?: Prisma.OwnerEarningUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutVehicleInput = {
@@ -2255,6 +2423,7 @@ export type BookingUncheckedUpdateWithoutVehicleInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ownerEarnings?: Prisma.OwnerEarningUncheckedUpdateManyWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
+  rentalDetail?: Prisma.RentalDetailUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateManyWithoutVehicleInput = {
@@ -2339,6 +2508,7 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   vehicle?: boolean | Prisma.Booking$vehicleArgs<ExtArgs>
   ownerEarnings?: boolean | Prisma.Booking$ownerEarningsArgs<ExtArgs>
   review?: boolean | Prisma.Booking$reviewArgs<ExtArgs>
+  rentalDetail?: boolean | Prisma.Booking$rentalDetailArgs<ExtArgs>
   _count?: boolean | Prisma.BookingCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["booking"]>
 
@@ -2377,6 +2547,7 @@ export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   vehicle?: boolean | Prisma.Booking$vehicleArgs<ExtArgs>
   ownerEarnings?: boolean | Prisma.Booking$ownerEarningsArgs<ExtArgs>
   review?: boolean | Prisma.Booking$reviewArgs<ExtArgs>
+  rentalDetail?: boolean | Prisma.Booking$rentalDetailArgs<ExtArgs>
   _count?: boolean | Prisma.BookingCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -2391,6 +2562,7 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     vehicle: Prisma.$VehiclePayload<ExtArgs> | null
     ownerEarnings: Prisma.$OwnerEarningPayload<ExtArgs>[]
     review: Prisma.$ReviewPayload<ExtArgs> | null
+    rentalDetail: Prisma.$RentalDetailPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2761,6 +2933,7 @@ export interface Prisma__BookingClient<T, Null = never, ExtArgs extends runtime.
   vehicle<T extends Prisma.Booking$vehicleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$vehicleArgs<ExtArgs>>): Prisma.Prisma__VehicleClient<runtime.Types.Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   ownerEarnings<T extends Prisma.Booking$ownerEarningsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$ownerEarningsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OwnerEarningPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   review<T extends Prisma.Booking$reviewArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$reviewArgs<ExtArgs>>): Prisma.Prisma__ReviewClient<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  rentalDetail<T extends Prisma.Booking$rentalDetailArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$rentalDetailArgs<ExtArgs>>): Prisma.Prisma__RentalDetailClient<runtime.Types.Result.GetResult<Prisma.$RentalDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3288,6 +3461,25 @@ export type Booking$reviewArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   include?: Prisma.ReviewInclude<ExtArgs> | null
   where?: Prisma.ReviewWhereInput
+}
+
+/**
+ * Booking.rentalDetail
+ */
+export type Booking$rentalDetailArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RentalDetail
+   */
+  select?: Prisma.RentalDetailSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RentalDetail
+   */
+  omit?: Prisma.RentalDetailOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RentalDetailInclude<ExtArgs> | null
+  where?: Prisma.RentalDetailWhereInput
 }
 
 /**

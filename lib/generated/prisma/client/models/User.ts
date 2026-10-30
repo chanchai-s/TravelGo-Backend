@@ -225,6 +225,7 @@ export type UserWhereInput = {
   media?: Prisma.MediaListRelationFilter
   hostProfile?: Prisma.XOR<Prisma.HostProfileNullableScalarRelationFilter, Prisma.HostProfileWhereInput> | null
   driverProfile?: Prisma.XOR<Prisma.DriverProfileNullableScalarRelationFilter, Prisma.DriverProfileWhereInput> | null
+  vehiclePartner?: Prisma.XOR<Prisma.VehiclePartnerNullableScalarRelationFilter, Prisma.VehiclePartnerWhereInput> | null
 }
 
 export type UserOrderByWithRelationInput = {
@@ -255,6 +256,7 @@ export type UserOrderByWithRelationInput = {
   media?: Prisma.MediaOrderByRelationAggregateInput
   hostProfile?: Prisma.HostProfileOrderByWithRelationInput
   driverProfile?: Prisma.DriverProfileOrderByWithRelationInput
+  vehiclePartner?: Prisma.VehiclePartnerOrderByWithRelationInput
   _relevance?: Prisma.UserOrderByRelevanceInput
 }
 
@@ -289,6 +291,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   media?: Prisma.MediaListRelationFilter
   hostProfile?: Prisma.XOR<Prisma.HostProfileNullableScalarRelationFilter, Prisma.HostProfileWhereInput> | null
   driverProfile?: Prisma.XOR<Prisma.DriverProfileNullableScalarRelationFilter, Prisma.DriverProfileWhereInput> | null
+  vehiclePartner?: Prisma.XOR<Prisma.VehiclePartnerNullableScalarRelationFilter, Prisma.VehiclePartnerWhereInput> | null
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -347,6 +350,7 @@ export type UserCreateInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -377,6 +381,7 @@ export type UserUncheckedCreateInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -407,6 +412,7 @@ export type UserUpdateInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -437,6 +443,7 @@ export type UserUncheckedUpdateInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -798,6 +805,20 @@ export type UserUpdateOneRequiredWithoutMediaNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMediaInput, Prisma.UserUpdateWithoutMediaInput>, Prisma.UserUncheckedUpdateWithoutMediaInput>
 }
 
+export type UserCreateNestedOneWithoutVehiclePartnerInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutVehiclePartnerInput, Prisma.UserUncheckedCreateWithoutVehiclePartnerInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutVehiclePartnerInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutVehiclePartnerNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutVehiclePartnerInput, Prisma.UserUncheckedCreateWithoutVehiclePartnerInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutVehiclePartnerInput
+  upsert?: Prisma.UserUpsertWithoutVehiclePartnerInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutVehiclePartnerInput, Prisma.UserUpdateWithoutVehiclePartnerInput>, Prisma.UserUncheckedUpdateWithoutVehiclePartnerInput>
+}
+
 export type UserCreateWithoutHostProfileInput = {
   id?: string
   name: string
@@ -825,6 +846,7 @@ export type UserCreateWithoutHostProfileInput = {
   hostStaff?: Prisma.HostStaffCreateNestedManyWithoutUserInput
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHostProfileInput = {
@@ -854,6 +876,7 @@ export type UserUncheckedCreateWithoutHostProfileInput = {
   hostStaff?: Prisma.HostStaffUncheckedCreateNestedManyWithoutUserInput
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHostProfileInput = {
@@ -899,6 +922,7 @@ export type UserUpdateWithoutHostProfileInput = {
   hostStaff?: Prisma.HostStaffUpdateManyWithoutUserNestedInput
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHostProfileInput = {
@@ -928,6 +952,7 @@ export type UserUncheckedUpdateWithoutHostProfileInput = {
   hostStaff?: Prisma.HostStaffUncheckedUpdateManyWithoutUserNestedInput
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHostStaffInput = {
@@ -957,6 +982,7 @@ export type UserCreateWithoutHostStaffInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHostStaffInput = {
@@ -986,6 +1012,7 @@ export type UserUncheckedCreateWithoutHostStaffInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHostStaffInput = {
@@ -1031,6 +1058,7 @@ export type UserUpdateWithoutHostStaffInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHostStaffInput = {
@@ -1060,6 +1088,7 @@ export type UserUncheckedUpdateWithoutHostStaffInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBookingsInput = {
@@ -1089,6 +1118,7 @@ export type UserCreateWithoutBookingsInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBookingsInput = {
@@ -1118,6 +1148,7 @@ export type UserUncheckedCreateWithoutBookingsInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBookingsInput = {
@@ -1163,6 +1194,7 @@ export type UserUpdateWithoutBookingsInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBookingsInput = {
@@ -1192,6 +1224,7 @@ export type UserUncheckedUpdateWithoutBookingsInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutWalletInput = {
@@ -1221,6 +1254,7 @@ export type UserCreateWithoutWalletInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWalletInput = {
@@ -1250,6 +1284,7 @@ export type UserUncheckedCreateWithoutWalletInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWalletInput = {
@@ -1295,6 +1330,7 @@ export type UserUpdateWithoutWalletInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWalletInput = {
@@ -1324,6 +1360,7 @@ export type UserUncheckedUpdateWithoutWalletInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutVoucherAssignmentsInput = {
@@ -1353,6 +1390,7 @@ export type UserCreateWithoutVoucherAssignmentsInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutVoucherAssignmentsInput = {
@@ -1382,6 +1420,7 @@ export type UserUncheckedCreateWithoutVoucherAssignmentsInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutVoucherAssignmentsInput = {
@@ -1427,6 +1466,7 @@ export type UserUpdateWithoutVoucherAssignmentsInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutVoucherAssignmentsInput = {
@@ -1456,6 +1496,7 @@ export type UserUncheckedUpdateWithoutVoucherAssignmentsInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReviewsWrittenInput = {
@@ -1485,6 +1526,7 @@ export type UserCreateWithoutReviewsWrittenInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReviewsWrittenInput = {
@@ -1514,6 +1556,7 @@ export type UserUncheckedCreateWithoutReviewsWrittenInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReviewsWrittenInput = {
@@ -1559,6 +1602,7 @@ export type UserUpdateWithoutReviewsWrittenInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewsWrittenInput = {
@@ -1588,6 +1632,7 @@ export type UserUncheckedUpdateWithoutReviewsWrittenInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -1617,6 +1662,7 @@ export type UserCreateWithoutCommentsInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -1646,6 +1692,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -1691,6 +1738,7 @@ export type UserUpdateWithoutCommentsInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -1720,6 +1768,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLikesInput = {
@@ -1749,6 +1798,7 @@ export type UserCreateWithoutLikesInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLikesInput = {
@@ -1778,6 +1828,7 @@ export type UserUncheckedCreateWithoutLikesInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLikesInput = {
@@ -1823,6 +1874,7 @@ export type UserUpdateWithoutLikesInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLikesInput = {
@@ -1852,6 +1904,7 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutFollowsInput = {
@@ -1881,6 +1934,7 @@ export type UserCreateWithoutFollowsInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowsInput = {
@@ -1910,6 +1964,7 @@ export type UserUncheckedCreateWithoutFollowsInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowsInput = {
@@ -1944,6 +1999,7 @@ export type UserCreateWithoutFollowingInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowingInput = {
@@ -1973,6 +2029,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowingInput = {
@@ -2018,6 +2075,7 @@ export type UserUpdateWithoutFollowsInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowsInput = {
@@ -2047,6 +2105,7 @@ export type UserUncheckedUpdateWithoutFollowsInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutFollowingInput = {
@@ -2087,6 +2146,7 @@ export type UserUpdateWithoutFollowingInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowingInput = {
@@ -2116,6 +2176,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSavedInput = {
@@ -2145,6 +2206,7 @@ export type UserCreateWithoutSavedInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSavedInput = {
@@ -2174,6 +2236,7 @@ export type UserUncheckedCreateWithoutSavedInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSavedInput = {
@@ -2219,6 +2282,7 @@ export type UserUpdateWithoutSavedInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavedInput = {
@@ -2248,6 +2312,7 @@ export type UserUncheckedUpdateWithoutSavedInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCartItemsInput = {
@@ -2277,6 +2342,7 @@ export type UserCreateWithoutCartItemsInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCartItemsInput = {
@@ -2306,6 +2372,7 @@ export type UserUncheckedCreateWithoutCartItemsInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCartItemsInput = {
@@ -2351,6 +2418,7 @@ export type UserUpdateWithoutCartItemsInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCartItemsInput = {
@@ -2380,6 +2448,7 @@ export type UserUncheckedUpdateWithoutCartItemsInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPlansInput = {
@@ -2409,6 +2478,7 @@ export type UserCreateWithoutPlansInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPlansInput = {
@@ -2438,6 +2508,7 @@ export type UserUncheckedCreateWithoutPlansInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPlansInput = {
@@ -2483,6 +2554,7 @@ export type UserUpdateWithoutPlansInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPlansInput = {
@@ -2512,6 +2584,7 @@ export type UserUncheckedUpdateWithoutPlansInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserPostsInput = {
@@ -2541,6 +2614,7 @@ export type UserCreateWithoutUserPostsInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserPostsInput = {
@@ -2570,6 +2644,7 @@ export type UserUncheckedCreateWithoutUserPostsInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserPostsInput = {
@@ -2615,6 +2690,7 @@ export type UserUpdateWithoutUserPostsInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserPostsInput = {
@@ -2644,6 +2720,7 @@ export type UserUncheckedUpdateWithoutUserPostsInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMediaLikesInput = {
@@ -2673,6 +2750,7 @@ export type UserCreateWithoutMediaLikesInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMediaLikesInput = {
@@ -2702,6 +2780,7 @@ export type UserUncheckedCreateWithoutMediaLikesInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMediaLikesInput = {
@@ -2747,6 +2826,7 @@ export type UserUpdateWithoutMediaLikesInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMediaLikesInput = {
@@ -2776,6 +2856,7 @@ export type UserUncheckedUpdateWithoutMediaLikesInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMediaCommentsInput = {
@@ -2805,6 +2886,7 @@ export type UserCreateWithoutMediaCommentsInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMediaCommentsInput = {
@@ -2834,6 +2916,7 @@ export type UserUncheckedCreateWithoutMediaCommentsInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMediaCommentsInput = {
@@ -2879,6 +2962,7 @@ export type UserUpdateWithoutMediaCommentsInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMediaCommentsInput = {
@@ -2908,6 +2992,7 @@ export type UserUncheckedUpdateWithoutMediaCommentsInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserPostLikesInput = {
@@ -2937,6 +3022,7 @@ export type UserCreateWithoutUserPostLikesInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserPostLikesInput = {
@@ -2966,6 +3052,7 @@ export type UserUncheckedCreateWithoutUserPostLikesInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserPostLikesInput = {
@@ -3011,6 +3098,7 @@ export type UserUpdateWithoutUserPostLikesInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserPostLikesInput = {
@@ -3040,6 +3128,7 @@ export type UserUncheckedUpdateWithoutUserPostLikesInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutDriverProfileInput = {
@@ -3069,6 +3158,7 @@ export type UserCreateWithoutDriverProfileInput = {
   hostStaff?: Prisma.HostStaffCreateNestedManyWithoutUserInput
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutDriverProfileInput = {
@@ -3098,6 +3188,7 @@ export type UserUncheckedCreateWithoutDriverProfileInput = {
   hostStaff?: Prisma.HostStaffUncheckedCreateNestedManyWithoutUserInput
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutDriverProfileInput = {
@@ -3143,6 +3234,7 @@ export type UserUpdateWithoutDriverProfileInput = {
   hostStaff?: Prisma.HostStaffUpdateManyWithoutUserNestedInput
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDriverProfileInput = {
@@ -3172,6 +3264,7 @@ export type UserUncheckedUpdateWithoutDriverProfileInput = {
   hostStaff?: Prisma.HostStaffUncheckedUpdateManyWithoutUserNestedInput
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMediaInput = {
@@ -3201,6 +3294,7 @@ export type UserCreateWithoutMediaInput = {
   hostStaff?: Prisma.HostStaffCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMediaInput = {
@@ -3230,6 +3324,7 @@ export type UserUncheckedCreateWithoutMediaInput = {
   hostStaff?: Prisma.HostStaffUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMediaInput = {
@@ -3275,6 +3370,7 @@ export type UserUpdateWithoutMediaInput = {
   hostStaff?: Prisma.HostStaffUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMediaInput = {
@@ -3302,6 +3398,143 @@ export type UserUncheckedUpdateWithoutMediaInput = {
   userPostLikes?: Prisma.UserPostLikeUncheckedUpdateManyWithoutUserNestedInput
   voucherAssignments?: Prisma.VoucherAssignmentUncheckedUpdateManyWithoutUserNestedInput
   hostStaff?: Prisma.HostStaffUncheckedUpdateManyWithoutUserNestedInput
+  hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
+  driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type UserCreateWithoutVehiclePartnerInput = {
+  id?: string
+  name: string
+  email: string
+  phone?: string | null
+  role?: $Enums.PlatformRole
+  tier?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
+  cartItems?: Prisma.CartItemCreateNestedManyWithoutUserInput
+  saved?: Prisma.SavedItemCreateNestedManyWithoutUserInput
+  wallet?: Prisma.VoucherWalletCreateNestedManyWithoutUserInput
+  plans?: Prisma.TripPlanCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  following?: Prisma.FollowCreateNestedManyWithoutCreatorInput
+  reviewsWritten?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  mediaLikes?: Prisma.MediaLikeCreateNestedManyWithoutUserInput
+  mediaComments?: Prisma.MediaCommentCreateNestedManyWithoutUserInput
+  userPosts?: Prisma.UserPostCreateNestedManyWithoutUserInput
+  userPostLikes?: Prisma.UserPostLikeCreateNestedManyWithoutUserInput
+  voucherAssignments?: Prisma.VoucherAssignmentCreateNestedManyWithoutUserInput
+  hostStaff?: Prisma.HostStaffCreateNestedManyWithoutUserInput
+  media?: Prisma.MediaCreateNestedManyWithoutUserInput
+  hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
+  driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutVehiclePartnerInput = {
+  id?: string
+  name: string
+  email: string
+  phone?: string | null
+  role?: $Enums.PlatformRole
+  tier?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
+  cartItems?: Prisma.CartItemUncheckedCreateNestedManyWithoutUserInput
+  saved?: Prisma.SavedItemUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.VoucherWalletUncheckedCreateNestedManyWithoutUserInput
+  plans?: Prisma.TripPlanUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutCreatorInput
+  reviewsWritten?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  mediaLikes?: Prisma.MediaLikeUncheckedCreateNestedManyWithoutUserInput
+  mediaComments?: Prisma.MediaCommentUncheckedCreateNestedManyWithoutUserInput
+  userPosts?: Prisma.UserPostUncheckedCreateNestedManyWithoutUserInput
+  userPostLikes?: Prisma.UserPostLikeUncheckedCreateNestedManyWithoutUserInput
+  voucherAssignments?: Prisma.VoucherAssignmentUncheckedCreateNestedManyWithoutUserInput
+  hostStaff?: Prisma.HostStaffUncheckedCreateNestedManyWithoutUserInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
+  hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
+  driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutVehiclePartnerInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutVehiclePartnerInput, Prisma.UserUncheckedCreateWithoutVehiclePartnerInput>
+}
+
+export type UserUpsertWithoutVehiclePartnerInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutVehiclePartnerInput, Prisma.UserUncheckedUpdateWithoutVehiclePartnerInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutVehiclePartnerInput, Prisma.UserUncheckedCreateWithoutVehiclePartnerInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutVehiclePartnerInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutVehiclePartnerInput, Prisma.UserUncheckedUpdateWithoutVehiclePartnerInput>
+}
+
+export type UserUpdateWithoutVehiclePartnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tier?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
+  cartItems?: Prisma.CartItemUpdateManyWithoutUserNestedInput
+  saved?: Prisma.SavedItemUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.VoucherWalletUpdateManyWithoutUserNestedInput
+  plans?: Prisma.TripPlanUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  following?: Prisma.FollowUpdateManyWithoutCreatorNestedInput
+  reviewsWritten?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  mediaLikes?: Prisma.MediaLikeUpdateManyWithoutUserNestedInput
+  mediaComments?: Prisma.MediaCommentUpdateManyWithoutUserNestedInput
+  userPosts?: Prisma.UserPostUpdateManyWithoutUserNestedInput
+  userPostLikes?: Prisma.UserPostLikeUpdateManyWithoutUserNestedInput
+  voucherAssignments?: Prisma.VoucherAssignmentUpdateManyWithoutUserNestedInput
+  hostStaff?: Prisma.HostStaffUpdateManyWithoutUserNestedInput
+  media?: Prisma.MediaUpdateManyWithoutUserNestedInput
+  hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
+  driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutVehiclePartnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tier?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
+  cartItems?: Prisma.CartItemUncheckedUpdateManyWithoutUserNestedInput
+  saved?: Prisma.SavedItemUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.VoucherWalletUncheckedUpdateManyWithoutUserNestedInput
+  plans?: Prisma.TripPlanUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutCreatorNestedInput
+  reviewsWritten?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  mediaLikes?: Prisma.MediaLikeUncheckedUpdateManyWithoutUserNestedInput
+  mediaComments?: Prisma.MediaCommentUncheckedUpdateManyWithoutUserNestedInput
+  userPosts?: Prisma.UserPostUncheckedUpdateManyWithoutUserNestedInput
+  userPostLikes?: Prisma.UserPostLikeUncheckedUpdateManyWithoutUserNestedInput
+  voucherAssignments?: Prisma.VoucherAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  hostStaff?: Prisma.HostStaffUncheckedUpdateManyWithoutUserNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
 }
@@ -3509,6 +3742,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   media?: boolean | Prisma.User$mediaArgs<ExtArgs>
   hostProfile?: boolean | Prisma.User$hostProfileArgs<ExtArgs>
   driverProfile?: boolean | Prisma.User$driverProfileArgs<ExtArgs>
+  vehiclePartner?: boolean | Prisma.User$vehiclePartnerArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -3546,6 +3780,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   media?: boolean | Prisma.User$mediaArgs<ExtArgs>
   hostProfile?: boolean | Prisma.User$hostProfileArgs<ExtArgs>
   driverProfile?: boolean | Prisma.User$driverProfileArgs<ExtArgs>
+  vehiclePartner?: boolean | Prisma.User$vehiclePartnerArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -3571,6 +3806,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     media: Prisma.$MediaPayload<ExtArgs>[]
     hostProfile: Prisma.$HostProfilePayload<ExtArgs> | null
     driverProfile: Prisma.$DriverProfilePayload<ExtArgs> | null
+    vehiclePartner: Prisma.$VehiclePartnerPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3940,6 +4176,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   media<T extends Prisma.User$mediaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   hostProfile<T extends Prisma.User$hostProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$hostProfileArgs<ExtArgs>>): Prisma.Prisma__HostProfileClient<runtime.Types.Result.GetResult<Prisma.$HostProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   driverProfile<T extends Prisma.User$driverProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$driverProfileArgs<ExtArgs>>): Prisma.Prisma__DriverProfileClient<runtime.Types.Result.GetResult<Prisma.$DriverProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  vehiclePartner<T extends Prisma.User$vehiclePartnerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$vehiclePartnerArgs<ExtArgs>>): Prisma.Prisma__VehiclePartnerClient<runtime.Types.Result.GetResult<Prisma.$VehiclePartnerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4763,6 +5000,25 @@ export type User$driverProfileArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   include?: Prisma.DriverProfileInclude<ExtArgs> | null
   where?: Prisma.DriverProfileWhereInput
+}
+
+/**
+ * User.vehiclePartner
+ */
+export type User$vehiclePartnerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the VehiclePartner
+   */
+  select?: Prisma.VehiclePartnerSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the VehiclePartner
+   */
+  omit?: Prisma.VehiclePartnerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VehiclePartnerInclude<ExtArgs> | null
+  where?: Prisma.VehiclePartnerWhereInput
 }
 
 /**

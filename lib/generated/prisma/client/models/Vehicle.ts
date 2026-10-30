@@ -27,107 +27,247 @@ export type AggregateVehicle = {
 }
 
 export type VehicleAvgAggregateOutputType = {
+  modelYear: number | null
   seats: number | null
   bags: number | null
+  doors: number | null
   pricePerDay: number | null
+  depositAmount: number | null
+  minRentalDays: number | null
+  maxRentalDays: number | null
+  advanceBookingDays: number | null
 }
 
 export type VehicleSumAggregateOutputType = {
+  modelYear: number | null
   seats: number | null
   bags: number | null
+  doors: number | null
   pricePerDay: number | null
+  depositAmount: number | null
+  minRentalDays: number | null
+  maxRentalDays: number | null
+  advanceBookingDays: number | null
 }
 
 export type VehicleMinAggregateOutputType = {
   id: string | null
+  partnerId: string | null
+  branchId: string | null
+  categoryId: string | null
   name: string | null
   category: string | null
   vendor: string | null
+  brand: string | null
+  modelYear: number | null
   seats: number | null
   bags: number | null
+  doors: number | null
   transmission: string | null
   fuelType: string | null
   pricePerDay: number | null
+  depositAmount: number | null
+  licensePlate: string | null
+  description: string | null
   imageUrl: string | null
+  status: $Enums.VehicleStatus | null
+  supportsSelfDrive: boolean | null
+  supportsChauffeur: boolean | null
+  allowOneWay: boolean | null
+  deliveryAvailable: boolean | null
+  minRentalDays: number | null
+  maxRentalDays: number | null
+  advanceBookingDays: number | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type VehicleMaxAggregateOutputType = {
   id: string | null
+  partnerId: string | null
+  branchId: string | null
+  categoryId: string | null
   name: string | null
   category: string | null
   vendor: string | null
+  brand: string | null
+  modelYear: number | null
   seats: number | null
   bags: number | null
+  doors: number | null
   transmission: string | null
   fuelType: string | null
   pricePerDay: number | null
+  depositAmount: number | null
+  licensePlate: string | null
+  description: string | null
   imageUrl: string | null
+  status: $Enums.VehicleStatus | null
+  supportsSelfDrive: boolean | null
+  supportsChauffeur: boolean | null
+  allowOneWay: boolean | null
+  deliveryAvailable: boolean | null
+  minRentalDays: number | null
+  maxRentalDays: number | null
+  advanceBookingDays: number | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type VehicleCountAggregateOutputType = {
   id: number
+  partnerId: number
+  branchId: number
+  categoryId: number
   name: number
   category: number
   vendor: number
+  brand: number
+  modelYear: number
   seats: number
   bags: number
+  doors: number
   transmission: number
   fuelType: number
   pricePerDay: number
+  depositAmount: number
+  licensePlate: number
+  description: number
+  specs: number
   imageUrl: number
+  status: number
+  supportsSelfDrive: number
+  supportsChauffeur: number
+  allowOneWay: number
+  deliveryAvailable: number
+  minRentalDays: number
+  maxRentalDays: number
+  advanceBookingDays: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
 
 export type VehicleAvgAggregateInputType = {
+  modelYear?: true
   seats?: true
   bags?: true
+  doors?: true
   pricePerDay?: true
+  depositAmount?: true
+  minRentalDays?: true
+  maxRentalDays?: true
+  advanceBookingDays?: true
 }
 
 export type VehicleSumAggregateInputType = {
+  modelYear?: true
   seats?: true
   bags?: true
+  doors?: true
   pricePerDay?: true
+  depositAmount?: true
+  minRentalDays?: true
+  maxRentalDays?: true
+  advanceBookingDays?: true
 }
 
 export type VehicleMinAggregateInputType = {
   id?: true
+  partnerId?: true
+  branchId?: true
+  categoryId?: true
   name?: true
   category?: true
   vendor?: true
+  brand?: true
+  modelYear?: true
   seats?: true
   bags?: true
+  doors?: true
   transmission?: true
   fuelType?: true
   pricePerDay?: true
+  depositAmount?: true
+  licensePlate?: true
+  description?: true
   imageUrl?: true
+  status?: true
+  supportsSelfDrive?: true
+  supportsChauffeur?: true
+  allowOneWay?: true
+  deliveryAvailable?: true
+  minRentalDays?: true
+  maxRentalDays?: true
+  advanceBookingDays?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type VehicleMaxAggregateInputType = {
   id?: true
+  partnerId?: true
+  branchId?: true
+  categoryId?: true
   name?: true
   category?: true
   vendor?: true
+  brand?: true
+  modelYear?: true
   seats?: true
   bags?: true
+  doors?: true
   transmission?: true
   fuelType?: true
   pricePerDay?: true
+  depositAmount?: true
+  licensePlate?: true
+  description?: true
   imageUrl?: true
+  status?: true
+  supportsSelfDrive?: true
+  supportsChauffeur?: true
+  allowOneWay?: true
+  deliveryAvailable?: true
+  minRentalDays?: true
+  maxRentalDays?: true
+  advanceBookingDays?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type VehicleCountAggregateInputType = {
   id?: true
+  partnerId?: true
+  branchId?: true
+  categoryId?: true
   name?: true
   category?: true
   vendor?: true
+  brand?: true
+  modelYear?: true
   seats?: true
   bags?: true
+  doors?: true
   transmission?: true
   fuelType?: true
   pricePerDay?: true
+  depositAmount?: true
+  licensePlate?: true
+  description?: true
+  specs?: true
   imageUrl?: true
+  status?: true
+  supportsSelfDrive?: true
+  supportsChauffeur?: true
+  allowOneWay?: true
+  deliveryAvailable?: true
+  minRentalDays?: true
+  maxRentalDays?: true
+  advanceBookingDays?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -219,15 +359,35 @@ export type VehicleGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type VehicleGroupByOutputType = {
   id: string
+  partnerId: string | null
+  branchId: string | null
+  categoryId: string | null
   name: string
   category: string
   vendor: string
+  brand: string | null
+  modelYear: number | null
   seats: number
   bags: number
+  doors: number
   transmission: string
   fuelType: string
   pricePerDay: number
+  depositAmount: number
+  licensePlate: string | null
+  description: string | null
+  specs: runtime.JsonValue | null
   imageUrl: string | null
+  status: $Enums.VehicleStatus
+  supportsSelfDrive: boolean
+  supportsChauffeur: boolean
+  allowOneWay: boolean
+  deliveryAvailable: boolean
+  minRentalDays: number
+  maxRentalDays: number | null
+  advanceBookingDays: number | null
+  createdAt: Date
+  updatedAt: Date
   _count: VehicleCountAggregateOutputType | null
   _avg: VehicleAvgAggregateOutputType | null
   _sum: VehicleSumAggregateOutputType | null
@@ -255,30 +415,88 @@ export type VehicleWhereInput = {
   OR?: Prisma.VehicleWhereInput[]
   NOT?: Prisma.VehicleWhereInput | Prisma.VehicleWhereInput[]
   id?: Prisma.StringFilter<"Vehicle"> | string
+  partnerId?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  branchId?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  categoryId?: Prisma.StringNullableFilter<"Vehicle"> | string | null
   name?: Prisma.StringFilter<"Vehicle"> | string
   category?: Prisma.StringFilter<"Vehicle"> | string
   vendor?: Prisma.StringFilter<"Vehicle"> | string
+  brand?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  modelYear?: Prisma.IntNullableFilter<"Vehicle"> | number | null
   seats?: Prisma.IntFilter<"Vehicle"> | number
   bags?: Prisma.IntFilter<"Vehicle"> | number
+  doors?: Prisma.IntFilter<"Vehicle"> | number
   transmission?: Prisma.StringFilter<"Vehicle"> | string
   fuelType?: Prisma.StringFilter<"Vehicle"> | string
   pricePerDay?: Prisma.IntFilter<"Vehicle"> | number
+  depositAmount?: Prisma.IntFilter<"Vehicle"> | number
+  licensePlate?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  description?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  specs?: Prisma.JsonNullableFilter<"Vehicle">
   imageUrl?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  status?: Prisma.EnumVehicleStatusFilter<"Vehicle"> | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFilter<"Vehicle"> | boolean
+  supportsChauffeur?: Prisma.BoolFilter<"Vehicle"> | boolean
+  allowOneWay?: Prisma.BoolFilter<"Vehicle"> | boolean
+  deliveryAvailable?: Prisma.BoolFilter<"Vehicle"> | boolean
+  minRentalDays?: Prisma.IntFilter<"Vehicle"> | number
+  maxRentalDays?: Prisma.IntNullableFilter<"Vehicle"> | number | null
+  advanceBookingDays?: Prisma.IntNullableFilter<"Vehicle"> | number | null
+  createdAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
+  partner?: Prisma.XOR<Prisma.VehiclePartnerNullableScalarRelationFilter, Prisma.VehiclePartnerWhereInput> | null
+  branch?: Prisma.XOR<Prisma.PartnerBranchNullableScalarRelationFilter, Prisma.PartnerBranchWhereInput> | null
+  categoryRef?: Prisma.XOR<Prisma.VehicleCategoryNullableScalarRelationFilter, Prisma.VehicleCategoryWhereInput> | null
+  photos?: Prisma.VehiclePhotoListRelationFilter
+  documents?: Prisma.VehicleDocumentListRelationFilter
+  blocks?: Prisma.VehicleBlockListRelationFilter
   bookings?: Prisma.BookingListRelationFilter
+  rentalDetails?: Prisma.RentalDetailListRelationFilter
+  reviews?: Prisma.ReviewListRelationFilter
+  earnings?: Prisma.PartnerEarningListRelationFilter
 }
 
 export type VehicleOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  partnerId?: Prisma.SortOrderInput | Prisma.SortOrder
+  branchId?: Prisma.SortOrderInput | Prisma.SortOrder
+  categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
   vendor?: Prisma.SortOrder
+  brand?: Prisma.SortOrderInput | Prisma.SortOrder
+  modelYear?: Prisma.SortOrderInput | Prisma.SortOrder
   seats?: Prisma.SortOrder
   bags?: Prisma.SortOrder
+  doors?: Prisma.SortOrder
   transmission?: Prisma.SortOrder
   fuelType?: Prisma.SortOrder
   pricePerDay?: Prisma.SortOrder
+  depositAmount?: Prisma.SortOrder
+  licensePlate?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  specs?: Prisma.SortOrderInput | Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  status?: Prisma.SortOrder
+  supportsSelfDrive?: Prisma.SortOrder
+  supportsChauffeur?: Prisma.SortOrder
+  allowOneWay?: Prisma.SortOrder
+  deliveryAvailable?: Prisma.SortOrder
+  minRentalDays?: Prisma.SortOrder
+  maxRentalDays?: Prisma.SortOrderInput | Prisma.SortOrder
+  advanceBookingDays?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  partner?: Prisma.VehiclePartnerOrderByWithRelationInput
+  branch?: Prisma.PartnerBranchOrderByWithRelationInput
+  categoryRef?: Prisma.VehicleCategoryOrderByWithRelationInput
+  photos?: Prisma.VehiclePhotoOrderByRelationAggregateInput
+  documents?: Prisma.VehicleDocumentOrderByRelationAggregateInput
+  blocks?: Prisma.VehicleBlockOrderByRelationAggregateInput
   bookings?: Prisma.BookingOrderByRelationAggregateInput
+  rentalDetails?: Prisma.RentalDetailOrderByRelationAggregateInput
+  reviews?: Prisma.ReviewOrderByRelationAggregateInput
+  earnings?: Prisma.PartnerEarningOrderByRelationAggregateInput
   _relevance?: Prisma.VehicleOrderByRelevanceInput
 }
 
@@ -287,29 +505,78 @@ export type VehicleWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.VehicleWhereInput | Prisma.VehicleWhereInput[]
   OR?: Prisma.VehicleWhereInput[]
   NOT?: Prisma.VehicleWhereInput | Prisma.VehicleWhereInput[]
+  partnerId?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  branchId?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  categoryId?: Prisma.StringNullableFilter<"Vehicle"> | string | null
   name?: Prisma.StringFilter<"Vehicle"> | string
   category?: Prisma.StringFilter<"Vehicle"> | string
   vendor?: Prisma.StringFilter<"Vehicle"> | string
+  brand?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  modelYear?: Prisma.IntNullableFilter<"Vehicle"> | number | null
   seats?: Prisma.IntFilter<"Vehicle"> | number
   bags?: Prisma.IntFilter<"Vehicle"> | number
+  doors?: Prisma.IntFilter<"Vehicle"> | number
   transmission?: Prisma.StringFilter<"Vehicle"> | string
   fuelType?: Prisma.StringFilter<"Vehicle"> | string
   pricePerDay?: Prisma.IntFilter<"Vehicle"> | number
+  depositAmount?: Prisma.IntFilter<"Vehicle"> | number
+  licensePlate?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  description?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  specs?: Prisma.JsonNullableFilter<"Vehicle">
   imageUrl?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  status?: Prisma.EnumVehicleStatusFilter<"Vehicle"> | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFilter<"Vehicle"> | boolean
+  supportsChauffeur?: Prisma.BoolFilter<"Vehicle"> | boolean
+  allowOneWay?: Prisma.BoolFilter<"Vehicle"> | boolean
+  deliveryAvailable?: Prisma.BoolFilter<"Vehicle"> | boolean
+  minRentalDays?: Prisma.IntFilter<"Vehicle"> | number
+  maxRentalDays?: Prisma.IntNullableFilter<"Vehicle"> | number | null
+  advanceBookingDays?: Prisma.IntNullableFilter<"Vehicle"> | number | null
+  createdAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
+  partner?: Prisma.XOR<Prisma.VehiclePartnerNullableScalarRelationFilter, Prisma.VehiclePartnerWhereInput> | null
+  branch?: Prisma.XOR<Prisma.PartnerBranchNullableScalarRelationFilter, Prisma.PartnerBranchWhereInput> | null
+  categoryRef?: Prisma.XOR<Prisma.VehicleCategoryNullableScalarRelationFilter, Prisma.VehicleCategoryWhereInput> | null
+  photos?: Prisma.VehiclePhotoListRelationFilter
+  documents?: Prisma.VehicleDocumentListRelationFilter
+  blocks?: Prisma.VehicleBlockListRelationFilter
   bookings?: Prisma.BookingListRelationFilter
+  rentalDetails?: Prisma.RentalDetailListRelationFilter
+  reviews?: Prisma.ReviewListRelationFilter
+  earnings?: Prisma.PartnerEarningListRelationFilter
 }, "id">
 
 export type VehicleOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  partnerId?: Prisma.SortOrderInput | Prisma.SortOrder
+  branchId?: Prisma.SortOrderInput | Prisma.SortOrder
+  categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
   vendor?: Prisma.SortOrder
+  brand?: Prisma.SortOrderInput | Prisma.SortOrder
+  modelYear?: Prisma.SortOrderInput | Prisma.SortOrder
   seats?: Prisma.SortOrder
   bags?: Prisma.SortOrder
+  doors?: Prisma.SortOrder
   transmission?: Prisma.SortOrder
   fuelType?: Prisma.SortOrder
   pricePerDay?: Prisma.SortOrder
+  depositAmount?: Prisma.SortOrder
+  licensePlate?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  specs?: Prisma.SortOrderInput | Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  status?: Prisma.SortOrder
+  supportsSelfDrive?: Prisma.SortOrder
+  supportsChauffeur?: Prisma.SortOrder
+  allowOneWay?: Prisma.SortOrder
+  deliveryAvailable?: Prisma.SortOrder
+  minRentalDays?: Prisma.SortOrder
+  maxRentalDays?: Prisma.SortOrderInput | Prisma.SortOrder
+  advanceBookingDays?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.VehicleCountOrderByAggregateInput
   _avg?: Prisma.VehicleAvgOrderByAggregateInput
   _max?: Prisma.VehicleMaxOrderByAggregateInput
@@ -322,15 +589,35 @@ export type VehicleScalarWhereWithAggregatesInput = {
   OR?: Prisma.VehicleScalarWhereWithAggregatesInput[]
   NOT?: Prisma.VehicleScalarWhereWithAggregatesInput | Prisma.VehicleScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
+  partnerId?: Prisma.StringNullableWithAggregatesFilter<"Vehicle"> | string | null
+  branchId?: Prisma.StringNullableWithAggregatesFilter<"Vehicle"> | string | null
+  categoryId?: Prisma.StringNullableWithAggregatesFilter<"Vehicle"> | string | null
   name?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
   category?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
   vendor?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
+  brand?: Prisma.StringNullableWithAggregatesFilter<"Vehicle"> | string | null
+  modelYear?: Prisma.IntNullableWithAggregatesFilter<"Vehicle"> | number | null
   seats?: Prisma.IntWithAggregatesFilter<"Vehicle"> | number
   bags?: Prisma.IntWithAggregatesFilter<"Vehicle"> | number
+  doors?: Prisma.IntWithAggregatesFilter<"Vehicle"> | number
   transmission?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
   fuelType?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
   pricePerDay?: Prisma.IntWithAggregatesFilter<"Vehicle"> | number
+  depositAmount?: Prisma.IntWithAggregatesFilter<"Vehicle"> | number
+  licensePlate?: Prisma.StringNullableWithAggregatesFilter<"Vehicle"> | string | null
+  description?: Prisma.StringNullableWithAggregatesFilter<"Vehicle"> | string | null
+  specs?: Prisma.JsonNullableWithAggregatesFilter<"Vehicle">
   imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Vehicle"> | string | null
+  status?: Prisma.EnumVehicleStatusWithAggregatesFilter<"Vehicle"> | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolWithAggregatesFilter<"Vehicle"> | boolean
+  supportsChauffeur?: Prisma.BoolWithAggregatesFilter<"Vehicle"> | boolean
+  allowOneWay?: Prisma.BoolWithAggregatesFilter<"Vehicle"> | boolean
+  deliveryAvailable?: Prisma.BoolWithAggregatesFilter<"Vehicle"> | boolean
+  minRentalDays?: Prisma.IntWithAggregatesFilter<"Vehicle"> | number
+  maxRentalDays?: Prisma.IntNullableWithAggregatesFilter<"Vehicle"> | number | null
+  advanceBookingDays?: Prisma.IntNullableWithAggregatesFilter<"Vehicle"> | number | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Vehicle"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Vehicle"> | Date | string
 }
 
 export type VehicleCreateInput = {
@@ -338,27 +625,79 @@ export type VehicleCreateInput = {
   name: string
   category: string
   vendor: string
+  brand?: string | null
+  modelYear?: number | null
   seats: number
   bags: number
+  doors?: number
   transmission: string
   fuelType: string
   pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
+  branch?: Prisma.PartnerBranchCreateNestedOneWithoutVehiclesInput
+  categoryRef?: Prisma.VehicleCategoryCreateNestedOneWithoutVehiclesInput
+  photos?: Prisma.VehiclePhotoCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockCreateNestedManyWithoutVehicleInput
   bookings?: Prisma.BookingCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningCreateNestedManyWithoutVehicleInput
 }
 
 export type VehicleUncheckedCreateInput = {
   id?: string
+  partnerId?: string | null
+  branchId?: string | null
+  categoryId?: string | null
   name: string
   category: string
   vendor: string
+  brand?: string | null
+  modelYear?: number | null
   seats: number
   bags: number
+  doors?: number
   transmission: string
   fuelType: string
   pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentUncheckedCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockUncheckedCreateNestedManyWithoutVehicleInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailUncheckedCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningUncheckedCreateNestedManyWithoutVehicleInput
 }
 
 export type VehicleUpdateInput = {
@@ -366,40 +705,112 @@ export type VehicleUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   seats?: Prisma.IntFieldUpdateOperationsInput | number
   bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
   transmission?: Prisma.StringFieldUpdateOperationsInput | string
   fuelType?: Prisma.StringFieldUpdateOperationsInput | string
   pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
+  branch?: Prisma.PartnerBranchUpdateOneWithoutVehiclesNestedInput
+  categoryRef?: Prisma.VehicleCategoryUpdateOneWithoutVehiclesNestedInput
+  photos?: Prisma.VehiclePhotoUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUpdateManyWithoutVehicleNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUpdateManyWithoutVehicleNestedInput
 }
 
 export type VehicleUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  partnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   seats?: Prisma.IntFieldUpdateOperationsInput | number
   bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
   transmission?: Prisma.StringFieldUpdateOperationsInput | string
   fuelType?: Prisma.StringFieldUpdateOperationsInput | string
   pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUncheckedUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUncheckedUpdateManyWithoutVehicleNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUncheckedUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUncheckedUpdateManyWithoutVehicleNestedInput
 }
 
 export type VehicleCreateManyInput = {
   id?: string
+  partnerId?: string | null
+  branchId?: string | null
+  categoryId?: string | null
   name: string
   category: string
   vendor: string
+  brand?: string | null
+  modelYear?: number | null
   seats: number
   bags: number
+  doors?: number
   transmission: string
   fuelType: string
   pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type VehicleUpdateManyMutationInput = {
@@ -407,25 +818,62 @@ export type VehicleUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   seats?: Prisma.IntFieldUpdateOperationsInput | number
   bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
   transmission?: Prisma.StringFieldUpdateOperationsInput | string
   fuelType?: Prisma.StringFieldUpdateOperationsInput | string
   pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VehicleUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  partnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   seats?: Prisma.IntFieldUpdateOperationsInput | number
   bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
   transmission?: Prisma.StringFieldUpdateOperationsInput | string
   fuelType?: Prisma.StringFieldUpdateOperationsInput | string
   pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VehicleNullableScalarRelationFilter = {
@@ -441,53 +889,138 @@ export type VehicleOrderByRelevanceInput = {
 
 export type VehicleCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  partnerId?: Prisma.SortOrder
+  branchId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
   vendor?: Prisma.SortOrder
+  brand?: Prisma.SortOrder
+  modelYear?: Prisma.SortOrder
   seats?: Prisma.SortOrder
   bags?: Prisma.SortOrder
+  doors?: Prisma.SortOrder
   transmission?: Prisma.SortOrder
   fuelType?: Prisma.SortOrder
   pricePerDay?: Prisma.SortOrder
+  depositAmount?: Prisma.SortOrder
+  licensePlate?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  specs?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  supportsSelfDrive?: Prisma.SortOrder
+  supportsChauffeur?: Prisma.SortOrder
+  allowOneWay?: Prisma.SortOrder
+  deliveryAvailable?: Prisma.SortOrder
+  minRentalDays?: Prisma.SortOrder
+  maxRentalDays?: Prisma.SortOrder
+  advanceBookingDays?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type VehicleAvgOrderByAggregateInput = {
+  modelYear?: Prisma.SortOrder
   seats?: Prisma.SortOrder
   bags?: Prisma.SortOrder
+  doors?: Prisma.SortOrder
   pricePerDay?: Prisma.SortOrder
+  depositAmount?: Prisma.SortOrder
+  minRentalDays?: Prisma.SortOrder
+  maxRentalDays?: Prisma.SortOrder
+  advanceBookingDays?: Prisma.SortOrder
 }
 
 export type VehicleMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  partnerId?: Prisma.SortOrder
+  branchId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
   vendor?: Prisma.SortOrder
+  brand?: Prisma.SortOrder
+  modelYear?: Prisma.SortOrder
   seats?: Prisma.SortOrder
   bags?: Prisma.SortOrder
+  doors?: Prisma.SortOrder
   transmission?: Prisma.SortOrder
   fuelType?: Prisma.SortOrder
   pricePerDay?: Prisma.SortOrder
+  depositAmount?: Prisma.SortOrder
+  licensePlate?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  supportsSelfDrive?: Prisma.SortOrder
+  supportsChauffeur?: Prisma.SortOrder
+  allowOneWay?: Prisma.SortOrder
+  deliveryAvailable?: Prisma.SortOrder
+  minRentalDays?: Prisma.SortOrder
+  maxRentalDays?: Prisma.SortOrder
+  advanceBookingDays?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type VehicleMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  partnerId?: Prisma.SortOrder
+  branchId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
   vendor?: Prisma.SortOrder
+  brand?: Prisma.SortOrder
+  modelYear?: Prisma.SortOrder
   seats?: Prisma.SortOrder
   bags?: Prisma.SortOrder
+  doors?: Prisma.SortOrder
   transmission?: Prisma.SortOrder
   fuelType?: Prisma.SortOrder
   pricePerDay?: Prisma.SortOrder
+  depositAmount?: Prisma.SortOrder
+  licensePlate?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  supportsSelfDrive?: Prisma.SortOrder
+  supportsChauffeur?: Prisma.SortOrder
+  allowOneWay?: Prisma.SortOrder
+  deliveryAvailable?: Prisma.SortOrder
+  minRentalDays?: Prisma.SortOrder
+  maxRentalDays?: Prisma.SortOrder
+  advanceBookingDays?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type VehicleSumOrderByAggregateInput = {
+  modelYear?: Prisma.SortOrder
   seats?: Prisma.SortOrder
   bags?: Prisma.SortOrder
+  doors?: Prisma.SortOrder
   pricePerDay?: Prisma.SortOrder
+  depositAmount?: Prisma.SortOrder
+  minRentalDays?: Prisma.SortOrder
+  maxRentalDays?: Prisma.SortOrder
+  advanceBookingDays?: Prisma.SortOrder
+}
+
+export type VehicleListRelationFilter = {
+  every?: Prisma.VehicleWhereInput
+  some?: Prisma.VehicleWhereInput
+  none?: Prisma.VehicleWhereInput
+}
+
+export type VehicleOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type VehicleScalarRelationFilter = {
+  is?: Prisma.VehicleWhereInput
+  isNot?: Prisma.VehicleWhereInput
 }
 
 export type VehicleCreateNestedOneWithoutBookingsInput = {
@@ -506,30 +1039,298 @@ export type VehicleUpdateOneWithoutBookingsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.VehicleUpdateToOneWithWhereWithoutBookingsInput, Prisma.VehicleUpdateWithoutBookingsInput>, Prisma.VehicleUncheckedUpdateWithoutBookingsInput>
 }
 
+export type EnumVehicleStatusFieldUpdateOperationsInput = {
+  set?: $Enums.VehicleStatus
+}
+
+export type VehicleCreateNestedOneWithoutReviewsInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutReviewsInput, Prisma.VehicleUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutReviewsInput
+  connect?: Prisma.VehicleWhereUniqueInput
+}
+
+export type VehicleUpdateOneWithoutReviewsNestedInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutReviewsInput, Prisma.VehicleUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutReviewsInput
+  upsert?: Prisma.VehicleUpsertWithoutReviewsInput
+  disconnect?: Prisma.VehicleWhereInput | boolean
+  delete?: Prisma.VehicleWhereInput | boolean
+  connect?: Prisma.VehicleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VehicleUpdateToOneWithWhereWithoutReviewsInput, Prisma.VehicleUpdateWithoutReviewsInput>, Prisma.VehicleUncheckedUpdateWithoutReviewsInput>
+}
+
+export type VehicleCreateNestedManyWithoutPartnerInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutPartnerInput, Prisma.VehicleUncheckedCreateWithoutPartnerInput> | Prisma.VehicleCreateWithoutPartnerInput[] | Prisma.VehicleUncheckedCreateWithoutPartnerInput[]
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutPartnerInput | Prisma.VehicleCreateOrConnectWithoutPartnerInput[]
+  createMany?: Prisma.VehicleCreateManyPartnerInputEnvelope
+  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+}
+
+export type VehicleUncheckedCreateNestedManyWithoutPartnerInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutPartnerInput, Prisma.VehicleUncheckedCreateWithoutPartnerInput> | Prisma.VehicleCreateWithoutPartnerInput[] | Prisma.VehicleUncheckedCreateWithoutPartnerInput[]
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutPartnerInput | Prisma.VehicleCreateOrConnectWithoutPartnerInput[]
+  createMany?: Prisma.VehicleCreateManyPartnerInputEnvelope
+  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+}
+
+export type VehicleUpdateManyWithoutPartnerNestedInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutPartnerInput, Prisma.VehicleUncheckedCreateWithoutPartnerInput> | Prisma.VehicleCreateWithoutPartnerInput[] | Prisma.VehicleUncheckedCreateWithoutPartnerInput[]
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutPartnerInput | Prisma.VehicleCreateOrConnectWithoutPartnerInput[]
+  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutPartnerInput | Prisma.VehicleUpsertWithWhereUniqueWithoutPartnerInput[]
+  createMany?: Prisma.VehicleCreateManyPartnerInputEnvelope
+  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutPartnerInput | Prisma.VehicleUpdateWithWhereUniqueWithoutPartnerInput[]
+  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutPartnerInput | Prisma.VehicleUpdateManyWithWhereWithoutPartnerInput[]
+  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
+}
+
+export type VehicleUncheckedUpdateManyWithoutPartnerNestedInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutPartnerInput, Prisma.VehicleUncheckedCreateWithoutPartnerInput> | Prisma.VehicleCreateWithoutPartnerInput[] | Prisma.VehicleUncheckedCreateWithoutPartnerInput[]
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutPartnerInput | Prisma.VehicleCreateOrConnectWithoutPartnerInput[]
+  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutPartnerInput | Prisma.VehicleUpsertWithWhereUniqueWithoutPartnerInput[]
+  createMany?: Prisma.VehicleCreateManyPartnerInputEnvelope
+  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutPartnerInput | Prisma.VehicleUpdateWithWhereUniqueWithoutPartnerInput[]
+  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutPartnerInput | Prisma.VehicleUpdateManyWithWhereWithoutPartnerInput[]
+  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
+}
+
+export type VehicleCreateNestedManyWithoutBranchInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBranchInput, Prisma.VehicleUncheckedCreateWithoutBranchInput> | Prisma.VehicleCreateWithoutBranchInput[] | Prisma.VehicleUncheckedCreateWithoutBranchInput[]
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBranchInput | Prisma.VehicleCreateOrConnectWithoutBranchInput[]
+  createMany?: Prisma.VehicleCreateManyBranchInputEnvelope
+  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+}
+
+export type VehicleUncheckedCreateNestedManyWithoutBranchInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBranchInput, Prisma.VehicleUncheckedCreateWithoutBranchInput> | Prisma.VehicleCreateWithoutBranchInput[] | Prisma.VehicleUncheckedCreateWithoutBranchInput[]
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBranchInput | Prisma.VehicleCreateOrConnectWithoutBranchInput[]
+  createMany?: Prisma.VehicleCreateManyBranchInputEnvelope
+  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+}
+
+export type VehicleUpdateManyWithoutBranchNestedInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBranchInput, Prisma.VehicleUncheckedCreateWithoutBranchInput> | Prisma.VehicleCreateWithoutBranchInput[] | Prisma.VehicleUncheckedCreateWithoutBranchInput[]
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBranchInput | Prisma.VehicleCreateOrConnectWithoutBranchInput[]
+  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutBranchInput | Prisma.VehicleUpsertWithWhereUniqueWithoutBranchInput[]
+  createMany?: Prisma.VehicleCreateManyBranchInputEnvelope
+  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutBranchInput | Prisma.VehicleUpdateWithWhereUniqueWithoutBranchInput[]
+  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutBranchInput | Prisma.VehicleUpdateManyWithWhereWithoutBranchInput[]
+  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
+}
+
+export type VehicleUncheckedUpdateManyWithoutBranchNestedInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBranchInput, Prisma.VehicleUncheckedCreateWithoutBranchInput> | Prisma.VehicleCreateWithoutBranchInput[] | Prisma.VehicleUncheckedCreateWithoutBranchInput[]
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBranchInput | Prisma.VehicleCreateOrConnectWithoutBranchInput[]
+  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutBranchInput | Prisma.VehicleUpsertWithWhereUniqueWithoutBranchInput[]
+  createMany?: Prisma.VehicleCreateManyBranchInputEnvelope
+  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutBranchInput | Prisma.VehicleUpdateWithWhereUniqueWithoutBranchInput[]
+  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutBranchInput | Prisma.VehicleUpdateManyWithWhereWithoutBranchInput[]
+  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
+}
+
+export type VehicleCreateNestedManyWithoutCategoryRefInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutCategoryRefInput, Prisma.VehicleUncheckedCreateWithoutCategoryRefInput> | Prisma.VehicleCreateWithoutCategoryRefInput[] | Prisma.VehicleUncheckedCreateWithoutCategoryRefInput[]
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutCategoryRefInput | Prisma.VehicleCreateOrConnectWithoutCategoryRefInput[]
+  createMany?: Prisma.VehicleCreateManyCategoryRefInputEnvelope
+  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+}
+
+export type VehicleUncheckedCreateNestedManyWithoutCategoryRefInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutCategoryRefInput, Prisma.VehicleUncheckedCreateWithoutCategoryRefInput> | Prisma.VehicleCreateWithoutCategoryRefInput[] | Prisma.VehicleUncheckedCreateWithoutCategoryRefInput[]
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutCategoryRefInput | Prisma.VehicleCreateOrConnectWithoutCategoryRefInput[]
+  createMany?: Prisma.VehicleCreateManyCategoryRefInputEnvelope
+  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+}
+
+export type VehicleUpdateManyWithoutCategoryRefNestedInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutCategoryRefInput, Prisma.VehicleUncheckedCreateWithoutCategoryRefInput> | Prisma.VehicleCreateWithoutCategoryRefInput[] | Prisma.VehicleUncheckedCreateWithoutCategoryRefInput[]
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutCategoryRefInput | Prisma.VehicleCreateOrConnectWithoutCategoryRefInput[]
+  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutCategoryRefInput | Prisma.VehicleUpsertWithWhereUniqueWithoutCategoryRefInput[]
+  createMany?: Prisma.VehicleCreateManyCategoryRefInputEnvelope
+  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutCategoryRefInput | Prisma.VehicleUpdateWithWhereUniqueWithoutCategoryRefInput[]
+  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutCategoryRefInput | Prisma.VehicleUpdateManyWithWhereWithoutCategoryRefInput[]
+  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
+}
+
+export type VehicleUncheckedUpdateManyWithoutCategoryRefNestedInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutCategoryRefInput, Prisma.VehicleUncheckedCreateWithoutCategoryRefInput> | Prisma.VehicleCreateWithoutCategoryRefInput[] | Prisma.VehicleUncheckedCreateWithoutCategoryRefInput[]
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutCategoryRefInput | Prisma.VehicleCreateOrConnectWithoutCategoryRefInput[]
+  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutCategoryRefInput | Prisma.VehicleUpsertWithWhereUniqueWithoutCategoryRefInput[]
+  createMany?: Prisma.VehicleCreateManyCategoryRefInputEnvelope
+  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
+  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutCategoryRefInput | Prisma.VehicleUpdateWithWhereUniqueWithoutCategoryRefInput[]
+  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutCategoryRefInput | Prisma.VehicleUpdateManyWithWhereWithoutCategoryRefInput[]
+  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
+}
+
+export type VehicleCreateNestedOneWithoutPhotosInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutPhotosInput, Prisma.VehicleUncheckedCreateWithoutPhotosInput>
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutPhotosInput
+  connect?: Prisma.VehicleWhereUniqueInput
+}
+
+export type VehicleUpdateOneRequiredWithoutPhotosNestedInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutPhotosInput, Prisma.VehicleUncheckedCreateWithoutPhotosInput>
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutPhotosInput
+  upsert?: Prisma.VehicleUpsertWithoutPhotosInput
+  connect?: Prisma.VehicleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VehicleUpdateToOneWithWhereWithoutPhotosInput, Prisma.VehicleUpdateWithoutPhotosInput>, Prisma.VehicleUncheckedUpdateWithoutPhotosInput>
+}
+
+export type VehicleCreateNestedOneWithoutDocumentsInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutDocumentsInput, Prisma.VehicleUncheckedCreateWithoutDocumentsInput>
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutDocumentsInput
+  connect?: Prisma.VehicleWhereUniqueInput
+}
+
+export type VehicleUpdateOneRequiredWithoutDocumentsNestedInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutDocumentsInput, Prisma.VehicleUncheckedCreateWithoutDocumentsInput>
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutDocumentsInput
+  upsert?: Prisma.VehicleUpsertWithoutDocumentsInput
+  connect?: Prisma.VehicleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VehicleUpdateToOneWithWhereWithoutDocumentsInput, Prisma.VehicleUpdateWithoutDocumentsInput>, Prisma.VehicleUncheckedUpdateWithoutDocumentsInput>
+}
+
+export type VehicleCreateNestedOneWithoutBlocksInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBlocksInput, Prisma.VehicleUncheckedCreateWithoutBlocksInput>
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBlocksInput
+  connect?: Prisma.VehicleWhereUniqueInput
+}
+
+export type VehicleUpdateOneRequiredWithoutBlocksNestedInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBlocksInput, Prisma.VehicleUncheckedCreateWithoutBlocksInput>
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBlocksInput
+  upsert?: Prisma.VehicleUpsertWithoutBlocksInput
+  connect?: Prisma.VehicleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VehicleUpdateToOneWithWhereWithoutBlocksInput, Prisma.VehicleUpdateWithoutBlocksInput>, Prisma.VehicleUncheckedUpdateWithoutBlocksInput>
+}
+
+export type VehicleCreateNestedOneWithoutRentalDetailsInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutRentalDetailsInput, Prisma.VehicleUncheckedCreateWithoutRentalDetailsInput>
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutRentalDetailsInput
+  connect?: Prisma.VehicleWhereUniqueInput
+}
+
+export type VehicleUpdateOneRequiredWithoutRentalDetailsNestedInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutRentalDetailsInput, Prisma.VehicleUncheckedCreateWithoutRentalDetailsInput>
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutRentalDetailsInput
+  upsert?: Prisma.VehicleUpsertWithoutRentalDetailsInput
+  connect?: Prisma.VehicleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VehicleUpdateToOneWithWhereWithoutRentalDetailsInput, Prisma.VehicleUpdateWithoutRentalDetailsInput>, Prisma.VehicleUncheckedUpdateWithoutRentalDetailsInput>
+}
+
+export type VehicleCreateNestedOneWithoutEarningsInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutEarningsInput, Prisma.VehicleUncheckedCreateWithoutEarningsInput>
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutEarningsInput
+  connect?: Prisma.VehicleWhereUniqueInput
+}
+
+export type VehicleUpdateOneRequiredWithoutEarningsNestedInput = {
+  create?: Prisma.XOR<Prisma.VehicleCreateWithoutEarningsInput, Prisma.VehicleUncheckedCreateWithoutEarningsInput>
+  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutEarningsInput
+  upsert?: Prisma.VehicleUpsertWithoutEarningsInput
+  connect?: Prisma.VehicleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VehicleUpdateToOneWithWhereWithoutEarningsInput, Prisma.VehicleUpdateWithoutEarningsInput>, Prisma.VehicleUncheckedUpdateWithoutEarningsInput>
+}
+
 export type VehicleCreateWithoutBookingsInput = {
   id?: string
   name: string
   category: string
   vendor: string
+  brand?: string | null
+  modelYear?: number | null
   seats: number
   bags: number
+  doors?: number
   transmission: string
   fuelType: string
   pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
+  branch?: Prisma.PartnerBranchCreateNestedOneWithoutVehiclesInput
+  categoryRef?: Prisma.VehicleCategoryCreateNestedOneWithoutVehiclesInput
+  photos?: Prisma.VehiclePhotoCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningCreateNestedManyWithoutVehicleInput
 }
 
 export type VehicleUncheckedCreateWithoutBookingsInput = {
   id?: string
+  partnerId?: string | null
+  branchId?: string | null
+  categoryId?: string | null
   name: string
   category: string
   vendor: string
+  brand?: string | null
+  modelYear?: number | null
   seats: number
   bags: number
+  doors?: number
   transmission: string
   fuelType: string
   pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentUncheckedCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockUncheckedCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailUncheckedCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningUncheckedCreateNestedManyWithoutVehicleInput
 }
 
 export type VehicleCreateOrConnectWithoutBookingsInput = {
@@ -553,25 +1354,1883 @@ export type VehicleUpdateWithoutBookingsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   seats?: Prisma.IntFieldUpdateOperationsInput | number
   bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
   transmission?: Prisma.StringFieldUpdateOperationsInput | string
   fuelType?: Prisma.StringFieldUpdateOperationsInput | string
   pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
+  branch?: Prisma.PartnerBranchUpdateOneWithoutVehiclesNestedInput
+  categoryRef?: Prisma.VehicleCategoryUpdateOneWithoutVehiclesNestedInput
+  photos?: Prisma.VehiclePhotoUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUpdateManyWithoutVehicleNestedInput
 }
 
 export type VehicleUncheckedUpdateWithoutBookingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  partnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   seats?: Prisma.IntFieldUpdateOperationsInput | number
   bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
   transmission?: Prisma.StringFieldUpdateOperationsInput | string
   fuelType?: Prisma.StringFieldUpdateOperationsInput | string
   pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUncheckedUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUncheckedUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUncheckedUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUncheckedUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleCreateWithoutReviewsInput = {
+  id?: string
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
+  branch?: Prisma.PartnerBranchCreateNestedOneWithoutVehiclesInput
+  categoryRef?: Prisma.VehicleCategoryCreateNestedOneWithoutVehiclesInput
+  photos?: Prisma.VehiclePhotoCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleUncheckedCreateWithoutReviewsInput = {
+  id?: string
+  partnerId?: string | null
+  branchId?: string | null
+  categoryId?: string | null
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentUncheckedCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockUncheckedCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailUncheckedCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningUncheckedCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleCreateOrConnectWithoutReviewsInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutReviewsInput, Prisma.VehicleUncheckedCreateWithoutReviewsInput>
+}
+
+export type VehicleUpsertWithoutReviewsInput = {
+  update: Prisma.XOR<Prisma.VehicleUpdateWithoutReviewsInput, Prisma.VehicleUncheckedUpdateWithoutReviewsInput>
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutReviewsInput, Prisma.VehicleUncheckedCreateWithoutReviewsInput>
+  where?: Prisma.VehicleWhereInput
+}
+
+export type VehicleUpdateToOneWithWhereWithoutReviewsInput = {
+  where?: Prisma.VehicleWhereInput
+  data: Prisma.XOR<Prisma.VehicleUpdateWithoutReviewsInput, Prisma.VehicleUncheckedUpdateWithoutReviewsInput>
+}
+
+export type VehicleUpdateWithoutReviewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
+  branch?: Prisma.PartnerBranchUpdateOneWithoutVehiclesNestedInput
+  categoryRef?: Prisma.VehicleCategoryUpdateOneWithoutVehiclesNestedInput
+  photos?: Prisma.VehiclePhotoUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleUncheckedUpdateWithoutReviewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  partnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUncheckedUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUncheckedUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUncheckedUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUncheckedUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleCreateWithoutPartnerInput = {
+  id?: string
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  branch?: Prisma.PartnerBranchCreateNestedOneWithoutVehiclesInput
+  categoryRef?: Prisma.VehicleCategoryCreateNestedOneWithoutVehiclesInput
+  photos?: Prisma.VehiclePhotoCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleUncheckedCreateWithoutPartnerInput = {
+  id?: string
+  branchId?: string | null
+  categoryId?: string | null
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentUncheckedCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockUncheckedCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailUncheckedCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningUncheckedCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleCreateOrConnectWithoutPartnerInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutPartnerInput, Prisma.VehicleUncheckedCreateWithoutPartnerInput>
+}
+
+export type VehicleCreateManyPartnerInputEnvelope = {
+  data: Prisma.VehicleCreateManyPartnerInput | Prisma.VehicleCreateManyPartnerInput[]
+  skipDuplicates?: boolean
+}
+
+export type VehicleUpsertWithWhereUniqueWithoutPartnerInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  update: Prisma.XOR<Prisma.VehicleUpdateWithoutPartnerInput, Prisma.VehicleUncheckedUpdateWithoutPartnerInput>
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutPartnerInput, Prisma.VehicleUncheckedCreateWithoutPartnerInput>
+}
+
+export type VehicleUpdateWithWhereUniqueWithoutPartnerInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  data: Prisma.XOR<Prisma.VehicleUpdateWithoutPartnerInput, Prisma.VehicleUncheckedUpdateWithoutPartnerInput>
+}
+
+export type VehicleUpdateManyWithWhereWithoutPartnerInput = {
+  where: Prisma.VehicleScalarWhereInput
+  data: Prisma.XOR<Prisma.VehicleUpdateManyMutationInput, Prisma.VehicleUncheckedUpdateManyWithoutPartnerInput>
+}
+
+export type VehicleScalarWhereInput = {
+  AND?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
+  OR?: Prisma.VehicleScalarWhereInput[]
+  NOT?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
+  id?: Prisma.StringFilter<"Vehicle"> | string
+  partnerId?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  branchId?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  categoryId?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  name?: Prisma.StringFilter<"Vehicle"> | string
+  category?: Prisma.StringFilter<"Vehicle"> | string
+  vendor?: Prisma.StringFilter<"Vehicle"> | string
+  brand?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  modelYear?: Prisma.IntNullableFilter<"Vehicle"> | number | null
+  seats?: Prisma.IntFilter<"Vehicle"> | number
+  bags?: Prisma.IntFilter<"Vehicle"> | number
+  doors?: Prisma.IntFilter<"Vehicle"> | number
+  transmission?: Prisma.StringFilter<"Vehicle"> | string
+  fuelType?: Prisma.StringFilter<"Vehicle"> | string
+  pricePerDay?: Prisma.IntFilter<"Vehicle"> | number
+  depositAmount?: Prisma.IntFilter<"Vehicle"> | number
+  licensePlate?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  description?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  specs?: Prisma.JsonNullableFilter<"Vehicle">
+  imageUrl?: Prisma.StringNullableFilter<"Vehicle"> | string | null
+  status?: Prisma.EnumVehicleStatusFilter<"Vehicle"> | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFilter<"Vehicle"> | boolean
+  supportsChauffeur?: Prisma.BoolFilter<"Vehicle"> | boolean
+  allowOneWay?: Prisma.BoolFilter<"Vehicle"> | boolean
+  deliveryAvailable?: Prisma.BoolFilter<"Vehicle"> | boolean
+  minRentalDays?: Prisma.IntFilter<"Vehicle"> | number
+  maxRentalDays?: Prisma.IntNullableFilter<"Vehicle"> | number | null
+  advanceBookingDays?: Prisma.IntNullableFilter<"Vehicle"> | number | null
+  createdAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
+}
+
+export type VehicleCreateWithoutBranchInput = {
+  id?: string
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
+  categoryRef?: Prisma.VehicleCategoryCreateNestedOneWithoutVehiclesInput
+  photos?: Prisma.VehiclePhotoCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleUncheckedCreateWithoutBranchInput = {
+  id?: string
+  partnerId?: string | null
+  categoryId?: string | null
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentUncheckedCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockUncheckedCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailUncheckedCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningUncheckedCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleCreateOrConnectWithoutBranchInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutBranchInput, Prisma.VehicleUncheckedCreateWithoutBranchInput>
+}
+
+export type VehicleCreateManyBranchInputEnvelope = {
+  data: Prisma.VehicleCreateManyBranchInput | Prisma.VehicleCreateManyBranchInput[]
+  skipDuplicates?: boolean
+}
+
+export type VehicleUpsertWithWhereUniqueWithoutBranchInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  update: Prisma.XOR<Prisma.VehicleUpdateWithoutBranchInput, Prisma.VehicleUncheckedUpdateWithoutBranchInput>
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutBranchInput, Prisma.VehicleUncheckedCreateWithoutBranchInput>
+}
+
+export type VehicleUpdateWithWhereUniqueWithoutBranchInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  data: Prisma.XOR<Prisma.VehicleUpdateWithoutBranchInput, Prisma.VehicleUncheckedUpdateWithoutBranchInput>
+}
+
+export type VehicleUpdateManyWithWhereWithoutBranchInput = {
+  where: Prisma.VehicleScalarWhereInput
+  data: Prisma.XOR<Prisma.VehicleUpdateManyMutationInput, Prisma.VehicleUncheckedUpdateManyWithoutBranchInput>
+}
+
+export type VehicleCreateWithoutCategoryRefInput = {
+  id?: string
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
+  branch?: Prisma.PartnerBranchCreateNestedOneWithoutVehiclesInput
+  photos?: Prisma.VehiclePhotoCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleUncheckedCreateWithoutCategoryRefInput = {
+  id?: string
+  partnerId?: string | null
+  branchId?: string | null
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentUncheckedCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockUncheckedCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailUncheckedCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningUncheckedCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleCreateOrConnectWithoutCategoryRefInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutCategoryRefInput, Prisma.VehicleUncheckedCreateWithoutCategoryRefInput>
+}
+
+export type VehicleCreateManyCategoryRefInputEnvelope = {
+  data: Prisma.VehicleCreateManyCategoryRefInput | Prisma.VehicleCreateManyCategoryRefInput[]
+  skipDuplicates?: boolean
+}
+
+export type VehicleUpsertWithWhereUniqueWithoutCategoryRefInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  update: Prisma.XOR<Prisma.VehicleUpdateWithoutCategoryRefInput, Prisma.VehicleUncheckedUpdateWithoutCategoryRefInput>
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutCategoryRefInput, Prisma.VehicleUncheckedCreateWithoutCategoryRefInput>
+}
+
+export type VehicleUpdateWithWhereUniqueWithoutCategoryRefInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  data: Prisma.XOR<Prisma.VehicleUpdateWithoutCategoryRefInput, Prisma.VehicleUncheckedUpdateWithoutCategoryRefInput>
+}
+
+export type VehicleUpdateManyWithWhereWithoutCategoryRefInput = {
+  where: Prisma.VehicleScalarWhereInput
+  data: Prisma.XOR<Prisma.VehicleUpdateManyMutationInput, Prisma.VehicleUncheckedUpdateManyWithoutCategoryRefInput>
+}
+
+export type VehicleCreateWithoutPhotosInput = {
+  id?: string
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
+  branch?: Prisma.PartnerBranchCreateNestedOneWithoutVehiclesInput
+  categoryRef?: Prisma.VehicleCategoryCreateNestedOneWithoutVehiclesInput
+  documents?: Prisma.VehicleDocumentCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleUncheckedCreateWithoutPhotosInput = {
+  id?: string
+  partnerId?: string | null
+  branchId?: string | null
+  categoryId?: string | null
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  documents?: Prisma.VehicleDocumentUncheckedCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockUncheckedCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailUncheckedCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningUncheckedCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleCreateOrConnectWithoutPhotosInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutPhotosInput, Prisma.VehicleUncheckedCreateWithoutPhotosInput>
+}
+
+export type VehicleUpsertWithoutPhotosInput = {
+  update: Prisma.XOR<Prisma.VehicleUpdateWithoutPhotosInput, Prisma.VehicleUncheckedUpdateWithoutPhotosInput>
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutPhotosInput, Prisma.VehicleUncheckedCreateWithoutPhotosInput>
+  where?: Prisma.VehicleWhereInput
+}
+
+export type VehicleUpdateToOneWithWhereWithoutPhotosInput = {
+  where?: Prisma.VehicleWhereInput
+  data: Prisma.XOR<Prisma.VehicleUpdateWithoutPhotosInput, Prisma.VehicleUncheckedUpdateWithoutPhotosInput>
+}
+
+export type VehicleUpdateWithoutPhotosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
+  branch?: Prisma.PartnerBranchUpdateOneWithoutVehiclesNestedInput
+  categoryRef?: Prisma.VehicleCategoryUpdateOneWithoutVehiclesNestedInput
+  documents?: Prisma.VehicleDocumentUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleUncheckedUpdateWithoutPhotosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  partnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  documents?: Prisma.VehicleDocumentUncheckedUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUncheckedUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUncheckedUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUncheckedUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleCreateWithoutDocumentsInput = {
+  id?: string
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
+  branch?: Prisma.PartnerBranchCreateNestedOneWithoutVehiclesInput
+  categoryRef?: Prisma.VehicleCategoryCreateNestedOneWithoutVehiclesInput
+  photos?: Prisma.VehiclePhotoCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleUncheckedCreateWithoutDocumentsInput = {
+  id?: string
+  partnerId?: string | null
+  branchId?: string | null
+  categoryId?: string | null
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockUncheckedCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailUncheckedCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningUncheckedCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleCreateOrConnectWithoutDocumentsInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutDocumentsInput, Prisma.VehicleUncheckedCreateWithoutDocumentsInput>
+}
+
+export type VehicleUpsertWithoutDocumentsInput = {
+  update: Prisma.XOR<Prisma.VehicleUpdateWithoutDocumentsInput, Prisma.VehicleUncheckedUpdateWithoutDocumentsInput>
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutDocumentsInput, Prisma.VehicleUncheckedCreateWithoutDocumentsInput>
+  where?: Prisma.VehicleWhereInput
+}
+
+export type VehicleUpdateToOneWithWhereWithoutDocumentsInput = {
+  where?: Prisma.VehicleWhereInput
+  data: Prisma.XOR<Prisma.VehicleUpdateWithoutDocumentsInput, Prisma.VehicleUncheckedUpdateWithoutDocumentsInput>
+}
+
+export type VehicleUpdateWithoutDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
+  branch?: Prisma.PartnerBranchUpdateOneWithoutVehiclesNestedInput
+  categoryRef?: Prisma.VehicleCategoryUpdateOneWithoutVehiclesNestedInput
+  photos?: Prisma.VehiclePhotoUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleUncheckedUpdateWithoutDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  partnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUncheckedUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUncheckedUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUncheckedUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleCreateWithoutBlocksInput = {
+  id?: string
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
+  branch?: Prisma.PartnerBranchCreateNestedOneWithoutVehiclesInput
+  categoryRef?: Prisma.VehicleCategoryCreateNestedOneWithoutVehiclesInput
+  photos?: Prisma.VehiclePhotoCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleUncheckedCreateWithoutBlocksInput = {
+  id?: string
+  partnerId?: string | null
+  branchId?: string | null
+  categoryId?: string | null
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentUncheckedCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailUncheckedCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningUncheckedCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleCreateOrConnectWithoutBlocksInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutBlocksInput, Prisma.VehicleUncheckedCreateWithoutBlocksInput>
+}
+
+export type VehicleUpsertWithoutBlocksInput = {
+  update: Prisma.XOR<Prisma.VehicleUpdateWithoutBlocksInput, Prisma.VehicleUncheckedUpdateWithoutBlocksInput>
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutBlocksInput, Prisma.VehicleUncheckedCreateWithoutBlocksInput>
+  where?: Prisma.VehicleWhereInput
+}
+
+export type VehicleUpdateToOneWithWhereWithoutBlocksInput = {
+  where?: Prisma.VehicleWhereInput
+  data: Prisma.XOR<Prisma.VehicleUpdateWithoutBlocksInput, Prisma.VehicleUncheckedUpdateWithoutBlocksInput>
+}
+
+export type VehicleUpdateWithoutBlocksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
+  branch?: Prisma.PartnerBranchUpdateOneWithoutVehiclesNestedInput
+  categoryRef?: Prisma.VehicleCategoryUpdateOneWithoutVehiclesNestedInput
+  photos?: Prisma.VehiclePhotoUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleUncheckedUpdateWithoutBlocksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  partnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUncheckedUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUncheckedUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUncheckedUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleCreateWithoutRentalDetailsInput = {
+  id?: string
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
+  branch?: Prisma.PartnerBranchCreateNestedOneWithoutVehiclesInput
+  categoryRef?: Prisma.VehicleCategoryCreateNestedOneWithoutVehiclesInput
+  photos?: Prisma.VehiclePhotoCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleUncheckedCreateWithoutRentalDetailsInput = {
+  id?: string
+  partnerId?: string | null
+  branchId?: string | null
+  categoryId?: string | null
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentUncheckedCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockUncheckedCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutVehicleInput
+  earnings?: Prisma.PartnerEarningUncheckedCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleCreateOrConnectWithoutRentalDetailsInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutRentalDetailsInput, Prisma.VehicleUncheckedCreateWithoutRentalDetailsInput>
+}
+
+export type VehicleUpsertWithoutRentalDetailsInput = {
+  update: Prisma.XOR<Prisma.VehicleUpdateWithoutRentalDetailsInput, Prisma.VehicleUncheckedUpdateWithoutRentalDetailsInput>
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutRentalDetailsInput, Prisma.VehicleUncheckedCreateWithoutRentalDetailsInput>
+  where?: Prisma.VehicleWhereInput
+}
+
+export type VehicleUpdateToOneWithWhereWithoutRentalDetailsInput = {
+  where?: Prisma.VehicleWhereInput
+  data: Prisma.XOR<Prisma.VehicleUpdateWithoutRentalDetailsInput, Prisma.VehicleUncheckedUpdateWithoutRentalDetailsInput>
+}
+
+export type VehicleUpdateWithoutRentalDetailsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
+  branch?: Prisma.PartnerBranchUpdateOneWithoutVehiclesNestedInput
+  categoryRef?: Prisma.VehicleCategoryUpdateOneWithoutVehiclesNestedInput
+  photos?: Prisma.VehiclePhotoUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleUncheckedUpdateWithoutRentalDetailsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  partnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUncheckedUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUncheckedUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUncheckedUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleCreateWithoutEarningsInput = {
+  id?: string
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
+  branch?: Prisma.PartnerBranchCreateNestedOneWithoutVehiclesInput
+  categoryRef?: Prisma.VehicleCategoryCreateNestedOneWithoutVehiclesInput
+  photos?: Prisma.VehiclePhotoCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleUncheckedCreateWithoutEarningsInput = {
+  id?: string
+  partnerId?: string | null
+  branchId?: string | null
+  categoryId?: string | null
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
+  documents?: Prisma.VehicleDocumentUncheckedCreateNestedManyWithoutVehicleInput
+  blocks?: Prisma.VehicleBlockUncheckedCreateNestedManyWithoutVehicleInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutVehicleInput
+  rentalDetails?: Prisma.RentalDetailUncheckedCreateNestedManyWithoutVehicleInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutVehicleInput
+}
+
+export type VehicleCreateOrConnectWithoutEarningsInput = {
+  where: Prisma.VehicleWhereUniqueInput
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutEarningsInput, Prisma.VehicleUncheckedCreateWithoutEarningsInput>
+}
+
+export type VehicleUpsertWithoutEarningsInput = {
+  update: Prisma.XOR<Prisma.VehicleUpdateWithoutEarningsInput, Prisma.VehicleUncheckedUpdateWithoutEarningsInput>
+  create: Prisma.XOR<Prisma.VehicleCreateWithoutEarningsInput, Prisma.VehicleUncheckedCreateWithoutEarningsInput>
+  where?: Prisma.VehicleWhereInput
+}
+
+export type VehicleUpdateToOneWithWhereWithoutEarningsInput = {
+  where?: Prisma.VehicleWhereInput
+  data: Prisma.XOR<Prisma.VehicleUpdateWithoutEarningsInput, Prisma.VehicleUncheckedUpdateWithoutEarningsInput>
+}
+
+export type VehicleUpdateWithoutEarningsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
+  branch?: Prisma.PartnerBranchUpdateOneWithoutVehiclesNestedInput
+  categoryRef?: Prisma.VehicleCategoryUpdateOneWithoutVehiclesNestedInput
+  photos?: Prisma.VehiclePhotoUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleUncheckedUpdateWithoutEarningsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  partnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUncheckedUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUncheckedUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUncheckedUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleCreateManyPartnerInput = {
+  id?: string
+  branchId?: string | null
+  categoryId?: string | null
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type VehicleUpdateWithoutPartnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branch?: Prisma.PartnerBranchUpdateOneWithoutVehiclesNestedInput
+  categoryRef?: Prisma.VehicleCategoryUpdateOneWithoutVehiclesNestedInput
+  photos?: Prisma.VehiclePhotoUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleUncheckedUpdateWithoutPartnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUncheckedUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUncheckedUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUncheckedUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUncheckedUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleUncheckedUpdateManyWithoutPartnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type VehicleCreateManyBranchInput = {
+  id?: string
+  partnerId?: string | null
+  categoryId?: string | null
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type VehicleUpdateWithoutBranchInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
+  categoryRef?: Prisma.VehicleCategoryUpdateOneWithoutVehiclesNestedInput
+  photos?: Prisma.VehiclePhotoUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleUncheckedUpdateWithoutBranchInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  partnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUncheckedUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUncheckedUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUncheckedUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUncheckedUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleUncheckedUpdateManyWithoutBranchInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  partnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type VehicleCreateManyCategoryRefInput = {
+  id?: string
+  partnerId?: string | null
+  branchId?: string | null
+  name: string
+  category: string
+  vendor: string
+  brand?: string | null
+  modelYear?: number | null
+  seats: number
+  bags: number
+  doors?: number
+  transmission: string
+  fuelType: string
+  pricePerDay: number
+  depositAmount?: number
+  licensePlate?: string | null
+  description?: string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: string | null
+  status?: $Enums.VehicleStatus
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: number
+  maxRentalDays?: number | null
+  advanceBookingDays?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type VehicleUpdateWithoutCategoryRefInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
+  branch?: Prisma.PartnerBranchUpdateOneWithoutVehiclesNestedInput
+  photos?: Prisma.VehiclePhotoUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleUncheckedUpdateWithoutCategoryRefInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  partnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
+  documents?: Prisma.VehicleDocumentUncheckedUpdateManyWithoutVehicleNestedInput
+  blocks?: Prisma.VehicleBlockUncheckedUpdateManyWithoutVehicleNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutVehicleNestedInput
+  rentalDetails?: Prisma.RentalDetailUncheckedUpdateManyWithoutVehicleNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutVehicleNestedInput
+  earnings?: Prisma.PartnerEarningUncheckedUpdateManyWithoutVehicleNestedInput
+}
+
+export type VehicleUncheckedUpdateManyWithoutCategoryRefInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  partnerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  branchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  vendor?: Prisma.StringFieldUpdateOperationsInput | string
+  brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  seats?: Prisma.IntFieldUpdateOperationsInput | number
+  bags?: Prisma.IntFieldUpdateOperationsInput | number
+  doors?: Prisma.IntFieldUpdateOperationsInput | number
+  transmission?: Prisma.StringFieldUpdateOperationsInput | string
+  fuelType?: Prisma.StringFieldUpdateOperationsInput | string
+  pricePerDay?: Prisma.IntFieldUpdateOperationsInput | number
+  depositAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  licensePlate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  specs?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumVehicleStatusFieldUpdateOperationsInput | $Enums.VehicleStatus
+  supportsSelfDrive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  supportsChauffeur?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allowOneWay?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
+  maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -580,11 +3239,23 @@ export type VehicleUncheckedUpdateWithoutBookingsInput = {
  */
 
 export type VehicleCountOutputType = {
+  photos: number
+  documents: number
+  blocks: number
   bookings: number
+  rentalDetails: number
+  reviews: number
+  earnings: number
 }
 
 export type VehicleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  photos?: boolean | VehicleCountOutputTypeCountPhotosArgs
+  documents?: boolean | VehicleCountOutputTypeCountDocumentsArgs
+  blocks?: boolean | VehicleCountOutputTypeCountBlocksArgs
   bookings?: boolean | VehicleCountOutputTypeCountBookingsArgs
+  rentalDetails?: boolean | VehicleCountOutputTypeCountRentalDetailsArgs
+  reviews?: boolean | VehicleCountOutputTypeCountReviewsArgs
+  earnings?: boolean | VehicleCountOutputTypeCountEarningsArgs
 }
 
 /**
@@ -600,23 +3271,94 @@ export type VehicleCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
 /**
  * VehicleCountOutputType without action
  */
+export type VehicleCountOutputTypeCountPhotosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.VehiclePhotoWhereInput
+}
+
+/**
+ * VehicleCountOutputType without action
+ */
+export type VehicleCountOutputTypeCountDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.VehicleDocumentWhereInput
+}
+
+/**
+ * VehicleCountOutputType without action
+ */
+export type VehicleCountOutputTypeCountBlocksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.VehicleBlockWhereInput
+}
+
+/**
+ * VehicleCountOutputType without action
+ */
 export type VehicleCountOutputTypeCountBookingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.BookingWhereInput
+}
+
+/**
+ * VehicleCountOutputType without action
+ */
+export type VehicleCountOutputTypeCountRentalDetailsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RentalDetailWhereInput
+}
+
+/**
+ * VehicleCountOutputType without action
+ */
+export type VehicleCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReviewWhereInput
+}
+
+/**
+ * VehicleCountOutputType without action
+ */
+export type VehicleCountOutputTypeCountEarningsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PartnerEarningWhereInput
 }
 
 
 export type VehicleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  partnerId?: boolean
+  branchId?: boolean
+  categoryId?: boolean
   name?: boolean
   category?: boolean
   vendor?: boolean
+  brand?: boolean
+  modelYear?: boolean
   seats?: boolean
   bags?: boolean
+  doors?: boolean
   transmission?: boolean
   fuelType?: boolean
   pricePerDay?: boolean
+  depositAmount?: boolean
+  licensePlate?: boolean
+  description?: boolean
+  specs?: boolean
   imageUrl?: boolean
+  status?: boolean
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: boolean
+  maxRentalDays?: boolean
+  advanceBookingDays?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  partner?: boolean | Prisma.Vehicle$partnerArgs<ExtArgs>
+  branch?: boolean | Prisma.Vehicle$branchArgs<ExtArgs>
+  categoryRef?: boolean | Prisma.Vehicle$categoryRefArgs<ExtArgs>
+  photos?: boolean | Prisma.Vehicle$photosArgs<ExtArgs>
+  documents?: boolean | Prisma.Vehicle$documentsArgs<ExtArgs>
+  blocks?: boolean | Prisma.Vehicle$blocksArgs<ExtArgs>
   bookings?: boolean | Prisma.Vehicle$bookingsArgs<ExtArgs>
+  rentalDetails?: boolean | Prisma.Vehicle$rentalDetailsArgs<ExtArgs>
+  reviews?: boolean | Prisma.Vehicle$reviewsArgs<ExtArgs>
+  earnings?: boolean | Prisma.Vehicle$earningsArgs<ExtArgs>
   _count?: boolean | Prisma.VehicleCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicle"]>
 
@@ -624,39 +3366,97 @@ export type VehicleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 
 export type VehicleSelectScalar = {
   id?: boolean
+  partnerId?: boolean
+  branchId?: boolean
+  categoryId?: boolean
   name?: boolean
   category?: boolean
   vendor?: boolean
+  brand?: boolean
+  modelYear?: boolean
   seats?: boolean
   bags?: boolean
+  doors?: boolean
   transmission?: boolean
   fuelType?: boolean
   pricePerDay?: boolean
+  depositAmount?: boolean
+  licensePlate?: boolean
+  description?: boolean
+  specs?: boolean
   imageUrl?: boolean
+  status?: boolean
+  supportsSelfDrive?: boolean
+  supportsChauffeur?: boolean
+  allowOneWay?: boolean
+  deliveryAvailable?: boolean
+  minRentalDays?: boolean
+  maxRentalDays?: boolean
+  advanceBookingDays?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type VehicleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "category" | "vendor" | "seats" | "bags" | "transmission" | "fuelType" | "pricePerDay" | "imageUrl", ExtArgs["result"]["vehicle"]>
+export type VehicleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "partnerId" | "branchId" | "categoryId" | "name" | "category" | "vendor" | "brand" | "modelYear" | "seats" | "bags" | "doors" | "transmission" | "fuelType" | "pricePerDay" | "depositAmount" | "licensePlate" | "description" | "specs" | "imageUrl" | "status" | "supportsSelfDrive" | "supportsChauffeur" | "allowOneWay" | "deliveryAvailable" | "minRentalDays" | "maxRentalDays" | "advanceBookingDays" | "createdAt" | "updatedAt", ExtArgs["result"]["vehicle"]>
 export type VehicleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  partner?: boolean | Prisma.Vehicle$partnerArgs<ExtArgs>
+  branch?: boolean | Prisma.Vehicle$branchArgs<ExtArgs>
+  categoryRef?: boolean | Prisma.Vehicle$categoryRefArgs<ExtArgs>
+  photos?: boolean | Prisma.Vehicle$photosArgs<ExtArgs>
+  documents?: boolean | Prisma.Vehicle$documentsArgs<ExtArgs>
+  blocks?: boolean | Prisma.Vehicle$blocksArgs<ExtArgs>
   bookings?: boolean | Prisma.Vehicle$bookingsArgs<ExtArgs>
+  rentalDetails?: boolean | Prisma.Vehicle$rentalDetailsArgs<ExtArgs>
+  reviews?: boolean | Prisma.Vehicle$reviewsArgs<ExtArgs>
+  earnings?: boolean | Prisma.Vehicle$earningsArgs<ExtArgs>
   _count?: boolean | Prisma.VehicleCountOutputTypeDefaultArgs<ExtArgs>
 }
 
 export type $VehiclePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Vehicle"
   objects: {
+    partner: Prisma.$VehiclePartnerPayload<ExtArgs> | null
+    branch: Prisma.$PartnerBranchPayload<ExtArgs> | null
+    categoryRef: Prisma.$VehicleCategoryPayload<ExtArgs> | null
+    photos: Prisma.$VehiclePhotoPayload<ExtArgs>[]
+    documents: Prisma.$VehicleDocumentPayload<ExtArgs>[]
+    blocks: Prisma.$VehicleBlockPayload<ExtArgs>[]
     bookings: Prisma.$BookingPayload<ExtArgs>[]
+    rentalDetails: Prisma.$RentalDetailPayload<ExtArgs>[]
+    reviews: Prisma.$ReviewPayload<ExtArgs>[]
+    earnings: Prisma.$PartnerEarningPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    partnerId: string | null
+    branchId: string | null
+    categoryId: string | null
     name: string
     category: string
     vendor: string
+    brand: string | null
+    modelYear: number | null
     seats: number
     bags: number
+    doors: number
     transmission: string
     fuelType: string
     pricePerDay: number
+    depositAmount: number
+    licensePlate: string | null
+    description: string | null
+    specs: runtime.JsonValue | null
     imageUrl: string | null
+    status: $Enums.VehicleStatus
+    supportsSelfDrive: boolean
+    supportsChauffeur: boolean
+    allowOneWay: boolean
+    deliveryAvailable: boolean
+    minRentalDays: number
+    maxRentalDays: number | null
+    advanceBookingDays: number | null
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["vehicle"]>
   composites: {}
 }
@@ -997,7 +3797,16 @@ readonly fields: VehicleFieldRefs;
  */
 export interface Prisma__VehicleClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  partner<T extends Prisma.Vehicle$partnerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Vehicle$partnerArgs<ExtArgs>>): Prisma.Prisma__VehiclePartnerClient<runtime.Types.Result.GetResult<Prisma.$VehiclePartnerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  branch<T extends Prisma.Vehicle$branchArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Vehicle$branchArgs<ExtArgs>>): Prisma.Prisma__PartnerBranchClient<runtime.Types.Result.GetResult<Prisma.$PartnerBranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  categoryRef<T extends Prisma.Vehicle$categoryRefArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Vehicle$categoryRefArgs<ExtArgs>>): Prisma.Prisma__VehicleCategoryClient<runtime.Types.Result.GetResult<Prisma.$VehicleCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  photos<T extends Prisma.Vehicle$photosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Vehicle$photosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VehiclePhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  documents<T extends Prisma.Vehicle$documentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Vehicle$documentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VehicleDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  blocks<T extends Prisma.Vehicle$blocksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Vehicle$blocksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VehicleBlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   bookings<T extends Prisma.Vehicle$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Vehicle$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  rentalDetails<T extends Prisma.Vehicle$rentalDetailsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Vehicle$rentalDetailsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RentalDetailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reviews<T extends Prisma.Vehicle$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Vehicle$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  earnings<T extends Prisma.Vehicle$earningsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Vehicle$earningsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PartnerEarningPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1028,15 +3837,35 @@ export interface Prisma__VehicleClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface VehicleFieldRefs {
   readonly id: Prisma.FieldRef<"Vehicle", 'String'>
+  readonly partnerId: Prisma.FieldRef<"Vehicle", 'String'>
+  readonly branchId: Prisma.FieldRef<"Vehicle", 'String'>
+  readonly categoryId: Prisma.FieldRef<"Vehicle", 'String'>
   readonly name: Prisma.FieldRef<"Vehicle", 'String'>
   readonly category: Prisma.FieldRef<"Vehicle", 'String'>
   readonly vendor: Prisma.FieldRef<"Vehicle", 'String'>
+  readonly brand: Prisma.FieldRef<"Vehicle", 'String'>
+  readonly modelYear: Prisma.FieldRef<"Vehicle", 'Int'>
   readonly seats: Prisma.FieldRef<"Vehicle", 'Int'>
   readonly bags: Prisma.FieldRef<"Vehicle", 'Int'>
+  readonly doors: Prisma.FieldRef<"Vehicle", 'Int'>
   readonly transmission: Prisma.FieldRef<"Vehicle", 'String'>
   readonly fuelType: Prisma.FieldRef<"Vehicle", 'String'>
   readonly pricePerDay: Prisma.FieldRef<"Vehicle", 'Int'>
+  readonly depositAmount: Prisma.FieldRef<"Vehicle", 'Int'>
+  readonly licensePlate: Prisma.FieldRef<"Vehicle", 'String'>
+  readonly description: Prisma.FieldRef<"Vehicle", 'String'>
+  readonly specs: Prisma.FieldRef<"Vehicle", 'Json'>
   readonly imageUrl: Prisma.FieldRef<"Vehicle", 'String'>
+  readonly status: Prisma.FieldRef<"Vehicle", 'VehicleStatus'>
+  readonly supportsSelfDrive: Prisma.FieldRef<"Vehicle", 'Boolean'>
+  readonly supportsChauffeur: Prisma.FieldRef<"Vehicle", 'Boolean'>
+  readonly allowOneWay: Prisma.FieldRef<"Vehicle", 'Boolean'>
+  readonly deliveryAvailable: Prisma.FieldRef<"Vehicle", 'Boolean'>
+  readonly minRentalDays: Prisma.FieldRef<"Vehicle", 'Int'>
+  readonly maxRentalDays: Prisma.FieldRef<"Vehicle", 'Int'>
+  readonly advanceBookingDays: Prisma.FieldRef<"Vehicle", 'Int'>
+  readonly createdAt: Prisma.FieldRef<"Vehicle", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Vehicle", 'DateTime'>
 }
     
 
@@ -1380,6 +4209,135 @@ export type VehicleDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
+ * Vehicle.partner
+ */
+export type Vehicle$partnerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the VehiclePartner
+   */
+  select?: Prisma.VehiclePartnerSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the VehiclePartner
+   */
+  omit?: Prisma.VehiclePartnerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VehiclePartnerInclude<ExtArgs> | null
+  where?: Prisma.VehiclePartnerWhereInput
+}
+
+/**
+ * Vehicle.branch
+ */
+export type Vehicle$branchArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PartnerBranch
+   */
+  select?: Prisma.PartnerBranchSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PartnerBranch
+   */
+  omit?: Prisma.PartnerBranchOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PartnerBranchInclude<ExtArgs> | null
+  where?: Prisma.PartnerBranchWhereInput
+}
+
+/**
+ * Vehicle.categoryRef
+ */
+export type Vehicle$categoryRefArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the VehicleCategory
+   */
+  select?: Prisma.VehicleCategorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the VehicleCategory
+   */
+  omit?: Prisma.VehicleCategoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VehicleCategoryInclude<ExtArgs> | null
+  where?: Prisma.VehicleCategoryWhereInput
+}
+
+/**
+ * Vehicle.photos
+ */
+export type Vehicle$photosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the VehiclePhoto
+   */
+  select?: Prisma.VehiclePhotoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the VehiclePhoto
+   */
+  omit?: Prisma.VehiclePhotoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VehiclePhotoInclude<ExtArgs> | null
+  where?: Prisma.VehiclePhotoWhereInput
+  orderBy?: Prisma.VehiclePhotoOrderByWithRelationInput | Prisma.VehiclePhotoOrderByWithRelationInput[]
+  cursor?: Prisma.VehiclePhotoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.VehiclePhotoScalarFieldEnum | Prisma.VehiclePhotoScalarFieldEnum[]
+}
+
+/**
+ * Vehicle.documents
+ */
+export type Vehicle$documentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the VehicleDocument
+   */
+  select?: Prisma.VehicleDocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the VehicleDocument
+   */
+  omit?: Prisma.VehicleDocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VehicleDocumentInclude<ExtArgs> | null
+  where?: Prisma.VehicleDocumentWhereInput
+  orderBy?: Prisma.VehicleDocumentOrderByWithRelationInput | Prisma.VehicleDocumentOrderByWithRelationInput[]
+  cursor?: Prisma.VehicleDocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.VehicleDocumentScalarFieldEnum | Prisma.VehicleDocumentScalarFieldEnum[]
+}
+
+/**
+ * Vehicle.blocks
+ */
+export type Vehicle$blocksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the VehicleBlock
+   */
+  select?: Prisma.VehicleBlockSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the VehicleBlock
+   */
+  omit?: Prisma.VehicleBlockOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VehicleBlockInclude<ExtArgs> | null
+  where?: Prisma.VehicleBlockWhereInput
+  orderBy?: Prisma.VehicleBlockOrderByWithRelationInput | Prisma.VehicleBlockOrderByWithRelationInput[]
+  cursor?: Prisma.VehicleBlockWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.VehicleBlockScalarFieldEnum | Prisma.VehicleBlockScalarFieldEnum[]
+}
+
+/**
  * Vehicle.bookings
  */
 export type Vehicle$bookingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1401,6 +4359,78 @@ export type Vehicle$bookingsArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.BookingScalarFieldEnum | Prisma.BookingScalarFieldEnum[]
+}
+
+/**
+ * Vehicle.rentalDetails
+ */
+export type Vehicle$rentalDetailsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RentalDetail
+   */
+  select?: Prisma.RentalDetailSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RentalDetail
+   */
+  omit?: Prisma.RentalDetailOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RentalDetailInclude<ExtArgs> | null
+  where?: Prisma.RentalDetailWhereInput
+  orderBy?: Prisma.RentalDetailOrderByWithRelationInput | Prisma.RentalDetailOrderByWithRelationInput[]
+  cursor?: Prisma.RentalDetailWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RentalDetailScalarFieldEnum | Prisma.RentalDetailScalarFieldEnum[]
+}
+
+/**
+ * Vehicle.reviews
+ */
+export type Vehicle$reviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Review
+   */
+  select?: Prisma.ReviewSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Review
+   */
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReviewInclude<ExtArgs> | null
+  where?: Prisma.ReviewWhereInput
+  orderBy?: Prisma.ReviewOrderByWithRelationInput | Prisma.ReviewOrderByWithRelationInput[]
+  cursor?: Prisma.ReviewWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReviewScalarFieldEnum | Prisma.ReviewScalarFieldEnum[]
+}
+
+/**
+ * Vehicle.earnings
+ */
+export type Vehicle$earningsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PartnerEarning
+   */
+  select?: Prisma.PartnerEarningSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PartnerEarning
+   */
+  omit?: Prisma.PartnerEarningOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PartnerEarningInclude<ExtArgs> | null
+  where?: Prisma.PartnerEarningWhereInput
+  orderBy?: Prisma.PartnerEarningOrderByWithRelationInput | Prisma.PartnerEarningOrderByWithRelationInput[]
+  cursor?: Prisma.PartnerEarningWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PartnerEarningScalarFieldEnum | Prisma.PartnerEarningScalarFieldEnum[]
 }
 
 /**

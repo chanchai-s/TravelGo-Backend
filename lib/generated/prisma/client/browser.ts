@@ -222,3 +222,63 @@ export type DriverProfile = Prisma.DriverProfileModel
  * 
  */
 export type Media = Prisma.MediaModel
+/**
+ * Model VehiclePartner
+ * 
+ */
+export type VehiclePartner = Prisma.VehiclePartnerModel
+/**
+ * Model PartnerBranch
+ * 
+ */
+export type PartnerBranch = Prisma.PartnerBranchModel
+/**
+ * Model VehiclePartnerDocument
+ * 
+ */
+export type VehiclePartnerDocument = Prisma.VehiclePartnerDocumentModel
+/**
+ * Model VehicleCategory
+ * 
+ */
+export type VehicleCategory = Prisma.VehicleCategoryModel
+/**
+ * Model VehiclePhoto
+ * 
+ */
+export type VehiclePhoto = Prisma.VehiclePhotoModel
+/**
+ * Model VehicleDocument
+ * 
+ */
+export type VehicleDocument = Prisma.VehicleDocumentModel
+/**
+ * Model VehicleBlock
+ * 
+ */
+export type VehicleBlock = Prisma.VehicleBlockModel
+/**
+ * Model RentalDetail
+ * 
+ */
+export type RentalDetail = Prisma.RentalDetailModel
+/**
+ * Model Payment
+ * 
+ */
+export type Payment = Prisma.PaymentModel
+/**
+ * Model PartnerEarning
+ * 
+ */
+export type PartnerEarning = Prisma.PartnerEarningModel
+/**
+ * Model CommissionChangeLog
+ * 
+ */
+export type CommissionChangeLog = Prisma.CommissionChangeLogModel
+/**
+ * Model PlatformSetting
+ * 
+ */
+export type PlatformSetting = Prisma.PlatformSettingModel

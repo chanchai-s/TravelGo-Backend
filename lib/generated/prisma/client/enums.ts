@@ -88,3 +88,79 @@ export const PayoutStatus = {
 } as const
 
 export type PayoutStatus = (typeof PayoutStatus)[keyof typeof PayoutStatus]
+
+
+export const VehiclePartnerStatus = {
+  PENDING: 'PENDING',
+  VERIFIED: 'VERIFIED',
+  REJECTED: 'REJECTED',
+  SUSPENDED: 'SUSPENDED'
+} as const
+
+export type VehiclePartnerStatus = (typeof VehiclePartnerStatus)[keyof typeof VehiclePartnerStatus]
+
+
+export const VehicleStatus = {
+  DRAFT: 'DRAFT',
+  PENDING: 'PENDING',
+  PUBLISHED: 'PUBLISHED',
+  PAUSED: 'PAUSED',
+  MAINTENANCE: 'MAINTENANCE',
+  REJECTED: 'REJECTED',
+  SUSPENDED: 'SUSPENDED'
+} as const
+
+export type VehicleStatus = (typeof VehicleStatus)[keyof typeof VehicleStatus]
+
+
+export const RentalStatus = {
+  PENDING_PARTNER: 'PENDING_PARTNER',
+  RESERVED: 'RESERVED',
+  PAID: 'PAID',
+  PICKED_UP: 'PICKED_UP',
+  RETURNED: 'RETURNED',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED',
+  REJECTED: 'REJECTED',
+  NO_SHOW: 'NO_SHOW'
+} as const
+
+export type RentalStatus = (typeof RentalStatus)[keyof typeof RentalStatus]
+
+
+export const RentalMode = {
+  SELF_DRIVE: 'SELF_DRIVE',
+  CHAUFFEUR: 'CHAUFFEUR'
+} as const
+
+export type RentalMode = (typeof RentalMode)[keyof typeof RentalMode]
+
+
+export const DepositStatus = {
+  PENDING: 'PENDING',
+  PAID: 'PAID',
+  REFUNDED: 'REFUNDED',
+  FORFEITED: 'FORFEITED'
+} as const
+
+export type DepositStatus = (typeof DepositStatus)[keyof typeof DepositStatus]
+
+
+export const PaymentType = {
+  DEPOSIT: 'DEPOSIT',
+  RENTAL: 'RENTAL',
+  ADDON: 'ADDON',
+  LATE_FEE: 'LATE_FEE',
+  REFUND: 'REFUND'
+} as const
+
+export type PaymentType = (typeof PaymentType)[keyof typeof PaymentType]
+
+
+export const PaymentMethod = {
+  CASH: 'CASH',
+  CARD: 'CARD',
+  TRANSFER: 'TRANSFER'
+} as const
+
+export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]

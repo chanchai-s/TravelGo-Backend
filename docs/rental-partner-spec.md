@@ -1,0 +1,57 @@
+# Rental Partner (Vehicle Partner) — Spec
+
+## Scope (locked)
+
+- Partner = **บริษัท (นิติบุคคล) เท่านั้น** — แยกจาก `HostProfile` (เจ้าของที่พัก) โดยสิ้นเชิง
+- หลายสาขาได้ตั้งแต่แรก (`PartnerBranch`)
+- MVP: **self-drive, รายวัน, รับ-คืนสาขาเดียว**
+- เผื่ออนาคต (มี field แต่ยังไม่เปิด): chauffeur, one-way, delivery, รายสัปดาห์/เดือน
+- รถมีหลายประเภท → `VehicleCategory` (data-driven) + `Vehicle.specs` (JSON)
+- การจอง: ลูกค้าจองได้ทันที (instant) แล้วส่งเข้า partner
+  - partner ตั้ง `autoApprove` ได้: `true` = อนุมัติอัตโนมัติ, `false` = ต้องกดอนุมัติเอง
+- การชำระเงิน: จ่าย **มัดจำ + ค่าเช่า ที่สาขา** (MVP ไม่ต่อ payment gateway)
+
+## Money rules
+
+| รายการ | กติกา |
+|---|---|
+| มัดจำ | partner กำหนดเองต่อคัน (`Vehicle.depositAmount`) |
+| VAT | 7% (`PlatformSetting.vat_rate`) — ราคารวม VAT, แตก `baseAmount` + `vatAmount` |
+| ใบกำกับภาษี | partner ออกในนามบริษัท; แพลตฟอร์มออกใบเสร็จค่าคอมให้ partner |
+| ค่าคอม | ต่อบริษัท (`VehiclePartner.commissionRate`), แอดมินปรับได้ + `CommissionChangeLog` |
+| ฐานค่าคอม | ค่าเช่า + add-on ก่อน VAT (ไม่รวมมัดจำ) |
+| Late fee | เกิน 60 นาที → 200 บาท/ชั่วโมง ไม่มีเพดาน (`late_fee_per_hour`, `late_grace_minutes`) |
+| คืนก่อนกำหนด | คืนมัดจำเต็ม, ไม่คืนค่าเช่าส่วนที่เหลือ |
+| ยกเลิกหลังจ่ายแล้ว | คืนมัดจำ, ค่าเช่าไม่คืน |
+| NO_SHOW | ยึดมัดจำ; ถ้ายังไม่จ่ายมัดจำ = ยกเลิกเปล่า |
+
+## Booking status
+
+```
+PENDING_PARTNER ──partner อนุมัติ/autoApprove──> RESERVED
+RESERVED ──จ่ายที่สาขา──> PAID ──รับรถ──> PICKED_UP ──คืนรถ──> RETURNED ──ตรวจ+คืนมัดจำ──> COMPLETED
+PENDING_PARTNER ──partner ปฏิเสธ──> REJECTED
+RESERVED/PAID ──ยกเลิก──> CANCELLED
+RESERVED ──ไม่มาจ่ายตามเวลา (job)──> NO_SHOW
+```
+
+## Data model (Phase 1 — implemented)
+
+`VehiclePartner`, `PartnerBranch`, `VehiclePartnerDocument`, `VehicleCategory`,
+`Vehicle` (+ `specs`, `depositAmount`, `branchId`, `categoryId`, `status`),
+`VehiclePhoto`, `VehicleDocument`, `VehicleBlock`, `RentalDetail`, `Payment`,
+`PartnerEarning`, `CommissionChangeLog`, `PlatformSetting`
+
+เพิ่ม relation: `User.vehiclePartner`, `Booking.rentalDetail`, `Review.vehicleId`
+
+## API (Phase 2-4 — ยังไม่ทำ)
+
+- Public: `GET /vehicle-categories`, `GET /vehicles`, `GET /vehicles/:id`, `GET /vehicles/:id/availability`, `POST /vehicles/:id/quote`
+- Partner: `/partner/apply|me|documents|contract`, `/partner/branches`, `/partner/vehicles`, `/partner/vehicles/:id/submit|calendar|bookings`, `/partner/earnings`, `/partner/payouts/request`
+- Admin: `/admin/partners`, `/admin/partners/:id/approve|reject|commission`, `/admin/vehicles/:id/approve|reject`
+- Booking: `POST /bookings` (type `TRANSPORT`), approve/reject, pay-at-branch, pickup, return, cancel
+
+## Notes
+
+- `prisma db push` ยังติดปัญหา FK index drift เดิมของโปรเจกต์ → ใช้ `prisma/partner_schema.sql` ผ่าน `prisma db execute`
+- Seed: `npm run seed` (สร้าง 8 categories, 1 partner, 2 branches, 5 vehicles, 4 settings)
