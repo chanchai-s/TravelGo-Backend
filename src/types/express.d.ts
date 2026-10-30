@@ -8,6 +8,12 @@ declare global {
         phone?: string | null;
         role?: string | null;
       };
+      vehiclePartner?: {
+        id: string;
+        status: string;
+        commissionRate: number | null;
+        autoApprove: boolean;
+      };
     }
   }
 }

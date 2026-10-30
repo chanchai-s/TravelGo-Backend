@@ -19,6 +19,12 @@ import {
   rejectPayoutRequest,
 } from "../controllers/payout.controllers";
 import { saveStripeAccount } from "../controllers/stripeAccount.controllers";
+import {
+  listVehiclePartners,
+  rejectVehiclePartner,
+  updateVehiclePartnerCommission,
+  verifyVehiclePartner,
+} from "../controllers/partner.controllers";
 
 const adminRouter = Router();
 
@@ -38,6 +44,12 @@ adminRouter.post("/hosts/:id/payout/verify", verifyPayout);
 adminRouter.post("/hosts/:id/payout/reject", rejectPayout);
 
 adminRouter.get("/logs", logs);
+
+// พาร์ทเนอร์รถเช่า (บริษัท)
+adminRouter.get("/partners", listVehiclePartners);
+adminRouter.post("/partners/:id/verify", verifyVehiclePartner);
+adminRouter.post("/partners/:id/reject", rejectVehiclePartner);
+adminRouter.post("/partners/:id/commission", updateVehiclePartnerCommission);
 
 // คิวจ่ายเงินให้เจ้าของ (Stripe)
 adminRouter.get("/payouts", listPayouts);

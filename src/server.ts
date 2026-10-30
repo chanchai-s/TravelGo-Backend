@@ -16,6 +16,7 @@ import stayRoutes from "./routes/stay.routes";
 import uploadRoutes from "./routes/upload.routes";
 import adminRoutes from "./routes/admin.routes";
 import bookingRoutes from "./routes/booking.routes";
+import partnerRoutes from "./routes/partner.routes";
 import { ensureUploadDir } from "./lib/upload";
 import { startDraftCleanup } from "./jobs/draftCleanup";
 import { startUploadCleanup } from "./jobs/uploadCleanup";
@@ -50,6 +51,7 @@ app.use('/stays', stayRoutes);
 app.use('/upload', uploadRoutes);
 app.use('/admin', adminRoutes);
 app.use('/bookings', bookingRoutes);
+app.use('/partner', partnerRoutes);
 
 startDraftCleanup();
 startUploadCleanup();

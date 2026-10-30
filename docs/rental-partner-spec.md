@@ -44,14 +44,28 @@ RESERVED ──ไม่มาจ่ายตามเวลา (job)──> NO_
 
 เพิ่ม relation: `User.vehiclePartner`, `Booking.rentalDetail`, `Review.vehicleId`
 
-## API (Phase 2-4 — ยังไม่ทำ)
+## API
+
+### Phase 2 — partner onboarding + admin approval (ทำแล้ว)
+
+- `POST /partner/apply` — สมัคร/แก้ข้อมูลบริษัท (PENDING) · ยืนยันแล้วแก้ได้แค่ข้อมูลติดต่อ
+- `GET /partner/me` — สถานะ + เอกสาร + สาขา + จำนวนรถ
+- `POST /partner/documents` — `{ type, url }` โดย type ∈ `COMPANY_CERT | VAT_CERT | BOOK_BANK | ID_CARD | OTHER`
+- `POST /partner/contract` — ยอมรับข้อตกลง (`v1`)
+- `PATCH /partner/settings` — `{ autoApprove }` (ต้อง VERIFIED)
+- Admin: `GET /admin/partners`, `POST /admin/partners/:id/verify|reject|commission`
+  - verify → เอกสาร PENDING ทั้งหมดเป็น APPROVED + `ModerationLog`
+  - commission → บันทึก `CommissionChangeLog` (oldRate/newRate/changedBy)
+
+### Phase 3-4 (ยังไม่ทำ)
 
 - Public: `GET /vehicle-categories`, `GET /vehicles`, `GET /vehicles/:id`, `GET /vehicles/:id/availability`, `POST /vehicles/:id/quote`
-- Partner: `/partner/apply|me|documents|contract`, `/partner/branches`, `/partner/vehicles`, `/partner/vehicles/:id/submit|calendar|bookings`, `/partner/earnings`, `/partner/payouts/request`
-- Admin: `/admin/partners`, `/admin/partners/:id/approve|reject|commission`, `/admin/vehicles/:id/approve|reject`
+- Partner: `/partner/branches`, `/partner/vehicles`, `/partner/vehicles/:id/submit|calendar|bookings`, `/partner/earnings`, `/partner/payouts/request`
+- Admin: `/admin/vehicles/:id/approve|reject`
 - Booking: `POST /bookings` (type `TRANSPORT`), approve/reject, pay-at-branch, pickup, return, cancel
 
 ## Notes
 
 - `prisma db push` ยังติดปัญหา FK index drift เดิมของโปรเจกต์ → ใช้ `prisma/partner_schema.sql` ผ่าน `prisma db execute`
+- DB เดิมไม่มี FK constraint เลย → partner domain เพิ่มด้วย `prisma/partner_fk.sql` (cascade ตาม schema)
 - Seed: `npm run seed` (สร้าง 8 categories, 1 partner, 2 branches, 5 vehicles, 4 settings)
