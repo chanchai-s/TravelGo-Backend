@@ -88,7 +88,9 @@ export async function approveStayService(stayId: string, actorId: string) {
     data: { status: "PUBLISHED", reviewedBy: actorId, reviewedAt: new Date(), rejectedReason: null },
   });
 
-  await prisma.moderationLog.create({ data: { actorId, action: "APPROVE", stayId } });
+  await prisma.moderationLog.create({
+    data: { adminId: actorId, targetType: "STAY", targetId: stayId, action: "APPROVE" },
+  });
 
   const host = await prisma.hostProfile.findUnique({
     where: { id: stay.hostId ?? "" },
@@ -108,7 +110,9 @@ export async function rejectStayService(stayId: string, actorId: string, reason:
     data: { status: "REJECTED", reviewedBy: actorId, reviewedAt: new Date(), rejectedReason: reason },
   });
 
-  await prisma.moderationLog.create({ data: { actorId, action: "REJECT", stayId, reason } });
+  await prisma.moderationLog.create({
+    data: { adminId: actorId, targetType: "STAY", targetId: stayId, action: "REJECT", reason },
+  });
 
   const host = await prisma.hostProfile.findUnique({
     where: { id: stay.hostId ?? "" },
@@ -126,7 +130,7 @@ export async function rejectStayService(stayId: string, actorId: string, reason:
 }
 
 // อนุมัติทั้งหมดในคิว — ข้ามรายการที่ยังไม่ผ่าน แล้วสรุปให้แอดมิน
-export async function approveAllService(actorId: string, status = "PENDING_REVIEW") {
+export async function approveAllService(actorId: string, status = "PENDING") {
   const queue = await prisma.stay.findMany({
     where: { status: status as any },
     orderBy: { createdAt: "asc" },
@@ -167,14 +171,14 @@ export async function resubmitStayService(stayId: string, userId: string) {
 
   return await prisma.stay.update({
     where: { id: stayId },
-    data: { status: "PENDING_REVIEW", rejectedReason: null },
+    data: { status: "PENDING", rejectedReason: null },
   });
 }
 
 // ---------- คิวตรวจเจ้าของที่พัก (Partner) ----------
 
 export async function listHostsForReview(status: string, page: number, size: number) {
-  const where = status === "ALL" ? {} : { status };
+  const where = status === "ALL" ? {} : { status: status as any };
   const skip = (page - 1) * size;
 
   const [items, total] = await Promise.all([
@@ -203,27 +207,42 @@ export async function verifyHostService(hostId: string, actorId: string) {
   });
 
   await prisma.user.update({ where: { id: host.userId }, data: { role: "OWNER" } });
-  await prisma.moderationLog.create({ data: { actorId, action: "VERIFY_HOST", hostId } });
+  await prisma.moderationLog.create({
+    data: { adminId: actorId, targetType: "HOST", targetId: hostId, action: "VERIFY_HOST" },
+  });
 
   return host;
 }
 
-// ตีกลับเจ้าของ พร้อมเหตุผล
+// ตีกลับเจ้าของ พร้อมเหตุผล (schema ไม่มีสถานะ REJECTED → ใช้ SUSPENDED + เก็บเหตุผล)
 export async function rejectHostService(hostId: string, actorId: string, reason: string) {
   const host = await prisma.hostProfile.update({
     where: { id: hostId },
-    data: { status: "REJECTED", rejectedReason: reason },
+    data: { status: "SUSPENDED", rejectedReason: reason },
   });
 
-  await prisma.moderationLog.create({ data: { actorId, action: "REJECT_HOST", hostId, reason } });
+  await prisma.moderationLog.create({
+    data: {
+      adminId: actorId,
+      targetType: "HOST",
+      targetId: hostId,
+      action: "REJECT_HOST",
+      reason,
+    },
+  });
 
   return host;
 }
 
 // เอกสารยืนยันตัวตนของเจ้าของ (สำหรับหน้า admin)
 export async function getHostDocuments(userId: string) {
-  return await prisma.verificationDocument.findMany({
+  const host = await prisma.hostProfile.findUnique({
     where: { userId },
+    select: { id: true },
+  });
+
+  return await prisma.verificationDocument.findMany({
+    where: { hostId: host?.id ?? "" },
     orderBy: { createdAt: "desc" },
   });
 }

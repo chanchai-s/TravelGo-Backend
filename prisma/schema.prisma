@@ -224,11 +224,13 @@ model Stay {
 
   hostId        String?
   host          HostProfile?          @relation(fields: [hostId], references: [id])
+  draftKey      String?               @unique
   photos        StayPhoto[]
   amenities     StayAmenity?
   policies      StayPolicy?
   nearby        StayNearby[]          @relation("StayNearby")
   uniqueDetails UniquePropertyDetail?
+  wholeProperty WholePropertyDetail?
   roomTypes     RoomType[]
   bookings      Booking[]
   reviews       Review[]
@@ -286,6 +288,17 @@ model UniquePropertyDetail {
   theme        String?
   highlights   Json?
   specialNotes String? @db.Text
+}
+
+model WholePropertyDetail {
+  id             String  @id @default(cuid())
+  stayId         String  @unique
+  stay           Stay    @relation(fields: [stayId], references: [id], onDelete: Cascade)
+  bedroomsCount  Int?
+  bathroomsCount Int?
+  maxCapacity    Int?
+  unitNo         String?
+  hostLivesIn    Boolean @default(false)
 }
 
 model RoomType {
@@ -651,6 +664,7 @@ model UserPost {
   user       User           @relation(fields: [userId], references: [id])
   caption    String?
   mediaUrl   String?
+  likes      Int            @default(0)
   comments   MediaComment[] @relation("mediaComments")
   postLikes  UserPostLike[] @relation("postLikes")
   mediaLikes MediaLike[]    @relation("mediaLikes")

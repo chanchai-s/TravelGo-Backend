@@ -68,6 +68,11 @@ export type StayNearby = Prisma.StayNearbyModel
  */
 export type UniquePropertyDetail = Prisma.UniquePropertyDetailModel
 /**
+ * Model WholePropertyDetail
+ * 
+ */
+export type WholePropertyDetail = Prisma.WholePropertyDetailModel
+/**
  * Model RoomType
  * 
  */

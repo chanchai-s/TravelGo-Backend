@@ -394,6 +394,7 @@ export const ModelName = {
   StayPolicy: 'StayPolicy',
   StayNearby: 'StayNearby',
   UniquePropertyDetail: 'UniquePropertyDetail',
+  WholePropertyDetail: 'WholePropertyDetail',
   RoomType: 'RoomType',
   RoomInventory: 'RoomInventory',
   RoomBed: 'RoomBed',
@@ -452,7 +453,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "hostProfile" | "hostStaff" | "verificationDocument" | "stay" | "stayPhoto" | "stayAmenity" | "stayPolicy" | "stayNearby" | "uniquePropertyDetail" | "roomType" | "roomInventory" | "roomBed" | "flight" | "booking" | "voucher" | "voucherWallet" | "voucherAssignment" | "activity" | "vehicle" | "ownerEarning" | "payoutAccount" | "payout" | "payoutItem" | "moderationLog" | "review" | "comment" | "like" | "follow" | "savedItem" | "cartItem" | "product" | "tripPlan" | "tripPlanItem" | "userPost" | "mediaLike" | "mediaComment" | "userPostLike" | "bankPrivilege" | "driverProfile" | "media" | "vehiclePartner" | "partnerBranch" | "vehiclePartnerDocument" | "vehicleCategory" | "vehiclePhoto" | "vehicleDocument" | "vehicleBlock" | "rentalDetail" | "payment" | "partnerEarning" | "commissionChangeLog" | "platformSetting"
+    modelProps: "user" | "hostProfile" | "hostStaff" | "verificationDocument" | "stay" | "stayPhoto" | "stayAmenity" | "stayPolicy" | "stayNearby" | "uniquePropertyDetail" | "wholePropertyDetail" | "roomType" | "roomInventory" | "roomBed" | "flight" | "booking" | "voucher" | "voucherWallet" | "voucherAssignment" | "activity" | "vehicle" | "ownerEarning" | "payoutAccount" | "payout" | "payoutItem" | "moderationLog" | "review" | "comment" | "like" | "follow" | "savedItem" | "cartItem" | "product" | "tripPlan" | "tripPlanItem" | "userPost" | "mediaLike" | "mediaComment" | "userPostLike" | "bankPrivilege" | "driverProfile" | "media" | "vehiclePartner" | "partnerBranch" | "vehiclePartnerDocument" | "vehicleCategory" | "vehiclePhoto" | "vehicleDocument" | "vehicleBlock" | "rentalDetail" | "payment" | "partnerEarning" | "commissionChangeLog" | "platformSetting"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1113,6 +1114,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.UniquePropertyDetailCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.UniquePropertyDetailCountAggregateOutputType> | number
+        }
+      }
+    }
+    WholePropertyDetail: {
+      payload: Prisma.$WholePropertyDetailPayload<ExtArgs>
+      fields: Prisma.WholePropertyDetailFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.WholePropertyDetailFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WholePropertyDetailPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.WholePropertyDetailFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WholePropertyDetailPayload>
+        }
+        findFirst: {
+          args: Prisma.WholePropertyDetailFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WholePropertyDetailPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.WholePropertyDetailFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WholePropertyDetailPayload>
+        }
+        findMany: {
+          args: Prisma.WholePropertyDetailFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WholePropertyDetailPayload>[]
+        }
+        create: {
+          args: Prisma.WholePropertyDetailCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WholePropertyDetailPayload>
+        }
+        createMany: {
+          args: Prisma.WholePropertyDetailCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.WholePropertyDetailDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WholePropertyDetailPayload>
+        }
+        update: {
+          args: Prisma.WholePropertyDetailUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WholePropertyDetailPayload>
+        }
+        deleteMany: {
+          args: Prisma.WholePropertyDetailDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.WholePropertyDetailUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.WholePropertyDetailUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WholePropertyDetailPayload>
+        }
+        aggregate: {
+          args: Prisma.WholePropertyDetailAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWholePropertyDetail>
+        }
+        groupBy: {
+          args: Prisma.WholePropertyDetailGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WholePropertyDetailGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.WholePropertyDetailCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WholePropertyDetailCountAggregateOutputType> | number
         }
       }
     }
@@ -4073,7 +4140,8 @@ export const StayScalarFieldEnum = {
   stars: 'stars',
   frontDesk24h: 'frontDesk24h',
   breakfastIncluded: 'breakfastIncluded',
-  hostId: 'hostId'
+  hostId: 'hostId',
+  draftKey: 'draftKey'
 } as const
 
 export type StayScalarFieldEnum = (typeof StayScalarFieldEnum)[keyof typeof StayScalarFieldEnum]
@@ -4138,6 +4206,19 @@ export const UniquePropertyDetailScalarFieldEnum = {
 } as const
 
 export type UniquePropertyDetailScalarFieldEnum = (typeof UniquePropertyDetailScalarFieldEnum)[keyof typeof UniquePropertyDetailScalarFieldEnum]
+
+
+export const WholePropertyDetailScalarFieldEnum = {
+  id: 'id',
+  stayId: 'stayId',
+  bedroomsCount: 'bedroomsCount',
+  bathroomsCount: 'bathroomsCount',
+  maxCapacity: 'maxCapacity',
+  unitNo: 'unitNo',
+  hostLivesIn: 'hostLivesIn'
+} as const
+
+export type WholePropertyDetailScalarFieldEnum = (typeof WholePropertyDetailScalarFieldEnum)[keyof typeof WholePropertyDetailScalarFieldEnum]
 
 
 export const RoomTypeScalarFieldEnum = {
@@ -4497,6 +4578,7 @@ export const UserPostScalarFieldEnum = {
   userId: 'userId',
   caption: 'caption',
   mediaUrl: 'mediaUrl',
+  likes: 'likes',
   createdAt: 'createdAt'
 } as const
 
@@ -4866,7 +4948,8 @@ export const StayOrderByRelevanceFieldEnum = {
   description: 'description',
   phone: 'phone',
   email: 'email',
-  hostId: 'hostId'
+  hostId: 'hostId',
+  draftKey: 'draftKey'
 } as const
 
 export type StayOrderByRelevanceFieldEnum = (typeof StayOrderByRelevanceFieldEnum)[keyof typeof StayOrderByRelevanceFieldEnum]
@@ -4938,6 +5021,15 @@ export const UniquePropertyDetailOrderByRelevanceFieldEnum = {
 } as const
 
 export type UniquePropertyDetailOrderByRelevanceFieldEnum = (typeof UniquePropertyDetailOrderByRelevanceFieldEnum)[keyof typeof UniquePropertyDetailOrderByRelevanceFieldEnum]
+
+
+export const WholePropertyDetailOrderByRelevanceFieldEnum = {
+  id: 'id',
+  stayId: 'stayId',
+  unitNo: 'unitNo'
+} as const
+
+export type WholePropertyDetailOrderByRelevanceFieldEnum = (typeof WholePropertyDetailOrderByRelevanceFieldEnum)[keyof typeof WholePropertyDetailOrderByRelevanceFieldEnum]
 
 
 export const RoomTypeOrderByRelevanceFieldEnum = {
@@ -5668,6 +5760,7 @@ export type GlobalOmitConfig = {
   stayPolicy?: Prisma.StayPolicyOmit
   stayNearby?: Prisma.StayNearbyOmit
   uniquePropertyDetail?: Prisma.UniquePropertyDetailOmit
+  wholePropertyDetail?: Prisma.WholePropertyDetailOmit
   roomType?: Prisma.RoomTypeOmit
   roomInventory?: Prisma.RoomInventoryOmit
   roomBed?: Prisma.RoomBedOmit

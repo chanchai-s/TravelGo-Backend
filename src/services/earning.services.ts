@@ -32,8 +32,19 @@ export async function createEarningForBooking(bookingId: string, stayId: string,
 
   return await prisma.ownerEarning.upsert({
     where: { bookingId },
-    create: { bookingId, stayId, hostId: stay.hostId, status: "PENDING", ...money },
-    update: money,
+    create: {
+      bookingId,
+      stayId,
+      status: "PENDING",
+      grossAmount: money.gross,
+      commission: money.commission,
+      netAmount: money.net,
+    },
+    update: {
+      grossAmount: money.gross,
+      commission: money.commission,
+      netAmount: money.net,
+    },
   });
 }
 
@@ -47,13 +58,22 @@ export async function voidEarningForBooking(bookingId: string) {
 
 /** ยอดรวมของเจ้าของจากรายการรายได้ที่ยังนับอยู่ */
 export async function ownerEarningsSummary(hostId: string) {
+  const stays = await prisma.stay.findMany({
+    where: { hostId },
+    select: { id: true },
+  });
+  const stayIds = stays.map((stay) => stay.id);
+  if (stayIds.length === 0) {
+    return { gross: 0, commission: 0, net: 0, count: 0 };
+  }
+
   const rows = await prisma.ownerEarning.findMany({
-    where: { hostId, status: { in: ["PENDING", "AVAILABLE", "PAID"] } },
-    select: { gross: true, commission: true, net: true },
+    where: { stayId: { in: stayIds }, status: { in: ["PENDING", "AVAILABLE", "PAID"] } },
+    select: { grossAmount: true, commission: true, netAmount: true },
   });
 
-  const gross = rows.reduce((sum, row) => sum + row.gross, 0);
+  const gross = rows.reduce((sum, row) => sum + row.grossAmount, 0);
   const commission = rows.reduce((sum, row) => sum + row.commission, 0);
 
-  return { gross, commission, net: rows.reduce((sum, row) => sum + row.net, 0), count: rows.length };
+  return { gross, commission, net: rows.reduce((sum, row) => sum + row.netAmount, 0), count: rows.length };
 }

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import prisma from "../lib/prismaClient";
 import cloudinary from "../lib/cloudinary";
-import { upload } from "../middleware/multer";
+import { upload } from "../middleware/multer.middleware";
 
 /**
  * อัปโหลดวิดีโอหรือรูปภาพขึ้น Cloudinary
@@ -91,15 +91,15 @@ export const toggleMediaLike = async (req: Request, res: Response) => {
   try {
     const userId = (req as any).user?.id;
     if (!userId) return res.status(401).json({ success: false, message: "Login required" });
-    const mediaId = String(req.params.id);
-    const existing = await prisma.mediaLike.findUnique({ where: { mediaId_userId: { mediaId, userId } } });
+    const postId = String(req.params.id);
+    const existing = await prisma.mediaLike.findUnique({ where: { postId_userId: { postId, userId } } });
     if (existing) {
-      await prisma.mediaLike.delete({ where: { mediaId_userId: { mediaId, userId } } });
-      const count = await prisma.mediaLike.count({ where: { mediaId } });
+      await prisma.mediaLike.delete({ where: { postId_userId: { postId, userId } } });
+      const count = await prisma.mediaLike.count({ where: { postId } });
       return res.status(200).json({ success: true, data: { liked: false, likes: count } });
     }
-    await prisma.mediaLike.create({ data: { mediaId, userId } });
-    const count = await prisma.mediaLike.count({ where: { mediaId } });
+    await prisma.mediaLike.create({ data: { postId, userId } });
+    const count = await prisma.mediaLike.count({ where: { postId } });
     return res.status(200).json({ success: true, data: { liked: true, likes: count } });
   } catch (error: any) {
     console.error("toggleMediaLike error:", error);
@@ -109,9 +109,9 @@ export const toggleMediaLike = async (req: Request, res: Response) => {
 
 export const getMediaComments = async (req: Request, res: Response) => {
   try {
-    const mediaId = String(req.params.id);
+    const postId = String(req.params.id);
     const comments = await prisma.mediaComment.findMany({
-      where: { mediaId },
+      where: { postId },
       orderBy: { createdAt: "desc" },
       include: { user: { select: { id: true, name: true } } },
     });
@@ -126,10 +126,10 @@ export const addMediaComment = async (req: Request, res: Response) => {
   try {
     const userId = (req as any).user?.id;
     if (!userId) return res.status(401).json({ success: false, message: "Login required" });
-    const mediaId = String(req.params.id);
+    const postId = String(req.params.id);
     const { text } = req.body;
     if (!text) return res.status(400).json({ success: false, message: "text required" });
-    const comment = await prisma.mediaComment.create({ data: { mediaId, userId, text } });
+    const comment = await prisma.mediaComment.create({ data: { postId, userId, text } });
     return res.status(201).json({ success: true, data: comment });
   } catch (error: any) {
     console.error("addMediaComment error:", error);

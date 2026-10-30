@@ -61,6 +61,7 @@ export const ModelName = {
   StayPolicy: 'StayPolicy',
   StayNearby: 'StayNearby',
   UniquePropertyDetail: 'UniquePropertyDetail',
+  WholePropertyDetail: 'WholePropertyDetail',
   RoomType: 'RoomType',
   RoomInventory: 'RoomInventory',
   RoomBed: 'RoomBed',
@@ -202,7 +203,8 @@ export const StayScalarFieldEnum = {
   stars: 'stars',
   frontDesk24h: 'frontDesk24h',
   breakfastIncluded: 'breakfastIncluded',
-  hostId: 'hostId'
+  hostId: 'hostId',
+  draftKey: 'draftKey'
 } as const
 
 export type StayScalarFieldEnum = (typeof StayScalarFieldEnum)[keyof typeof StayScalarFieldEnum]
@@ -267,6 +269,19 @@ export const UniquePropertyDetailScalarFieldEnum = {
 } as const
 
 export type UniquePropertyDetailScalarFieldEnum = (typeof UniquePropertyDetailScalarFieldEnum)[keyof typeof UniquePropertyDetailScalarFieldEnum]
+
+
+export const WholePropertyDetailScalarFieldEnum = {
+  id: 'id',
+  stayId: 'stayId',
+  bedroomsCount: 'bedroomsCount',
+  bathroomsCount: 'bathroomsCount',
+  maxCapacity: 'maxCapacity',
+  unitNo: 'unitNo',
+  hostLivesIn: 'hostLivesIn'
+} as const
+
+export type WholePropertyDetailScalarFieldEnum = (typeof WholePropertyDetailScalarFieldEnum)[keyof typeof WholePropertyDetailScalarFieldEnum]
 
 
 export const RoomTypeScalarFieldEnum = {
@@ -626,6 +641,7 @@ export const UserPostScalarFieldEnum = {
   userId: 'userId',
   caption: 'caption',
   mediaUrl: 'mediaUrl',
+  likes: 'likes',
   createdAt: 'createdAt'
 } as const
 
@@ -995,7 +1011,8 @@ export const StayOrderByRelevanceFieldEnum = {
   description: 'description',
   phone: 'phone',
   email: 'email',
-  hostId: 'hostId'
+  hostId: 'hostId',
+  draftKey: 'draftKey'
 } as const
 
 export type StayOrderByRelevanceFieldEnum = (typeof StayOrderByRelevanceFieldEnum)[keyof typeof StayOrderByRelevanceFieldEnum]
@@ -1067,6 +1084,15 @@ export const UniquePropertyDetailOrderByRelevanceFieldEnum = {
 } as const
 
 export type UniquePropertyDetailOrderByRelevanceFieldEnum = (typeof UniquePropertyDetailOrderByRelevanceFieldEnum)[keyof typeof UniquePropertyDetailOrderByRelevanceFieldEnum]
+
+
+export const WholePropertyDetailOrderByRelevanceFieldEnum = {
+  id: 'id',
+  stayId: 'stayId',
+  unitNo: 'unitNo'
+} as const
+
+export type WholePropertyDetailOrderByRelevanceFieldEnum = (typeof WholePropertyDetailOrderByRelevanceFieldEnum)[keyof typeof WholePropertyDetailOrderByRelevanceFieldEnum]
 
 
 export const RoomTypeOrderByRelevanceFieldEnum = {

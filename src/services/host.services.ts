@@ -56,7 +56,7 @@ export async function upsertProperty(propertyId: string, data: any, userId: stri
 
     // ส่งเข้าคิวทันที (ไม่ปกติ แต่กันไว้) — ต้องผ่านเงื่อนไขขั้นต่ำ
     if (isSubmit) {
-      await prisma.stay.update({ where: { id: stay.id }, data: { status: 'PENDING_REVIEW' } });
+      await prisma.stay.update({ where: { id: stay.id }, data: { status: 'PENDING' } });
       await checkReadyToSubmit(stay.id, stay.propertyType);
       await checkDuplicate(stay.id, stay.name, stay.location);
     }
@@ -78,7 +78,7 @@ export async function upsertProperty(propertyId: string, data: any, userId: stri
       // ผูกเจ้าของให้ร่างที่ยังไม่มีเจ้าของเมื่อผู้ใช้ login แล้ว (ผ่านการตรวจ draftKey แล้ว)
       ...(isUnclaimed && host ? { hostId: host.id, draftKey: null } : {}),
       currentStep: currentStep,
-      ...(isSubmit ? { status: 'PENDING_REVIEW' } : {}),
+      ...(isSubmit ? { status: 'PENDING' } : {}),
       ...stepData,
     },
   });
@@ -146,8 +146,8 @@ async function saveStepDetails(stayId: string, photos: any, roomTypes: any, amen
         await prisma.roomBed.create({
           data: {
             roomTypeId: created.id,
-            bedType: String(bed.bedType),
-            quantity: Number(bed.quantity) || 1,
+            type: String(bed.bedType),
+            count: Number(bed.quantity) || 1,
           },
         });
       }
@@ -284,11 +284,8 @@ export async function getPropertyByIdService(propertyId: string, userId: string,
       roomTypes: {
         include: { beds: true, inventories: true }
       },
-      wholeProperty: {
-        include: { beds: true }
-      },
+      wholeProperty: true,
       uniqueDetail: true,
-      dormBeds: true,
     },
   });
 
@@ -388,10 +385,10 @@ export async function patchPropertyService(propertyId: string, data: any, userId
     where: { id: propertyId },
     data: {
       ...stepData,
-      ...(status === 'PENDING_REVIEW'
-        ? { status: 'PENDING_REVIEW', rejectedReason: null }
+      ...(status === 'PENDING'
+        ? { status: 'PENDING', rejectedReason: null }
         : mustReReview
-          ? { status: 'PENDING_REVIEW', rejectedReason: null }
+          ? { status: 'PENDING', rejectedReason: null }
           : {}),
     },
   });
@@ -402,9 +399,10 @@ export async function patchPropertyService(propertyId: string, data: any, userId
   if (mustReReview) {
     await prisma.moderationLog.create({
       data: {
-        actorId: userId,
+        adminId: userId,
+        targetType: 'STAY',
+        targetId: propertyId,
         action: 'RESUBMIT',
-        stayId: propertyId,
         reason: `แก้ไขฟิลด์สำคัญ: ${criticalChanges.join(', ')}`,
       },
     });
@@ -520,8 +518,8 @@ export async function setStopSellService(propertyId: string, userId: string, pay
       }
       await prisma.roomInventory.upsert({
         where: { roomTypeId_date: { roomTypeId, date } },
-        create: { roomTypeId, date, available: 0, isClosed: true },
-        update: { isClosed: true },
+        create: { roomTypeId, stayId: propertyId, date, totalRooms: 0, booked: 0 },
+        update: { totalRooms: 0 },
       });
       saved += 1;
     }
@@ -535,7 +533,7 @@ export async function listStopSellService(propertyId: string, userId: string) {
   await assertOwner(propertyId, userId);
 
   const rows = await prisma.roomInventory.findMany({
-    where: { isClosed: true },
+    where: { totalRooms: 0 },
     orderBy: { date: "asc" },
     select: { roomTypeId: true, date: true },
   });
@@ -598,7 +596,7 @@ export async function hostDashboardService(userId: string) {
     listings: {
       total: stays.length,
       published: stays.filter((item) => item.status === 'PUBLISHED').length,
-      pending: stays.filter((item) => item.status === 'PENDING_REVIEW').length,
+      pending: stays.filter((item) => item.status === 'PENDING').length,
       rejected: stays.filter((item) => item.status === 'REJECTED').length,
       draft: stays.filter((item) => item.status === 'DRAFT').length,
     },
@@ -684,8 +682,16 @@ export async function applyAsHostService(userId: string, data: any) {
  * เพิ่มเอกสารยืนยันตัวตน (อัปโหลดไฟล์มาแล้วค่อยเรียก)
  */
 export async function addVerificationDocumentService(userId: string, docType: string, fileUrl: string) {
+  const host = await prisma.hostProfile.findUnique({
+    where: { userId },
+    select: { id: true },
+  });
+  if (!host) {
+    throw new Error('ยังไม่ได้สมัครเป็นเจ้าของที่พัก');
+  }
+
   return await prisma.verificationDocument.create({
-    data: { userId, docType, fileUrl, status: 'PENDING' },
+    data: { hostId: host.id, type: docType, url: fileUrl, status: 'PENDING' },
   });
 }
 
@@ -700,7 +706,7 @@ export async function getHostProfileService(userId: string) {
   }
 
   const documents = await prisma.verificationDocument.findMany({
-    where: { userId },
+    where: { hostId: host.id },
     orderBy: { createdAt: 'desc' },
   });
 

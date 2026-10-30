@@ -40,7 +40,7 @@ async function closedDates(roomTypeId: string, checkIn: Date, checkOut: Date): P
   const rows = await prisma.roomInventory.findMany({
     where: {
       roomTypeId,
-      isClosed: true,
+      totalRooms: 0,
       date: { gte: first, lte: last },
     },
     select: { date: true },

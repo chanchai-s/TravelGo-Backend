@@ -115,9 +115,10 @@ export async function verifyPayoutService(hostId: string, actorId: string, appro
 
   await prisma.moderationLog.create({
     data: {
-      actorId,
+      adminId: actorId,
+      targetType: "PAYOUT_ACCOUNT",
+      targetId: hostId,
       action: approve ? "VERIFY_PAYOUT" : "REJECT_PAYOUT",
-      hostId,
       reason: approve ? null : reason,
     },
   });
@@ -133,23 +134,29 @@ export async function verifyPayoutService(hostId: string, actorId: string, appro
  */
 async function availableEarnings(hostId: string) {
   const inFlight = await prisma.payoutItem.findMany({
-    where: { payout: { hostId, status: { in: ["PENDING", "PROCESSING"] } } },
-    select: { earningId: true },
+    where: { payout: { hostId, status: "PENDING" } },
+    select: { bookingId: true },
   });
-  const taken = new Set(inFlight.map((item) => item.earningId));
+  const taken = new Set(inFlight.map((item) => item.bookingId));
+
+  const stays = await prisma.stay.findMany({ where: { hostId }, select: { id: true } });
+  const stayIds = stays.map((stay) => stay.id);
+  if (stayIds.length === 0) {
+    return [];
+  }
 
   const rows = await prisma.ownerEarning.findMany({
-    where: { hostId, status: { in: ["PENDING", "AVAILABLE"] } },
+    where: { stayId: { in: stayIds }, status: { in: ["PENDING", "AVAILABLE"] } },
     select: {
       id: true,
-      net: true,
+      netAmount: true,
       bookingId: true,
       booking: { select: { status: true, checkOut: true } },
     },
   });
 
   return rows.filter((row) => {
-    if (taken.has(row.id)) {
+    if (taken.has(row.bookingId)) {
       return false;
     }
     const done =
@@ -170,24 +177,30 @@ export async function payoutBalanceService(userId: string) {
     throw new Error("ยังไม่ได้สมัครเป็นเจ้าของที่พัก");
   }
 
+  const stays = await prisma.stay.findMany({
+    where: { hostId: host.id },
+    select: { id: true },
+  });
+  const stayIdsOfHost = stays.map((stay) => stay.id);
+
   const all = await prisma.ownerEarning.findMany({
-    where: { hostId: host.id, status: { in: ["PENDING", "AVAILABLE", "PAID"] } },
-    select: { net: true },
+    where: { stayId: { in: stayIdsOfHost }, status: { in: ["PENDING", "AVAILABLE", "PAID"] } },
+    select: { netAmount: true },
   });
 
   const ready = await availableEarnings(host.id);
-  const readyAmount = ready.reduce((sum, row) => sum + row.net, 0);
-  const totalNet = all.reduce((sum, row) => sum + row.net, 0);
+  const readyAmount = ready.reduce((sum, row) => sum + row.netAmount, 0);
+  const totalNet = all.reduce((sum, row) => sum + row.netAmount, 0);
 
   const processing = await prisma.payout.aggregate({
-    where: { hostId: host.id, status: { in: ["PENDING", "PROCESSING"] } },
+    where: { hostId: host.id, status: "PENDING" },
     _sum: { amount: true },
   });
 
   return {
     payoutReady: readyAmount,
     payoutPending: Math.max(0, totalNet - readyAmount),
-    payoutInFlight: processing._sum.amount ?? 0,
+    payoutInFlight: processing._sum?.amount ?? 0,
     bankVerified: host.payoutAccount?.status === "VERIFIED",
     stripeConnected: Boolean(host.payoutAccount?.stripeAccountId),
     stripeEnabled: stripeEnabled(),
@@ -196,7 +209,7 @@ export async function payoutBalanceService(userId: string) {
 }
 
 /** เจ้าของกดขอจ่ายเงิน */
-export async function requestPayoutService(userId: string, note?: string) {
+export async function requestPayoutService(userId: string, _note?: string) {
   const host = await prisma.hostProfile.findUnique({
     where: { userId },
     include: { payoutAccount: true },
@@ -211,7 +224,7 @@ export async function requestPayoutService(userId: string, note?: string) {
   const ready = await availableEarnings(host.id);
   if (ready.length === 0) {
     const pending = await prisma.payout.findFirst({
-      where: { hostId: host.id, status: { in: ["PENDING", "PROCESSING"] } },
+      where: { hostId: host.id, status: "PENDING" },
       select: { id: true },
     });
     throw new Error(
@@ -219,16 +232,16 @@ export async function requestPayoutService(userId: string, note?: string) {
     );
   }
 
-  const amount = ready.reduce((sum, row) => sum + row.net, 0);
+  const amount = ready.reduce((sum, row) => sum + row.netAmount, 0);
 
   return await prisma.payout.create({
     data: {
       hostId: host.id,
       amount,
-      note: note ?? null,
       status: "PENDING",
-      method: "STRIPE",
-      items: { create: ready.map((row) => ({ earningId: row.id, net: row.net })) },
+      items: {
+        create: ready.map((row) => ({ bookingId: row.bookingId, amount: row.netAmount })),
+      },
     },
   });
 }
@@ -269,9 +282,9 @@ export async function saveStripeAccountService(hostId: string, stripeAccountId: 
 /** แอดมินดูคิวจ่ายทั้งหมด */
 export async function listAllPayoutsService(status: string) {
   return await prisma.payout.findMany({
-    where: status === "ALL" ? {} : { status },
+    where: status === "ALL" ? {} : { status: status as any },
     orderBy: { requestedAt: "desc" },
-    include: { items: { select: { id: true, net: true } } },
+    include: { items: { select: { id: true, amount: true } } },
   });
 }
 
@@ -294,8 +307,6 @@ export async function sendPayoutService(payoutId: string) {
 
   const accountId = payout.host.payoutAccount?.stripeAccountId ?? null;
 
-  await prisma.payout.update({ where: { id: payoutId }, data: { status: "PROCESSING" } });
-
   const result = await transferToHost(
     payout.amount,
     accountId,
@@ -305,34 +316,28 @@ export async function sendPayoutService(payoutId: string) {
   if (!result.ok) {
     await prisma.payout.update({
       where: { id: payoutId },
-      data: { status: "FAILED", note: result.message ?? "โอนไม่สำเร็จ" },
+      data: { status: "REJECTED", processedAt: new Date() },
     });
     throw new Error(result.message ?? "โอนเงินไม่สำเร็จ");
   }
 
   const paid = await prisma.payout.update({
     where: { id: payoutId },
-    data: {
-      status: "PAID",
-      provider: result.mock ? "mock" : "stripe",
-      providerRef: result.ref ?? null,
-      paidAt: new Date(),
-      note: result.mock ? (result.message ?? null) : payout.note,
-    },
+    data: { status: "VERIFIED", processedAt: new Date() },
   });
 
   await prisma.ownerEarning.updateMany({
-    where: { id: { in: payout.items.map((item) => item.earningId) } },
-    data: { status: "PAID" },
+    where: { bookingId: { in: payout.items.map((item) => item.bookingId) } },
+    data: { status: "PAID", paidAt: new Date() },
   });
 
   return { payout: paid, ref: result.ref ?? null, mock: result.mock };
 }
 
 /** แอดมินปฏิเสธคิวจ่าย (ปลดรายการรายได้ให้จ่ายรอบหน้า) */
-export async function rejectPayoutService(payoutId: string, reason: string) {
+export async function rejectPayoutService(payoutId: string, _reason: string) {
   return await prisma.payout.update({
     where: { id: payoutId },
-    data: { status: "FAILED", note: reason },
+    data: { status: "REJECTED", processedAt: new Date() },
   });
 }

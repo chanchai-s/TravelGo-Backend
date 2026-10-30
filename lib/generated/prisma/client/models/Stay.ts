@@ -70,6 +70,7 @@ export type StayMinAggregateOutputType = {
   frontDesk24h: boolean | null
   breakfastIncluded: boolean | null
   hostId: string | null
+  draftKey: string | null
 }
 
 export type StayMaxAggregateOutputType = {
@@ -96,6 +97,7 @@ export type StayMaxAggregateOutputType = {
   frontDesk24h: boolean | null
   breakfastIncluded: boolean | null
   hostId: string | null
+  draftKey: string | null
 }
 
 export type StayCountAggregateOutputType = {
@@ -122,6 +124,7 @@ export type StayCountAggregateOutputType = {
   frontDesk24h: number
   breakfastIncluded: number
   hostId: number
+  draftKey: number
   _all: number
 }
 
@@ -170,6 +173,7 @@ export type StayMinAggregateInputType = {
   frontDesk24h?: true
   breakfastIncluded?: true
   hostId?: true
+  draftKey?: true
 }
 
 export type StayMaxAggregateInputType = {
@@ -196,6 +200,7 @@ export type StayMaxAggregateInputType = {
   frontDesk24h?: true
   breakfastIncluded?: true
   hostId?: true
+  draftKey?: true
 }
 
 export type StayCountAggregateInputType = {
@@ -222,6 +227,7 @@ export type StayCountAggregateInputType = {
   frontDesk24h?: true
   breakfastIncluded?: true
   hostId?: true
+  draftKey?: true
   _all?: true
 }
 
@@ -335,6 +341,7 @@ export type StayGroupByOutputType = {
   frontDesk24h: boolean
   breakfastIncluded: boolean
   hostId: string | null
+  draftKey: string | null
   _count: StayCountAggregateOutputType | null
   _avg: StayAvgAggregateOutputType | null
   _sum: StaySumAggregateOutputType | null
@@ -384,12 +391,14 @@ export type StayWhereInput = {
   frontDesk24h?: Prisma.BoolFilter<"Stay"> | boolean
   breakfastIncluded?: Prisma.BoolFilter<"Stay"> | boolean
   hostId?: Prisma.StringNullableFilter<"Stay"> | string | null
+  draftKey?: Prisma.StringNullableFilter<"Stay"> | string | null
   host?: Prisma.XOR<Prisma.HostProfileNullableScalarRelationFilter, Prisma.HostProfileWhereInput> | null
   photos?: Prisma.StayPhotoListRelationFilter
   amenities?: Prisma.XOR<Prisma.StayAmenityNullableScalarRelationFilter, Prisma.StayAmenityWhereInput> | null
   policies?: Prisma.XOR<Prisma.StayPolicyNullableScalarRelationFilter, Prisma.StayPolicyWhereInput> | null
   nearby?: Prisma.StayNearbyListRelationFilter
   uniqueDetails?: Prisma.XOR<Prisma.UniquePropertyDetailNullableScalarRelationFilter, Prisma.UniquePropertyDetailWhereInput> | null
+  wholeProperty?: Prisma.XOR<Prisma.WholePropertyDetailNullableScalarRelationFilter, Prisma.WholePropertyDetailWhereInput> | null
   roomTypes?: Prisma.RoomTypeListRelationFilter
   bookings?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
@@ -421,12 +430,14 @@ export type StayOrderByWithRelationInput = {
   frontDesk24h?: Prisma.SortOrder
   breakfastIncluded?: Prisma.SortOrder
   hostId?: Prisma.SortOrderInput | Prisma.SortOrder
+  draftKey?: Prisma.SortOrderInput | Prisma.SortOrder
   host?: Prisma.HostProfileOrderByWithRelationInput
   photos?: Prisma.StayPhotoOrderByRelationAggregateInput
   amenities?: Prisma.StayAmenityOrderByWithRelationInput
   policies?: Prisma.StayPolicyOrderByWithRelationInput
   nearby?: Prisma.StayNearbyOrderByRelationAggregateInput
   uniqueDetails?: Prisma.UniquePropertyDetailOrderByWithRelationInput
+  wholeProperty?: Prisma.WholePropertyDetailOrderByWithRelationInput
   roomTypes?: Prisma.RoomTypeOrderByRelationAggregateInput
   bookings?: Prisma.BookingOrderByRelationAggregateInput
   reviews?: Prisma.ReviewOrderByRelationAggregateInput
@@ -437,6 +448,7 @@ export type StayOrderByWithRelationInput = {
 
 export type StayWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  draftKey?: string
   AND?: Prisma.StayWhereInput | Prisma.StayWhereInput[]
   OR?: Prisma.StayWhereInput[]
   NOT?: Prisma.StayWhereInput | Prisma.StayWhereInput[]
@@ -468,12 +480,13 @@ export type StayWhereUniqueInput = Prisma.AtLeast<{
   policies?: Prisma.XOR<Prisma.StayPolicyNullableScalarRelationFilter, Prisma.StayPolicyWhereInput> | null
   nearby?: Prisma.StayNearbyListRelationFilter
   uniqueDetails?: Prisma.XOR<Prisma.UniquePropertyDetailNullableScalarRelationFilter, Prisma.UniquePropertyDetailWhereInput> | null
+  wholeProperty?: Prisma.XOR<Prisma.WholePropertyDetailNullableScalarRelationFilter, Prisma.WholePropertyDetailWhereInput> | null
   roomTypes?: Prisma.RoomTypeListRelationFilter
   bookings?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
   inventories?: Prisma.RoomInventoryListRelationFilter
   nearbyPlaces?: Prisma.StayNearbyListRelationFilter
-}, "id">
+}, "id" | "draftKey">
 
 export type StayOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -499,6 +512,7 @@ export type StayOrderByWithAggregationInput = {
   frontDesk24h?: Prisma.SortOrder
   breakfastIncluded?: Prisma.SortOrder
   hostId?: Prisma.SortOrderInput | Prisma.SortOrder
+  draftKey?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.StayCountOrderByAggregateInput
   _avg?: Prisma.StayAvgOrderByAggregateInput
   _max?: Prisma.StayMaxOrderByAggregateInput
@@ -533,6 +547,7 @@ export type StayScalarWhereWithAggregatesInput = {
   frontDesk24h?: Prisma.BoolWithAggregatesFilter<"Stay"> | boolean
   breakfastIncluded?: Prisma.BoolWithAggregatesFilter<"Stay"> | boolean
   hostId?: Prisma.StringNullableWithAggregatesFilter<"Stay"> | string | null
+  draftKey?: Prisma.StringNullableWithAggregatesFilter<"Stay"> | string | null
 }
 
 export type StayCreateInput = {
@@ -558,12 +573,14 @@ export type StayCreateInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
   host?: Prisma.HostProfileCreateNestedOneWithoutStaysInput
   photos?: Prisma.StayPhotoCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutStayInput
@@ -595,11 +612,13 @@ export type StayUncheckedCreateInput = {
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: string | null
+  draftKey?: string | null
   photos?: Prisma.StayPhotoUncheckedCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityUncheckedCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyUncheckedCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyUncheckedCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeUncheckedCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutStayInput
@@ -630,12 +649,14 @@ export type StayUpdateInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   host?: Prisma.HostProfileUpdateOneWithoutStaysNestedInput
   photos?: Prisma.StayPhotoUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutStayNestedInput
@@ -667,11 +688,13 @@ export type StayUncheckedUpdateInput = {
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   hostId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photos?: Prisma.StayPhotoUncheckedUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUncheckedUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUncheckedUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUncheckedUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUncheckedUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutStayNestedInput
@@ -703,6 +726,7 @@ export type StayCreateManyInput = {
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: string | null
+  draftKey?: string | null
 }
 
 export type StayUpdateManyMutationInput = {
@@ -728,6 +752,7 @@ export type StayUpdateManyMutationInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type StayUncheckedUpdateManyInput = {
@@ -754,6 +779,7 @@ export type StayUncheckedUpdateManyInput = {
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   hostId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type StayListRelationFilter = {
@@ -796,6 +822,7 @@ export type StayCountOrderByAggregateInput = {
   frontDesk24h?: Prisma.SortOrder
   breakfastIncluded?: Prisma.SortOrder
   hostId?: Prisma.SortOrder
+  draftKey?: Prisma.SortOrder
 }
 
 export type StayAvgOrderByAggregateInput = {
@@ -832,6 +859,7 @@ export type StayMaxOrderByAggregateInput = {
   frontDesk24h?: Prisma.SortOrder
   breakfastIncluded?: Prisma.SortOrder
   hostId?: Prisma.SortOrder
+  draftKey?: Prisma.SortOrder
 }
 
 export type StayMinOrderByAggregateInput = {
@@ -858,6 +886,7 @@ export type StayMinOrderByAggregateInput = {
   frontDesk24h?: Prisma.SortOrder
   breakfastIncluded?: Prisma.SortOrder
   hostId?: Prisma.SortOrder
+  draftKey?: Prisma.SortOrder
 }
 
 export type StaySumOrderByAggregateInput = {
@@ -1044,6 +1073,20 @@ export type StayUpdateOneRequiredWithoutUniqueDetailsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.StayUpdateToOneWithWhereWithoutUniqueDetailsInput, Prisma.StayUpdateWithoutUniqueDetailsInput>, Prisma.StayUncheckedUpdateWithoutUniqueDetailsInput>
 }
 
+export type StayCreateNestedOneWithoutWholePropertyInput = {
+  create?: Prisma.XOR<Prisma.StayCreateWithoutWholePropertyInput, Prisma.StayUncheckedCreateWithoutWholePropertyInput>
+  connectOrCreate?: Prisma.StayCreateOrConnectWithoutWholePropertyInput
+  connect?: Prisma.StayWhereUniqueInput
+}
+
+export type StayUpdateOneRequiredWithoutWholePropertyNestedInput = {
+  create?: Prisma.XOR<Prisma.StayCreateWithoutWholePropertyInput, Prisma.StayUncheckedCreateWithoutWholePropertyInput>
+  connectOrCreate?: Prisma.StayCreateOrConnectWithoutWholePropertyInput
+  upsert?: Prisma.StayUpsertWithoutWholePropertyInput
+  connect?: Prisma.StayWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StayUpdateToOneWithWhereWithoutWholePropertyInput, Prisma.StayUpdateWithoutWholePropertyInput>, Prisma.StayUncheckedUpdateWithoutWholePropertyInput>
+}
+
 export type StayCreateNestedOneWithoutRoomTypesInput = {
   create?: Prisma.XOR<Prisma.StayCreateWithoutRoomTypesInput, Prisma.StayUncheckedCreateWithoutRoomTypesInput>
   connectOrCreate?: Prisma.StayCreateOrConnectWithoutRoomTypesInput
@@ -1129,11 +1172,13 @@ export type StayCreateWithoutHostInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
   photos?: Prisma.StayPhotoCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutStayInput
@@ -1164,11 +1209,13 @@ export type StayUncheckedCreateWithoutHostInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
   photos?: Prisma.StayPhotoUncheckedCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityUncheckedCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyUncheckedCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyUncheckedCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeUncheckedCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutStayInput
@@ -1229,6 +1276,7 @@ export type StayScalarWhereInput = {
   frontDesk24h?: Prisma.BoolFilter<"Stay"> | boolean
   breakfastIncluded?: Prisma.BoolFilter<"Stay"> | boolean
   hostId?: Prisma.StringNullableFilter<"Stay"> | string | null
+  draftKey?: Prisma.StringNullableFilter<"Stay"> | string | null
 }
 
 export type StayCreateWithoutPhotosInput = {
@@ -1254,11 +1302,13 @@ export type StayCreateWithoutPhotosInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
   host?: Prisma.HostProfileCreateNestedOneWithoutStaysInput
   amenities?: Prisma.StayAmenityCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutStayInput
@@ -1290,10 +1340,12 @@ export type StayUncheckedCreateWithoutPhotosInput = {
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: string | null
+  draftKey?: string | null
   amenities?: Prisma.StayAmenityUncheckedCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyUncheckedCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyUncheckedCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeUncheckedCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutStayInput
@@ -1340,11 +1392,13 @@ export type StayUpdateWithoutPhotosInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   host?: Prisma.HostProfileUpdateOneWithoutStaysNestedInput
   amenities?: Prisma.StayAmenityUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutStayNestedInput
@@ -1376,10 +1430,12 @@ export type StayUncheckedUpdateWithoutPhotosInput = {
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   hostId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amenities?: Prisma.StayAmenityUncheckedUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUncheckedUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUncheckedUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUncheckedUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutStayNestedInput
@@ -1410,11 +1466,13 @@ export type StayCreateWithoutAmenitiesInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
   host?: Prisma.HostProfileCreateNestedOneWithoutStaysInput
   photos?: Prisma.StayPhotoCreateNestedManyWithoutStayInput
   policies?: Prisma.StayPolicyCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutStayInput
@@ -1446,10 +1504,12 @@ export type StayUncheckedCreateWithoutAmenitiesInput = {
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: string | null
+  draftKey?: string | null
   photos?: Prisma.StayPhotoUncheckedCreateNestedManyWithoutStayInput
   policies?: Prisma.StayPolicyUncheckedCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyUncheckedCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeUncheckedCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutStayInput
@@ -1496,11 +1556,13 @@ export type StayUpdateWithoutAmenitiesInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   host?: Prisma.HostProfileUpdateOneWithoutStaysNestedInput
   photos?: Prisma.StayPhotoUpdateManyWithoutStayNestedInput
   policies?: Prisma.StayPolicyUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutStayNestedInput
@@ -1532,10 +1594,12 @@ export type StayUncheckedUpdateWithoutAmenitiesInput = {
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   hostId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photos?: Prisma.StayPhotoUncheckedUpdateManyWithoutStayNestedInput
   policies?: Prisma.StayPolicyUncheckedUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUncheckedUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUncheckedUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutStayNestedInput
@@ -1566,11 +1630,13 @@ export type StayCreateWithoutPoliciesInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
   host?: Prisma.HostProfileCreateNestedOneWithoutStaysInput
   photos?: Prisma.StayPhotoCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutStayInput
@@ -1602,10 +1668,12 @@ export type StayUncheckedCreateWithoutPoliciesInput = {
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: string | null
+  draftKey?: string | null
   photos?: Prisma.StayPhotoUncheckedCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityUncheckedCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyUncheckedCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeUncheckedCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutStayInput
@@ -1652,11 +1720,13 @@ export type StayUpdateWithoutPoliciesInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   host?: Prisma.HostProfileUpdateOneWithoutStaysNestedInput
   photos?: Prisma.StayPhotoUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutStayNestedInput
@@ -1688,10 +1758,12 @@ export type StayUncheckedUpdateWithoutPoliciesInput = {
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   hostId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photos?: Prisma.StayPhotoUncheckedUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUncheckedUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUncheckedUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUncheckedUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutStayNestedInput
@@ -1722,11 +1794,13 @@ export type StayCreateWithoutNearbyInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
   host?: Prisma.HostProfileCreateNestedOneWithoutStaysInput
   photos?: Prisma.StayPhotoCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyCreateNestedOneWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutStayInput
@@ -1758,10 +1832,12 @@ export type StayUncheckedCreateWithoutNearbyInput = {
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: string | null
+  draftKey?: string | null
   photos?: Prisma.StayPhotoUncheckedCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityUncheckedCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyUncheckedCreateNestedOneWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeUncheckedCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutStayInput
@@ -1797,12 +1873,14 @@ export type StayCreateWithoutNearbyPlacesInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
   host?: Prisma.HostProfileCreateNestedOneWithoutStaysInput
   photos?: Prisma.StayPhotoCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutStayInput
@@ -1833,11 +1911,13 @@ export type StayUncheckedCreateWithoutNearbyPlacesInput = {
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: string | null
+  draftKey?: string | null
   photos?: Prisma.StayPhotoUncheckedCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityUncheckedCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyUncheckedCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyUncheckedCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeUncheckedCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutStayInput
@@ -1883,11 +1963,13 @@ export type StayUpdateWithoutNearbyInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   host?: Prisma.HostProfileUpdateOneWithoutStaysNestedInput
   photos?: Prisma.StayPhotoUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUpdateOneWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutStayNestedInput
@@ -1919,10 +2001,12 @@ export type StayUncheckedUpdateWithoutNearbyInput = {
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   hostId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photos?: Prisma.StayPhotoUncheckedUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUncheckedUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUncheckedUpdateOneWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUncheckedUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutStayNestedInput
@@ -1964,12 +2048,14 @@ export type StayUpdateWithoutNearbyPlacesInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   host?: Prisma.HostProfileUpdateOneWithoutStaysNestedInput
   photos?: Prisma.StayPhotoUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutStayNestedInput
@@ -2000,11 +2086,13 @@ export type StayUncheckedUpdateWithoutNearbyPlacesInput = {
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   hostId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photos?: Prisma.StayPhotoUncheckedUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUncheckedUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUncheckedUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUncheckedUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUncheckedUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutStayNestedInput
@@ -2034,11 +2122,13 @@ export type StayCreateWithoutUniqueDetailsInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
   host?: Prisma.HostProfileCreateNestedOneWithoutStaysInput
   photos?: Prisma.StayPhotoCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyCreateNestedManyWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutStayInput
@@ -2070,10 +2160,12 @@ export type StayUncheckedCreateWithoutUniqueDetailsInput = {
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: string | null
+  draftKey?: string | null
   photos?: Prisma.StayPhotoUncheckedCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityUncheckedCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyUncheckedCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyUncheckedCreateNestedManyWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeUncheckedCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutStayInput
@@ -2120,11 +2212,13 @@ export type StayUpdateWithoutUniqueDetailsInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   host?: Prisma.HostProfileUpdateOneWithoutStaysNestedInput
   photos?: Prisma.StayPhotoUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUpdateManyWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutStayNestedInput
@@ -2156,10 +2250,176 @@ export type StayUncheckedUpdateWithoutUniqueDetailsInput = {
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   hostId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photos?: Prisma.StayPhotoUncheckedUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUncheckedUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUncheckedUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUncheckedUpdateManyWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
+  roomTypes?: Prisma.RoomTypeUncheckedUpdateManyWithoutStayNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutStayNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutStayNestedInput
+  inventories?: Prisma.RoomInventoryUncheckedUpdateManyWithoutStayNestedInput
+  nearbyPlaces?: Prisma.StayNearbyUncheckedUpdateManyWithoutStayPlacesNestedInput
+}
+
+export type StayCreateWithoutWholePropertyInput = {
+  id?: string
+  name: string
+  propertyType?: $Enums.PropertyType
+  status?: $Enums.PropertyStatus
+  currentStep?: number
+  location: string
+  addressLine?: string | null
+  latitude?: number | null
+  longitude?: number | null
+  tag?: string | null
+  rating?: number | null
+  reviewCount?: number
+  pricePerNight: number
+  imageUrl?: string | null
+  description?: string | null
+  phone?: string | null
+  email?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  stars?: number | null
+  frontDesk24h?: boolean
+  breakfastIncluded?: boolean
+  draftKey?: string | null
+  host?: Prisma.HostProfileCreateNestedOneWithoutStaysInput
+  photos?: Prisma.StayPhotoCreateNestedManyWithoutStayInput
+  amenities?: Prisma.StayAmenityCreateNestedOneWithoutStayInput
+  policies?: Prisma.StayPolicyCreateNestedOneWithoutStayInput
+  nearby?: Prisma.StayNearbyCreateNestedManyWithoutStayInput
+  uniqueDetails?: Prisma.UniquePropertyDetailCreateNestedOneWithoutStayInput
+  roomTypes?: Prisma.RoomTypeCreateNestedManyWithoutStayInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutStayInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutStayInput
+  inventories?: Prisma.RoomInventoryCreateNestedManyWithoutStayInput
+  nearbyPlaces?: Prisma.StayNearbyCreateNestedManyWithoutStayPlacesInput
+}
+
+export type StayUncheckedCreateWithoutWholePropertyInput = {
+  id?: string
+  name: string
+  propertyType?: $Enums.PropertyType
+  status?: $Enums.PropertyStatus
+  currentStep?: number
+  location: string
+  addressLine?: string | null
+  latitude?: number | null
+  longitude?: number | null
+  tag?: string | null
+  rating?: number | null
+  reviewCount?: number
+  pricePerNight: number
+  imageUrl?: string | null
+  description?: string | null
+  phone?: string | null
+  email?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  stars?: number | null
+  frontDesk24h?: boolean
+  breakfastIncluded?: boolean
+  hostId?: string | null
+  draftKey?: string | null
+  photos?: Prisma.StayPhotoUncheckedCreateNestedManyWithoutStayInput
+  amenities?: Prisma.StayAmenityUncheckedCreateNestedOneWithoutStayInput
+  policies?: Prisma.StayPolicyUncheckedCreateNestedOneWithoutStayInput
+  nearby?: Prisma.StayNearbyUncheckedCreateNestedManyWithoutStayInput
+  uniqueDetails?: Prisma.UniquePropertyDetailUncheckedCreateNestedOneWithoutStayInput
+  roomTypes?: Prisma.RoomTypeUncheckedCreateNestedManyWithoutStayInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutStayInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutStayInput
+  inventories?: Prisma.RoomInventoryUncheckedCreateNestedManyWithoutStayInput
+  nearbyPlaces?: Prisma.StayNearbyUncheckedCreateNestedManyWithoutStayPlacesInput
+}
+
+export type StayCreateOrConnectWithoutWholePropertyInput = {
+  where: Prisma.StayWhereUniqueInput
+  create: Prisma.XOR<Prisma.StayCreateWithoutWholePropertyInput, Prisma.StayUncheckedCreateWithoutWholePropertyInput>
+}
+
+export type StayUpsertWithoutWholePropertyInput = {
+  update: Prisma.XOR<Prisma.StayUpdateWithoutWholePropertyInput, Prisma.StayUncheckedUpdateWithoutWholePropertyInput>
+  create: Prisma.XOR<Prisma.StayCreateWithoutWholePropertyInput, Prisma.StayUncheckedCreateWithoutWholePropertyInput>
+  where?: Prisma.StayWhereInput
+}
+
+export type StayUpdateToOneWithWhereWithoutWholePropertyInput = {
+  where?: Prisma.StayWhereInput
+  data: Prisma.XOR<Prisma.StayUpdateWithoutWholePropertyInput, Prisma.StayUncheckedUpdateWithoutWholePropertyInput>
+}
+
+export type StayUpdateWithoutWholePropertyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+  status?: Prisma.EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+  currentStep?: Prisma.IntFieldUpdateOperationsInput | number
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  addressLine?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pricePerNight?: Prisma.IntFieldUpdateOperationsInput | number
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  host?: Prisma.HostProfileUpdateOneWithoutStaysNestedInput
+  photos?: Prisma.StayPhotoUpdateManyWithoutStayNestedInput
+  amenities?: Prisma.StayAmenityUpdateOneWithoutStayNestedInput
+  policies?: Prisma.StayPolicyUpdateOneWithoutStayNestedInput
+  nearby?: Prisma.StayNearbyUpdateManyWithoutStayNestedInput
+  uniqueDetails?: Prisma.UniquePropertyDetailUpdateOneWithoutStayNestedInput
+  roomTypes?: Prisma.RoomTypeUpdateManyWithoutStayNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutStayNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutStayNestedInput
+  inventories?: Prisma.RoomInventoryUpdateManyWithoutStayNestedInput
+  nearbyPlaces?: Prisma.StayNearbyUpdateManyWithoutStayPlacesNestedInput
+}
+
+export type StayUncheckedUpdateWithoutWholePropertyInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+  status?: Prisma.EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+  currentStep?: Prisma.IntFieldUpdateOperationsInput | number
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  addressLine?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  pricePerNight?: Prisma.IntFieldUpdateOperationsInput | number
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hostId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photos?: Prisma.StayPhotoUncheckedUpdateManyWithoutStayNestedInput
+  amenities?: Prisma.StayAmenityUncheckedUpdateOneWithoutStayNestedInput
+  policies?: Prisma.StayPolicyUncheckedUpdateOneWithoutStayNestedInput
+  nearby?: Prisma.StayNearbyUncheckedUpdateManyWithoutStayNestedInput
+  uniqueDetails?: Prisma.UniquePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUncheckedUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutStayNestedInput
@@ -2190,12 +2450,14 @@ export type StayCreateWithoutRoomTypesInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
   host?: Prisma.HostProfileCreateNestedOneWithoutStaysInput
   photos?: Prisma.StayPhotoCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailCreateNestedOneWithoutStayInput
   bookings?: Prisma.BookingCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutStayInput
   inventories?: Prisma.RoomInventoryCreateNestedManyWithoutStayInput
@@ -2226,11 +2488,13 @@ export type StayUncheckedCreateWithoutRoomTypesInput = {
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: string | null
+  draftKey?: string | null
   photos?: Prisma.StayPhotoUncheckedCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityUncheckedCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyUncheckedCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyUncheckedCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedCreateNestedOneWithoutStayInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutStayInput
   inventories?: Prisma.RoomInventoryUncheckedCreateNestedManyWithoutStayInput
@@ -2276,12 +2540,14 @@ export type StayUpdateWithoutRoomTypesInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   host?: Prisma.HostProfileUpdateOneWithoutStaysNestedInput
   photos?: Prisma.StayPhotoUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUpdateOneWithoutStayNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutStayNestedInput
   inventories?: Prisma.RoomInventoryUpdateManyWithoutStayNestedInput
@@ -2312,11 +2578,13 @@ export type StayUncheckedUpdateWithoutRoomTypesInput = {
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   hostId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photos?: Prisma.StayPhotoUncheckedUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUncheckedUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUncheckedUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUncheckedUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutStayNestedInput
   inventories?: Prisma.RoomInventoryUncheckedUpdateManyWithoutStayNestedInput
@@ -2346,12 +2614,14 @@ export type StayCreateWithoutInventoriesInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
   host?: Prisma.HostProfileCreateNestedOneWithoutStaysInput
   photos?: Prisma.StayPhotoCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutStayInput
@@ -2382,11 +2652,13 @@ export type StayUncheckedCreateWithoutInventoriesInput = {
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: string | null
+  draftKey?: string | null
   photos?: Prisma.StayPhotoUncheckedCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityUncheckedCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyUncheckedCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyUncheckedCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeUncheckedCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutStayInput
@@ -2432,12 +2704,14 @@ export type StayUpdateWithoutInventoriesInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   host?: Prisma.HostProfileUpdateOneWithoutStaysNestedInput
   photos?: Prisma.StayPhotoUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutStayNestedInput
@@ -2468,11 +2742,13 @@ export type StayUncheckedUpdateWithoutInventoriesInput = {
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   hostId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photos?: Prisma.StayPhotoUncheckedUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUncheckedUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUncheckedUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUncheckedUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUncheckedUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutStayNestedInput
@@ -2502,12 +2778,14 @@ export type StayCreateWithoutBookingsInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
   host?: Prisma.HostProfileCreateNestedOneWithoutStaysInput
   photos?: Prisma.StayPhotoCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutStayInput
   inventories?: Prisma.RoomInventoryCreateNestedManyWithoutStayInput
@@ -2538,11 +2816,13 @@ export type StayUncheckedCreateWithoutBookingsInput = {
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: string | null
+  draftKey?: string | null
   photos?: Prisma.StayPhotoUncheckedCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityUncheckedCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyUncheckedCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyUncheckedCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeUncheckedCreateNestedManyWithoutStayInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutStayInput
   inventories?: Prisma.RoomInventoryUncheckedCreateNestedManyWithoutStayInput
@@ -2588,12 +2868,14 @@ export type StayUpdateWithoutBookingsInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   host?: Prisma.HostProfileUpdateOneWithoutStaysNestedInput
   photos?: Prisma.StayPhotoUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutStayNestedInput
   inventories?: Prisma.RoomInventoryUpdateManyWithoutStayNestedInput
@@ -2624,11 +2906,13 @@ export type StayUncheckedUpdateWithoutBookingsInput = {
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   hostId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photos?: Prisma.StayPhotoUncheckedUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUncheckedUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUncheckedUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUncheckedUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUncheckedUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutStayNestedInput
   inventories?: Prisma.RoomInventoryUncheckedUpdateManyWithoutStayNestedInput
@@ -2658,12 +2942,14 @@ export type StayCreateWithoutReviewsInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
   host?: Prisma.HostProfileCreateNestedOneWithoutStaysInput
   photos?: Prisma.StayPhotoCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingCreateNestedManyWithoutStayInput
   inventories?: Prisma.RoomInventoryCreateNestedManyWithoutStayInput
@@ -2694,11 +2980,13 @@ export type StayUncheckedCreateWithoutReviewsInput = {
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: string | null
+  draftKey?: string | null
   photos?: Prisma.StayPhotoUncheckedCreateNestedManyWithoutStayInput
   amenities?: Prisma.StayAmenityUncheckedCreateNestedOneWithoutStayInput
   policies?: Prisma.StayPolicyUncheckedCreateNestedOneWithoutStayInput
   nearby?: Prisma.StayNearbyUncheckedCreateNestedManyWithoutStayInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedCreateNestedOneWithoutStayInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedCreateNestedOneWithoutStayInput
   roomTypes?: Prisma.RoomTypeUncheckedCreateNestedManyWithoutStayInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutStayInput
   inventories?: Prisma.RoomInventoryUncheckedCreateNestedManyWithoutStayInput
@@ -2744,12 +3032,14 @@ export type StayUpdateWithoutReviewsInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   host?: Prisma.HostProfileUpdateOneWithoutStaysNestedInput
   photos?: Prisma.StayPhotoUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutStayNestedInput
   inventories?: Prisma.RoomInventoryUpdateManyWithoutStayNestedInput
@@ -2780,11 +3070,13 @@ export type StayUncheckedUpdateWithoutReviewsInput = {
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   hostId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photos?: Prisma.StayPhotoUncheckedUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUncheckedUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUncheckedUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUncheckedUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUncheckedUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutStayNestedInput
   inventories?: Prisma.RoomInventoryUncheckedUpdateManyWithoutStayNestedInput
@@ -2814,6 +3106,7 @@ export type StayCreateManyHostInput = {
   stars?: number | null
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
+  draftKey?: string | null
 }
 
 export type StayUpdateWithoutHostInput = {
@@ -2839,11 +3132,13 @@ export type StayUpdateWithoutHostInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photos?: Prisma.StayPhotoUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutStayNestedInput
@@ -2874,11 +3169,13 @@ export type StayUncheckedUpdateWithoutHostInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photos?: Prisma.StayPhotoUncheckedUpdateManyWithoutStayNestedInput
   amenities?: Prisma.StayAmenityUncheckedUpdateOneWithoutStayNestedInput
   policies?: Prisma.StayPolicyUncheckedUpdateOneWithoutStayNestedInput
   nearby?: Prisma.StayNearbyUncheckedUpdateManyWithoutStayNestedInput
   uniqueDetails?: Prisma.UniquePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
+  wholeProperty?: Prisma.WholePropertyDetailUncheckedUpdateOneWithoutStayNestedInput
   roomTypes?: Prisma.RoomTypeUncheckedUpdateManyWithoutStayNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutStayNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutStayNestedInput
@@ -2909,6 +3206,7 @@ export type StayUncheckedUpdateManyWithoutHostInput = {
   stars?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   frontDesk24h?: Prisma.BoolFieldUpdateOperationsInput | boolean
   breakfastIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  draftKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -3020,12 +3318,14 @@ export type StaySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: boolean
+  draftKey?: boolean
   host?: boolean | Prisma.Stay$hostArgs<ExtArgs>
   photos?: boolean | Prisma.Stay$photosArgs<ExtArgs>
   amenities?: boolean | Prisma.Stay$amenitiesArgs<ExtArgs>
   policies?: boolean | Prisma.Stay$policiesArgs<ExtArgs>
   nearby?: boolean | Prisma.Stay$nearbyArgs<ExtArgs>
   uniqueDetails?: boolean | Prisma.Stay$uniqueDetailsArgs<ExtArgs>
+  wholeProperty?: boolean | Prisma.Stay$wholePropertyArgs<ExtArgs>
   roomTypes?: boolean | Prisma.Stay$roomTypesArgs<ExtArgs>
   bookings?: boolean | Prisma.Stay$bookingsArgs<ExtArgs>
   reviews?: boolean | Prisma.Stay$reviewsArgs<ExtArgs>
@@ -3060,9 +3360,10 @@ export type StaySelectScalar = {
   frontDesk24h?: boolean
   breakfastIncluded?: boolean
   hostId?: boolean
+  draftKey?: boolean
 }
 
-export type StayOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "propertyType" | "status" | "currentStep" | "location" | "addressLine" | "latitude" | "longitude" | "tag" | "rating" | "reviewCount" | "pricePerNight" | "imageUrl" | "description" | "phone" | "email" | "createdAt" | "updatedAt" | "stars" | "frontDesk24h" | "breakfastIncluded" | "hostId", ExtArgs["result"]["stay"]>
+export type StayOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "propertyType" | "status" | "currentStep" | "location" | "addressLine" | "latitude" | "longitude" | "tag" | "rating" | "reviewCount" | "pricePerNight" | "imageUrl" | "description" | "phone" | "email" | "createdAt" | "updatedAt" | "stars" | "frontDesk24h" | "breakfastIncluded" | "hostId" | "draftKey", ExtArgs["result"]["stay"]>
 export type StayInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   host?: boolean | Prisma.Stay$hostArgs<ExtArgs>
   photos?: boolean | Prisma.Stay$photosArgs<ExtArgs>
@@ -3070,6 +3371,7 @@ export type StayInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   policies?: boolean | Prisma.Stay$policiesArgs<ExtArgs>
   nearby?: boolean | Prisma.Stay$nearbyArgs<ExtArgs>
   uniqueDetails?: boolean | Prisma.Stay$uniqueDetailsArgs<ExtArgs>
+  wholeProperty?: boolean | Prisma.Stay$wholePropertyArgs<ExtArgs>
   roomTypes?: boolean | Prisma.Stay$roomTypesArgs<ExtArgs>
   bookings?: boolean | Prisma.Stay$bookingsArgs<ExtArgs>
   reviews?: boolean | Prisma.Stay$reviewsArgs<ExtArgs>
@@ -3087,6 +3389,7 @@ export type $StayPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     policies: Prisma.$StayPolicyPayload<ExtArgs> | null
     nearby: Prisma.$StayNearbyPayload<ExtArgs>[]
     uniqueDetails: Prisma.$UniquePropertyDetailPayload<ExtArgs> | null
+    wholeProperty: Prisma.$WholePropertyDetailPayload<ExtArgs> | null
     roomTypes: Prisma.$RoomTypePayload<ExtArgs>[]
     bookings: Prisma.$BookingPayload<ExtArgs>[]
     reviews: Prisma.$ReviewPayload<ExtArgs>[]
@@ -3117,6 +3420,7 @@ export type $StayPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     frontDesk24h: boolean
     breakfastIncluded: boolean
     hostId: string | null
+    draftKey: string | null
   }, ExtArgs["result"]["stay"]>
   composites: {}
 }
@@ -3463,6 +3767,7 @@ export interface Prisma__StayClient<T, Null = never, ExtArgs extends runtime.Typ
   policies<T extends Prisma.Stay$policiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stay$policiesArgs<ExtArgs>>): Prisma.Prisma__StayPolicyClient<runtime.Types.Result.GetResult<Prisma.$StayPolicyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   nearby<T extends Prisma.Stay$nearbyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stay$nearbyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StayNearbyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   uniqueDetails<T extends Prisma.Stay$uniqueDetailsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stay$uniqueDetailsArgs<ExtArgs>>): Prisma.Prisma__UniquePropertyDetailClient<runtime.Types.Result.GetResult<Prisma.$UniquePropertyDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  wholeProperty<T extends Prisma.Stay$wholePropertyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stay$wholePropertyArgs<ExtArgs>>): Prisma.Prisma__WholePropertyDetailClient<runtime.Types.Result.GetResult<Prisma.$WholePropertyDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   roomTypes<T extends Prisma.Stay$roomTypesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stay$roomTypesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RoomTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   bookings<T extends Prisma.Stay$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stay$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reviews<T extends Prisma.Stay$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stay$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3520,6 +3825,7 @@ export interface StayFieldRefs {
   readonly frontDesk24h: Prisma.FieldRef<"Stay", 'Boolean'>
   readonly breakfastIncluded: Prisma.FieldRef<"Stay", 'Boolean'>
   readonly hostId: Prisma.FieldRef<"Stay", 'String'>
+  readonly draftKey: Prisma.FieldRef<"Stay", 'String'>
 }
     
 
@@ -3984,6 +4290,25 @@ export type Stay$uniqueDetailsArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   include?: Prisma.UniquePropertyDetailInclude<ExtArgs> | null
   where?: Prisma.UniquePropertyDetailWhereInput
+}
+
+/**
+ * Stay.wholeProperty
+ */
+export type Stay$wholePropertyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WholePropertyDetail
+   */
+  select?: Prisma.WholePropertyDetailSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the WholePropertyDetail
+   */
+  omit?: Prisma.WholePropertyDetailOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WholePropertyDetailInclude<ExtArgs> | null
+  where?: Prisma.WholePropertyDetailWhereInput
 }
 
 /**

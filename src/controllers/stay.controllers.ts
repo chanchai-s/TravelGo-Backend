@@ -130,7 +130,7 @@ export const getStayById = async (req: Request, res: Response) => {
         policy: true,
         nearby: true,
         roomTypes: { include: { beds: true } },
-        wholeProperty: { include: { beds: true } },
+        wholeProperty: true,
         uniqueDetail: true,
       },
     });
