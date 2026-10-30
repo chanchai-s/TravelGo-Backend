@@ -4140,6 +4140,9 @@ export const StayScalarFieldEnum = {
   stars: 'stars',
   frontDesk24h: 'frontDesk24h',
   breakfastIncluded: 'breakfastIncluded',
+  reviewedBy: 'reviewedBy',
+  reviewedAt: 'reviewedAt',
+  rejectedReason: 'rejectedReason',
   hostId: 'hostId',
   draftKey: 'draftKey'
 } as const
@@ -4395,6 +4398,7 @@ export const VehicleScalarFieldEnum = {
   minRentalDays: 'minRentalDays',
   maxRentalDays: 'maxRentalDays',
   advanceBookingDays: 'advanceBookingDays',
+  rejectedReason: 'rejectedReason',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -4948,6 +4952,8 @@ export const StayOrderByRelevanceFieldEnum = {
   description: 'description',
   phone: 'phone',
   email: 'email',
+  reviewedBy: 'reviewedBy',
+  rejectedReason: 'rejectedReason',
   hostId: 'hostId',
   draftKey: 'draftKey'
 } as const
@@ -5149,7 +5155,8 @@ export const VehicleOrderByRelevanceFieldEnum = {
   fuelType: 'fuelType',
   licensePlate: 'licensePlate',
   description: 'description',
-  imageUrl: 'imageUrl'
+  imageUrl: 'imageUrl',
+  rejectedReason: 'rejectedReason'
 } as const
 
 export type VehicleOrderByRelevanceFieldEnum = (typeof VehicleOrderByRelevanceFieldEnum)[keyof typeof VehicleOrderByRelevanceFieldEnum]

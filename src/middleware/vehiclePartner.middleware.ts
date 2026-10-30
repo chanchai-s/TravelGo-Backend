@@ -25,6 +25,7 @@ export async function requireVehiclePartner(req: Request, res: Response, next: N
 
     req.vehiclePartner = {
       id: partner.id,
+      companyName: partner.companyName,
       status: partner.status,
       commissionRate: partner.commissionRate,
       autoApprove: partner.autoApprove,

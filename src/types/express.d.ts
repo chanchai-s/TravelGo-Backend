@@ -10,6 +10,7 @@ declare global {
       };
       vehiclePartner?: {
         id: string;
+        companyName: string;
         status: string;
         commissionRate: number | null;
         autoApprove: boolean;

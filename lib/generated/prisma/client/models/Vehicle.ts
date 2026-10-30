@@ -78,6 +78,7 @@ export type VehicleMinAggregateOutputType = {
   minRentalDays: number | null
   maxRentalDays: number | null
   advanceBookingDays: number | null
+  rejectedReason: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -110,6 +111,7 @@ export type VehicleMaxAggregateOutputType = {
   minRentalDays: number | null
   maxRentalDays: number | null
   advanceBookingDays: number | null
+  rejectedReason: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -143,6 +145,7 @@ export type VehicleCountAggregateOutputType = {
   minRentalDays: number
   maxRentalDays: number
   advanceBookingDays: number
+  rejectedReason: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -201,6 +204,7 @@ export type VehicleMinAggregateInputType = {
   minRentalDays?: true
   maxRentalDays?: true
   advanceBookingDays?: true
+  rejectedReason?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -233,6 +237,7 @@ export type VehicleMaxAggregateInputType = {
   minRentalDays?: true
   maxRentalDays?: true
   advanceBookingDays?: true
+  rejectedReason?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -266,6 +271,7 @@ export type VehicleCountAggregateInputType = {
   minRentalDays?: true
   maxRentalDays?: true
   advanceBookingDays?: true
+  rejectedReason?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -386,6 +392,7 @@ export type VehicleGroupByOutputType = {
   minRentalDays: number
   maxRentalDays: number | null
   advanceBookingDays: number | null
+  rejectedReason: string | null
   createdAt: Date
   updatedAt: Date
   _count: VehicleCountAggregateOutputType | null
@@ -442,6 +449,7 @@ export type VehicleWhereInput = {
   minRentalDays?: Prisma.IntFilter<"Vehicle"> | number
   maxRentalDays?: Prisma.IntNullableFilter<"Vehicle"> | number | null
   advanceBookingDays?: Prisma.IntNullableFilter<"Vehicle"> | number | null
+  rejectedReason?: Prisma.StringNullableFilter<"Vehicle"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
   partner?: Prisma.XOR<Prisma.VehiclePartnerNullableScalarRelationFilter, Prisma.VehiclePartnerWhereInput> | null
@@ -485,6 +493,7 @@ export type VehicleOrderByWithRelationInput = {
   minRentalDays?: Prisma.SortOrder
   maxRentalDays?: Prisma.SortOrderInput | Prisma.SortOrder
   advanceBookingDays?: Prisma.SortOrderInput | Prisma.SortOrder
+  rejectedReason?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   partner?: Prisma.VehiclePartnerOrderByWithRelationInput
@@ -532,6 +541,7 @@ export type VehicleWhereUniqueInput = Prisma.AtLeast<{
   minRentalDays?: Prisma.IntFilter<"Vehicle"> | number
   maxRentalDays?: Prisma.IntNullableFilter<"Vehicle"> | number | null
   advanceBookingDays?: Prisma.IntNullableFilter<"Vehicle"> | number | null
+  rejectedReason?: Prisma.StringNullableFilter<"Vehicle"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
   partner?: Prisma.XOR<Prisma.VehiclePartnerNullableScalarRelationFilter, Prisma.VehiclePartnerWhereInput> | null
@@ -575,6 +585,7 @@ export type VehicleOrderByWithAggregationInput = {
   minRentalDays?: Prisma.SortOrder
   maxRentalDays?: Prisma.SortOrderInput | Prisma.SortOrder
   advanceBookingDays?: Prisma.SortOrderInput | Prisma.SortOrder
+  rejectedReason?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.VehicleCountOrderByAggregateInput
@@ -616,6 +627,7 @@ export type VehicleScalarWhereWithAggregatesInput = {
   minRentalDays?: Prisma.IntWithAggregatesFilter<"Vehicle"> | number
   maxRentalDays?: Prisma.IntNullableWithAggregatesFilter<"Vehicle"> | number | null
   advanceBookingDays?: Prisma.IntNullableWithAggregatesFilter<"Vehicle"> | number | null
+  rejectedReason?: Prisma.StringNullableWithAggregatesFilter<"Vehicle"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Vehicle"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Vehicle"> | Date | string
 }
@@ -646,6 +658,7 @@ export type VehicleCreateInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
@@ -689,6 +702,7 @@ export type VehicleUncheckedCreateInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
@@ -726,6 +740,7 @@ export type VehicleUpdateInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
@@ -769,6 +784,7 @@ export type VehicleUncheckedUpdateInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
@@ -809,6 +825,7 @@ export type VehicleCreateManyInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -839,6 +856,7 @@ export type VehicleUpdateManyMutationInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -872,6 +890,7 @@ export type VehicleUncheckedUpdateManyInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -916,6 +935,7 @@ export type VehicleCountOrderByAggregateInput = {
   minRentalDays?: Prisma.SortOrder
   maxRentalDays?: Prisma.SortOrder
   advanceBookingDays?: Prisma.SortOrder
+  rejectedReason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -960,6 +980,7 @@ export type VehicleMaxOrderByAggregateInput = {
   minRentalDays?: Prisma.SortOrder
   maxRentalDays?: Prisma.SortOrder
   advanceBookingDays?: Prisma.SortOrder
+  rejectedReason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -992,6 +1013,7 @@ export type VehicleMinOrderByAggregateInput = {
   minRentalDays?: Prisma.SortOrder
   maxRentalDays?: Prisma.SortOrder
   advanceBookingDays?: Prisma.SortOrder
+  rejectedReason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -1281,6 +1303,7 @@ export type VehicleCreateWithoutBookingsInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
@@ -1323,6 +1346,7 @@ export type VehicleUncheckedCreateWithoutBookingsInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
@@ -1375,6 +1399,7 @@ export type VehicleUpdateWithoutBookingsInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
@@ -1417,6 +1442,7 @@ export type VehicleUncheckedUpdateWithoutBookingsInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
@@ -1453,6 +1479,7 @@ export type VehicleCreateWithoutReviewsInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
@@ -1495,6 +1522,7 @@ export type VehicleUncheckedCreateWithoutReviewsInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
@@ -1547,6 +1575,7 @@ export type VehicleUpdateWithoutReviewsInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
@@ -1589,6 +1618,7 @@ export type VehicleUncheckedUpdateWithoutReviewsInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
@@ -1625,6 +1655,7 @@ export type VehicleCreateWithoutPartnerInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   branch?: Prisma.PartnerBranchCreateNestedOneWithoutVehiclesInput
@@ -1666,6 +1697,7 @@ export type VehicleUncheckedCreateWithoutPartnerInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
@@ -1735,6 +1767,7 @@ export type VehicleScalarWhereInput = {
   minRentalDays?: Prisma.IntFilter<"Vehicle"> | number
   maxRentalDays?: Prisma.IntNullableFilter<"Vehicle"> | number | null
   advanceBookingDays?: Prisma.IntNullableFilter<"Vehicle"> | number | null
+  rejectedReason?: Prisma.StringNullableFilter<"Vehicle"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
 }
@@ -1765,6 +1798,7 @@ export type VehicleCreateWithoutBranchInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
@@ -1806,6 +1840,7 @@ export type VehicleUncheckedCreateWithoutBranchInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
@@ -1869,6 +1904,7 @@ export type VehicleCreateWithoutCategoryRefInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
@@ -1910,6 +1946,7 @@ export type VehicleUncheckedCreateWithoutCategoryRefInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
@@ -1973,6 +2010,7 @@ export type VehicleCreateWithoutPhotosInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
@@ -2015,6 +2053,7 @@ export type VehicleUncheckedCreateWithoutPhotosInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   documents?: Prisma.VehicleDocumentUncheckedCreateNestedManyWithoutVehicleInput
@@ -2067,6 +2106,7 @@ export type VehicleUpdateWithoutPhotosInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
@@ -2109,6 +2149,7 @@ export type VehicleUncheckedUpdateWithoutPhotosInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   documents?: Prisma.VehicleDocumentUncheckedUpdateManyWithoutVehicleNestedInput
@@ -2145,6 +2186,7 @@ export type VehicleCreateWithoutDocumentsInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
@@ -2187,6 +2229,7 @@ export type VehicleUncheckedCreateWithoutDocumentsInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
@@ -2239,6 +2282,7 @@ export type VehicleUpdateWithoutDocumentsInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
@@ -2281,6 +2325,7 @@ export type VehicleUncheckedUpdateWithoutDocumentsInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
@@ -2317,6 +2362,7 @@ export type VehicleCreateWithoutBlocksInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
@@ -2359,6 +2405,7 @@ export type VehicleUncheckedCreateWithoutBlocksInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
@@ -2411,6 +2458,7 @@ export type VehicleUpdateWithoutBlocksInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
@@ -2453,6 +2501,7 @@ export type VehicleUncheckedUpdateWithoutBlocksInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
@@ -2489,6 +2538,7 @@ export type VehicleCreateWithoutRentalDetailsInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
@@ -2531,6 +2581,7 @@ export type VehicleUncheckedCreateWithoutRentalDetailsInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
@@ -2583,6 +2634,7 @@ export type VehicleUpdateWithoutRentalDetailsInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
@@ -2625,6 +2677,7 @@ export type VehicleUncheckedUpdateWithoutRentalDetailsInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
@@ -2661,6 +2714,7 @@ export type VehicleCreateWithoutEarningsInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   partner?: Prisma.VehiclePartnerCreateNestedOneWithoutVehiclesInput
@@ -2703,6 +2757,7 @@ export type VehicleUncheckedCreateWithoutEarningsInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   photos?: Prisma.VehiclePhotoUncheckedCreateNestedManyWithoutVehicleInput
@@ -2755,6 +2810,7 @@ export type VehicleUpdateWithoutEarningsInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
@@ -2797,6 +2853,7 @@ export type VehicleUncheckedUpdateWithoutEarningsInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
@@ -2835,6 +2892,7 @@ export type VehicleCreateManyPartnerInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -2865,6 +2923,7 @@ export type VehicleUpdateWithoutPartnerInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branch?: Prisma.PartnerBranchUpdateOneWithoutVehiclesNestedInput
@@ -2906,6 +2965,7 @@ export type VehicleUncheckedUpdateWithoutPartnerInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
@@ -2945,6 +3005,7 @@ export type VehicleUncheckedUpdateManyWithoutPartnerInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -2977,6 +3038,7 @@ export type VehicleCreateManyBranchInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -3007,6 +3069,7 @@ export type VehicleUpdateWithoutBranchInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
@@ -3048,6 +3111,7 @@ export type VehicleUncheckedUpdateWithoutBranchInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
@@ -3087,6 +3151,7 @@ export type VehicleUncheckedUpdateManyWithoutBranchInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -3119,6 +3184,7 @@ export type VehicleCreateManyCategoryRefInput = {
   minRentalDays?: number
   maxRentalDays?: number | null
   advanceBookingDays?: number | null
+  rejectedReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -3149,6 +3215,7 @@ export type VehicleUpdateWithoutCategoryRefInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   partner?: Prisma.VehiclePartnerUpdateOneWithoutVehiclesNestedInput
@@ -3190,6 +3257,7 @@ export type VehicleUncheckedUpdateWithoutCategoryRefInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   photos?: Prisma.VehiclePhotoUncheckedUpdateManyWithoutVehicleNestedInput
@@ -3229,6 +3297,7 @@ export type VehicleUncheckedUpdateManyWithoutCategoryRefInput = {
   minRentalDays?: Prisma.IntFieldUpdateOperationsInput | number
   maxRentalDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advanceBookingDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -3347,6 +3416,7 @@ export type VehicleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   minRentalDays?: boolean
   maxRentalDays?: boolean
   advanceBookingDays?: boolean
+  rejectedReason?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   partner?: boolean | Prisma.Vehicle$partnerArgs<ExtArgs>
@@ -3393,11 +3463,12 @@ export type VehicleSelectScalar = {
   minRentalDays?: boolean
   maxRentalDays?: boolean
   advanceBookingDays?: boolean
+  rejectedReason?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type VehicleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "partnerId" | "branchId" | "categoryId" | "name" | "category" | "vendor" | "brand" | "modelYear" | "seats" | "bags" | "doors" | "transmission" | "fuelType" | "pricePerDay" | "depositAmount" | "licensePlate" | "description" | "specs" | "imageUrl" | "status" | "supportsSelfDrive" | "supportsChauffeur" | "allowOneWay" | "deliveryAvailable" | "minRentalDays" | "maxRentalDays" | "advanceBookingDays" | "createdAt" | "updatedAt", ExtArgs["result"]["vehicle"]>
+export type VehicleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "partnerId" | "branchId" | "categoryId" | "name" | "category" | "vendor" | "brand" | "modelYear" | "seats" | "bags" | "doors" | "transmission" | "fuelType" | "pricePerDay" | "depositAmount" | "licensePlate" | "description" | "specs" | "imageUrl" | "status" | "supportsSelfDrive" | "supportsChauffeur" | "allowOneWay" | "deliveryAvailable" | "minRentalDays" | "maxRentalDays" | "advanceBookingDays" | "rejectedReason" | "createdAt" | "updatedAt", ExtArgs["result"]["vehicle"]>
 export type VehicleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   partner?: boolean | Prisma.Vehicle$partnerArgs<ExtArgs>
   branch?: boolean | Prisma.Vehicle$branchArgs<ExtArgs>
@@ -3455,6 +3526,7 @@ export type $VehiclePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     minRentalDays: number
     maxRentalDays: number | null
     advanceBookingDays: number | null
+    rejectedReason: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["vehicle"]>
@@ -3864,6 +3936,7 @@ export interface VehicleFieldRefs {
   readonly minRentalDays: Prisma.FieldRef<"Vehicle", 'Int'>
   readonly maxRentalDays: Prisma.FieldRef<"Vehicle", 'Int'>
   readonly advanceBookingDays: Prisma.FieldRef<"Vehicle", 'Int'>
+  readonly rejectedReason: Prisma.FieldRef<"Vehicle", 'String'>
   readonly createdAt: Prisma.FieldRef<"Vehicle", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Vehicle", 'DateTime'>
 }

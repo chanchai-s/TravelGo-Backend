@@ -25,6 +25,11 @@ import {
   updateVehiclePartnerCommission,
   verifyVehiclePartner,
 } from "../controllers/partner.controllers";
+import {
+  approveVehicle,
+  listVehiclesForReview,
+  rejectVehicle,
+} from "../controllers/partnerVehicle.controllers";
 
 const adminRouter = Router();
 
@@ -50,6 +55,11 @@ adminRouter.get("/partners", listVehiclePartners);
 adminRouter.post("/partners/:id/verify", verifyVehiclePartner);
 adminRouter.post("/partners/:id/reject", rejectVehiclePartner);
 adminRouter.post("/partners/:id/commission", updateVehiclePartnerCommission);
+
+// คิวตรวจรถของพาร์ทเนอร์
+adminRouter.get("/vehicles", listVehiclesForReview);
+adminRouter.post("/vehicles/:id/approve", approveVehicle);
+adminRouter.post("/vehicles/:id/reject", rejectVehicle);
 
 // คิวจ่ายเงินให้เจ้าของ (Stripe)
 adminRouter.get("/payouts", listPayouts);

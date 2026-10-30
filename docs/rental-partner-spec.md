@@ -57,11 +57,22 @@ RESERVED ──ไม่มาจ่ายตามเวลา (job)──> NO_
   - verify → เอกสาร PENDING ทั้งหมดเป็น APPROVED + `ModerationLog`
   - commission → บันทึก `CommissionChangeLog` (oldRate/newRate/changedBy)
 
-### Phase 3-4 (ยังไม่ทำ)
+### Phase 3 — สาขา/รถ/ปฏิทิน + แคตตาล็อกสาธารณะ (ทำแล้ว)
 
+- Partner: `GET|POST /partner/branches`, `PATCH|DELETE /partner/branches/:id` (DELETE = ปิดใช้งาน soft)
+- Partner: `GET|POST /partner/vehicles`, `GET|PATCH|DELETE /partner/vehicles/:id`
+- Partner: `POST /partner/vehicles/:id/submit` (DRAFT/REJECTED/PAUSED → PENDING, ต้องมีรูป ≥ 1)
+- ลบรถ: ถ้าเคยมีการจอง → `SUSPENDED`; ถ้ามีการจองที่ยังไม่จบ → ห้ามลบ
+- Partner: `GET /partner/vehicles/:id/calendar`, `POST /partner/vehicles/:id/blocks`, `DELETE /partner/blocks/:blockId`
+- Admin: `GET /admin/vehicles`, `POST /admin/vehicles/:id/approve|reject`
 - Public: `GET /vehicle-categories`, `GET /vehicles`, `GET /vehicles/:id`, `GET /vehicles/:id/availability`, `POST /vehicles/:id/quote`
-- Partner: `/partner/branches`, `/partner/vehicles`, `/partner/vehicles/:id/submit|calendar|bookings`, `/partner/earnings`, `/partner/payouts/request`
-- Admin: `/admin/vehicles/:id/approve|reject`
+  - `GET /vehicles` กรองตาม `q, category, branchId, pickupAt, dropoffAt, transmission, minSeats, maxPrice, page, size`
+  - ถ้าส่งช่วงวันที่ → ตัดรถที่ถูกจอง/ปิดปฏิทินออก
+  - quote คิด VAT 7% (แตก base/vat) + มัดจำ; ไม่ส่งค่า commission ออกให้ลูกค้า
+
+### Phase 4 (ยังไม่ทำ)
+
+- Partner: `/partner/vehicles/:id/bookings` (รายการจองของรถ), `/partner/bookings`
 - Booking: `POST /bookings` (type `TRANSPORT`), approve/reject, pay-at-branch, pickup, return, cancel
 
 ## Notes

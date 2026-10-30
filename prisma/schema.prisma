@@ -221,6 +221,9 @@ model Stay {
   stars             Int?
   frontDesk24h      Boolean        @default(false)
   breakfastIncluded Boolean        @default(false)
+  reviewedBy        String?
+  reviewedAt        DateTime?
+  rejectedReason    String?
 
   hostId        String?
   host          HostProfile?          @relation(fields: [hostId], references: [id])
@@ -486,6 +489,7 @@ model Vehicle {
   minRentalDays      Int           @default(1)
   maxRentalDays      Int?
   advanceBookingDays Int?
+  rejectedReason     String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
