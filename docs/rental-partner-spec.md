@@ -89,6 +89,20 @@ RESERVED ──ไม่มาจ่ายตามเวลา (job)──> NO_
 - `no-show` ยึดมัดจำ → `depositStatus = FORFEITED`, ใบจองเป็น `CANCELLED`
 - Partner: `GET /partner/earnings` — summary (gross/commission/net/pendingNet/paidNet) + รายการ
 
+### Phase 6 — หน้าเว็บ RentCars ต่อ API จริง (ทำแล้ว)
+
+- หน้า `front/src/app/[locale]/rentcars/page.tsx` เลิกใช้ mock (`VEHICLES`/`RENTAL_RULES`) แล้วเรียก API จริง
+  - ตัวกรองหมวด (pills) มาจาก `GET /vehicle-categories`
+  - เลือกวันรับ/คืน → `GET /vehicles?pickupAt&dropoffAt&category` (ตัดรถที่ไม่ว่างออกให้แล้ว)
+  - กด "Rent Now" → `POST /vehicles/:id/quote` แสดงค่าเช่า (แตก base/VAT) + มัดจำ + ยอดจ่ายที่สาขา
+  - ยืนยัน → `POST /bookings/rental` แล้วแจ้งผลตาม `rentalDetail.status` (`RESERVED` = อนุมัติอัตโนมัติ, `PENDING_PARTNER` = รออนุมัติ)
+  - ต้อง login (JWT ใน `localStorage` key `travel_token`); ถ้า 401 แสดงข้อความให้เข้าสู่ระบบ
+- `front/src/app/[locale]/rentcars/resources/data.ts` เหลือแค่ type ของ payload (ไม่มี mock data แล้ว)
+- API client อยู่ใน `front/src/app/Api/mainApi.ts`: `apiListVehicleCategories`, `apiSearchVehicles`, `apiGetVehicle`,
+  `apiCheckVehicleAvailability`, `apiQuoteVehicle`, `apiCreateRentalBooking`, `apiCancelRentalBooking`
+- ลบ `front/src/app/[locale]/rentcars/package.json` (`rentcars-mcp`) ออก เพราะ `"type": "module"` ทำให้โฟลเดอร์
+  route กลายเป็น ESM scope จน `tsc` resolve alias `@/...` ไม่ได้ (ไฟล์ recover ได้จาก git history)
+
 ## Notes
 
 - `prisma db push` ยังติดปัญหา FK index drift เดิมของโปรเจกต์ → ใช้ `prisma/partner_schema.sql` ผ่าน `prisma db execute`
