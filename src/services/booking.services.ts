@@ -323,6 +323,22 @@ export async function listMyBookingsService(userId: string) {
           photos: { select: { url: true }, take: 1 },
         },
       },
+      rentalDetail: {
+        include: {
+          vehicle: {
+            select: {
+              id: true,
+              name: true,
+              brand: true,
+              imageUrl: true,
+              transmission: true,
+              fuelType: true,
+              seats: true,
+            },
+          },
+          branch: { select: { id: true, name: true, address: true, phone: true } },
+        },
+      },
     },
   });
 
@@ -336,13 +352,14 @@ export async function listMyBookingsService(userId: string) {
     id: booking.id,
     ref: booking.ref,
     type: booking.type,
-    status: effectiveStatus(booking.status, booking.checkOut),
+    status: booking.type === "STAY" ? effectiveStatus(booking.status, booking.checkOut) : booking.status,
     totalPrice: booking.totalPrice,
     travelDate: booking.travelDate,
     checkIn: booking.checkIn,
     checkOut: booking.checkOut,
     createdAt: booking.createdAt,
     stay: booking.stay,
+    rentalDetail: booking.rentalDetail,
     review: reviewByBooking.get(booking.id) ?? null,
   }));
 }

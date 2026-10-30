@@ -70,10 +70,24 @@ RESERVED ──ไม่มาจ่ายตามเวลา (job)──> NO_
   - ถ้าส่งช่วงวันที่ → ตัดรถที่ถูกจอง/ปิดปฏิทินออก
   - quote คิด VAT 7% (แตก base/vat) + มัดจำ; ไม่ส่งค่า commission ออกให้ลูกค้า
 
-### Phase 4 (ยังไม่ทำ)
+### Phase 4 — การจองรถ (ทำแล้ว)
 
-- Partner: `/partner/vehicles/:id/bookings` (รายการจองของรถ), `/partner/bookings`
-- Booking: `POST /bookings` (type `TRANSPORT`), approve/reject, pay-at-branch, pickup, return, cancel
+- Customer: `POST /bookings/rental` (สร้าง Booking type `TRANSPORT` + `RentalDetail`)
+  - `autoApprove=false` → `PENDING_PARTNER`, `true` → `RESERVED` ทันที
+  - กันรถจองทับด้วย `findVehicleConflict` (ทั้งการจองและ `VehicleBlock`)
+- Customer: `POST /bookings/rental/:id/cancel` (`:id` = Booking.id) — คืนมัดจำถ้าจ่ายแล้ว, ไม่คืนค่าเช่า
+- Customer: `GET /bookings/me` แสดง `rentalDetail` (รถ/สาขา)
+- Partner: `GET /partner/bookings`, `GET /partner/vehicles/:id/bookings`
+- Partner: `POST /partner/bookings/:id/approve|reject|pay-at-branch|pickup|return|complete|no-show` (`:id` = RentalDetail.id)
+
+### Phase 5 — เงิน/รายได้ (ทำแล้ว)
+
+- `pay-at-branch` สร้าง `Payment` 2 รายการ: `DEPOSIT` (ไม่คิด VAT) + `RENTAL` (แตก `baseAmount`/`vatAmount` 7%)
+- สร้าง `PartnerEarning` snapshot: `grossAmount = base (ก่อน VAT)`, `commissionRate`, `commission`, `netAmount`, status `PENDING`
+- `return` คิดค่าคืนช้า: เกิน grace 60 นาที → 200 บาท/ชม. (ปัดขึ้น, ไม่มีเพดาน) + `Payment` type `LATE_FEE`
+- `complete` คืนมัดจำ → `depositStatus = REFUNDED`
+- `no-show` ยึดมัดจำ → `depositStatus = FORFEITED`, ใบจองเป็น `CANCELLED`
+- Partner: `GET /partner/earnings` — summary (gross/commission/net/pendingNet/paidNet) + รายการ
 
 ## Notes
 

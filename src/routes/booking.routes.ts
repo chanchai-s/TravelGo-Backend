@@ -12,6 +12,10 @@ import {
   stayAvailability,
   stayCalendar,
 } from "../controllers/booking.controllers";
+import {
+  cancelMyRental,
+  createRentalBooking,
+} from "../controllers/rentalBooking.controllers";
 
 const bookingRouter = Router();
 
@@ -24,6 +28,8 @@ bookingRouter.get("/stays/:id/availability", optionalAuth, stayAvailability);
 bookingRouter.get("/stays/:id/calendar", optionalAuth, stayCalendar);
 
 bookingRouter.get("/me", authCheck, listMyBookings);
+bookingRouter.post("/rental", authCheck, rateLimitFor("submit"), createRentalBooking);
+bookingRouter.post("/rental/:id/cancel", authCheck, cancelMyRental);
 bookingRouter.post("/", authCheck, rateLimitFor("submit"), createBooking);
 bookingRouter.post("/package", authCheck, rateLimitFor("submit"), createPackageBooking);
 bookingRouter.post("/:id/cancel", authCheck, cancelBooking);

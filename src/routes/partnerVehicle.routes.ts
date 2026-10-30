@@ -16,6 +16,18 @@ import {
   updatePartnerBranch,
   updatePartnerVehicle,
 } from "../controllers/partnerVehicle.controllers";
+import {
+  approveRental,
+  completeRental,
+  getPartnerEarnings,
+  listPartnerRentals,
+  listVehicleRentals,
+  markRentalNoShow,
+  payRentalAtBranch,
+  pickupRental,
+  rejectRental,
+  returnRental,
+} from "../controllers/rentalBooking.controllers";
 
 const partnerVehicleRouter = Router();
 
@@ -40,5 +52,19 @@ partnerVehicleRouter.delete("/vehicles/:id", deletePartnerVehicle);
 partnerVehicleRouter.get("/vehicles/:id/calendar", partnerVehicleCalendar);
 partnerVehicleRouter.post("/vehicles/:id/blocks", createPartnerVehicleBlock);
 partnerVehicleRouter.delete("/blocks/:blockId", deletePartnerVehicleBlock);
+
+// ---------- การจองรถ (:id = RentalDetail.id) ----------
+partnerVehicleRouter.get("/bookings", listPartnerRentals);
+partnerVehicleRouter.get("/vehicles/:id/bookings", listVehicleRentals);
+partnerVehicleRouter.post("/bookings/:id/approve", approveRental);
+partnerVehicleRouter.post("/bookings/:id/reject", rejectRental);
+partnerVehicleRouter.post("/bookings/:id/pay-at-branch", payRentalAtBranch);
+partnerVehicleRouter.post("/bookings/:id/pickup", pickupRental);
+partnerVehicleRouter.post("/bookings/:id/return", returnRental);
+partnerVehicleRouter.post("/bookings/:id/complete", completeRental);
+partnerVehicleRouter.post("/bookings/:id/no-show", markRentalNoShow);
+
+// ---------- รายได้ของพาร์ทเนอร์ ----------
+partnerVehicleRouter.get("/earnings", getPartnerEarnings);
 
 export default partnerVehicleRouter;
