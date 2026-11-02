@@ -20,8 +20,26 @@ export type DriverProfileModel = runtime.Types.Result.DefaultSelection<Prisma.$D
 
 export type AggregateDriverProfile = {
   _count: DriverProfileCountAggregateOutputType | null
+  _avg: DriverProfileAvgAggregateOutputType | null
+  _sum: DriverProfileSumAggregateOutputType | null
   _min: DriverProfileMinAggregateOutputType | null
   _max: DriverProfileMaxAggregateOutputType | null
+}
+
+export type DriverProfileAvgAggregateOutputType = {
+  lastLat: number | null
+  lastLng: number | null
+  rating: number | null
+  totalTrips: number | null
+  commissionRate: number | null
+}
+
+export type DriverProfileSumAggregateOutputType = {
+  lastLat: number | null
+  lastLng: number | null
+  rating: number | null
+  totalTrips: number | null
+  commissionRate: number | null
 }
 
 export type DriverProfileMinAggregateOutputType = {
@@ -30,7 +48,17 @@ export type DriverProfileMinAggregateOutputType = {
   license: string | null
   vehicleId: string | null
   status: string | null
+  isOnline: boolean | null
+  lastLat: number | null
+  lastLng: number | null
+  lastLocationAt: Date | null
+  rating: number | null
+  totalTrips: number | null
+  commissionRate: number | null
+  verifiedAt: Date | null
+  rejectedReason: string | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type DriverProfileMaxAggregateOutputType = {
@@ -39,7 +67,17 @@ export type DriverProfileMaxAggregateOutputType = {
   license: string | null
   vehicleId: string | null
   status: string | null
+  isOnline: boolean | null
+  lastLat: number | null
+  lastLng: number | null
+  lastLocationAt: Date | null
+  rating: number | null
+  totalTrips: number | null
+  commissionRate: number | null
+  verifiedAt: Date | null
+  rejectedReason: string | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type DriverProfileCountAggregateOutputType = {
@@ -48,10 +86,38 @@ export type DriverProfileCountAggregateOutputType = {
   license: number
   vehicleId: number
   status: number
+  serviceTypes: number
+  tierCodes: number
+  isOnline: number
+  lastLat: number
+  lastLng: number
+  lastLocationAt: number
+  rating: number
+  totalTrips: number
+  commissionRate: number
+  verifiedAt: number
+  rejectedReason: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
+
+export type DriverProfileAvgAggregateInputType = {
+  lastLat?: true
+  lastLng?: true
+  rating?: true
+  totalTrips?: true
+  commissionRate?: true
+}
+
+export type DriverProfileSumAggregateInputType = {
+  lastLat?: true
+  lastLng?: true
+  rating?: true
+  totalTrips?: true
+  commissionRate?: true
+}
 
 export type DriverProfileMinAggregateInputType = {
   id?: true
@@ -59,7 +125,17 @@ export type DriverProfileMinAggregateInputType = {
   license?: true
   vehicleId?: true
   status?: true
+  isOnline?: true
+  lastLat?: true
+  lastLng?: true
+  lastLocationAt?: true
+  rating?: true
+  totalTrips?: true
+  commissionRate?: true
+  verifiedAt?: true
+  rejectedReason?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type DriverProfileMaxAggregateInputType = {
@@ -68,7 +144,17 @@ export type DriverProfileMaxAggregateInputType = {
   license?: true
   vehicleId?: true
   status?: true
+  isOnline?: true
+  lastLat?: true
+  lastLng?: true
+  lastLocationAt?: true
+  rating?: true
+  totalTrips?: true
+  commissionRate?: true
+  verifiedAt?: true
+  rejectedReason?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type DriverProfileCountAggregateInputType = {
@@ -77,7 +163,19 @@ export type DriverProfileCountAggregateInputType = {
   license?: true
   vehicleId?: true
   status?: true
+  serviceTypes?: true
+  tierCodes?: true
+  isOnline?: true
+  lastLat?: true
+  lastLng?: true
+  lastLocationAt?: true
+  rating?: true
+  totalTrips?: true
+  commissionRate?: true
+  verifiedAt?: true
+  rejectedReason?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -119,6 +217,18 @@ export type DriverProfileAggregateArgs<ExtArgs extends runtime.Types.Extensions.
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: DriverProfileAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: DriverProfileSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: DriverProfileMinAggregateInputType
@@ -149,6 +259,8 @@ export type DriverProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   _count?: DriverProfileCountAggregateInputType | true
+  _avg?: DriverProfileAvgAggregateInputType
+  _sum?: DriverProfileSumAggregateInputType
   _min?: DriverProfileMinAggregateInputType
   _max?: DriverProfileMaxAggregateInputType
 }
@@ -159,8 +271,22 @@ export type DriverProfileGroupByOutputType = {
   license: string
   vehicleId: string | null
   status: string
+  serviceTypes: runtime.JsonValue | null
+  tierCodes: runtime.JsonValue | null
+  isOnline: boolean
+  lastLat: number | null
+  lastLng: number | null
+  lastLocationAt: Date | null
+  rating: number
+  totalTrips: number
+  commissionRate: number | null
+  verifiedAt: Date | null
+  rejectedReason: string | null
   createdAt: Date
+  updatedAt: Date
   _count: DriverProfileCountAggregateOutputType | null
+  _avg: DriverProfileAvgAggregateOutputType | null
+  _sum: DriverProfileSumAggregateOutputType | null
   _min: DriverProfileMinAggregateOutputType | null
   _max: DriverProfileMaxAggregateOutputType | null
 }
@@ -189,7 +315,19 @@ export type DriverProfileWhereInput = {
   license?: Prisma.StringFilter<"DriverProfile"> | string
   vehicleId?: Prisma.StringNullableFilter<"DriverProfile"> | string | null
   status?: Prisma.StringFilter<"DriverProfile"> | string
+  serviceTypes?: Prisma.JsonNullableFilter<"DriverProfile">
+  tierCodes?: Prisma.JsonNullableFilter<"DriverProfile">
+  isOnline?: Prisma.BoolFilter<"DriverProfile"> | boolean
+  lastLat?: Prisma.FloatNullableFilter<"DriverProfile"> | number | null
+  lastLng?: Prisma.FloatNullableFilter<"DriverProfile"> | number | null
+  lastLocationAt?: Prisma.DateTimeNullableFilter<"DriverProfile"> | Date | string | null
+  rating?: Prisma.FloatFilter<"DriverProfile"> | number
+  totalTrips?: Prisma.IntFilter<"DriverProfile"> | number
+  commissionRate?: Prisma.IntNullableFilter<"DriverProfile"> | number | null
+  verifiedAt?: Prisma.DateTimeNullableFilter<"DriverProfile"> | Date | string | null
+  rejectedReason?: Prisma.StringNullableFilter<"DriverProfile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"DriverProfile"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"DriverProfile"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -199,7 +337,19 @@ export type DriverProfileOrderByWithRelationInput = {
   license?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
+  serviceTypes?: Prisma.SortOrderInput | Prisma.SortOrder
+  tierCodes?: Prisma.SortOrderInput | Prisma.SortOrder
+  isOnline?: Prisma.SortOrder
+  lastLat?: Prisma.SortOrderInput | Prisma.SortOrder
+  lastLng?: Prisma.SortOrderInput | Prisma.SortOrder
+  lastLocationAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  rating?: Prisma.SortOrder
+  totalTrips?: Prisma.SortOrder
+  commissionRate?: Prisma.SortOrderInput | Prisma.SortOrder
+  verifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  rejectedReason?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   _relevance?: Prisma.DriverProfileOrderByRelevanceInput
 }
@@ -213,7 +363,19 @@ export type DriverProfileWhereUniqueInput = Prisma.AtLeast<{
   license?: Prisma.StringFilter<"DriverProfile"> | string
   vehicleId?: Prisma.StringNullableFilter<"DriverProfile"> | string | null
   status?: Prisma.StringFilter<"DriverProfile"> | string
+  serviceTypes?: Prisma.JsonNullableFilter<"DriverProfile">
+  tierCodes?: Prisma.JsonNullableFilter<"DriverProfile">
+  isOnline?: Prisma.BoolFilter<"DriverProfile"> | boolean
+  lastLat?: Prisma.FloatNullableFilter<"DriverProfile"> | number | null
+  lastLng?: Prisma.FloatNullableFilter<"DriverProfile"> | number | null
+  lastLocationAt?: Prisma.DateTimeNullableFilter<"DriverProfile"> | Date | string | null
+  rating?: Prisma.FloatFilter<"DriverProfile"> | number
+  totalTrips?: Prisma.IntFilter<"DriverProfile"> | number
+  commissionRate?: Prisma.IntNullableFilter<"DriverProfile"> | number | null
+  verifiedAt?: Prisma.DateTimeNullableFilter<"DriverProfile"> | Date | string | null
+  rejectedReason?: Prisma.StringNullableFilter<"DriverProfile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"DriverProfile"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"DriverProfile"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "userId">
 
@@ -223,10 +385,24 @@ export type DriverProfileOrderByWithAggregationInput = {
   license?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
+  serviceTypes?: Prisma.SortOrderInput | Prisma.SortOrder
+  tierCodes?: Prisma.SortOrderInput | Prisma.SortOrder
+  isOnline?: Prisma.SortOrder
+  lastLat?: Prisma.SortOrderInput | Prisma.SortOrder
+  lastLng?: Prisma.SortOrderInput | Prisma.SortOrder
+  lastLocationAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  rating?: Prisma.SortOrder
+  totalTrips?: Prisma.SortOrder
+  commissionRate?: Prisma.SortOrderInput | Prisma.SortOrder
+  verifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  rejectedReason?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.DriverProfileCountOrderByAggregateInput
+  _avg?: Prisma.DriverProfileAvgOrderByAggregateInput
   _max?: Prisma.DriverProfileMaxOrderByAggregateInput
   _min?: Prisma.DriverProfileMinOrderByAggregateInput
+  _sum?: Prisma.DriverProfileSumOrderByAggregateInput
 }
 
 export type DriverProfileScalarWhereWithAggregatesInput = {
@@ -238,7 +414,19 @@ export type DriverProfileScalarWhereWithAggregatesInput = {
   license?: Prisma.StringWithAggregatesFilter<"DriverProfile"> | string
   vehicleId?: Prisma.StringNullableWithAggregatesFilter<"DriverProfile"> | string | null
   status?: Prisma.StringWithAggregatesFilter<"DriverProfile"> | string
+  serviceTypes?: Prisma.JsonNullableWithAggregatesFilter<"DriverProfile">
+  tierCodes?: Prisma.JsonNullableWithAggregatesFilter<"DriverProfile">
+  isOnline?: Prisma.BoolWithAggregatesFilter<"DriverProfile"> | boolean
+  lastLat?: Prisma.FloatNullableWithAggregatesFilter<"DriverProfile"> | number | null
+  lastLng?: Prisma.FloatNullableWithAggregatesFilter<"DriverProfile"> | number | null
+  lastLocationAt?: Prisma.DateTimeNullableWithAggregatesFilter<"DriverProfile"> | Date | string | null
+  rating?: Prisma.FloatWithAggregatesFilter<"DriverProfile"> | number
+  totalTrips?: Prisma.IntWithAggregatesFilter<"DriverProfile"> | number
+  commissionRate?: Prisma.IntNullableWithAggregatesFilter<"DriverProfile"> | number | null
+  verifiedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"DriverProfile"> | Date | string | null
+  rejectedReason?: Prisma.StringNullableWithAggregatesFilter<"DriverProfile"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"DriverProfile"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"DriverProfile"> | Date | string
 }
 
 export type DriverProfileCreateInput = {
@@ -246,7 +434,19 @@ export type DriverProfileCreateInput = {
   license: string
   vehicleId?: string | null
   status?: string
+  serviceTypes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tierCodes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isOnline?: boolean
+  lastLat?: number | null
+  lastLng?: number | null
+  lastLocationAt?: Date | string | null
+  rating?: number
+  totalTrips?: number
+  commissionRate?: number | null
+  verifiedAt?: Date | string | null
+  rejectedReason?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutDriverProfileInput
 }
 
@@ -256,7 +456,19 @@ export type DriverProfileUncheckedCreateInput = {
   license: string
   vehicleId?: string | null
   status?: string
+  serviceTypes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tierCodes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isOnline?: boolean
+  lastLat?: number | null
+  lastLng?: number | null
+  lastLocationAt?: Date | string | null
+  rating?: number
+  totalTrips?: number
+  commissionRate?: number | null
+  verifiedAt?: Date | string | null
+  rejectedReason?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type DriverProfileUpdateInput = {
@@ -264,7 +476,19 @@ export type DriverProfileUpdateInput = {
   license?: Prisma.StringFieldUpdateOperationsInput | string
   vehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceTypes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tierCodes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lastLng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lastLocationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalTrips?: Prisma.IntFieldUpdateOperationsInput | number
+  commissionRate?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutDriverProfileNestedInput
 }
 
@@ -274,7 +498,19 @@ export type DriverProfileUncheckedUpdateInput = {
   license?: Prisma.StringFieldUpdateOperationsInput | string
   vehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceTypes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tierCodes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lastLng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lastLocationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalTrips?: Prisma.IntFieldUpdateOperationsInput | number
+  commissionRate?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type DriverProfileCreateManyInput = {
@@ -283,7 +519,19 @@ export type DriverProfileCreateManyInput = {
   license: string
   vehicleId?: string | null
   status?: string
+  serviceTypes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tierCodes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isOnline?: boolean
+  lastLat?: number | null
+  lastLng?: number | null
+  lastLocationAt?: Date | string | null
+  rating?: number
+  totalTrips?: number
+  commissionRate?: number | null
+  verifiedAt?: Date | string | null
+  rejectedReason?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type DriverProfileUpdateManyMutationInput = {
@@ -291,7 +539,19 @@ export type DriverProfileUpdateManyMutationInput = {
   license?: Prisma.StringFieldUpdateOperationsInput | string
   vehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceTypes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tierCodes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lastLng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lastLocationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalTrips?: Prisma.IntFieldUpdateOperationsInput | number
+  commissionRate?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type DriverProfileUncheckedUpdateManyInput = {
@@ -300,7 +560,19 @@ export type DriverProfileUncheckedUpdateManyInput = {
   license?: Prisma.StringFieldUpdateOperationsInput | string
   vehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceTypes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tierCodes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lastLng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lastLocationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalTrips?: Prisma.IntFieldUpdateOperationsInput | number
+  commissionRate?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type DriverProfileNullableScalarRelationFilter = {
@@ -320,7 +592,27 @@ export type DriverProfileCountOrderByAggregateInput = {
   license?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  serviceTypes?: Prisma.SortOrder
+  tierCodes?: Prisma.SortOrder
+  isOnline?: Prisma.SortOrder
+  lastLat?: Prisma.SortOrder
+  lastLng?: Prisma.SortOrder
+  lastLocationAt?: Prisma.SortOrder
+  rating?: Prisma.SortOrder
+  totalTrips?: Prisma.SortOrder
+  commissionRate?: Prisma.SortOrder
+  verifiedAt?: Prisma.SortOrder
+  rejectedReason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+}
+
+export type DriverProfileAvgOrderByAggregateInput = {
+  lastLat?: Prisma.SortOrder
+  lastLng?: Prisma.SortOrder
+  rating?: Prisma.SortOrder
+  totalTrips?: Prisma.SortOrder
+  commissionRate?: Prisma.SortOrder
 }
 
 export type DriverProfileMaxOrderByAggregateInput = {
@@ -329,7 +621,17 @@ export type DriverProfileMaxOrderByAggregateInput = {
   license?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  isOnline?: Prisma.SortOrder
+  lastLat?: Prisma.SortOrder
+  lastLng?: Prisma.SortOrder
+  lastLocationAt?: Prisma.SortOrder
+  rating?: Prisma.SortOrder
+  totalTrips?: Prisma.SortOrder
+  commissionRate?: Prisma.SortOrder
+  verifiedAt?: Prisma.SortOrder
+  rejectedReason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type DriverProfileMinOrderByAggregateInput = {
@@ -338,7 +640,25 @@ export type DriverProfileMinOrderByAggregateInput = {
   license?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  isOnline?: Prisma.SortOrder
+  lastLat?: Prisma.SortOrder
+  lastLng?: Prisma.SortOrder
+  lastLocationAt?: Prisma.SortOrder
+  rating?: Prisma.SortOrder
+  totalTrips?: Prisma.SortOrder
+  commissionRate?: Prisma.SortOrder
+  verifiedAt?: Prisma.SortOrder
+  rejectedReason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+}
+
+export type DriverProfileSumOrderByAggregateInput = {
+  lastLat?: Prisma.SortOrder
+  lastLng?: Prisma.SortOrder
+  rating?: Prisma.SortOrder
+  totalTrips?: Prisma.SortOrder
+  commissionRate?: Prisma.SortOrder
 }
 
 export type DriverProfileCreateNestedOneWithoutUserInput = {
@@ -373,12 +693,32 @@ export type DriverProfileUncheckedUpdateOneWithoutUserNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.DriverProfileUpdateToOneWithWhereWithoutUserInput, Prisma.DriverProfileUpdateWithoutUserInput>, Prisma.DriverProfileUncheckedUpdateWithoutUserInput>
 }
 
+export type FloatFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type DriverProfileCreateWithoutUserInput = {
   id?: string
   license: string
   vehicleId?: string | null
   status?: string
+  serviceTypes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tierCodes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isOnline?: boolean
+  lastLat?: number | null
+  lastLng?: number | null
+  lastLocationAt?: Date | string | null
+  rating?: number
+  totalTrips?: number
+  commissionRate?: number | null
+  verifiedAt?: Date | string | null
+  rejectedReason?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type DriverProfileUncheckedCreateWithoutUserInput = {
@@ -386,7 +726,19 @@ export type DriverProfileUncheckedCreateWithoutUserInput = {
   license: string
   vehicleId?: string | null
   status?: string
+  serviceTypes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tierCodes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isOnline?: boolean
+  lastLat?: number | null
+  lastLng?: number | null
+  lastLocationAt?: Date | string | null
+  rating?: number
+  totalTrips?: number
+  commissionRate?: number | null
+  verifiedAt?: Date | string | null
+  rejectedReason?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type DriverProfileCreateOrConnectWithoutUserInput = {
@@ -410,7 +762,19 @@ export type DriverProfileUpdateWithoutUserInput = {
   license?: Prisma.StringFieldUpdateOperationsInput | string
   vehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceTypes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tierCodes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lastLng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lastLocationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalTrips?: Prisma.IntFieldUpdateOperationsInput | number
+  commissionRate?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type DriverProfileUncheckedUpdateWithoutUserInput = {
@@ -418,7 +782,19 @@ export type DriverProfileUncheckedUpdateWithoutUserInput = {
   license?: Prisma.StringFieldUpdateOperationsInput | string
   vehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceTypes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  tierCodes?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lastLng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lastLocationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalTrips?: Prisma.IntFieldUpdateOperationsInput | number
+  commissionRate?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -429,7 +805,19 @@ export type DriverProfileSelect<ExtArgs extends runtime.Types.Extensions.Interna
   license?: boolean
   vehicleId?: boolean
   status?: boolean
+  serviceTypes?: boolean
+  tierCodes?: boolean
+  isOnline?: boolean
+  lastLat?: boolean
+  lastLng?: boolean
+  lastLocationAt?: boolean
+  rating?: boolean
+  totalTrips?: boolean
+  commissionRate?: boolean
+  verifiedAt?: boolean
+  rejectedReason?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["driverProfile"]>
 
@@ -441,10 +829,22 @@ export type DriverProfileSelectScalar = {
   license?: boolean
   vehicleId?: boolean
   status?: boolean
+  serviceTypes?: boolean
+  tierCodes?: boolean
+  isOnline?: boolean
+  lastLat?: boolean
+  lastLng?: boolean
+  lastLocationAt?: boolean
+  rating?: boolean
+  totalTrips?: boolean
+  commissionRate?: boolean
+  verifiedAt?: boolean
+  rejectedReason?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type DriverProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "license" | "vehicleId" | "status" | "createdAt", ExtArgs["result"]["driverProfile"]>
+export type DriverProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "license" | "vehicleId" | "status" | "serviceTypes" | "tierCodes" | "isOnline" | "lastLat" | "lastLng" | "lastLocationAt" | "rating" | "totalTrips" | "commissionRate" | "verifiedAt" | "rejectedReason" | "createdAt" | "updatedAt", ExtArgs["result"]["driverProfile"]>
 export type DriverProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -460,7 +860,19 @@ export type $DriverProfilePayload<ExtArgs extends runtime.Types.Extensions.Inter
     license: string
     vehicleId: string | null
     status: string
+    serviceTypes: runtime.JsonValue | null
+    tierCodes: runtime.JsonValue | null
+    isOnline: boolean
+    lastLat: number | null
+    lastLng: number | null
+    lastLocationAt: Date | null
+    rating: number
+    totalTrips: number
+    commissionRate: number | null
+    verifiedAt: Date | null
+    rejectedReason: string | null
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["driverProfile"]>
   composites: {}
 }
@@ -836,7 +1248,19 @@ export interface DriverProfileFieldRefs {
   readonly license: Prisma.FieldRef<"DriverProfile", 'String'>
   readonly vehicleId: Prisma.FieldRef<"DriverProfile", 'String'>
   readonly status: Prisma.FieldRef<"DriverProfile", 'String'>
+  readonly serviceTypes: Prisma.FieldRef<"DriverProfile", 'Json'>
+  readonly tierCodes: Prisma.FieldRef<"DriverProfile", 'Json'>
+  readonly isOnline: Prisma.FieldRef<"DriverProfile", 'Boolean'>
+  readonly lastLat: Prisma.FieldRef<"DriverProfile", 'Float'>
+  readonly lastLng: Prisma.FieldRef<"DriverProfile", 'Float'>
+  readonly lastLocationAt: Prisma.FieldRef<"DriverProfile", 'DateTime'>
+  readonly rating: Prisma.FieldRef<"DriverProfile", 'Float'>
+  readonly totalTrips: Prisma.FieldRef<"DriverProfile", 'Int'>
+  readonly commissionRate: Prisma.FieldRef<"DriverProfile", 'Int'>
+  readonly verifiedAt: Prisma.FieldRef<"DriverProfile", 'DateTime'>
+  readonly rejectedReason: Prisma.FieldRef<"DriverProfile", 'String'>
   readonly createdAt: Prisma.FieldRef<"DriverProfile", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"DriverProfile", 'DateTime'>
 }
     
 

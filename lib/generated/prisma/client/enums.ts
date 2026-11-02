@@ -164,3 +164,124 @@ export const PaymentMethod = {
 } as const
 
 export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+
+
+export const RideServiceType = {
+  RIDE: 'RIDE',
+  PARCEL: 'PARCEL',
+  LOGISTICS: 'LOGISTICS'
+} as const
+
+export type RideServiceType = (typeof RideServiceType)[keyof typeof RideServiceType]
+
+
+export const RideStatus = {
+  REQUESTED: 'REQUESTED',
+  SEARCHING: 'SEARCHING',
+  ACCEPTED: 'ACCEPTED',
+  ARRIVING: 'ARRIVING',
+  ARRIVED: 'ARRIVED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED',
+  EXPIRED: 'EXPIRED'
+} as const
+
+export type RideStatus = (typeof RideStatus)[keyof typeof RideStatus]
+
+
+export const DriverVehicleType = {
+  MOTORCYCLE: 'MOTORCYCLE',
+  CAR: 'CAR',
+  SUV: 'SUV',
+  VAN: 'VAN',
+  PICKUP: 'PICKUP',
+  TRUCK_6W: 'TRUCK_6W',
+  TRUCK_10W: 'TRUCK_10W',
+  TRAILER: 'TRAILER',
+  REFRIGERATED: 'REFRIGERATED'
+} as const
+
+export type DriverVehicleType = (typeof DriverVehicleType)[keyof typeof DriverVehicleType]
+
+
+export const PaymentTiming = {
+  PREPAY: 'PREPAY',
+  POSTPAY: 'POSTPAY'
+} as const
+
+export type PaymentTiming = (typeof PaymentTiming)[keyof typeof PaymentTiming]
+
+
+export const RidePaymentMethod = {
+  CARD: 'CARD',
+  PROMPTPAY: 'PROMPTPAY',
+  WALLET: 'WALLET',
+  CASH: 'CASH',
+  TRANSFER: 'TRANSFER'
+} as const
+
+export type RidePaymentMethod = (typeof RidePaymentMethod)[keyof typeof RidePaymentMethod]
+
+
+export const RidePaymentStatus = {
+  PENDING: 'PENDING',
+  AUTHORIZED: 'AUTHORIZED',
+  PAID: 'PAID',
+  REFUNDED: 'REFUNDED',
+  FAILED: 'FAILED'
+} as const
+
+export type RidePaymentStatus = (typeof RidePaymentStatus)[keyof typeof RidePaymentStatus]
+
+
+export const ParcelSizeTier = {
+  S: 'S',
+  M: 'M',
+  L: 'L',
+  XL: 'XL'
+} as const
+
+export type ParcelSizeTier = (typeof ParcelSizeTier)[keyof typeof ParcelSizeTier]
+
+
+export const RideAddonType = {
+  INSURANCE: 'INSURANCE',
+  CHILD_SEAT: 'CHILD_SEAT',
+  VIP_ESCORT: 'VIP_ESCORT',
+  EXTRA_STOP: 'EXTRA_STOP',
+  LOADING: 'LOADING',
+  WAITING: 'WAITING'
+} as const
+
+export type RideAddonType = (typeof RideAddonType)[keyof typeof RideAddonType]
+
+
+export const RideSosStatus = {
+  OPEN: 'OPEN',
+  ACK: 'ACK',
+  CLOSED: 'CLOSED'
+} as const
+
+export type RideSosStatus = (typeof RideSosStatus)[keyof typeof RideSosStatus]
+
+
+export const DriverDocType = {
+  ID_CARD: 'ID_CARD',
+  LICENSE: 'LICENSE',
+  BLUE_BOOK: 'BLUE_BOOK',
+  INSURANCE: 'INSURANCE',
+  CRIMINAL_CHECK: 'CRIMINAL_CHECK',
+  PASSBOOK: 'PASSBOOK'
+} as const
+
+export type DriverDocType = (typeof DriverDocType)[keyof typeof DriverDocType]
+
+
+export const DriverDocStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type DriverDocStatus = (typeof DriverDocStatus)[keyof typeof DriverDocStatus]

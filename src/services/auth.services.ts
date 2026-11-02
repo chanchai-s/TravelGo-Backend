@@ -68,11 +68,13 @@ export const createUser = async ({
   name,
   email,
   phone,
+  password,
   role,
 }: {
   name: string;
   email: string;
   phone?: string | null;
+  password?: string | null;
   role?: "USER" | "ADMIN" | "OWNER";
 }) => {
   return prisma.user.create({
@@ -80,7 +82,16 @@ export const createUser = async ({
       name,
       email,
       phone: phone ?? null,
+      password: password ?? null,
       role: role ?? "USER",
     },
+  });
+};
+
+// ตั้ง/เปลี่ยนรหัสผ่าน — ใช้ทั้งตอนสมัครและตอน user เก่าตั้งรหัสครั้งแรก
+export const updateUserPassword = async (id: string, password: string) => {
+  return prisma.user.update({
+    where: { id },
+    data: { password },
   });
 };

@@ -104,7 +104,21 @@ export const ModelName = {
   Payment: 'Payment',
   PartnerEarning: 'PartnerEarning',
   CommissionChangeLog: 'CommissionChangeLog',
-  PlatformSetting: 'PlatformSetting'
+  PlatformSetting: 'PlatformSetting',
+  RideTier: 'RideTier',
+  DriverVehicle: 'DriverVehicle',
+  DriverDocument: 'DriverDocument',
+  SavedAddress: 'SavedAddress',
+  RideJob: 'RideJob',
+  RideAddon: 'RideAddon',
+  ParcelDetail: 'ParcelDetail',
+  RideStatusLog: 'RideStatusLog',
+  DriverLocation: 'DriverLocation',
+  RidePayment: 'RidePayment',
+  DriverEarning: 'DriverEarning',
+  RideRating: 'RideRating',
+  RideMessage: 'RideMessage',
+  RideSosEvent: 'RideSosEvent'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -128,6 +142,7 @@ export const UserScalarFieldEnum = {
   name: 'name',
   email: 'email',
   phone: 'phone',
+  password: 'password',
   role: 'role',
   tier: 'tier',
   createdAt: 'createdAt',
@@ -699,7 +714,19 @@ export const DriverProfileScalarFieldEnum = {
   license: 'license',
   vehicleId: 'vehicleId',
   status: 'status',
-  createdAt: 'createdAt'
+  serviceTypes: 'serviceTypes',
+  tierCodes: 'tierCodes',
+  isOnline: 'isOnline',
+  lastLat: 'lastLat',
+  lastLng: 'lastLng',
+  lastLocationAt: 'lastLocationAt',
+  rating: 'rating',
+  totalTrips: 'totalTrips',
+  commissionRate: 'commissionRate',
+  verifiedAt: 'verifiedAt',
+  rejectedReason: 'rejectedReason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type DriverProfileScalarFieldEnum = (typeof DriverProfileScalarFieldEnum)[keyof typeof DriverProfileScalarFieldEnum]
@@ -927,6 +954,252 @@ export const PlatformSettingScalarFieldEnum = {
 export type PlatformSettingScalarFieldEnum = (typeof PlatformSettingScalarFieldEnum)[keyof typeof PlatformSettingScalarFieldEnum]
 
 
+export const RideTierScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  serviceType: 'serviceType',
+  vehicleType: 'vehicleType',
+  seats: 'seats',
+  maxWeightKg: 'maxWeightKg',
+  maxDimCm: 'maxDimCm',
+  baseFare: 'baseFare',
+  perKm: 'perKm',
+  perMin: 'perMin',
+  minFare: 'minFare',
+  flatFare: 'flatFare',
+  includedKm: 'includedKm',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  isActive: 'isActive',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RideTierScalarFieldEnum = (typeof RideTierScalarFieldEnum)[keyof typeof RideTierScalarFieldEnum]
+
+
+export const DriverVehicleScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  tierCode: 'tierCode',
+  brand: 'brand',
+  model: 'model',
+  plateNo: 'plateNo',
+  color: 'color',
+  seats: 'seats',
+  maxWeightKg: 'maxWeightKg',
+  photoUrl: 'photoUrl',
+  isActive: 'isActive',
+  createdAt: 'createdAt'
+} as const
+
+export type DriverVehicleScalarFieldEnum = (typeof DriverVehicleScalarFieldEnum)[keyof typeof DriverVehicleScalarFieldEnum]
+
+
+export const DriverDocumentScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  url: 'url',
+  status: 'status',
+  reviewNote: 'reviewNote',
+  reviewedAt: 'reviewedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type DriverDocumentScalarFieldEnum = (typeof DriverDocumentScalarFieldEnum)[keyof typeof DriverDocumentScalarFieldEnum]
+
+
+export const SavedAddressScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  label: 'label',
+  address: 'address',
+  lat: 'lat',
+  lng: 'lng',
+  isDefault: 'isDefault',
+  createdAt: 'createdAt'
+} as const
+
+export type SavedAddressScalarFieldEnum = (typeof SavedAddressScalarFieldEnum)[keyof typeof SavedAddressScalarFieldEnum]
+
+
+export const RideJobScalarFieldEnum = {
+  id: 'id',
+  ref: 'ref',
+  riderId: 'riderId',
+  driverId: 'driverId',
+  serviceType: 'serviceType',
+  tierCode: 'tierCode',
+  status: 'status',
+  passengerCount: 'passengerCount',
+  pickupLat: 'pickupLat',
+  pickupLng: 'pickupLng',
+  pickupAddress: 'pickupAddress',
+  dropoffLat: 'dropoffLat',
+  dropoffLng: 'dropoffLng',
+  dropoffAddress: 'dropoffAddress',
+  distanceKm: 'distanceKm',
+  durationMin: 'durationMin',
+  baseFare: 'baseFare',
+  addonTotal: 'addonTotal',
+  vatAmount: 'vatAmount',
+  fareEstimate: 'fareEstimate',
+  fareFinal: 'fareFinal',
+  commissionRate: 'commissionRate',
+  commission: 'commission',
+  netToDriver: 'netToDriver',
+  paymentTiming: 'paymentTiming',
+  paymentMethod: 'paymentMethod',
+  paymentStatus: 'paymentStatus',
+  requestedAt: 'requestedAt',
+  acceptedAt: 'acceptedAt',
+  arrivedAt: 'arrivedAt',
+  startedAt: 'startedAt',
+  completedAt: 'completedAt',
+  cancelledAt: 'cancelledAt',
+  cancelReason: 'cancelReason',
+  cancelBy: 'cancelBy'
+} as const
+
+export type RideJobScalarFieldEnum = (typeof RideJobScalarFieldEnum)[keyof typeof RideJobScalarFieldEnum]
+
+
+export const RideAddonScalarFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  type: 'type',
+  name: 'name',
+  amount: 'amount',
+  qty: 'qty'
+} as const
+
+export type RideAddonScalarFieldEnum = (typeof RideAddonScalarFieldEnum)[keyof typeof RideAddonScalarFieldEnum]
+
+
+export const ParcelDetailScalarFieldEnum = {
+  jobId: 'jobId',
+  weightKg: 'weightKg',
+  sizeTier: 'sizeTier',
+  isFragile: 'isFragile',
+  receiverName: 'receiverName',
+  receiverPhone: 'receiverPhone',
+  note: 'note',
+  pickupOtp: 'pickupOtp',
+  deliveryOtp: 'deliveryOtp',
+  proofPhotoUrl: 'proofPhotoUrl',
+  signatureUrl: 'signatureUrl',
+  codAmount: 'codAmount'
+} as const
+
+export type ParcelDetailScalarFieldEnum = (typeof ParcelDetailScalarFieldEnum)[keyof typeof ParcelDetailScalarFieldEnum]
+
+
+export const RideStatusLogScalarFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  fromStatus: 'fromStatus',
+  toStatus: 'toStatus',
+  byUserId: 'byUserId',
+  note: 'note',
+  createdAt: 'createdAt'
+} as const
+
+export type RideStatusLogScalarFieldEnum = (typeof RideStatusLogScalarFieldEnum)[keyof typeof RideStatusLogScalarFieldEnum]
+
+
+export const DriverLocationScalarFieldEnum = {
+  id: 'id',
+  driverId: 'driverId',
+  jobId: 'jobId',
+  lat: 'lat',
+  lng: 'lng',
+  bearing: 'bearing',
+  speed: 'speed',
+  recordedAt: 'recordedAt'
+} as const
+
+export type DriverLocationScalarFieldEnum = (typeof DriverLocationScalarFieldEnum)[keyof typeof DriverLocationScalarFieldEnum]
+
+
+export const RidePaymentScalarFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  timing: 'timing',
+  method: 'method',
+  status: 'status',
+  type: 'type',
+  amount: 'amount',
+  baseAmount: 'baseAmount',
+  vatAmount: 'vatAmount',
+  gatewayRef: 'gatewayRef',
+  paidAt: 'paidAt',
+  createdAt: 'createdAt'
+} as const
+
+export type RidePaymentScalarFieldEnum = (typeof RidePaymentScalarFieldEnum)[keyof typeof RidePaymentScalarFieldEnum]
+
+
+export const DriverEarningScalarFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  driverId: 'driverId',
+  gross: 'gross',
+  commission: 'commission',
+  net: 'net',
+  status: 'status',
+  paidAt: 'paidAt',
+  createdAt: 'createdAt'
+} as const
+
+export type DriverEarningScalarFieldEnum = (typeof DriverEarningScalarFieldEnum)[keyof typeof DriverEarningScalarFieldEnum]
+
+
+export const RideRatingScalarFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  riderId: 'riderId',
+  driverId: 'driverId',
+  stars: 'stars',
+  text: 'text',
+  createdAt: 'createdAt'
+} as const
+
+export type RideRatingScalarFieldEnum = (typeof RideRatingScalarFieldEnum)[keyof typeof RideRatingScalarFieldEnum]
+
+
+export const RideMessageScalarFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  senderId: 'senderId',
+  text: 'text',
+  attachmentUrl: 'attachmentUrl',
+  readAt: 'readAt',
+  createdAt: 'createdAt'
+} as const
+
+export type RideMessageScalarFieldEnum = (typeof RideMessageScalarFieldEnum)[keyof typeof RideMessageScalarFieldEnum]
+
+
+export const RideSosEventScalarFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  userId: 'userId',
+  lat: 'lat',
+  lng: 'lng',
+  note: 'note',
+  status: 'status',
+  handledBy: 'handledBy',
+  handledAt: 'handledAt',
+  createdAt: 'createdAt'
+} as const
+
+export type RideSosEventScalarFieldEnum = (typeof RideSosEventScalarFieldEnum)[keyof typeof RideSosEventScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -963,6 +1236,7 @@ export const UserOrderByRelevanceFieldEnum = {
   name: 'name',
   email: 'email',
   phone: 'phone',
+  password: 'password',
   tier: 'tier'
 } as const
 
@@ -1421,7 +1695,8 @@ export const DriverProfileOrderByRelevanceFieldEnum = {
   userId: 'userId',
   license: 'license',
   vehicleId: 'vehicleId',
-  status: 'status'
+  status: 'status',
+  rejectedReason: 'rejectedReason'
 } as const
 
 export type DriverProfileOrderByRelevanceFieldEnum = (typeof DriverProfileOrderByRelevanceFieldEnum)[keyof typeof DriverProfileOrderByRelevanceFieldEnum]
@@ -1580,4 +1855,160 @@ export const PlatformSettingOrderByRelevanceFieldEnum = {
 } as const
 
 export type PlatformSettingOrderByRelevanceFieldEnum = (typeof PlatformSettingOrderByRelevanceFieldEnum)[keyof typeof PlatformSettingOrderByRelevanceFieldEnum]
+
+
+export const RideTierOrderByRelevanceFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  maxDimCm: 'maxDimCm',
+  description: 'description',
+  imageUrl: 'imageUrl'
+} as const
+
+export type RideTierOrderByRelevanceFieldEnum = (typeof RideTierOrderByRelevanceFieldEnum)[keyof typeof RideTierOrderByRelevanceFieldEnum]
+
+
+export const DriverVehicleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  tierCode: 'tierCode',
+  brand: 'brand',
+  model: 'model',
+  plateNo: 'plateNo',
+  color: 'color',
+  photoUrl: 'photoUrl'
+} as const
+
+export type DriverVehicleOrderByRelevanceFieldEnum = (typeof DriverVehicleOrderByRelevanceFieldEnum)[keyof typeof DriverVehicleOrderByRelevanceFieldEnum]
+
+
+export const DriverDocumentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  url: 'url',
+  reviewNote: 'reviewNote'
+} as const
+
+export type DriverDocumentOrderByRelevanceFieldEnum = (typeof DriverDocumentOrderByRelevanceFieldEnum)[keyof typeof DriverDocumentOrderByRelevanceFieldEnum]
+
+
+export const SavedAddressOrderByRelevanceFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  label: 'label',
+  address: 'address'
+} as const
+
+export type SavedAddressOrderByRelevanceFieldEnum = (typeof SavedAddressOrderByRelevanceFieldEnum)[keyof typeof SavedAddressOrderByRelevanceFieldEnum]
+
+
+export const RideJobOrderByRelevanceFieldEnum = {
+  id: 'id',
+  ref: 'ref',
+  riderId: 'riderId',
+  driverId: 'driverId',
+  tierCode: 'tierCode',
+  pickupAddress: 'pickupAddress',
+  dropoffAddress: 'dropoffAddress',
+  cancelReason: 'cancelReason',
+  cancelBy: 'cancelBy'
+} as const
+
+export type RideJobOrderByRelevanceFieldEnum = (typeof RideJobOrderByRelevanceFieldEnum)[keyof typeof RideJobOrderByRelevanceFieldEnum]
+
+
+export const RideAddonOrderByRelevanceFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  name: 'name'
+} as const
+
+export type RideAddonOrderByRelevanceFieldEnum = (typeof RideAddonOrderByRelevanceFieldEnum)[keyof typeof RideAddonOrderByRelevanceFieldEnum]
+
+
+export const ParcelDetailOrderByRelevanceFieldEnum = {
+  jobId: 'jobId',
+  receiverName: 'receiverName',
+  receiverPhone: 'receiverPhone',
+  note: 'note',
+  pickupOtp: 'pickupOtp',
+  deliveryOtp: 'deliveryOtp',
+  proofPhotoUrl: 'proofPhotoUrl',
+  signatureUrl: 'signatureUrl'
+} as const
+
+export type ParcelDetailOrderByRelevanceFieldEnum = (typeof ParcelDetailOrderByRelevanceFieldEnum)[keyof typeof ParcelDetailOrderByRelevanceFieldEnum]
+
+
+export const RideStatusLogOrderByRelevanceFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  byUserId: 'byUserId',
+  note: 'note'
+} as const
+
+export type RideStatusLogOrderByRelevanceFieldEnum = (typeof RideStatusLogOrderByRelevanceFieldEnum)[keyof typeof RideStatusLogOrderByRelevanceFieldEnum]
+
+
+export const DriverLocationOrderByRelevanceFieldEnum = {
+  id: 'id',
+  driverId: 'driverId',
+  jobId: 'jobId'
+} as const
+
+export type DriverLocationOrderByRelevanceFieldEnum = (typeof DriverLocationOrderByRelevanceFieldEnum)[keyof typeof DriverLocationOrderByRelevanceFieldEnum]
+
+
+export const RidePaymentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  type: 'type',
+  gatewayRef: 'gatewayRef'
+} as const
+
+export type RidePaymentOrderByRelevanceFieldEnum = (typeof RidePaymentOrderByRelevanceFieldEnum)[keyof typeof RidePaymentOrderByRelevanceFieldEnum]
+
+
+export const DriverEarningOrderByRelevanceFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  driverId: 'driverId',
+  status: 'status'
+} as const
+
+export type DriverEarningOrderByRelevanceFieldEnum = (typeof DriverEarningOrderByRelevanceFieldEnum)[keyof typeof DriverEarningOrderByRelevanceFieldEnum]
+
+
+export const RideRatingOrderByRelevanceFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  riderId: 'riderId',
+  driverId: 'driverId',
+  text: 'text'
+} as const
+
+export type RideRatingOrderByRelevanceFieldEnum = (typeof RideRatingOrderByRelevanceFieldEnum)[keyof typeof RideRatingOrderByRelevanceFieldEnum]
+
+
+export const RideMessageOrderByRelevanceFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  senderId: 'senderId',
+  text: 'text',
+  attachmentUrl: 'attachmentUrl'
+} as const
+
+export type RideMessageOrderByRelevanceFieldEnum = (typeof RideMessageOrderByRelevanceFieldEnum)[keyof typeof RideMessageOrderByRelevanceFieldEnum]
+
+
+export const RideSosEventOrderByRelevanceFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  userId: 'userId',
+  note: 'note',
+  handledBy: 'handledBy'
+} as const
+
+export type RideSosEventOrderByRelevanceFieldEnum = (typeof RideSosEventOrderByRelevanceFieldEnum)[keyof typeof RideSosEventOrderByRelevanceFieldEnum]
 

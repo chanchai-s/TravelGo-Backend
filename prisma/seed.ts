@@ -36,6 +36,58 @@ const IMAGES = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuBXxLcPg2UuN9vQ6UsOreSX7tH1xsoleKLSEpE_U_P2Abz46zhQOIOCrwssIktyGQ0LAkSNHQE0KCmvmx6PlPgKzKLR8UpxRwfugi0TcjAvgchb9zAiNPh1ht6lqGGImGDKnm7i_tcpy5-amshXkF0-7wSDNXopapKF6PA8wfok-pJ8qQE4J-aBfKv7wXYiM9UuebuuhPPltm8fr-To7TKggAXtQ9oygrvnSNuO0HxKogZvvRfURVUbJA",
 ];
 
+type RideTierSeed = {
+  code: string;
+  name: string;
+  serviceType: "RIDE" | "PARCEL" | "LOGISTICS";
+  vehicleType:
+    | "MOTORCYCLE"
+    | "CAR"
+    | "SUV"
+    | "VAN"
+    | "PICKUP"
+    | "TRUCK_6W"
+    | "TRUCK_10W"
+    | "TRAILER"
+    | "REFRIGERATED";
+  seats?: number;
+  maxWeightKg?: number;
+  maxDimCm?: string;
+  baseFare: number;
+  perKm: number;
+  perMin: number;
+  minFare: number;
+  flatFare?: number;
+  includedKm?: number;
+  description: string;
+  sortOrder: number;
+};
+
+// ชั้นราคา (tier) ของ ride + logistics — แก้ราคาที่นี่แล้วรัน seed
+const RIDE_TIERS: RideTierSeed[] = [
+  // --- ขนคน ---
+  { code: "MOTO", name: "มอเตอร์ไซค์", serviceType: "RIDE", vehicleType: "MOTORCYCLE", seats: 1, baseFare: 15, perKm: 6, perMin: 1, minFare: 25, description: "ไปเร็ว ทันใจ เหมาะช่วงรถติด", sortOrder: 10 },
+  { code: "ECO", name: "ประหยัด", serviceType: "RIDE", vehicleType: "CAR", seats: 4, baseFare: 35, perKm: 9, perMin: 1, minFare: 55, description: "รถเก๋งประหยัดน้ำมัน", sortOrder: 20 },
+  { code: "EXECUTIVE", name: "Executive", serviceType: "RIDE", vehicleType: "CAR", seats: 4, baseFare: 60, perKm: 14, perMin: 2, minFare: 90, description: "รถ EV / ซีดานพรีเมียม แนะนำ", sortOrder: 30 },
+  { code: "SUV", name: "SUV ครอบครัว", serviceType: "RIDE", vehicleType: "SUV", seats: 6, baseFare: 70, perKm: 16, perMin: 2, minFare: 110, description: "พื้นที่กว้าง เหมาะขึ้นเขา", sortOrder: 40 },
+  { code: "VIP_VAN", name: "VIP Van", serviceType: "RIDE", vehicleType: "VAN", seats: 9, baseFare: 120, perKm: 20, perMin: 3, minFare: 180, description: "รถตู้รับสนามบิน / กรุ๊ป", sortOrder: 50 },
+  { code: "LUXURY", name: "Luxury", serviceType: "RIDE", vehicleType: "CAR", seats: 4, baseFare: 150, perKm: 25, perMin: 4, minFare: 250, description: "รถหรูระดับพรีเมียม", sortOrder: 60 },
+
+  // --- ขนของ ---
+  { code: "PARCEL_MOTO", name: "มอเตอร์ไซค์ส่งของ", serviceType: "PARCEL", vehicleType: "MOTORCYCLE", maxWeightKg: 20, maxDimCm: "40x40x40", baseFare: 20, perKm: 7, perMin: 1, minFare: 35, description: "เอกสาร / ของชิ้นเล็ก", sortOrder: 110 },
+  { code: "PARCEL_PICKUP", name: "กระบะ 4 ล้อ", serviceType: "PARCEL", vehicleType: "PICKUP", maxWeightKg: 1000, maxDimCm: "240x150x50", baseFare: 150, perKm: 15, perMin: 2, minFare: 250, description: "ของใช้ในบ้าน / เฟอร์นิเจอร์ชิ้นเล็ก", sortOrder: 120 },
+  { code: "PARCEL_VAN", name: "รถตู้ขนของ", serviceType: "PARCEL", vehicleType: "VAN", maxWeightKg: 800, maxDimCm: "280x160x170", baseFare: 180, perKm: 18, perMin: 2, minFare: 300, description: "กล่องหลายใบ / ของสูง", sortOrder: 130 },
+  { code: "PARCEL_6W", name: "รถ 6 ล้อ", serviceType: "PARCEL", vehicleType: "TRUCK_6W", maxWeightKg: 3500, maxDimCm: "450x200x150", baseFare: 500, perKm: 25, perMin: 3, minFare: 900, description: "ย้ายร้าน / ของจำนวนมาก", sortOrder: 140 },
+  { code: "PARCEL_10W", name: "รถ 10 ล้อ", serviceType: "PARCEL", vehicleType: "TRUCK_10W", maxWeightKg: 10000, maxDimCm: "650x230x200", baseFare: 900, perKm: 35, perMin: 4, minFare: 1500, description: "สินค้าส่งคลัง", sortOrder: 150 },
+  { code: "PARCEL_TRAILER", name: "หัวลาก / พ่วง", serviceType: "PARCEL", vehicleType: "TRAILER", maxWeightKg: 25000, maxDimCm: "1200x240x260", baseFare: 1800, perKm: 45, perMin: 5, minFare: 3000, description: "เหมาคัน / ข้ามจังหวัด", sortOrder: 160 },
+  { code: "PARCEL_COLD", name: "รถห้องเย็น", serviceType: "PARCEL", vehicleType: "REFRIGERATED", maxWeightKg: 3000, maxDimCm: "450x200x180", baseFare: 700, perKm: 30, perMin: 4, minFare: 1200, description: "อาหาร / ยา / ของควบคุมอุณหภูมิ", sortOrder: 170 },
+
+  // --- เหมารถ (LOGISTICS) ---
+  { code: "LOGI_6W", name: "เหมา 6 ล้อ", serviceType: "LOGISTICS", vehicleType: "TRUCK_6W", maxWeightKg: 3500, baseFare: 0, perKm: 30, perMin: 0, minFare: 2500, flatFare: 2500, includedKm: 30, description: "เหมาคัน 30 กม.แรก", sortOrder: 210 },
+  { code: "LOGI_10W", name: "เหมา 10 ล้อ", serviceType: "LOGISTICS", vehicleType: "TRUCK_10W", maxWeightKg: 10000, baseFare: 0, perKm: 40, perMin: 0, minFare: 4500, flatFare: 4500, includedKm: 30, description: "เหมาคัน 30 กม.แรก", sortOrder: 220 },
+  { code: "LOGI_TRAILER", name: "เหมาหัวลาก", serviceType: "LOGISTICS", vehicleType: "TRAILER", maxWeightKg: 25000, baseFare: 0, perKm: 55, perMin: 0, minFare: 8000, flatFare: 8000, includedKm: 40, description: "เหมาคัน 40 กม.แรก", sortOrder: 230 },
+];
+
 async function main() {
   for (const setting of SETTINGS) {
     await prisma.platformSetting.upsert({
@@ -50,6 +102,14 @@ async function main() {
       where: { id: category.id },
       create: category,
       update: { slug: category.slug, name: category.name, sortOrder: category.sortOrder },
+    });
+  }
+
+  for (const tier of RIDE_TIERS) {
+    await prisma.rideTier.upsert({
+      where: { code: tier.code },
+      create: tier,
+      update: tier,
     });
   }
 
@@ -223,6 +283,7 @@ async function main() {
     branches: await prisma.partnerBranch.count(),
     vehicles: await prisma.vehicle.count(),
     settings: await prisma.platformSetting.count(),
+    rideTiers: await prisma.rideTier.count(),
   };
 
   console.log("Seed completed:", counts);

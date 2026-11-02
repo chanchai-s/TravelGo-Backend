@@ -307,3 +307,73 @@ export type CommissionChangeLog = Prisma.CommissionChangeLogModel
  * 
  */
 export type PlatformSetting = Prisma.PlatformSettingModel
+/**
+ * Model RideTier
+ * 
+ */
+export type RideTier = Prisma.RideTierModel
+/**
+ * Model DriverVehicle
+ * 
+ */
+export type DriverVehicle = Prisma.DriverVehicleModel
+/**
+ * Model DriverDocument
+ * 
+ */
+export type DriverDocument = Prisma.DriverDocumentModel
+/**
+ * Model SavedAddress
+ * 
+ */
+export type SavedAddress = Prisma.SavedAddressModel
+/**
+ * Model RideJob
+ * 
+ */
+export type RideJob = Prisma.RideJobModel
+/**
+ * Model RideAddon
+ * 
+ */
+export type RideAddon = Prisma.RideAddonModel
+/**
+ * Model ParcelDetail
+ * 
+ */
+export type ParcelDetail = Prisma.ParcelDetailModel
+/**
+ * Model RideStatusLog
+ * 
+ */
+export type RideStatusLog = Prisma.RideStatusLogModel
+/**
+ * Model DriverLocation
+ * 
+ */
+export type DriverLocation = Prisma.DriverLocationModel
+/**
+ * Model RidePayment
+ * 
+ */
+export type RidePayment = Prisma.RidePaymentModel
+/**
+ * Model DriverEarning
+ * 
+ */
+export type DriverEarning = Prisma.DriverEarningModel
+/**
+ * Model RideRating
+ * 
+ */
+export type RideRating = Prisma.RideRatingModel
+/**
+ * Model RideMessage
+ * 
+ */
+export type RideMessage = Prisma.RideMessageModel
+/**
+ * Model RideSosEvent
+ * 
+ */
+export type RideSosEvent = Prisma.RideSosEventModel

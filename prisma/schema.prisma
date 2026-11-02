@@ -124,6 +124,7 @@ model User {
   name      String
   email     String       @unique
   phone     String?
+  password  String?
   role      PlatformRole @default(USER)
   tier      String       @default("BRONZE")
   createdAt DateTime     @default(now())
@@ -150,6 +151,12 @@ model User {
   hostProfile    HostProfile?    @relation("hostProfile")
   driverProfile  DriverProfile?  @relation("driverProfile")
   vehiclePartner VehiclePartner? @relation("vehiclePartner")
+
+  savedAddresses  SavedAddress[]
+  rideJobs        RideJob[]       @relation("RideJobRider")
+  driverJobs      RideJob[]       @relation("RideJobDriver")
+  driverVehicles  DriverVehicle[]
+  driverDocuments DriverDocument[]
 }
 
 model HostProfile {
@@ -715,13 +722,25 @@ model BankPrivilege {
 }
 
 model DriverProfile {
-  id        String   @id @default(cuid())
-  userId    String   @unique
-  user      User     @relation("driverProfile", fields: [userId], references: [id])
-  license   String
-  vehicleId String?
-  status    String   @default("PENDING")
-  createdAt DateTime @default(now())
+  id             String    @id @default(cuid())
+  userId         String    @unique
+  user           User      @relation("driverProfile", fields: [userId], references: [id])
+  license        String
+  vehicleId      String?
+  status         String    @default("PENDING")
+  serviceTypes   Json?
+  tierCodes      Json?
+  isOnline       Boolean   @default(false)
+  lastLat        Float?
+  lastLng        Float?
+  lastLocationAt DateTime?
+  rating         Float     @default(5)
+  totalTrips     Int       @default(0)
+  commissionRate Int?
+  verifiedAt     DateTime?
+  rejectedReason String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @default(now()) @updatedAt
 }
 
 model Media {
@@ -976,4 +995,361 @@ model PlatformSetting {
   value     String
   updatedBy String?
   updatedAt DateTime @updatedAt
+}
+
+// ============================================================
+// Ride & Logistics domain
+// ============================================================
+
+enum RideServiceType {
+  RIDE
+  PARCEL
+  LOGISTICS
+}
+
+enum RideStatus {
+  REQUESTED
+  SEARCHING
+  ACCEPTED
+  ARRIVING
+  ARRIVED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  EXPIRED
+}
+
+enum DriverVehicleType {
+  MOTORCYCLE
+  CAR
+  SUV
+  VAN
+  PICKUP
+  TRUCK_6W
+  TRUCK_10W
+  TRAILER
+  REFRIGERATED
+}
+
+enum PaymentTiming {
+  PREPAY
+  POSTPAY
+}
+
+enum RidePaymentMethod {
+  CARD
+  PROMPTPAY
+  WALLET
+  CASH
+  TRANSFER
+}
+
+enum RidePaymentStatus {
+  PENDING
+  AUTHORIZED
+  PAID
+  REFUNDED
+  FAILED
+}
+
+enum ParcelSizeTier {
+  S
+  M
+  L
+  XL
+}
+
+enum RideAddonType {
+  INSURANCE
+  CHILD_SEAT
+  VIP_ESCORT
+  EXTRA_STOP
+  LOADING
+  WAITING
+}
+
+enum RideSosStatus {
+  OPEN
+  ACK
+  CLOSED
+}
+
+enum DriverDocType {
+  ID_CARD
+  LICENSE
+  BLUE_BOOK
+  INSURANCE
+  CRIMINAL_CHECK
+  PASSBOOK
+}
+
+enum DriverDocStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+// ชั้นราคา (tier) แยกจากชนิดรถ — คนขับลงทะเบียนได้หลาย tier
+model RideTier {
+  id           String          @id @default(cuid())
+  code         String          @unique
+  name         String
+  serviceType  RideServiceType
+  vehicleType  DriverVehicleType
+  seats        Int?
+  maxWeightKg  Int?
+  maxDimCm     String?
+  baseFare     Int             @default(0)
+  perKm        Int             @default(0)
+  perMin       Int             @default(0)
+  minFare      Int             @default(0)
+  flatFare     Int?
+  includedKm   Int?
+  description  String?
+  imageUrl     String?
+  isActive     Boolean         @default(true)
+  sortOrder    Int             @default(0)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @default(now()) @updatedAt
+
+  jobs         RideJob[]
+
+  @@index([serviceType, isActive, sortOrder])
+}
+
+model DriverVehicle {
+  id          String            @id @default(cuid())
+  userId      String
+  user        User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type        DriverVehicleType
+  tierCode    String?
+  brand       String?
+  model       String?
+  plateNo     String?
+  color       String?
+  seats       Int?
+  maxWeightKg Int?
+  photoUrl    String?
+  isActive    Boolean           @default(true)
+  createdAt   DateTime          @default(now())
+
+  @@index([userId])
+}
+
+model DriverDocument {
+  id         String          @id @default(cuid())
+  userId     String
+  user       User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type       DriverDocType
+  url        String
+  status     DriverDocStatus @default(PENDING)
+  reviewNote String?
+  reviewedAt DateTime?
+  createdAt  DateTime        @default(now())
+
+  @@index([userId, type])
+}
+
+model SavedAddress {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  label     String
+  address   String
+  lat       Float
+  lng       Float
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model RideJob {
+  id            String          @id @default(cuid())
+  ref           String          @unique
+  riderId       String
+  rider         User            @relation("RideJobRider", fields: [riderId], references: [id])
+  driverId      String?
+  driver        User?           @relation("RideJobDriver", fields: [driverId], references: [id])
+  serviceType   RideServiceType
+  tierCode      String
+  tier          RideTier        @relation(fields: [tierCode], references: [code])
+  status        RideStatus      @default(REQUESTED)
+
+  passengerCount Int?
+  pickupLat     Float
+  pickupLng     Float
+  pickupAddress String
+  dropoffLat    Float
+  dropoffLng    Float
+  dropoffAddress String
+
+  distanceKm    Float           @default(0)
+  durationMin   Int             @default(0)
+
+  baseFare      Int             @default(0)
+  addonTotal    Int             @default(0)
+  vatAmount     Int             @default(0)
+  fareEstimate  Int             @default(0)
+  fareFinal     Int?
+  commissionRate Int?
+  commission    Int             @default(0)
+  netToDriver   Int             @default(0)
+
+  paymentTiming PaymentTiming
+  paymentMethod RidePaymentMethod
+  paymentStatus RidePaymentStatus @default(PENDING)
+
+  requestedAt   DateTime        @default(now())
+  acceptedAt    DateTime?
+  arrivedAt     DateTime?
+  startedAt     DateTime?
+  completedAt   DateTime?
+  cancelledAt   DateTime?
+  cancelReason  String?
+  cancelBy      String?
+
+  addons        RideAddon[]
+  parcel        ParcelDetail?
+  statusLogs    RideStatusLog[]
+  payments      RidePayment[]
+  earning       DriverEarning?
+  rating        RideRating?
+  messages      RideMessage[]
+  sosEvents     RideSosEvent[]
+
+  @@index([serviceType, status, requestedAt])
+  @@index([driverId, status])
+  @@index([riderId, requestedAt])
+  @@index([tierCode])
+}
+
+model RideAddon {
+  id     String        @id @default(cuid())
+  jobId  String
+  job    RideJob       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  type   RideAddonType
+  name   String
+  amount Int
+  qty    Int           @default(1)
+
+  @@index([jobId])
+}
+
+model ParcelDetail {
+  jobId         String  @id
+  job           RideJob @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  weightKg      Float
+  sizeTier      ParcelSizeTier
+  isFragile     Boolean @default(false)
+  receiverName  String
+  receiverPhone String
+  note          String?
+  pickupOtp     String?
+  deliveryOtp   String?
+  proofPhotoUrl String?
+  signatureUrl  String?
+  codAmount     Int     @default(0)
+}
+
+model RideStatusLog {
+  id         String      @id @default(cuid())
+  jobId      String
+  job        RideJob     @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  fromStatus RideStatus?
+  toStatus   RideStatus
+  byUserId   String?
+  note       String?
+  createdAt  DateTime    @default(now())
+
+  @@index([jobId, createdAt])
+}
+
+model DriverLocation {
+  id         String   @id @default(cuid())
+  driverId   String
+  jobId      String?
+  lat        Float
+  lng        Float
+  bearing    Float?
+  speed      Float?
+  recordedAt DateTime @default(now())
+
+  @@index([jobId, recordedAt])
+  @@index([driverId, recordedAt])
+}
+
+model RidePayment {
+  id         String            @id @default(cuid())
+  jobId      String
+  job        RideJob           @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  timing     PaymentTiming
+  method     RidePaymentMethod
+  status     RidePaymentStatus @default(PENDING)
+  type       String            @default("FARE")
+  amount     Int
+  baseAmount Int               @default(0)
+  vatAmount  Int               @default(0)
+  gatewayRef String?
+  paidAt     DateTime?
+  createdAt  DateTime          @default(now())
+
+  @@index([jobId])
+}
+
+model DriverEarning {
+  id            String    @id @default(cuid())
+  jobId         String    @unique
+  job           RideJob   @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  driverId      String
+  gross         Int
+  commission    Int
+  net           Int
+  status        String    @default("PENDING")
+  paidAt        DateTime?
+  createdAt     DateTime  @default(now())
+
+  @@index([driverId, status])
+}
+
+model RideRating {
+  id        String   @id @default(cuid())
+  jobId     String   @unique
+  job       RideJob  @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  riderId   String
+  driverId  String
+  stars     Int
+  text      String?
+  createdAt DateTime @default(now())
+
+  @@index([driverId])
+}
+
+model RideMessage {
+  id            String    @id @default(cuid())
+  jobId         String
+  job           RideJob   @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  senderId      String
+  text          String?
+  attachmentUrl String?
+  readAt        DateTime?
+  createdAt     DateTime  @default(now())
+
+  @@index([jobId, createdAt])
+}
+
+model RideSosEvent {
+  id        String       @id @default(cuid())
+  jobId     String
+  job       RideJob      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  userId    String
+  lat       Float?
+  lng       Float?
+  note      String?
+  status    RideSosStatus @default(OPEN)
+  handledBy String?
+  handledAt DateTime?
+  createdAt DateTime     @default(now())
+
+  @@index([status, createdAt])
 }

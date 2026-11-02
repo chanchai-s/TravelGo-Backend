@@ -29,6 +29,7 @@ export type UserMinAggregateOutputType = {
   name: string | null
   email: string | null
   phone: string | null
+  password: string | null
   role: $Enums.PlatformRole | null
   tier: string | null
   createdAt: Date | null
@@ -40,6 +41,7 @@ export type UserMaxAggregateOutputType = {
   name: string | null
   email: string | null
   phone: string | null
+  password: string | null
   role: $Enums.PlatformRole | null
   tier: string | null
   createdAt: Date | null
@@ -51,6 +53,7 @@ export type UserCountAggregateOutputType = {
   name: number
   email: number
   phone: number
+  password: number
   role: number
   tier: number
   createdAt: number
@@ -64,6 +67,7 @@ export type UserMinAggregateInputType = {
   name?: true
   email?: true
   phone?: true
+  password?: true
   role?: true
   tier?: true
   createdAt?: true
@@ -75,6 +79,7 @@ export type UserMaxAggregateInputType = {
   name?: true
   email?: true
   phone?: true
+  password?: true
   role?: true
   tier?: true
   createdAt?: true
@@ -86,6 +91,7 @@ export type UserCountAggregateInputType = {
   name?: true
   email?: true
   phone?: true
+  password?: true
   role?: true
   tier?: true
   createdAt?: true
@@ -170,6 +176,7 @@ export type UserGroupByOutputType = {
   name: string
   email: string
   phone: string | null
+  password: string | null
   role: $Enums.PlatformRole
   tier: string
   createdAt: Date
@@ -202,6 +209,7 @@ export type UserWhereInput = {
   name?: Prisma.StringFilter<"User"> | string
   email?: Prisma.StringFilter<"User"> | string
   phone?: Prisma.StringNullableFilter<"User"> | string | null
+  password?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.EnumPlatformRoleFilter<"User"> | $Enums.PlatformRole
   tier?: Prisma.StringFilter<"User"> | string
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
@@ -226,6 +234,11 @@ export type UserWhereInput = {
   hostProfile?: Prisma.XOR<Prisma.HostProfileNullableScalarRelationFilter, Prisma.HostProfileWhereInput> | null
   driverProfile?: Prisma.XOR<Prisma.DriverProfileNullableScalarRelationFilter, Prisma.DriverProfileWhereInput> | null
   vehiclePartner?: Prisma.XOR<Prisma.VehiclePartnerNullableScalarRelationFilter, Prisma.VehiclePartnerWhereInput> | null
+  savedAddresses?: Prisma.SavedAddressListRelationFilter
+  rideJobs?: Prisma.RideJobListRelationFilter
+  driverJobs?: Prisma.RideJobListRelationFilter
+  driverVehicles?: Prisma.DriverVehicleListRelationFilter
+  driverDocuments?: Prisma.DriverDocumentListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -233,6 +246,7 @@ export type UserOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  password?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
   tier?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -257,6 +271,11 @@ export type UserOrderByWithRelationInput = {
   hostProfile?: Prisma.HostProfileOrderByWithRelationInput
   driverProfile?: Prisma.DriverProfileOrderByWithRelationInput
   vehiclePartner?: Prisma.VehiclePartnerOrderByWithRelationInput
+  savedAddresses?: Prisma.SavedAddressOrderByRelationAggregateInput
+  rideJobs?: Prisma.RideJobOrderByRelationAggregateInput
+  driverJobs?: Prisma.RideJobOrderByRelationAggregateInput
+  driverVehicles?: Prisma.DriverVehicleOrderByRelationAggregateInput
+  driverDocuments?: Prisma.DriverDocumentOrderByRelationAggregateInput
   _relevance?: Prisma.UserOrderByRelevanceInput
 }
 
@@ -268,6 +287,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   name?: Prisma.StringFilter<"User"> | string
   phone?: Prisma.StringNullableFilter<"User"> | string | null
+  password?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.EnumPlatformRoleFilter<"User"> | $Enums.PlatformRole
   tier?: Prisma.StringFilter<"User"> | string
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
@@ -292,6 +312,11 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   hostProfile?: Prisma.XOR<Prisma.HostProfileNullableScalarRelationFilter, Prisma.HostProfileWhereInput> | null
   driverProfile?: Prisma.XOR<Prisma.DriverProfileNullableScalarRelationFilter, Prisma.DriverProfileWhereInput> | null
   vehiclePartner?: Prisma.XOR<Prisma.VehiclePartnerNullableScalarRelationFilter, Prisma.VehiclePartnerWhereInput> | null
+  savedAddresses?: Prisma.SavedAddressListRelationFilter
+  rideJobs?: Prisma.RideJobListRelationFilter
+  driverJobs?: Prisma.RideJobListRelationFilter
+  driverVehicles?: Prisma.DriverVehicleListRelationFilter
+  driverDocuments?: Prisma.DriverDocumentListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -299,6 +324,7 @@ export type UserOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  password?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
   tier?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -316,6 +342,7 @@ export type UserScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"User"> | string
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   phone?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  password?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   role?: Prisma.EnumPlatformRoleWithAggregatesFilter<"User"> | $Enums.PlatformRole
   tier?: Prisma.StringWithAggregatesFilter<"User"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -327,6 +354,7 @@ export type UserCreateInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -351,6 +379,11 @@ export type UserCreateInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -358,6 +391,7 @@ export type UserUncheckedCreateInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -382,6 +416,11 @@ export type UserUncheckedCreateInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -389,6 +428,7 @@ export type UserUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -413,6 +453,11 @@ export type UserUpdateInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -420,6 +465,7 @@ export type UserUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -444,6 +490,11 @@ export type UserUncheckedUpdateInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -451,6 +502,7 @@ export type UserCreateManyInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -462,6 +514,7 @@ export type UserUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -473,6 +526,7 @@ export type UserUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -490,6 +544,7 @@ export type UserCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   tier?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -501,6 +556,7 @@ export type UserMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   tier?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -512,6 +568,7 @@ export type UserMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   tier?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -521,6 +578,11 @@ export type UserMinOrderByAggregateInput = {
 export type UserScalarRelationFilter = {
   is?: Prisma.UserWhereInput
   isNot?: Prisma.UserWhereInput
+}
+
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null
+  isNot?: Prisma.UserWhereInput | null
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -819,11 +881,84 @@ export type UserUpdateOneRequiredWithoutVehiclePartnerNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutVehiclePartnerInput, Prisma.UserUpdateWithoutVehiclePartnerInput>, Prisma.UserUncheckedUpdateWithoutVehiclePartnerInput>
 }
 
+export type UserCreateNestedOneWithoutDriverVehiclesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDriverVehiclesInput, Prisma.UserUncheckedCreateWithoutDriverVehiclesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDriverVehiclesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutDriverVehiclesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDriverVehiclesInput, Prisma.UserUncheckedCreateWithoutDriverVehiclesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDriverVehiclesInput
+  upsert?: Prisma.UserUpsertWithoutDriverVehiclesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDriverVehiclesInput, Prisma.UserUpdateWithoutDriverVehiclesInput>, Prisma.UserUncheckedUpdateWithoutDriverVehiclesInput>
+}
+
+export type UserCreateNestedOneWithoutDriverDocumentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDriverDocumentsInput, Prisma.UserUncheckedCreateWithoutDriverDocumentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDriverDocumentsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutDriverDocumentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDriverDocumentsInput, Prisma.UserUncheckedCreateWithoutDriverDocumentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDriverDocumentsInput
+  upsert?: Prisma.UserUpsertWithoutDriverDocumentsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDriverDocumentsInput, Prisma.UserUpdateWithoutDriverDocumentsInput>, Prisma.UserUncheckedUpdateWithoutDriverDocumentsInput>
+}
+
+export type UserCreateNestedOneWithoutSavedAddressesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSavedAddressesInput, Prisma.UserUncheckedCreateWithoutSavedAddressesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSavedAddressesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSavedAddressesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSavedAddressesInput, Prisma.UserUncheckedCreateWithoutSavedAddressesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSavedAddressesInput
+  upsert?: Prisma.UserUpsertWithoutSavedAddressesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSavedAddressesInput, Prisma.UserUpdateWithoutSavedAddressesInput>, Prisma.UserUncheckedUpdateWithoutSavedAddressesInput>
+}
+
+export type UserCreateNestedOneWithoutRideJobsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRideJobsInput, Prisma.UserUncheckedCreateWithoutRideJobsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRideJobsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutDriverJobsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDriverJobsInput, Prisma.UserUncheckedCreateWithoutDriverJobsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDriverJobsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRideJobsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRideJobsInput, Prisma.UserUncheckedCreateWithoutRideJobsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRideJobsInput
+  upsert?: Prisma.UserUpsertWithoutRideJobsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRideJobsInput, Prisma.UserUpdateWithoutRideJobsInput>, Prisma.UserUncheckedUpdateWithoutRideJobsInput>
+}
+
+export type UserUpdateOneWithoutDriverJobsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDriverJobsInput, Prisma.UserUncheckedCreateWithoutDriverJobsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDriverJobsInput
+  upsert?: Prisma.UserUpsertWithoutDriverJobsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDriverJobsInput, Prisma.UserUpdateWithoutDriverJobsInput>, Prisma.UserUncheckedUpdateWithoutDriverJobsInput>
+}
+
 export type UserCreateWithoutHostProfileInput = {
   id?: string
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -847,6 +982,11 @@ export type UserCreateWithoutHostProfileInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHostProfileInput = {
@@ -854,6 +994,7 @@ export type UserUncheckedCreateWithoutHostProfileInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -877,6 +1018,11 @@ export type UserUncheckedCreateWithoutHostProfileInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHostProfileInput = {
@@ -900,6 +1046,7 @@ export type UserUpdateWithoutHostProfileInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -923,6 +1070,11 @@ export type UserUpdateWithoutHostProfileInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHostProfileInput = {
@@ -930,6 +1082,7 @@ export type UserUncheckedUpdateWithoutHostProfileInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -953,6 +1106,11 @@ export type UserUncheckedUpdateWithoutHostProfileInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHostStaffInput = {
@@ -960,6 +1118,7 @@ export type UserCreateWithoutHostStaffInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -983,6 +1142,11 @@ export type UserCreateWithoutHostStaffInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHostStaffInput = {
@@ -990,6 +1154,7 @@ export type UserUncheckedCreateWithoutHostStaffInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1013,6 +1178,11 @@ export type UserUncheckedCreateWithoutHostStaffInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHostStaffInput = {
@@ -1036,6 +1206,7 @@ export type UserUpdateWithoutHostStaffInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1059,6 +1230,11 @@ export type UserUpdateWithoutHostStaffInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHostStaffInput = {
@@ -1066,6 +1242,7 @@ export type UserUncheckedUpdateWithoutHostStaffInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1089,6 +1266,11 @@ export type UserUncheckedUpdateWithoutHostStaffInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBookingsInput = {
@@ -1096,6 +1278,7 @@ export type UserCreateWithoutBookingsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1119,6 +1302,11 @@ export type UserCreateWithoutBookingsInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBookingsInput = {
@@ -1126,6 +1314,7 @@ export type UserUncheckedCreateWithoutBookingsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1149,6 +1338,11 @@ export type UserUncheckedCreateWithoutBookingsInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBookingsInput = {
@@ -1172,6 +1366,7 @@ export type UserUpdateWithoutBookingsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1195,6 +1390,11 @@ export type UserUpdateWithoutBookingsInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBookingsInput = {
@@ -1202,6 +1402,7 @@ export type UserUncheckedUpdateWithoutBookingsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1225,6 +1426,11 @@ export type UserUncheckedUpdateWithoutBookingsInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutWalletInput = {
@@ -1232,6 +1438,7 @@ export type UserCreateWithoutWalletInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1255,6 +1462,11 @@ export type UserCreateWithoutWalletInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWalletInput = {
@@ -1262,6 +1474,7 @@ export type UserUncheckedCreateWithoutWalletInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1285,6 +1498,11 @@ export type UserUncheckedCreateWithoutWalletInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWalletInput = {
@@ -1308,6 +1526,7 @@ export type UserUpdateWithoutWalletInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1331,6 +1550,11 @@ export type UserUpdateWithoutWalletInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWalletInput = {
@@ -1338,6 +1562,7 @@ export type UserUncheckedUpdateWithoutWalletInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1361,6 +1586,11 @@ export type UserUncheckedUpdateWithoutWalletInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutVoucherAssignmentsInput = {
@@ -1368,6 +1598,7 @@ export type UserCreateWithoutVoucherAssignmentsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1391,6 +1622,11 @@ export type UserCreateWithoutVoucherAssignmentsInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutVoucherAssignmentsInput = {
@@ -1398,6 +1634,7 @@ export type UserUncheckedCreateWithoutVoucherAssignmentsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1421,6 +1658,11 @@ export type UserUncheckedCreateWithoutVoucherAssignmentsInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutVoucherAssignmentsInput = {
@@ -1444,6 +1686,7 @@ export type UserUpdateWithoutVoucherAssignmentsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1467,6 +1710,11 @@ export type UserUpdateWithoutVoucherAssignmentsInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutVoucherAssignmentsInput = {
@@ -1474,6 +1722,7 @@ export type UserUncheckedUpdateWithoutVoucherAssignmentsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1497,6 +1746,11 @@ export type UserUncheckedUpdateWithoutVoucherAssignmentsInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReviewsWrittenInput = {
@@ -1504,6 +1758,7 @@ export type UserCreateWithoutReviewsWrittenInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1527,6 +1782,11 @@ export type UserCreateWithoutReviewsWrittenInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReviewsWrittenInput = {
@@ -1534,6 +1794,7 @@ export type UserUncheckedCreateWithoutReviewsWrittenInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1557,6 +1818,11 @@ export type UserUncheckedCreateWithoutReviewsWrittenInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReviewsWrittenInput = {
@@ -1580,6 +1846,7 @@ export type UserUpdateWithoutReviewsWrittenInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1603,6 +1870,11 @@ export type UserUpdateWithoutReviewsWrittenInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewsWrittenInput = {
@@ -1610,6 +1882,7 @@ export type UserUncheckedUpdateWithoutReviewsWrittenInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1633,6 +1906,11 @@ export type UserUncheckedUpdateWithoutReviewsWrittenInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -1640,6 +1918,7 @@ export type UserCreateWithoutCommentsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1663,6 +1942,11 @@ export type UserCreateWithoutCommentsInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -1670,6 +1954,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1693,6 +1978,11 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -1716,6 +2006,7 @@ export type UserUpdateWithoutCommentsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1739,6 +2030,11 @@ export type UserUpdateWithoutCommentsInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -1746,6 +2042,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1769,6 +2066,11 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLikesInput = {
@@ -1776,6 +2078,7 @@ export type UserCreateWithoutLikesInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1799,6 +2102,11 @@ export type UserCreateWithoutLikesInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLikesInput = {
@@ -1806,6 +2114,7 @@ export type UserUncheckedCreateWithoutLikesInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1829,6 +2138,11 @@ export type UserUncheckedCreateWithoutLikesInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLikesInput = {
@@ -1852,6 +2166,7 @@ export type UserUpdateWithoutLikesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1875,6 +2190,11 @@ export type UserUpdateWithoutLikesInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLikesInput = {
@@ -1882,6 +2202,7 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1905,6 +2226,11 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutFollowsInput = {
@@ -1912,6 +2238,7 @@ export type UserCreateWithoutFollowsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1935,6 +2262,11 @@ export type UserCreateWithoutFollowsInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowsInput = {
@@ -1942,6 +2274,7 @@ export type UserUncheckedCreateWithoutFollowsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -1965,6 +2298,11 @@ export type UserUncheckedCreateWithoutFollowsInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowsInput = {
@@ -1977,6 +2315,7 @@ export type UserCreateWithoutFollowingInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2000,6 +2339,11 @@ export type UserCreateWithoutFollowingInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowingInput = {
@@ -2007,6 +2351,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2030,6 +2375,11 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowingInput = {
@@ -2053,6 +2403,7 @@ export type UserUpdateWithoutFollowsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2076,6 +2427,11 @@ export type UserUpdateWithoutFollowsInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowsInput = {
@@ -2083,6 +2439,7 @@ export type UserUncheckedUpdateWithoutFollowsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2106,6 +2463,11 @@ export type UserUncheckedUpdateWithoutFollowsInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutFollowingInput = {
@@ -2124,6 +2486,7 @@ export type UserUpdateWithoutFollowingInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2147,6 +2510,11 @@ export type UserUpdateWithoutFollowingInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowingInput = {
@@ -2154,6 +2522,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2177,6 +2546,11 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSavedInput = {
@@ -2184,6 +2558,7 @@ export type UserCreateWithoutSavedInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2207,6 +2582,11 @@ export type UserCreateWithoutSavedInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSavedInput = {
@@ -2214,6 +2594,7 @@ export type UserUncheckedCreateWithoutSavedInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2237,6 +2618,11 @@ export type UserUncheckedCreateWithoutSavedInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSavedInput = {
@@ -2260,6 +2646,7 @@ export type UserUpdateWithoutSavedInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2283,6 +2670,11 @@ export type UserUpdateWithoutSavedInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavedInput = {
@@ -2290,6 +2682,7 @@ export type UserUncheckedUpdateWithoutSavedInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2313,6 +2706,11 @@ export type UserUncheckedUpdateWithoutSavedInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCartItemsInput = {
@@ -2320,6 +2718,7 @@ export type UserCreateWithoutCartItemsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2343,6 +2742,11 @@ export type UserCreateWithoutCartItemsInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCartItemsInput = {
@@ -2350,6 +2754,7 @@ export type UserUncheckedCreateWithoutCartItemsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2373,6 +2778,11 @@ export type UserUncheckedCreateWithoutCartItemsInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCartItemsInput = {
@@ -2396,6 +2806,7 @@ export type UserUpdateWithoutCartItemsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2419,6 +2830,11 @@ export type UserUpdateWithoutCartItemsInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCartItemsInput = {
@@ -2426,6 +2842,7 @@ export type UserUncheckedUpdateWithoutCartItemsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2449,6 +2866,11 @@ export type UserUncheckedUpdateWithoutCartItemsInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPlansInput = {
@@ -2456,6 +2878,7 @@ export type UserCreateWithoutPlansInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2479,6 +2902,11 @@ export type UserCreateWithoutPlansInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPlansInput = {
@@ -2486,6 +2914,7 @@ export type UserUncheckedCreateWithoutPlansInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2509,6 +2938,11 @@ export type UserUncheckedCreateWithoutPlansInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPlansInput = {
@@ -2532,6 +2966,7 @@ export type UserUpdateWithoutPlansInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2555,6 +2990,11 @@ export type UserUpdateWithoutPlansInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPlansInput = {
@@ -2562,6 +3002,7 @@ export type UserUncheckedUpdateWithoutPlansInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2585,6 +3026,11 @@ export type UserUncheckedUpdateWithoutPlansInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserPostsInput = {
@@ -2592,6 +3038,7 @@ export type UserCreateWithoutUserPostsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2615,6 +3062,11 @@ export type UserCreateWithoutUserPostsInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserPostsInput = {
@@ -2622,6 +3074,7 @@ export type UserUncheckedCreateWithoutUserPostsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2645,6 +3098,11 @@ export type UserUncheckedCreateWithoutUserPostsInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserPostsInput = {
@@ -2668,6 +3126,7 @@ export type UserUpdateWithoutUserPostsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2691,6 +3150,11 @@ export type UserUpdateWithoutUserPostsInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserPostsInput = {
@@ -2698,6 +3162,7 @@ export type UserUncheckedUpdateWithoutUserPostsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2721,6 +3186,11 @@ export type UserUncheckedUpdateWithoutUserPostsInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMediaLikesInput = {
@@ -2728,6 +3198,7 @@ export type UserCreateWithoutMediaLikesInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2751,6 +3222,11 @@ export type UserCreateWithoutMediaLikesInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMediaLikesInput = {
@@ -2758,6 +3234,7 @@ export type UserUncheckedCreateWithoutMediaLikesInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2781,6 +3258,11 @@ export type UserUncheckedCreateWithoutMediaLikesInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMediaLikesInput = {
@@ -2804,6 +3286,7 @@ export type UserUpdateWithoutMediaLikesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2827,6 +3310,11 @@ export type UserUpdateWithoutMediaLikesInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMediaLikesInput = {
@@ -2834,6 +3322,7 @@ export type UserUncheckedUpdateWithoutMediaLikesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2857,6 +3346,11 @@ export type UserUncheckedUpdateWithoutMediaLikesInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMediaCommentsInput = {
@@ -2864,6 +3358,7 @@ export type UserCreateWithoutMediaCommentsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2887,6 +3382,11 @@ export type UserCreateWithoutMediaCommentsInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMediaCommentsInput = {
@@ -2894,6 +3394,7 @@ export type UserUncheckedCreateWithoutMediaCommentsInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -2917,6 +3418,11 @@ export type UserUncheckedCreateWithoutMediaCommentsInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMediaCommentsInput = {
@@ -2940,6 +3446,7 @@ export type UserUpdateWithoutMediaCommentsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2963,6 +3470,11 @@ export type UserUpdateWithoutMediaCommentsInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMediaCommentsInput = {
@@ -2970,6 +3482,7 @@ export type UserUncheckedUpdateWithoutMediaCommentsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2993,6 +3506,11 @@ export type UserUncheckedUpdateWithoutMediaCommentsInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserPostLikesInput = {
@@ -3000,6 +3518,7 @@ export type UserCreateWithoutUserPostLikesInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -3023,6 +3542,11 @@ export type UserCreateWithoutUserPostLikesInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserPostLikesInput = {
@@ -3030,6 +3554,7 @@ export type UserUncheckedCreateWithoutUserPostLikesInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -3053,6 +3578,11 @@ export type UserUncheckedCreateWithoutUserPostLikesInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserPostLikesInput = {
@@ -3076,6 +3606,7 @@ export type UserUpdateWithoutUserPostLikesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3099,6 +3630,11 @@ export type UserUpdateWithoutUserPostLikesInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserPostLikesInput = {
@@ -3106,6 +3642,7 @@ export type UserUncheckedUpdateWithoutUserPostLikesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3129,6 +3666,11 @@ export type UserUncheckedUpdateWithoutUserPostLikesInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutDriverProfileInput = {
@@ -3136,6 +3678,7 @@ export type UserCreateWithoutDriverProfileInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -3159,6 +3702,11 @@ export type UserCreateWithoutDriverProfileInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutDriverProfileInput = {
@@ -3166,6 +3714,7 @@ export type UserUncheckedCreateWithoutDriverProfileInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -3189,6 +3738,11 @@ export type UserUncheckedCreateWithoutDriverProfileInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutDriverProfileInput = {
@@ -3212,6 +3766,7 @@ export type UserUpdateWithoutDriverProfileInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3235,6 +3790,11 @@ export type UserUpdateWithoutDriverProfileInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDriverProfileInput = {
@@ -3242,6 +3802,7 @@ export type UserUncheckedUpdateWithoutDriverProfileInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3265,6 +3826,11 @@ export type UserUncheckedUpdateWithoutDriverProfileInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMediaInput = {
@@ -3272,6 +3838,7 @@ export type UserCreateWithoutMediaInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -3295,6 +3862,11 @@ export type UserCreateWithoutMediaInput = {
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMediaInput = {
@@ -3302,6 +3874,7 @@ export type UserUncheckedCreateWithoutMediaInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -3325,6 +3898,11 @@ export type UserUncheckedCreateWithoutMediaInput = {
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMediaInput = {
@@ -3348,6 +3926,7 @@ export type UserUpdateWithoutMediaInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3371,6 +3950,11 @@ export type UserUpdateWithoutMediaInput = {
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMediaInput = {
@@ -3378,6 +3962,7 @@ export type UserUncheckedUpdateWithoutMediaInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3401,6 +3986,11 @@ export type UserUncheckedUpdateWithoutMediaInput = {
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
   vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutVehiclePartnerInput = {
@@ -3408,6 +3998,7 @@ export type UserCreateWithoutVehiclePartnerInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -3431,6 +4022,11 @@ export type UserCreateWithoutVehiclePartnerInput = {
   media?: Prisma.MediaCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutVehiclePartnerInput = {
@@ -3438,6 +4034,7 @@ export type UserUncheckedCreateWithoutVehiclePartnerInput = {
   name: string
   email: string
   phone?: string | null
+  password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
   createdAt?: Date | string
@@ -3461,6 +4058,11 @@ export type UserUncheckedCreateWithoutVehiclePartnerInput = {
   media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
   hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
   driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutVehiclePartnerInput = {
@@ -3484,6 +4086,7 @@ export type UserUpdateWithoutVehiclePartnerInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3507,6 +4110,11 @@ export type UserUpdateWithoutVehiclePartnerInput = {
   media?: Prisma.MediaUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutVehiclePartnerInput = {
@@ -3514,6 +4122,7 @@ export type UserUncheckedUpdateWithoutVehiclePartnerInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -3537,6 +4146,811 @@ export type UserUncheckedUpdateWithoutVehiclePartnerInput = {
   media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
   hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
   driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutDriverVehiclesInput = {
+  id?: string
+  name: string
+  email: string
+  phone?: string | null
+  password?: string | null
+  role?: $Enums.PlatformRole
+  tier?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
+  cartItems?: Prisma.CartItemCreateNestedManyWithoutUserInput
+  saved?: Prisma.SavedItemCreateNestedManyWithoutUserInput
+  wallet?: Prisma.VoucherWalletCreateNestedManyWithoutUserInput
+  plans?: Prisma.TripPlanCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  following?: Prisma.FollowCreateNestedManyWithoutCreatorInput
+  reviewsWritten?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  mediaLikes?: Prisma.MediaLikeCreateNestedManyWithoutUserInput
+  mediaComments?: Prisma.MediaCommentCreateNestedManyWithoutUserInput
+  userPosts?: Prisma.UserPostCreateNestedManyWithoutUserInput
+  userPostLikes?: Prisma.UserPostLikeCreateNestedManyWithoutUserInput
+  voucherAssignments?: Prisma.VoucherAssignmentCreateNestedManyWithoutUserInput
+  hostStaff?: Prisma.HostStaffCreateNestedManyWithoutUserInput
+  media?: Prisma.MediaCreateNestedManyWithoutUserInput
+  hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
+  driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutDriverVehiclesInput = {
+  id?: string
+  name: string
+  email: string
+  phone?: string | null
+  password?: string | null
+  role?: $Enums.PlatformRole
+  tier?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
+  cartItems?: Prisma.CartItemUncheckedCreateNestedManyWithoutUserInput
+  saved?: Prisma.SavedItemUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.VoucherWalletUncheckedCreateNestedManyWithoutUserInput
+  plans?: Prisma.TripPlanUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutCreatorInput
+  reviewsWritten?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  mediaLikes?: Prisma.MediaLikeUncheckedCreateNestedManyWithoutUserInput
+  mediaComments?: Prisma.MediaCommentUncheckedCreateNestedManyWithoutUserInput
+  userPosts?: Prisma.UserPostUncheckedCreateNestedManyWithoutUserInput
+  userPostLikes?: Prisma.UserPostLikeUncheckedCreateNestedManyWithoutUserInput
+  voucherAssignments?: Prisma.VoucherAssignmentUncheckedCreateNestedManyWithoutUserInput
+  hostStaff?: Prisma.HostStaffUncheckedCreateNestedManyWithoutUserInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
+  hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
+  driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutDriverVehiclesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDriverVehiclesInput, Prisma.UserUncheckedCreateWithoutDriverVehiclesInput>
+}
+
+export type UserUpsertWithoutDriverVehiclesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDriverVehiclesInput, Prisma.UserUncheckedUpdateWithoutDriverVehiclesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDriverVehiclesInput, Prisma.UserUncheckedCreateWithoutDriverVehiclesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDriverVehiclesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDriverVehiclesInput, Prisma.UserUncheckedUpdateWithoutDriverVehiclesInput>
+}
+
+export type UserUpdateWithoutDriverVehiclesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tier?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
+  cartItems?: Prisma.CartItemUpdateManyWithoutUserNestedInput
+  saved?: Prisma.SavedItemUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.VoucherWalletUpdateManyWithoutUserNestedInput
+  plans?: Prisma.TripPlanUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  following?: Prisma.FollowUpdateManyWithoutCreatorNestedInput
+  reviewsWritten?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  mediaLikes?: Prisma.MediaLikeUpdateManyWithoutUserNestedInput
+  mediaComments?: Prisma.MediaCommentUpdateManyWithoutUserNestedInput
+  userPosts?: Prisma.UserPostUpdateManyWithoutUserNestedInput
+  userPostLikes?: Prisma.UserPostLikeUpdateManyWithoutUserNestedInput
+  voucherAssignments?: Prisma.VoucherAssignmentUpdateManyWithoutUserNestedInput
+  hostStaff?: Prisma.HostStaffUpdateManyWithoutUserNestedInput
+  media?: Prisma.MediaUpdateManyWithoutUserNestedInput
+  hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
+  driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDriverVehiclesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tier?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
+  cartItems?: Prisma.CartItemUncheckedUpdateManyWithoutUserNestedInput
+  saved?: Prisma.SavedItemUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.VoucherWalletUncheckedUpdateManyWithoutUserNestedInput
+  plans?: Prisma.TripPlanUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutCreatorNestedInput
+  reviewsWritten?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  mediaLikes?: Prisma.MediaLikeUncheckedUpdateManyWithoutUserNestedInput
+  mediaComments?: Prisma.MediaCommentUncheckedUpdateManyWithoutUserNestedInput
+  userPosts?: Prisma.UserPostUncheckedUpdateManyWithoutUserNestedInput
+  userPostLikes?: Prisma.UserPostLikeUncheckedUpdateManyWithoutUserNestedInput
+  voucherAssignments?: Prisma.VoucherAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  hostStaff?: Prisma.HostStaffUncheckedUpdateManyWithoutUserNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
+  hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
+  driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutDriverDocumentsInput = {
+  id?: string
+  name: string
+  email: string
+  phone?: string | null
+  password?: string | null
+  role?: $Enums.PlatformRole
+  tier?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
+  cartItems?: Prisma.CartItemCreateNestedManyWithoutUserInput
+  saved?: Prisma.SavedItemCreateNestedManyWithoutUserInput
+  wallet?: Prisma.VoucherWalletCreateNestedManyWithoutUserInput
+  plans?: Prisma.TripPlanCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  following?: Prisma.FollowCreateNestedManyWithoutCreatorInput
+  reviewsWritten?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  mediaLikes?: Prisma.MediaLikeCreateNestedManyWithoutUserInput
+  mediaComments?: Prisma.MediaCommentCreateNestedManyWithoutUserInput
+  userPosts?: Prisma.UserPostCreateNestedManyWithoutUserInput
+  userPostLikes?: Prisma.UserPostLikeCreateNestedManyWithoutUserInput
+  voucherAssignments?: Prisma.VoucherAssignmentCreateNestedManyWithoutUserInput
+  hostStaff?: Prisma.HostStaffCreateNestedManyWithoutUserInput
+  media?: Prisma.MediaCreateNestedManyWithoutUserInput
+  hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
+  driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutDriverDocumentsInput = {
+  id?: string
+  name: string
+  email: string
+  phone?: string | null
+  password?: string | null
+  role?: $Enums.PlatformRole
+  tier?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
+  cartItems?: Prisma.CartItemUncheckedCreateNestedManyWithoutUserInput
+  saved?: Prisma.SavedItemUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.VoucherWalletUncheckedCreateNestedManyWithoutUserInput
+  plans?: Prisma.TripPlanUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutCreatorInput
+  reviewsWritten?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  mediaLikes?: Prisma.MediaLikeUncheckedCreateNestedManyWithoutUserInput
+  mediaComments?: Prisma.MediaCommentUncheckedCreateNestedManyWithoutUserInput
+  userPosts?: Prisma.UserPostUncheckedCreateNestedManyWithoutUserInput
+  userPostLikes?: Prisma.UserPostLikeUncheckedCreateNestedManyWithoutUserInput
+  voucherAssignments?: Prisma.VoucherAssignmentUncheckedCreateNestedManyWithoutUserInput
+  hostStaff?: Prisma.HostStaffUncheckedCreateNestedManyWithoutUserInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
+  hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
+  driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutDriverDocumentsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDriverDocumentsInput, Prisma.UserUncheckedCreateWithoutDriverDocumentsInput>
+}
+
+export type UserUpsertWithoutDriverDocumentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDriverDocumentsInput, Prisma.UserUncheckedUpdateWithoutDriverDocumentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDriverDocumentsInput, Prisma.UserUncheckedCreateWithoutDriverDocumentsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDriverDocumentsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDriverDocumentsInput, Prisma.UserUncheckedUpdateWithoutDriverDocumentsInput>
+}
+
+export type UserUpdateWithoutDriverDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tier?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
+  cartItems?: Prisma.CartItemUpdateManyWithoutUserNestedInput
+  saved?: Prisma.SavedItemUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.VoucherWalletUpdateManyWithoutUserNestedInput
+  plans?: Prisma.TripPlanUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  following?: Prisma.FollowUpdateManyWithoutCreatorNestedInput
+  reviewsWritten?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  mediaLikes?: Prisma.MediaLikeUpdateManyWithoutUserNestedInput
+  mediaComments?: Prisma.MediaCommentUpdateManyWithoutUserNestedInput
+  userPosts?: Prisma.UserPostUpdateManyWithoutUserNestedInput
+  userPostLikes?: Prisma.UserPostLikeUpdateManyWithoutUserNestedInput
+  voucherAssignments?: Prisma.VoucherAssignmentUpdateManyWithoutUserNestedInput
+  hostStaff?: Prisma.HostStaffUpdateManyWithoutUserNestedInput
+  media?: Prisma.MediaUpdateManyWithoutUserNestedInput
+  hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
+  driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDriverDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tier?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
+  cartItems?: Prisma.CartItemUncheckedUpdateManyWithoutUserNestedInput
+  saved?: Prisma.SavedItemUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.VoucherWalletUncheckedUpdateManyWithoutUserNestedInput
+  plans?: Prisma.TripPlanUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutCreatorNestedInput
+  reviewsWritten?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  mediaLikes?: Prisma.MediaLikeUncheckedUpdateManyWithoutUserNestedInput
+  mediaComments?: Prisma.MediaCommentUncheckedUpdateManyWithoutUserNestedInput
+  userPosts?: Prisma.UserPostUncheckedUpdateManyWithoutUserNestedInput
+  userPostLikes?: Prisma.UserPostLikeUncheckedUpdateManyWithoutUserNestedInput
+  voucherAssignments?: Prisma.VoucherAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  hostStaff?: Prisma.HostStaffUncheckedUpdateManyWithoutUserNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
+  hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
+  driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSavedAddressesInput = {
+  id?: string
+  name: string
+  email: string
+  phone?: string | null
+  password?: string | null
+  role?: $Enums.PlatformRole
+  tier?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
+  cartItems?: Prisma.CartItemCreateNestedManyWithoutUserInput
+  saved?: Prisma.SavedItemCreateNestedManyWithoutUserInput
+  wallet?: Prisma.VoucherWalletCreateNestedManyWithoutUserInput
+  plans?: Prisma.TripPlanCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  following?: Prisma.FollowCreateNestedManyWithoutCreatorInput
+  reviewsWritten?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  mediaLikes?: Prisma.MediaLikeCreateNestedManyWithoutUserInput
+  mediaComments?: Prisma.MediaCommentCreateNestedManyWithoutUserInput
+  userPosts?: Prisma.UserPostCreateNestedManyWithoutUserInput
+  userPostLikes?: Prisma.UserPostLikeCreateNestedManyWithoutUserInput
+  voucherAssignments?: Prisma.VoucherAssignmentCreateNestedManyWithoutUserInput
+  hostStaff?: Prisma.HostStaffCreateNestedManyWithoutUserInput
+  media?: Prisma.MediaCreateNestedManyWithoutUserInput
+  hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
+  driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSavedAddressesInput = {
+  id?: string
+  name: string
+  email: string
+  phone?: string | null
+  password?: string | null
+  role?: $Enums.PlatformRole
+  tier?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
+  cartItems?: Prisma.CartItemUncheckedCreateNestedManyWithoutUserInput
+  saved?: Prisma.SavedItemUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.VoucherWalletUncheckedCreateNestedManyWithoutUserInput
+  plans?: Prisma.TripPlanUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutCreatorInput
+  reviewsWritten?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  mediaLikes?: Prisma.MediaLikeUncheckedCreateNestedManyWithoutUserInput
+  mediaComments?: Prisma.MediaCommentUncheckedCreateNestedManyWithoutUserInput
+  userPosts?: Prisma.UserPostUncheckedCreateNestedManyWithoutUserInput
+  userPostLikes?: Prisma.UserPostLikeUncheckedCreateNestedManyWithoutUserInput
+  voucherAssignments?: Prisma.VoucherAssignmentUncheckedCreateNestedManyWithoutUserInput
+  hostStaff?: Prisma.HostStaffUncheckedCreateNestedManyWithoutUserInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
+  hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
+  driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSavedAddressesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSavedAddressesInput, Prisma.UserUncheckedCreateWithoutSavedAddressesInput>
+}
+
+export type UserUpsertWithoutSavedAddressesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSavedAddressesInput, Prisma.UserUncheckedUpdateWithoutSavedAddressesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSavedAddressesInput, Prisma.UserUncheckedCreateWithoutSavedAddressesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSavedAddressesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSavedAddressesInput, Prisma.UserUncheckedUpdateWithoutSavedAddressesInput>
+}
+
+export type UserUpdateWithoutSavedAddressesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tier?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
+  cartItems?: Prisma.CartItemUpdateManyWithoutUserNestedInput
+  saved?: Prisma.SavedItemUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.VoucherWalletUpdateManyWithoutUserNestedInput
+  plans?: Prisma.TripPlanUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  following?: Prisma.FollowUpdateManyWithoutCreatorNestedInput
+  reviewsWritten?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  mediaLikes?: Prisma.MediaLikeUpdateManyWithoutUserNestedInput
+  mediaComments?: Prisma.MediaCommentUpdateManyWithoutUserNestedInput
+  userPosts?: Prisma.UserPostUpdateManyWithoutUserNestedInput
+  userPostLikes?: Prisma.UserPostLikeUpdateManyWithoutUserNestedInput
+  voucherAssignments?: Prisma.VoucherAssignmentUpdateManyWithoutUserNestedInput
+  hostStaff?: Prisma.HostStaffUpdateManyWithoutUserNestedInput
+  media?: Prisma.MediaUpdateManyWithoutUserNestedInput
+  hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
+  driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSavedAddressesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tier?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
+  cartItems?: Prisma.CartItemUncheckedUpdateManyWithoutUserNestedInput
+  saved?: Prisma.SavedItemUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.VoucherWalletUncheckedUpdateManyWithoutUserNestedInput
+  plans?: Prisma.TripPlanUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutCreatorNestedInput
+  reviewsWritten?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  mediaLikes?: Prisma.MediaLikeUncheckedUpdateManyWithoutUserNestedInput
+  mediaComments?: Prisma.MediaCommentUncheckedUpdateManyWithoutUserNestedInput
+  userPosts?: Prisma.UserPostUncheckedUpdateManyWithoutUserNestedInput
+  userPostLikes?: Prisma.UserPostLikeUncheckedUpdateManyWithoutUserNestedInput
+  voucherAssignments?: Prisma.VoucherAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  hostStaff?: Prisma.HostStaffUncheckedUpdateManyWithoutUserNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
+  hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
+  driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutRideJobsInput = {
+  id?: string
+  name: string
+  email: string
+  phone?: string | null
+  password?: string | null
+  role?: $Enums.PlatformRole
+  tier?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
+  cartItems?: Prisma.CartItemCreateNestedManyWithoutUserInput
+  saved?: Prisma.SavedItemCreateNestedManyWithoutUserInput
+  wallet?: Prisma.VoucherWalletCreateNestedManyWithoutUserInput
+  plans?: Prisma.TripPlanCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  following?: Prisma.FollowCreateNestedManyWithoutCreatorInput
+  reviewsWritten?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  mediaLikes?: Prisma.MediaLikeCreateNestedManyWithoutUserInput
+  mediaComments?: Prisma.MediaCommentCreateNestedManyWithoutUserInput
+  userPosts?: Prisma.UserPostCreateNestedManyWithoutUserInput
+  userPostLikes?: Prisma.UserPostLikeCreateNestedManyWithoutUserInput
+  voucherAssignments?: Prisma.VoucherAssignmentCreateNestedManyWithoutUserInput
+  hostStaff?: Prisma.HostStaffCreateNestedManyWithoutUserInput
+  media?: Prisma.MediaCreateNestedManyWithoutUserInput
+  hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
+  driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  driverJobs?: Prisma.RideJobCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutRideJobsInput = {
+  id?: string
+  name: string
+  email: string
+  phone?: string | null
+  password?: string | null
+  role?: $Enums.PlatformRole
+  tier?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
+  cartItems?: Prisma.CartItemUncheckedCreateNestedManyWithoutUserInput
+  saved?: Prisma.SavedItemUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.VoucherWalletUncheckedCreateNestedManyWithoutUserInput
+  plans?: Prisma.TripPlanUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutCreatorInput
+  reviewsWritten?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  mediaLikes?: Prisma.MediaLikeUncheckedCreateNestedManyWithoutUserInput
+  mediaComments?: Prisma.MediaCommentUncheckedCreateNestedManyWithoutUserInput
+  userPosts?: Prisma.UserPostUncheckedCreateNestedManyWithoutUserInput
+  userPostLikes?: Prisma.UserPostLikeUncheckedCreateNestedManyWithoutUserInput
+  voucherAssignments?: Prisma.VoucherAssignmentUncheckedCreateNestedManyWithoutUserInput
+  hostStaff?: Prisma.HostStaffUncheckedCreateNestedManyWithoutUserInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
+  hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
+  driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  driverJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutDriverInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutRideJobsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRideJobsInput, Prisma.UserUncheckedCreateWithoutRideJobsInput>
+}
+
+export type UserCreateWithoutDriverJobsInput = {
+  id?: string
+  name: string
+  email: string
+  phone?: string | null
+  password?: string | null
+  role?: $Enums.PlatformRole
+  tier?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
+  cartItems?: Prisma.CartItemCreateNestedManyWithoutUserInput
+  saved?: Prisma.SavedItemCreateNestedManyWithoutUserInput
+  wallet?: Prisma.VoucherWalletCreateNestedManyWithoutUserInput
+  plans?: Prisma.TripPlanCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  following?: Prisma.FollowCreateNestedManyWithoutCreatorInput
+  reviewsWritten?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  mediaLikes?: Prisma.MediaLikeCreateNestedManyWithoutUserInput
+  mediaComments?: Prisma.MediaCommentCreateNestedManyWithoutUserInput
+  userPosts?: Prisma.UserPostCreateNestedManyWithoutUserInput
+  userPostLikes?: Prisma.UserPostLikeCreateNestedManyWithoutUserInput
+  voucherAssignments?: Prisma.VoucherAssignmentCreateNestedManyWithoutUserInput
+  hostStaff?: Prisma.HostStaffCreateNestedManyWithoutUserInput
+  media?: Prisma.MediaCreateNestedManyWithoutUserInput
+  hostProfile?: Prisma.HostProfileCreateNestedOneWithoutUserInput
+  driverProfile?: Prisma.DriverProfileCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobCreateNestedManyWithoutRiderInput
+  driverVehicles?: Prisma.DriverVehicleCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutDriverJobsInput = {
+  id?: string
+  name: string
+  email: string
+  phone?: string | null
+  password?: string | null
+  role?: $Enums.PlatformRole
+  tier?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
+  cartItems?: Prisma.CartItemUncheckedCreateNestedManyWithoutUserInput
+  saved?: Prisma.SavedItemUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.VoucherWalletUncheckedCreateNestedManyWithoutUserInput
+  plans?: Prisma.TripPlanUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutCreatorInput
+  reviewsWritten?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  mediaLikes?: Prisma.MediaLikeUncheckedCreateNestedManyWithoutUserInput
+  mediaComments?: Prisma.MediaCommentUncheckedCreateNestedManyWithoutUserInput
+  userPosts?: Prisma.UserPostUncheckedCreateNestedManyWithoutUserInput
+  userPostLikes?: Prisma.UserPostLikeUncheckedCreateNestedManyWithoutUserInput
+  voucherAssignments?: Prisma.VoucherAssignmentUncheckedCreateNestedManyWithoutUserInput
+  hostStaff?: Prisma.HostStaffUncheckedCreateNestedManyWithoutUserInput
+  media?: Prisma.MediaUncheckedCreateNestedManyWithoutUserInput
+  hostProfile?: Prisma.HostProfileUncheckedCreateNestedOneWithoutUserInput
+  driverProfile?: Prisma.DriverProfileUncheckedCreateNestedOneWithoutUserInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedCreateNestedOneWithoutUserInput
+  savedAddresses?: Prisma.SavedAddressUncheckedCreateNestedManyWithoutUserInput
+  rideJobs?: Prisma.RideJobUncheckedCreateNestedManyWithoutRiderInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedCreateNestedManyWithoutUserInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutDriverJobsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDriverJobsInput, Prisma.UserUncheckedCreateWithoutDriverJobsInput>
+}
+
+export type UserUpsertWithoutRideJobsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRideJobsInput, Prisma.UserUncheckedUpdateWithoutRideJobsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRideJobsInput, Prisma.UserUncheckedCreateWithoutRideJobsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRideJobsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRideJobsInput, Prisma.UserUncheckedUpdateWithoutRideJobsInput>
+}
+
+export type UserUpdateWithoutRideJobsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tier?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
+  cartItems?: Prisma.CartItemUpdateManyWithoutUserNestedInput
+  saved?: Prisma.SavedItemUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.VoucherWalletUpdateManyWithoutUserNestedInput
+  plans?: Prisma.TripPlanUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  following?: Prisma.FollowUpdateManyWithoutCreatorNestedInput
+  reviewsWritten?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  mediaLikes?: Prisma.MediaLikeUpdateManyWithoutUserNestedInput
+  mediaComments?: Prisma.MediaCommentUpdateManyWithoutUserNestedInput
+  userPosts?: Prisma.UserPostUpdateManyWithoutUserNestedInput
+  userPostLikes?: Prisma.UserPostLikeUpdateManyWithoutUserNestedInput
+  voucherAssignments?: Prisma.VoucherAssignmentUpdateManyWithoutUserNestedInput
+  hostStaff?: Prisma.HostStaffUpdateManyWithoutUserNestedInput
+  media?: Prisma.MediaUpdateManyWithoutUserNestedInput
+  hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
+  driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  driverJobs?: Prisma.RideJobUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRideJobsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tier?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
+  cartItems?: Prisma.CartItemUncheckedUpdateManyWithoutUserNestedInput
+  saved?: Prisma.SavedItemUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.VoucherWalletUncheckedUpdateManyWithoutUserNestedInput
+  plans?: Prisma.TripPlanUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutCreatorNestedInput
+  reviewsWritten?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  mediaLikes?: Prisma.MediaLikeUncheckedUpdateManyWithoutUserNestedInput
+  mediaComments?: Prisma.MediaCommentUncheckedUpdateManyWithoutUserNestedInput
+  userPosts?: Prisma.UserPostUncheckedUpdateManyWithoutUserNestedInput
+  userPostLikes?: Prisma.UserPostLikeUncheckedUpdateManyWithoutUserNestedInput
+  voucherAssignments?: Prisma.VoucherAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  hostStaff?: Prisma.HostStaffUncheckedUpdateManyWithoutUserNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
+  hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
+  driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  driverJobs?: Prisma.RideJobUncheckedUpdateManyWithoutDriverNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutDriverJobsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDriverJobsInput, Prisma.UserUncheckedUpdateWithoutDriverJobsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDriverJobsInput, Prisma.UserUncheckedCreateWithoutDriverJobsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDriverJobsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDriverJobsInput, Prisma.UserUncheckedUpdateWithoutDriverJobsInput>
+}
+
+export type UserUpdateWithoutDriverJobsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tier?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
+  cartItems?: Prisma.CartItemUpdateManyWithoutUserNestedInput
+  saved?: Prisma.SavedItemUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.VoucherWalletUpdateManyWithoutUserNestedInput
+  plans?: Prisma.TripPlanUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  following?: Prisma.FollowUpdateManyWithoutCreatorNestedInput
+  reviewsWritten?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  mediaLikes?: Prisma.MediaLikeUpdateManyWithoutUserNestedInput
+  mediaComments?: Prisma.MediaCommentUpdateManyWithoutUserNestedInput
+  userPosts?: Prisma.UserPostUpdateManyWithoutUserNestedInput
+  userPostLikes?: Prisma.UserPostLikeUpdateManyWithoutUserNestedInput
+  voucherAssignments?: Prisma.VoucherAssignmentUpdateManyWithoutUserNestedInput
+  hostStaff?: Prisma.HostStaffUpdateManyWithoutUserNestedInput
+  media?: Prisma.MediaUpdateManyWithoutUserNestedInput
+  hostProfile?: Prisma.HostProfileUpdateOneWithoutUserNestedInput
+  driverProfile?: Prisma.DriverProfileUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUpdateManyWithoutRiderNestedInput
+  driverVehicles?: Prisma.DriverVehicleUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDriverJobsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
+  tier?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
+  cartItems?: Prisma.CartItemUncheckedUpdateManyWithoutUserNestedInput
+  saved?: Prisma.SavedItemUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.VoucherWalletUncheckedUpdateManyWithoutUserNestedInput
+  plans?: Prisma.TripPlanUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutCreatorNestedInput
+  reviewsWritten?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  mediaLikes?: Prisma.MediaLikeUncheckedUpdateManyWithoutUserNestedInput
+  mediaComments?: Prisma.MediaCommentUncheckedUpdateManyWithoutUserNestedInput
+  userPosts?: Prisma.UserPostUncheckedUpdateManyWithoutUserNestedInput
+  userPostLikes?: Prisma.UserPostLikeUncheckedUpdateManyWithoutUserNestedInput
+  voucherAssignments?: Prisma.VoucherAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  hostStaff?: Prisma.HostStaffUncheckedUpdateManyWithoutUserNestedInput
+  media?: Prisma.MediaUncheckedUpdateManyWithoutUserNestedInput
+  hostProfile?: Prisma.HostProfileUncheckedUpdateOneWithoutUserNestedInput
+  driverProfile?: Prisma.DriverProfileUncheckedUpdateOneWithoutUserNestedInput
+  vehiclePartner?: Prisma.VehiclePartnerUncheckedUpdateOneWithoutUserNestedInput
+  savedAddresses?: Prisma.SavedAddressUncheckedUpdateManyWithoutUserNestedInput
+  rideJobs?: Prisma.RideJobUncheckedUpdateManyWithoutRiderNestedInput
+  driverVehicles?: Prisma.DriverVehicleUncheckedUpdateManyWithoutUserNestedInput
+  driverDocuments?: Prisma.DriverDocumentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -3562,6 +4976,11 @@ export type UserCountOutputType = {
   voucherAssignments: number
   hostStaff: number
   media: number
+  savedAddresses: number
+  rideJobs: number
+  driverJobs: number
+  driverVehicles: number
+  driverDocuments: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3582,6 +5001,11 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   voucherAssignments?: boolean | UserCountOutputTypeCountVoucherAssignmentsArgs
   hostStaff?: boolean | UserCountOutputTypeCountHostStaffArgs
   media?: boolean | UserCountOutputTypeCountMediaArgs
+  savedAddresses?: boolean | UserCountOutputTypeCountSavedAddressesArgs
+  rideJobs?: boolean | UserCountOutputTypeCountRideJobsArgs
+  driverJobs?: boolean | UserCountOutputTypeCountDriverJobsArgs
+  driverVehicles?: boolean | UserCountOutputTypeCountDriverVehiclesArgs
+  driverDocuments?: boolean | UserCountOutputTypeCountDriverDocumentsArgs
 }
 
 /**
@@ -3713,12 +5137,48 @@ export type UserCountOutputTypeCountMediaArgs<ExtArgs extends runtime.Types.Exte
   where?: Prisma.MediaWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSavedAddressesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SavedAddressWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRideJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RideJobWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDriverJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RideJobWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDriverVehiclesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DriverVehicleWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDriverDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DriverDocumentWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   email?: boolean
   phone?: boolean
+  password?: boolean
   role?: boolean
   tier?: boolean
   createdAt?: boolean
@@ -3743,6 +5203,11 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   hostProfile?: boolean | Prisma.User$hostProfileArgs<ExtArgs>
   driverProfile?: boolean | Prisma.User$driverProfileArgs<ExtArgs>
   vehiclePartner?: boolean | Prisma.User$vehiclePartnerArgs<ExtArgs>
+  savedAddresses?: boolean | Prisma.User$savedAddressesArgs<ExtArgs>
+  rideJobs?: boolean | Prisma.User$rideJobsArgs<ExtArgs>
+  driverJobs?: boolean | Prisma.User$driverJobsArgs<ExtArgs>
+  driverVehicles?: boolean | Prisma.User$driverVehiclesArgs<ExtArgs>
+  driverDocuments?: boolean | Prisma.User$driverDocumentsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -3753,13 +5218,14 @@ export type UserSelectScalar = {
   name?: boolean
   email?: boolean
   phone?: boolean
+  password?: boolean
   role?: boolean
   tier?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "phone" | "role" | "tier" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "phone" | "password" | "role" | "tier" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bookings?: boolean | Prisma.User$bookingsArgs<ExtArgs>
   cartItems?: boolean | Prisma.User$cartItemsArgs<ExtArgs>
@@ -3781,6 +5247,11 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   hostProfile?: boolean | Prisma.User$hostProfileArgs<ExtArgs>
   driverProfile?: boolean | Prisma.User$driverProfileArgs<ExtArgs>
   vehiclePartner?: boolean | Prisma.User$vehiclePartnerArgs<ExtArgs>
+  savedAddresses?: boolean | Prisma.User$savedAddressesArgs<ExtArgs>
+  rideJobs?: boolean | Prisma.User$rideJobsArgs<ExtArgs>
+  driverJobs?: boolean | Prisma.User$driverJobsArgs<ExtArgs>
+  driverVehicles?: boolean | Prisma.User$driverVehiclesArgs<ExtArgs>
+  driverDocuments?: boolean | Prisma.User$driverDocumentsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -3807,12 +5278,18 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     hostProfile: Prisma.$HostProfilePayload<ExtArgs> | null
     driverProfile: Prisma.$DriverProfilePayload<ExtArgs> | null
     vehiclePartner: Prisma.$VehiclePartnerPayload<ExtArgs> | null
+    savedAddresses: Prisma.$SavedAddressPayload<ExtArgs>[]
+    rideJobs: Prisma.$RideJobPayload<ExtArgs>[]
+    driverJobs: Prisma.$RideJobPayload<ExtArgs>[]
+    driverVehicles: Prisma.$DriverVehiclePayload<ExtArgs>[]
+    driverDocuments: Prisma.$DriverDocumentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
     email: string
     phone: string | null
+    password: string | null
     role: $Enums.PlatformRole
     tier: string
     createdAt: Date
@@ -4177,6 +5654,11 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   hostProfile<T extends Prisma.User$hostProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$hostProfileArgs<ExtArgs>>): Prisma.Prisma__HostProfileClient<runtime.Types.Result.GetResult<Prisma.$HostProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   driverProfile<T extends Prisma.User$driverProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$driverProfileArgs<ExtArgs>>): Prisma.Prisma__DriverProfileClient<runtime.Types.Result.GetResult<Prisma.$DriverProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   vehiclePartner<T extends Prisma.User$vehiclePartnerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$vehiclePartnerArgs<ExtArgs>>): Prisma.Prisma__VehiclePartnerClient<runtime.Types.Result.GetResult<Prisma.$VehiclePartnerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  savedAddresses<T extends Prisma.User$savedAddressesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$savedAddressesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedAddressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  rideJobs<T extends Prisma.User$rideJobsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$rideJobsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RideJobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  driverJobs<T extends Prisma.User$driverJobsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$driverJobsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RideJobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  driverVehicles<T extends Prisma.User$driverVehiclesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$driverVehiclesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DriverVehiclePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  driverDocuments<T extends Prisma.User$driverDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$driverDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DriverDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4210,6 +5692,7 @@ export interface UserFieldRefs {
   readonly name: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly phone: Prisma.FieldRef<"User", 'String'>
+  readonly password: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'PlatformRole'>
   readonly tier: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
@@ -5019,6 +6502,126 @@ export type User$vehiclePartnerArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   include?: Prisma.VehiclePartnerInclude<ExtArgs> | null
   where?: Prisma.VehiclePartnerWhereInput
+}
+
+/**
+ * User.savedAddresses
+ */
+export type User$savedAddressesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SavedAddress
+   */
+  select?: Prisma.SavedAddressSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SavedAddress
+   */
+  omit?: Prisma.SavedAddressOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SavedAddressInclude<ExtArgs> | null
+  where?: Prisma.SavedAddressWhereInput
+  orderBy?: Prisma.SavedAddressOrderByWithRelationInput | Prisma.SavedAddressOrderByWithRelationInput[]
+  cursor?: Prisma.SavedAddressWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SavedAddressScalarFieldEnum | Prisma.SavedAddressScalarFieldEnum[]
+}
+
+/**
+ * User.rideJobs
+ */
+export type User$rideJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RideJob
+   */
+  select?: Prisma.RideJobSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RideJob
+   */
+  omit?: Prisma.RideJobOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RideJobInclude<ExtArgs> | null
+  where?: Prisma.RideJobWhereInput
+  orderBy?: Prisma.RideJobOrderByWithRelationInput | Prisma.RideJobOrderByWithRelationInput[]
+  cursor?: Prisma.RideJobWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RideJobScalarFieldEnum | Prisma.RideJobScalarFieldEnum[]
+}
+
+/**
+ * User.driverJobs
+ */
+export type User$driverJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RideJob
+   */
+  select?: Prisma.RideJobSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RideJob
+   */
+  omit?: Prisma.RideJobOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RideJobInclude<ExtArgs> | null
+  where?: Prisma.RideJobWhereInput
+  orderBy?: Prisma.RideJobOrderByWithRelationInput | Prisma.RideJobOrderByWithRelationInput[]
+  cursor?: Prisma.RideJobWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RideJobScalarFieldEnum | Prisma.RideJobScalarFieldEnum[]
+}
+
+/**
+ * User.driverVehicles
+ */
+export type User$driverVehiclesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DriverVehicle
+   */
+  select?: Prisma.DriverVehicleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DriverVehicle
+   */
+  omit?: Prisma.DriverVehicleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DriverVehicleInclude<ExtArgs> | null
+  where?: Prisma.DriverVehicleWhereInput
+  orderBy?: Prisma.DriverVehicleOrderByWithRelationInput | Prisma.DriverVehicleOrderByWithRelationInput[]
+  cursor?: Prisma.DriverVehicleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DriverVehicleScalarFieldEnum | Prisma.DriverVehicleScalarFieldEnum[]
+}
+
+/**
+ * User.driverDocuments
+ */
+export type User$driverDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DriverDocument
+   */
+  select?: Prisma.DriverDocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DriverDocument
+   */
+  omit?: Prisma.DriverDocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DriverDocumentInclude<ExtArgs> | null
+  where?: Prisma.DriverDocumentWhereInput
+  orderBy?: Prisma.DriverDocumentOrderByWithRelationInput | Prisma.DriverDocumentOrderByWithRelationInput[]
+  cursor?: Prisma.DriverDocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DriverDocumentScalarFieldEnum | Prisma.DriverDocumentScalarFieldEnum[]
 }
 
 /**

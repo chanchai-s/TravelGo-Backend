@@ -8,6 +8,7 @@ authRoutes.post("/register", authController.register as any);
 authRoutes.post("/login", authController.login);
 authRoutes.get("/me", authCheck, authController.getMe);
 authRoutes.put("/me", authCheck, authController.updateMe);
+authRoutes.post("/set-password", authCheck, authController.setPassword);
 
 export default authRoutes;
 
