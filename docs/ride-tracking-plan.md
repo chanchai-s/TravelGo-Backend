@@ -1,7 +1,8 @@
-# Ride (บริการเรียกรถ) — แผนการทำงาน Frontend / Backend
+# Ride (เรียกรถ / ขนส่ง) — แผนการทำงาน Frontend / Backend
 
 > สถานะ: **แผน (ยังไม่เริ่มเขียนโค้ด)**
-> ขอบเขต: **เรียกรถขนคนเท่านั้น** (ยังไม่ทำส่งของ/พัสดุ)
+> ขอบเขต: **แบบ Bolt / Grab** — engine เดียวรองรับทั้ง **RIDE (ขนคน)** และ **PARCEL (ขนของ/logistics)**
+> ลำดับส่งมอบ: ทำ **RIDE ให้จบก่อน** แล้วต่อ PARCEL บน engine เดิม (schema ออกแบบรองรับทั้งคู่ตั้งแต่ต้น)
 > โดเมนนี้ **แยกจาก `transport` โดยสิ้นเชิง** (คนละส่วน คนละ route คนละตาราง)
 > อ้างอิงแพทเทิร์นเดิม: `rentalBooking.services.ts`, `partnerVehicle.services.ts`
 
@@ -14,15 +15,18 @@
 | 3 | Realtime | **SSE + REST ping** (ไม่เพิ่ม dependency) |
 | 4 | การจ่ายเงิน | **เงินสด/โอนให้คนขับ** แล้ว platform เก็บ commission ทีหลัง |
 | 5 | การจับคู่ | **คนขับกดรับงานเองจากบอร์ด** (auto-assign ทีหลัง) |
-| 6 | ขอบเขต | **เรียกรถขนคนเท่านั้น** — ยังไม่รวมส่งของ/พัสดุ |
+| 6 | ขอบเขต | **ทั้ง RIDE + PARCEL** ใน engine เดียว — ส่งมอบ RIDE ก่อน |
 | 7 | OTP สมัคร | **email/password + OTP เบอร์แบบ dev mode** ก่อน |
 | 8 | บัญชีผู้ใช้ | **rider = User เดิม ไม่แยกบัญชี** · driver = User เดิม + `DriverProfile` |
 
 ## 2. หลักการ
 
-- **บัญชีเดียว**: `User` ใช้จองที่พัก / เช่ารถ / เรียกรถ / สมัครเป็นคนขับ
-- **ไม่ทำส่งของ**: ถ้าจะเพิ่มพัสดุทีหลัง ค่อยเพิ่ม `serviceType` + ตาราง `ParcelDetail` บน engine เดิม
+- **บัญชีเดียว**: `User` ใช้จองที่พัก / เช่ารถ / เรียกรถ / ส่งของ / สมัครเป็นคนขับ
+- **engine เดียว 2 บริการ**: ตาราง `RideJob` เดียว แยกด้วย `serviceType = RIDE | PARCEL`
+  รายละเอียดเฉพาะของพัสดุแยกไว้ใน `ParcelDetail` (1-1) — ไม่แยกเป็น 2 ระบบ
+- **RIDE ก่อน PARCEL**: flow ขนคนต้องนิ่งก่อน แล้วค่อยเติมส่วนของเข้าไปใน engine ที่มีอยู่
 - **คนขับคือส่วนเสริม**: `DriverProfile` (1-1 กับ User) ต้องผ่าน admin ตรวจก่อนรับงาน
+- **คนขับ 1 คนรับได้ทั้ง 2 บริการ**: ประกาศ `serviceTypes` ว่าทำอะไรได้ (เช่น ["RIDE","PARCEL"])
 - **โดเมนแยก**: ไม่ปนกับ `Transport` (รถไฟ), `RentalDetail` (รถเช่า) หรือ `Booking` (ที่พัก)
 - **เงินเป็น Int (บาท)**: ไม่ใช้ทศนิยม, VAT แตก base/vat เหมือน rentcars
 - **Service ถือ business rule**: controller ทำแค่ map HTTP ↔ service
@@ -105,16 +109,19 @@ front/src/
 │  ├─ Api/mainApi.ts                  # + ฟังก์ชัน ride (~20 ตัว)
 │  ├─ stores/ride.stores.ts           # zustand: currentJob, driverPos
 │  ├─ components/ride/
+│  │  ├─ ServiceToggle.tsx            # สลับ เรียกรถ / ส่งของ (แบบ Grab)
 │  │  ├─ MapView.tsx                  # Leaflet (dynamic import + ssr:false)
 │  │  ├─ LocationPicker.tsx
 │  │  ├─ VehicleTypePicker.tsx
 │  │  ├─ FareEstimate.tsx
 │  │  ├─ RideStatusTimeline.tsx
-│  │  └─ DriverCard.tsx
+│  │  ├─ DriverCard.tsx
+│  │  ├─ ParcelForm.tsx               # น้ำหนัก/ขนาด/ผู้รับ/COD (R4)
+│  │  └─ OtpBox.tsx                   # OTP ยืนยันรับของ (R4)
 │  └─ [locale]/
 │     ├─ login/page.tsx               # แก้ให้เรียก API จริง (R0)
 │     ├─ ride/
-│     │  ├─ page.tsx                  # เลือกจุด + ประเภทรถ + ดูราคา + เรียก
+│     │  ├─ page.tsx                  # สลับบริการ → เลือกจุด/ประเภทรถ → ดูราคา → เรียก
 │     │  └─ [id]/page.tsx             # ติดตามงาน (แผนที่สด + สถานะ)
 │     ├─ driver/
 │     │  ├─ register/page.tsx         # สมัคร + เอกสาร + รถ
@@ -144,17 +151,20 @@ const MapView = dynamic(() => import("@/components/ride/MapView"), {
 ## 6. Data model (ร่าง)
 
 ```prisma
+enum RideServiceType { RIDE PARCEL }
 enum RideStatus {
   REQUESTED SEARCHING ACCEPTED ARRIVING ARRIVED
   IN_PROGRESS COMPLETED CANCELLED EXPIRED
 }
 enum DriverStatus { PENDING VERIFIED REJECTED SUSPENDED }
-enum DriverVehicleType { MOTORCYCLE CAR VAN }
+enum DriverVehicleType { MOTORCYCLE CAR VAN PICKUP TRUCK }
 enum RidePaymentMethod { CASH TRANSFER }
+enum ParcelSizeTier { S M L }
 
 // --- ขยายของเดิม ---
 DriverProfile {
   ...ของเดิม
+  serviceTypes    Json?     // ["RIDE","PARCEL"]
   vehicleType     DriverVehicleType?
   status          DriverStatus @default(PENDING)
   isOnline        Boolean  @default(false)
@@ -169,12 +179,13 @@ DriverProfile {
 }
 
 // --- ใหม่ ---
-DriverVehicle   id, driverId, type, brand, model, plateNo, color, seats,
-                photoUrl, isActive, createdAt
+DriverVehicle   id, driverId, type, brand, model, plateNo, color,
+                seats, maxWeightKg, photoUrl, isActive, createdAt
 DriverDocument  id, driverId, type(LICENSE|VEHICLE_REG|ID_CARD|CRIMINAL_CHECK|INSURANCE),
                 url, status, reviewNote, reviewedAt
 SavedAddress    id, userId, label, address, lat, lng, isDefault
-RideJob         id, ref, riderId, driverId?, status,
+RideJob         id, ref, riderId, driverId?, serviceType, status,
+                passengerCount?,   // RIDE
                 pickupLat, pickupLng, pickupAddress,
                 dropoffLat, dropoffLng, dropoffAddress,
                 vehicleType, distanceKm, durationMin,
@@ -182,6 +193,11 @@ RideJob         id, ref, riderId, driverId?, status,
                 paymentMethod, paymentStatus,
                 requestedAt, acceptedAt, arrivedAt, startedAt, completedAt, cancelledAt,
                 cancelReason, cancelBy
+ParcelDetail    jobId(1-1), weightKg, sizeTier, isFragile,
+                receiverName, receiverPhone, note,
+                pickupOtp, deliveryOtp,
+                proofPhotoUrl, signatureUrl,
+                codAmount    // เก็บเงินปลายทาง (0 = ไม่มี)
 RideStatusLog   id, jobId, fromStatus, toStatus, byUserId, note, createdAt
 DriverLocation  id, driverId, jobId?, lat, lng, bearing?, speed?, recordedAt
 RidePayment     id, jobId, type(FARE|TIP|REFUND), method, amount, baseAmount, vatAmount, paidAt
@@ -190,8 +206,9 @@ DriverEarning   id, jobId(unique), driverId, gross, commissionRate, commission, 
 RideRating      id, jobId(unique), riderId, driverId, stars, text, createdAt
 ```
 
-**Index**: `RideJob[status, requestedAt]`, `RideJob[driverId, status]`, `RideJob[riderId, requestedAt]`,
-`DriverLocation[jobId, recordedAt]`, `DriverProfile[isOnline, lastLocationAt]`
+**Index**: `RideJob[serviceType, status, requestedAt]`, `RideJob[driverId, status]`,
+`RideJob[riderId, requestedAt]`, `DriverLocation[jobId, recordedAt]`,
+`DriverProfile[isOnline, lastLocationAt]`
 
 **ไม่แตะ**: `BookingType.TRANSPORT` (ใช้อยู่กับการเช่ารถ) และตาราง/หน้า `transport` เดิม
 
@@ -201,7 +218,9 @@ RideRating      id, jobId(unique), riderId, driverId, stars, text, createdAt
 REQUESTED ──(มีคนขับในระบบ)──> SEARCHING ──accept──> ACCEPTED ──ถึงจุดรับ──> ARRIVING → ARRIVED
    └─ ไม่มีคนรับ/ครบ N นาที → EXPIRED        ARRIVED ──เริ่มเดินทาง──> IN_PROGRESS
                                                                           ↓
-                                             COMPLETED ←── ถึงปลายทาง (ขนคน)
+                                             COMPLETED ←── ถึงปลายทาง
+                                                            RIDE   = ผู้โดยสารลง
+                                                            PARCEL = ยืนยัน OTP + รูปหลักฐาน (+ COD)
 ACCEPTED/ARRIVING/ARRIVED ──ยกเลิก──> CANCELLED (cancelBy: RIDER | DRIVER | ADMIN | SYSTEM)
 ```
 
@@ -209,20 +228,25 @@ ACCEPTED/ARRIVING/ARRIVED ──ยกเลิก──> CANCELLED (cancelBy: R
 |---|---|
 | ใครยกเลิกได้เมื่อไหร่ | rider ยกเลิกได้ก่อน `IN_PROGRESS`; driver ยกเลิกได้ก่อน `ARRIVED` (ต้องมีเหตุผล) |
 | คนขับรับงานซ้อน | ห้าม — ต้องไม่มีงาน active อยู่ก่อน (`ACCEPTED..IN_PROGRESS`) |
-| จำนวนผู้โดยสาร | ต้องไม่เกิน `DriverVehicle.seats` |
+| จำนวนผู้โดยสาร | RIDE: ต้องไม่เกิน `DriverVehicle.seats` |
+| น้ำหนัก/ขนาด | PARCEL: ต้องไม่เกิน `DriverVehicle.maxWeightKg` และขนาดที่รถรับได้ |
+| OTP | PARCEL: ยืนยัน `deliveryOtp` ก่อน `COMPLETED` เสมอ |
+| COD | PARCEL: ถ้า `codAmount > 0` ต้องเก็บเงินปลายทางครบก่อนปิดงาน |
 | Tracking ที่ใครเห็น | rider เห็นพิกัดคนขับเฉพาะ `ACCEPTED..IN_PROGRESS` |
 | เก็บพิกัด | เก็บเฉพาะระหว่างมีงาน ≤ 30 วัน |
 
 ## 8. สูตรค่าโดยสาร
 
 ```
-fare = max(minFare, baseFare + distanceKm × perKm + durationMin × perMin)
-commission = round(fare × commissionRate / 100)
+RIDE   fare = max(minFare, baseFare + distanceKm × perKm + durationMin × perMin)
+PARCEL fare = ค่า RIDE ข้างบน + sizeFee(S/M/L) + weightFee(ส่วนที่เกิน 5 กก.)
+
+commission  = round(fare × commissionRate / 100)
 netToDriver = fare − commission
 ```
 
 - ค่าอยู่ใน `PlatformSetting`: `ride_base_fare`, `ride_per_km`, `ride_per_min`, `ride_min_fare`,
-  `driver_commission_rate`
+  `parcel_fee_s|m|l`, `parcel_per_kg_over`, `driver_commission_rate`
 - **client ห้ามส่งราคามา** — server คิดจาก lat/lng + setting
 
 ## 9. API ที่จะเพิ่ม
@@ -231,13 +255,14 @@ netToDriver = fare − commission
 |---|---|---|
 | auth | ซ่อม `POST /auth/register` (เก็บ password) · `POST /auth/otp/request` · `POST /auth/otp/verify` | R0 |
 | rider | `GET/POST/DELETE /saved-addresses` | R0 |
-| rider | `POST /rides/quote` | R2 |
+| rider | `POST /rides/quote` (ส่ง `serviceType` + รายละเอียดพัสดุถ้าเป็น PARCEL) | R2 |
 | rider | `POST /rides/jobs` · `GET /rides/jobs/:id` · `GET /rides/jobs` | R2 |
 | rider | `POST /rides/jobs/:id/cancel` · `POST /rides/jobs/:id/rate` | R2/R4 |
 | rider | `POST /rides/jobs/:id/ticket` · `GET /rides/jobs/:id/stream` (SSE) | R3 |
 | driver | `POST /driver/apply` · `GET /driver/me` · `POST /driver/documents` · `POST /driver/vehicles` | R1 |
 | driver | `PATCH /driver/status` · `POST /driver/location` | R3 |
-| driver | `GET /driver/jobs/available` · `POST /driver/jobs/:id/accept\|arrive\|start\|complete` | R2 |
+| driver | `GET /driver/jobs/available?serviceType=` · `POST /driver/jobs/:id/accept\|arrive\|start\|complete` | R2 |
+| driver | `POST /driver/jobs/:id/confirm-delivery` (OTP + รูป + COD) | R4 |
 | driver | `POST /driver/jobs/:id/collect-payment` · `GET /driver/earnings` | R2/R4 |
 | admin | `GET /admin/drivers` · `POST /admin/drivers/:id/verify\|reject\|commission` | R1 |
 | admin | `GET /admin/rides` · `POST /admin/rides/:id/cancel` | R5 |
@@ -263,9 +288,10 @@ netToDriver = fare − commission
 - `POST /driver/location` + SSE + แผนที่ 2 หน้า + ETA
 - ✅ ผ่านเมื่อ: เปิด 2 เบราว์เซอร์ เห็นหมุดขยับภายใน 3-5 วิ
 
-### R4 — รีวิว + รายได้ + ประวัติ
+### R4 — PARCEL + รีวิว + รายได้
+- PARCEL: `ParcelForm`, น้ำหนัก/ขนาด/ผู้รับ, OTP + รูปหลักฐาน + COD
 - rating, earnings, ประวัติการเดินทาง
-- ✅ ผ่านเมื่อ: ให้ดาวหลังจบงาน + คนขับเห็นรายได้/commission ถูกต้อง
+- ✅ ผ่านเมื่อ: ส่งของจบด้วย OTP + หลักฐาน, ให้ดาวหลังจบงาน, คนขับเห็นรายได้ถูกต้อง
 
 ### R5 — Ops/ความปลอดภัย
 - admin dashboard, ระงับคนขับ, SOS/แชร์ทริป, notification
