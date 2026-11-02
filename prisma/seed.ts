@@ -28,6 +28,16 @@ const SETTINGS = [
   { key: "late_fee_per_hour", value: "200" },
   { key: "late_grace_minutes", value: "60" },
   { key: "default_commission_rate", value: "20" },
+  // ride & logistics
+  { key: "ride_default_commission_rate", value: "20" },
+  { key: "ride_parcel_free_weight_kg", value: "5" },
+  { key: "ride_parcel_weight_fee_per_kg", value: "10" },
+  { key: "ride_parcel_size_fee_s", value: "0" },
+  { key: "ride_parcel_size_fee_m", value: "20" },
+  { key: "ride_parcel_size_fee_l", value: "50" },
+  { key: "ride_parcel_size_fee_xl", value: "120" },
+  { key: "ride_request_ttl_minutes", value: "10" },
+  { key: "ride_search_radius_km", value: "15" },
 ];
 
 const IMAGES = [

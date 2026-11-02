@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import path from "node:path";
+import http from "node:http";
 import authRoutes from "./routes/auth.routes";
 import googleRoutes from "./routes/google.routes";
 import rabitRoutes from "./routes/rabit.routes"; 
@@ -19,9 +20,15 @@ import bookingRoutes from "./routes/booking.routes";
 import partnerRoutes from "./routes/partner.routes";
 import partnerVehicleRoutes from "./routes/partnerVehicle.routes";
 import vehicleCatalogRoutes from "./routes/vehicleCatalog.routes";
+import rideRoutes from "./routes/ride.routes";
+import driverRoutes from "./routes/driver.routes";
+import adminRideRoutes from "./routes/adminRide.routes";
+import savedAddressRoutes from "./routes/savedAddress.routes";
+import { initRideSocket } from "./lib/rideRealtime";
 import { ensureUploadDir } from "./lib/upload";
 import { startDraftCleanup } from "./jobs/draftCleanup";
 import { startUploadCleanup } from "./jobs/uploadCleanup";
+import { startRideExpiry } from "./jobs/rideExpiry";
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
@@ -56,10 +63,19 @@ app.use('/admin', adminRoutes);
 app.use('/bookings', bookingRoutes);
 app.use('/partner', partnerRoutes);
 app.use('/partner', partnerVehicleRoutes);
+app.use('/', rideRoutes);
+app.use('/driver', driverRoutes);
+app.use('/saved-addresses', savedAddressRoutes);
+app.use('/admin', adminRideRoutes);
 
 startDraftCleanup();
 startUploadCleanup();
+startRideExpiry();
 
-app.listen(PORT, () => {
+// ใช้ http server ตรง ๆ เพื่อให้ Socket.IO (tracking + chat + SOS) ทำงานร่วมกัน
+const server = http.createServer(app);
+initRideSocket(server);
+
+server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
