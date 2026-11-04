@@ -32,6 +32,7 @@ export type UserMinAggregateOutputType = {
   password: string | null
   role: $Enums.PlatformRole | null
   tier: string | null
+  avatarUrl: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -44,6 +45,7 @@ export type UserMaxAggregateOutputType = {
   password: string | null
   role: $Enums.PlatformRole | null
   tier: string | null
+  avatarUrl: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -56,6 +58,7 @@ export type UserCountAggregateOutputType = {
   password: number
   role: number
   tier: number
+  avatarUrl: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -70,6 +73,7 @@ export type UserMinAggregateInputType = {
   password?: true
   role?: true
   tier?: true
+  avatarUrl?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -82,6 +86,7 @@ export type UserMaxAggregateInputType = {
   password?: true
   role?: true
   tier?: true
+  avatarUrl?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -94,6 +99,7 @@ export type UserCountAggregateInputType = {
   password?: true
   role?: true
   tier?: true
+  avatarUrl?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -179,6 +185,7 @@ export type UserGroupByOutputType = {
   password: string | null
   role: $Enums.PlatformRole
   tier: string
+  avatarUrl: string | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -212,6 +219,7 @@ export type UserWhereInput = {
   password?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.EnumPlatformRoleFilter<"User"> | $Enums.PlatformRole
   tier?: Prisma.StringFilter<"User"> | string
+  avatarUrl?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   bookings?: Prisma.BookingListRelationFilter
@@ -249,6 +257,7 @@ export type UserOrderByWithRelationInput = {
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
   tier?: Prisma.SortOrder
+  avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   bookings?: Prisma.BookingOrderByRelationAggregateInput
@@ -290,6 +299,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   password?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.EnumPlatformRoleFilter<"User"> | $Enums.PlatformRole
   tier?: Prisma.StringFilter<"User"> | string
+  avatarUrl?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   bookings?: Prisma.BookingListRelationFilter
@@ -327,6 +337,7 @@ export type UserOrderByWithAggregationInput = {
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
   tier?: Prisma.SortOrder
+  avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -345,6 +356,7 @@ export type UserScalarWhereWithAggregatesInput = {
   password?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   role?: Prisma.EnumPlatformRoleWithAggregatesFilter<"User"> | $Enums.PlatformRole
   tier?: Prisma.StringWithAggregatesFilter<"User"> | string
+  avatarUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -357,6 +369,7 @@ export type UserCreateInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -394,6 +407,7 @@ export type UserUncheckedCreateInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -431,6 +445,7 @@ export type UserUpdateInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -468,6 +483,7 @@ export type UserUncheckedUpdateInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -505,6 +521,7 @@ export type UserCreateManyInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -517,6 +534,7 @@ export type UserUpdateManyMutationInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -529,6 +547,7 @@ export type UserUncheckedUpdateManyInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -547,6 +566,7 @@ export type UserCountOrderByAggregateInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   tier?: Prisma.SortOrder
+  avatarUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -559,6 +579,7 @@ export type UserMaxOrderByAggregateInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   tier?: Prisma.SortOrder
+  avatarUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -571,6 +592,7 @@ export type UserMinOrderByAggregateInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   tier?: Prisma.SortOrder
+  avatarUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -961,6 +983,7 @@ export type UserCreateWithoutHostProfileInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -997,6 +1020,7 @@ export type UserUncheckedCreateWithoutHostProfileInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -1049,6 +1073,7 @@ export type UserUpdateWithoutHostProfileInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -1085,6 +1110,7 @@ export type UserUncheckedUpdateWithoutHostProfileInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -1121,6 +1147,7 @@ export type UserCreateWithoutHostStaffInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -1157,6 +1184,7 @@ export type UserUncheckedCreateWithoutHostStaffInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -1209,6 +1237,7 @@ export type UserUpdateWithoutHostStaffInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -1245,6 +1274,7 @@ export type UserUncheckedUpdateWithoutHostStaffInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -1281,6 +1311,7 @@ export type UserCreateWithoutBookingsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   cartItems?: Prisma.CartItemCreateNestedManyWithoutUserInput
@@ -1317,6 +1348,7 @@ export type UserUncheckedCreateWithoutBookingsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   cartItems?: Prisma.CartItemUncheckedCreateNestedManyWithoutUserInput
@@ -1369,6 +1401,7 @@ export type UserUpdateWithoutBookingsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   cartItems?: Prisma.CartItemUpdateManyWithoutUserNestedInput
@@ -1405,6 +1438,7 @@ export type UserUncheckedUpdateWithoutBookingsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   cartItems?: Prisma.CartItemUncheckedUpdateManyWithoutUserNestedInput
@@ -1441,6 +1475,7 @@ export type UserCreateWithoutWalletInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -1477,6 +1512,7 @@ export type UserUncheckedCreateWithoutWalletInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -1529,6 +1565,7 @@ export type UserUpdateWithoutWalletInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -1565,6 +1602,7 @@ export type UserUncheckedUpdateWithoutWalletInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -1601,6 +1639,7 @@ export type UserCreateWithoutVoucherAssignmentsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -1637,6 +1676,7 @@ export type UserUncheckedCreateWithoutVoucherAssignmentsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -1689,6 +1729,7 @@ export type UserUpdateWithoutVoucherAssignmentsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -1725,6 +1766,7 @@ export type UserUncheckedUpdateWithoutVoucherAssignmentsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -1761,6 +1803,7 @@ export type UserCreateWithoutReviewsWrittenInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -1797,6 +1840,7 @@ export type UserUncheckedCreateWithoutReviewsWrittenInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -1849,6 +1893,7 @@ export type UserUpdateWithoutReviewsWrittenInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -1885,6 +1930,7 @@ export type UserUncheckedUpdateWithoutReviewsWrittenInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -1921,6 +1967,7 @@ export type UserCreateWithoutCommentsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -1957,6 +2004,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -2009,6 +2057,7 @@ export type UserUpdateWithoutCommentsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -2045,6 +2094,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -2081,6 +2131,7 @@ export type UserCreateWithoutLikesInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -2117,6 +2168,7 @@ export type UserUncheckedCreateWithoutLikesInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -2169,6 +2221,7 @@ export type UserUpdateWithoutLikesInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -2205,6 +2258,7 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -2241,6 +2295,7 @@ export type UserCreateWithoutFollowsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -2277,6 +2332,7 @@ export type UserUncheckedCreateWithoutFollowsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -2318,6 +2374,7 @@ export type UserCreateWithoutFollowingInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -2354,6 +2411,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -2406,6 +2464,7 @@ export type UserUpdateWithoutFollowsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -2442,6 +2501,7 @@ export type UserUncheckedUpdateWithoutFollowsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -2489,6 +2549,7 @@ export type UserUpdateWithoutFollowingInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -2525,6 +2586,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -2561,6 +2623,7 @@ export type UserCreateWithoutSavedInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -2597,6 +2660,7 @@ export type UserUncheckedCreateWithoutSavedInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -2649,6 +2713,7 @@ export type UserUpdateWithoutSavedInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -2685,6 +2750,7 @@ export type UserUncheckedUpdateWithoutSavedInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -2721,6 +2787,7 @@ export type UserCreateWithoutCartItemsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -2757,6 +2824,7 @@ export type UserUncheckedCreateWithoutCartItemsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -2809,6 +2877,7 @@ export type UserUpdateWithoutCartItemsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -2845,6 +2914,7 @@ export type UserUncheckedUpdateWithoutCartItemsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -2881,6 +2951,7 @@ export type UserCreateWithoutPlansInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -2917,6 +2988,7 @@ export type UserUncheckedCreateWithoutPlansInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -2969,6 +3041,7 @@ export type UserUpdateWithoutPlansInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -3005,6 +3078,7 @@ export type UserUncheckedUpdateWithoutPlansInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -3041,6 +3115,7 @@ export type UserCreateWithoutUserPostsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -3077,6 +3152,7 @@ export type UserUncheckedCreateWithoutUserPostsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -3129,6 +3205,7 @@ export type UserUpdateWithoutUserPostsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -3165,6 +3242,7 @@ export type UserUncheckedUpdateWithoutUserPostsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -3201,6 +3279,7 @@ export type UserCreateWithoutMediaLikesInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -3237,6 +3316,7 @@ export type UserUncheckedCreateWithoutMediaLikesInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -3289,6 +3369,7 @@ export type UserUpdateWithoutMediaLikesInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -3325,6 +3406,7 @@ export type UserUncheckedUpdateWithoutMediaLikesInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -3361,6 +3443,7 @@ export type UserCreateWithoutMediaCommentsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -3397,6 +3480,7 @@ export type UserUncheckedCreateWithoutMediaCommentsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -3449,6 +3533,7 @@ export type UserUpdateWithoutMediaCommentsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -3485,6 +3570,7 @@ export type UserUncheckedUpdateWithoutMediaCommentsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -3521,6 +3607,7 @@ export type UserCreateWithoutUserPostLikesInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -3557,6 +3644,7 @@ export type UserUncheckedCreateWithoutUserPostLikesInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -3609,6 +3697,7 @@ export type UserUpdateWithoutUserPostLikesInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -3645,6 +3734,7 @@ export type UserUncheckedUpdateWithoutUserPostLikesInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -3681,6 +3771,7 @@ export type UserCreateWithoutDriverProfileInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -3717,6 +3808,7 @@ export type UserUncheckedCreateWithoutDriverProfileInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -3769,6 +3861,7 @@ export type UserUpdateWithoutDriverProfileInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -3805,6 +3898,7 @@ export type UserUncheckedUpdateWithoutDriverProfileInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -3841,6 +3935,7 @@ export type UserCreateWithoutMediaInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -3877,6 +3972,7 @@ export type UserUncheckedCreateWithoutMediaInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -3929,6 +4025,7 @@ export type UserUpdateWithoutMediaInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -3965,6 +4062,7 @@ export type UserUncheckedUpdateWithoutMediaInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -4001,6 +4099,7 @@ export type UserCreateWithoutVehiclePartnerInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -4037,6 +4136,7 @@ export type UserUncheckedCreateWithoutVehiclePartnerInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -4089,6 +4189,7 @@ export type UserUpdateWithoutVehiclePartnerInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -4125,6 +4226,7 @@ export type UserUncheckedUpdateWithoutVehiclePartnerInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -4161,6 +4263,7 @@ export type UserCreateWithoutDriverVehiclesInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -4197,6 +4300,7 @@ export type UserUncheckedCreateWithoutDriverVehiclesInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -4249,6 +4353,7 @@ export type UserUpdateWithoutDriverVehiclesInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -4285,6 +4390,7 @@ export type UserUncheckedUpdateWithoutDriverVehiclesInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -4321,6 +4427,7 @@ export type UserCreateWithoutDriverDocumentsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -4357,6 +4464,7 @@ export type UserUncheckedCreateWithoutDriverDocumentsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -4409,6 +4517,7 @@ export type UserUpdateWithoutDriverDocumentsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -4445,6 +4554,7 @@ export type UserUncheckedUpdateWithoutDriverDocumentsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -4481,6 +4591,7 @@ export type UserCreateWithoutSavedAddressesInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -4517,6 +4628,7 @@ export type UserUncheckedCreateWithoutSavedAddressesInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -4569,6 +4681,7 @@ export type UserUpdateWithoutSavedAddressesInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -4605,6 +4718,7 @@ export type UserUncheckedUpdateWithoutSavedAddressesInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -4641,6 +4755,7 @@ export type UserCreateWithoutRideJobsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -4677,6 +4792,7 @@ export type UserUncheckedCreateWithoutRideJobsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -4718,6 +4834,7 @@ export type UserCreateWithoutDriverJobsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
@@ -4754,6 +4871,7 @@ export type UserUncheckedCreateWithoutDriverJobsInput = {
   password?: string | null
   role?: $Enums.PlatformRole
   tier?: string
+  avatarUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
@@ -4806,6 +4924,7 @@ export type UserUpdateWithoutRideJobsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -4842,6 +4961,7 @@ export type UserUncheckedUpdateWithoutRideJobsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -4889,6 +5009,7 @@ export type UserUpdateWithoutDriverJobsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
@@ -4925,6 +5046,7 @@ export type UserUncheckedUpdateWithoutDriverJobsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumPlatformRoleFieldUpdateOperationsInput | $Enums.PlatformRole
   tier?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
@@ -5181,6 +5303,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   password?: boolean
   role?: boolean
   tier?: boolean
+  avatarUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   bookings?: boolean | Prisma.User$bookingsArgs<ExtArgs>
@@ -5221,11 +5344,12 @@ export type UserSelectScalar = {
   password?: boolean
   role?: boolean
   tier?: boolean
+  avatarUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "phone" | "password" | "role" | "tier" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "phone" | "password" | "role" | "tier" | "avatarUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bookings?: boolean | Prisma.User$bookingsArgs<ExtArgs>
   cartItems?: boolean | Prisma.User$cartItemsArgs<ExtArgs>
@@ -5292,6 +5416,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     password: string | null
     role: $Enums.PlatformRole
     tier: string
+    avatarUrl: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -5695,6 +5820,7 @@ export interface UserFieldRefs {
   readonly password: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'PlatformRole'>
   readonly tier: Prisma.FieldRef<"User", 'String'>
+  readonly avatarUrl: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }

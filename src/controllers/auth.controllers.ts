@@ -62,6 +62,7 @@ export async function register(req: Request, res: Response, next: NextFunction) 
         email: user.email,
         phone: user.phone,
         role: user.role,
+        avatarUrl: user.avatarUrl,
       },
     });
   } catch (error) {
@@ -108,6 +109,7 @@ export async function login(req: Request, res: Response, next: NextFunction) {
         email: user.email,
         phone: user.phone,
         role: user.role,
+        avatarUrl: user.avatarUrl,
       },
     });
   } catch (error) {
@@ -138,6 +140,7 @@ export async function getMe(req: Request, res: Response, next: NextFunction) {
         phone: user.phone,
         role: user.role,
         hasPassword: Boolean(user.password),
+        avatarUrl: user.avatarUrl,
       },
     });
   } catch (error) {
@@ -173,6 +176,7 @@ export async function updateMe(req: Request, res: Response, next: NextFunction) 
         email: updatedUser.email,
         phone: updatedUser.phone,
         role: updatedUser.role,
+        avatarUrl: updatedUser.avatarUrl,
       },
     });
   } catch (error) {

@@ -26,6 +26,7 @@ export const findUserByEmailGoogle = async (email: string) => {
 export const createUserByGoogle = async ({
   email,
   name,
+  picture,
 }: GoogleUserInput) => {
   const userName = name?.trim() || email.split("@")[0] || "user";
 
@@ -35,6 +36,7 @@ export const createUserByGoogle = async ({
       name: userName,
       phone: null,
       role: "USER",
+      avatarUrl: picture?.trim() || null,
     },
   });
 };

@@ -1,4 +1,5 @@
 import axios from "axios";
+import prisma from "../lib/prismaClient";
 import { findUserByEmail } from "./auth.services";
 import { createUserByGoogle } from "./google.services";
 
@@ -21,10 +22,20 @@ type GoogleTokenInfo = {
   exp?: string;
 };
 
+type GoogleUserInfo = {
+  sub?: string;
+  name?: string;
+  given_name?: string;
+  picture?: string;
+  email?: string;
+  email_verified?: string | boolean;
+};
+
 /**
  * ตรวจ access token ของ Google กับ endpoint tokeninfo
  * - ต้องออกให้ client id ของเราเท่านั้น (กัน token จากแอปอื่น)
  * - อีเมลต้องยืนยันแล้ว ก่อนเอาไปผูกกับบัญชีเดิม
+ * จากนั้นดึงชื่อ/รูปจาก userinfo เพราะ tokeninfo ไม่มีฟิลด์โปรไฟล์
  */
 export async function verifyGoogleAccessToken(
   accessToken: string,
@@ -52,28 +63,75 @@ export async function verifyGoogleAccessToken(
     throw new Error("อีเมล Google ยังไม่ได้ยืนยัน");
   }
 
+  const { data: info } = await axios.get<GoogleUserInfo>(
+    "https://www.googleapis.com/oauth2/v3/userinfo",
+    {
+      headers: { Authorization: `Bearer ${accessToken}` },
+      timeout: 10_000,
+    },
+  );
+
+  // กันการสลับ token: sub ของ userinfo ต้องตรงกับ tokeninfo
+  if (info.sub !== undefined && info.sub !== data.sub) {
+    throw new Error("ข้อมูลผู้ใช้ Google ไม่ตรงกับ token");
+  }
+
   return {
     provider: "GOOGLE",
     providerUserId: data.sub,
     email: data.email,
-    name: data.name ?? null,
-    picture: data.picture ?? null,
+    name: info.name?.trim() || data.name?.trim() || null,
+    picture: info.picture?.trim() || null,
   };
+}
+
+/** ชื่อที่ระบบสร้างเอง (ยังไม่เคยตั้งชื่อจริง) — ใช้ชื่อหน้าอีเมลหรือว่าง */
+function isAutoName(name: string, email: string): boolean {
+  const trimmed = name.trim();
+  return trimmed === "" || trimmed === email.split("@")[0];
+}
+
+/** รูปที่มาจากผู้ให้บริการ (ไม่ใช่รูปที่ผู้ใช้อัปโหลดเอง) */
+function isProviderAvatar(url: string): boolean {
+  return url.includes("googleusercontent.com");
 }
 
 /**
  * หาบัญชีเดิมจากอีเมลที่ผู้ให้บริการยืนยันแล้ว ถ้าไม่มีค่อยสร้างใหม่
- * (บัญชีที่สร้างทาง social จะไม่มีรหัสผ่าน — ล็อกอินด้วยอีเมลไม่ได้)
+ * - ชื่อ: ทับเฉพาะเมื่อยังเป็นชื่ออัตโนมัติ ไม่ทับชื่อที่ผู้ใช้ตั้งเอง
+ * - รูป: อัปเดตตาม Google ถ้ายังว่างหรือเป็นรูปจาก Google เดิม
  */
 export async function findOrCreateSocialUser(profile: SocialProfile) {
   const existing = await findUserByEmail(profile.email);
-  if (existing) {
+  if (!existing) {
+    return createUserByGoogle({
+      email: profile.email,
+      name: profile.name,
+      picture: profile.picture,
+    });
+  }
+
+  const data: { name?: string; avatarUrl?: string } = {};
+
+  if (
+    profile.name !== null &&
+    profile.name !== "" &&
+    isAutoName(existing.name, existing.email)
+  ) {
+    data.name = profile.name;
+  }
+
+  if (
+    profile.picture !== null &&
+    profile.picture !== existing.avatarUrl &&
+    (existing.avatarUrl === null || isProviderAvatar(existing.avatarUrl))
+  ) {
+    data.avatarUrl = profile.picture;
+  }
+
+  if (Object.keys(data).length === 0) {
     return existing;
   }
 
-  return createUserByGoogle({
-    email: profile.email,
-    name: profile.name,
-    picture: profile.picture,
-  });
+  return prisma.user.update({ where: { id: existing.id }, data });
 }

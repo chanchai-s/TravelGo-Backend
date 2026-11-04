@@ -48,6 +48,7 @@ export async function socialLogin(req: Request, res: Response) {
         email: user.email,
         phone: user.phone,
         role: user.role,
+        avatarUrl: user.avatarUrl,
       },
     });
   } catch (error) {

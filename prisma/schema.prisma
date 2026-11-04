@@ -127,6 +127,7 @@ model User {
   password  String?
   role      PlatformRole @default(USER)
   tier      String       @default("BRONZE")
+  avatarUrl String?
   createdAt DateTime     @default(now())
   updatedAt DateTime     @updatedAt
 
