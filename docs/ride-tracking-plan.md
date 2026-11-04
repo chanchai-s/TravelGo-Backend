@@ -451,3 +451,19 @@ netToDriver = fare − commission
 | `prisma db push` ใช้ไม่ได้ | apply SQL ตรงตามแพทเทิร์นเดิม |
 | ธีม The Residence | ต้อง map สีเข้า `@theme` เดิม (ฟ้า #0050cb + คอรัล #ff5722) |
 | LOGISTICS (เหมาคัน) | ยังไม่ทำใน R2 — รอ R4/R5 |
+
+## 17. สถานะการพัฒนา (ล่าสุด)
+
+- **Backend R0–R5**: ทำครบและ `npx tsc --noEmit` = 0 error — auth จริง, ใบสมัครคนขับ/เอกสาร/รถ,
+  quote → create → accept → arrive → start → complete, prepay/postpay, earning, chat, SOS,
+  admin console, saved address, cron หมดอายุงาน
+- **Frontend**: หน้า rider `/ride`, `/ride/[id]`, `/ride/history`, `/ride/fleet`, `/profile`,
+  login จริง, คนขับ `/driver/register|status|dashboard|job/[id]|earnings`,
+  admin `/admin/rides`, `/admin/rides/drivers`, `/admin/rides/sos` — `npx tsc --noEmit` = 0 error
+- **ทดสอบผ่านเบราว์เซอร์จริงแล้ว**: rider + driver + admin เต็มรอบ (รับงาน → แชท → SOS → จบงาน → รีวิว),
+  earnings และ admin เห็นข้อมูลตรงกัน, nav ซ่อน Login เมื่อล็อกอินแล้ว
+- **ยังค้าง**: รันเบราว์เซอร์ยืนยัน PARCEL + prepay QR + refund อีกรอบ (API ผ่านแล้ว),
+  แผนที่ยังเป็น SVG (`RideMap`) — สลับ Leaflet ได้ภายหลัง
+- **หมายเหตุ env**: front อ่าน `NEXT_PUBLIC_API_BASE_URL` (ค่าเริ่มต้น `http://localhost:4000`),
+  dev DB มีข้อมูลทดสอบจาก smoke test
+
