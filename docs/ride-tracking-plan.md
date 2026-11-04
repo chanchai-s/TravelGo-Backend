@@ -462,8 +462,9 @@ netToDriver = fare − commission
   admin `/admin/rides`, `/admin/rides/drivers`, `/admin/rides/sos` — `npx tsc --noEmit` = 0 error
 - **ทดสอบผ่านเบราว์เซอร์จริงแล้ว**: rider + driver + admin เต็มรอบ (รับงาน → แชท → SOS → จบงาน → รีวิว),
   earnings และ admin เห็นข้อมูลตรงกัน, nav ซ่อน Login เมื่อล็อกอินแล้ว
-- **ยังค้าง**: รันเบราว์เซอร์ยืนยัน PARCEL + prepay QR + refund อีกรอบ (API ผ่านแล้ว),
-  แผนที่ยังเป็น SVG (`RideMap`) — สลับ Leaflet ได้ภายหลัง
+- **PARCEL + PREPAY**: ยืนยันผ่านเบราว์เซอร์แล้ว — ส่งพัสดุ, QR จำลอง, `paymentStatus = PAID`,
+  แสดง OTP รับ/ส่งของ, ยกเลิกแล้วได้ `REFUNDED`; LOGISTICS quote/สร้างงาน/ยกเลิกผ่าน API
+- **ยังค้าง**: แผนที่ยังเป็น SVG (`RideMap`) — สลับ Leaflet ได้ภายหลัง
 - **หมายเหตุ env**: front อ่าน `NEXT_PUBLIC_API_BASE_URL` (ค่าเริ่มต้น `http://localhost:4000`),
   dev DB มีข้อมูลทดสอบจาก smoke test
 
