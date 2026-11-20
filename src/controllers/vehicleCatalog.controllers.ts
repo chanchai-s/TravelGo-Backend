@@ -2,6 +2,7 @@ import type { Request, Response } from "express";
 import {
   checkVehicleAvailabilityService,
   getVehicleDetailService,
+  listVehicleBranchesService,
   listVehicleCategoriesService,
   quoteVehicleService,
   searchVehiclesService,
@@ -18,6 +19,15 @@ function fail(res: Response, error: any, fallback = 400) {
 export async function listVehicleCategories(_req: Request, res: Response) {
   try {
     const data = await listVehicleCategoriesService();
+    return res.status(200).json({ success: true, data });
+  } catch (error: any) {
+    return fail(res, error, 500);
+  }
+}
+
+export async function listVehicleBranches(_req: Request, res: Response) {
+  try {
+    const data = await listVehicleBranchesService();
     return res.status(200).json({ success: true, data });
   } catch (error: any) {
     return fail(res, error, 500);

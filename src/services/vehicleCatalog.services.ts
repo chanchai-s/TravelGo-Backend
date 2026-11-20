@@ -28,6 +28,35 @@ export async function listVehicleCategoriesService() {
   });
 }
 
+/** สาขาที่มีรถพร้อมให้เช่าอยู่จริง (ใช้ทำตัวกรองสาขา) */
+export async function listVehicleBranchesService() {
+  const rows = await prisma.partnerBranch.findMany({
+    where: {
+      isActive: true,
+      partner: { status: "VERIFIED" },
+      vehicles: {
+        some: { status: "PUBLISHED" },
+      },
+    },
+    orderBy: { name: "asc" },
+    select: {
+      id: true,
+      name: true,
+      address: true,
+      partner: { select: { companyName: true } },
+      _count: { select: { vehicles: true } },
+    },
+  });
+
+  return rows.map((row) => ({
+    id: row.id,
+    name: row.name,
+    address: row.address,
+    partnerName: row.partner?.companyName ?? null,
+    vehicleCount: row._count.vehicles,
+  }));
+}
+
 export type VehicleSearchParams = {
   q?: unknown;
   categorySlug?: unknown;

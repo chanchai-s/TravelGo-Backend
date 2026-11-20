@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   checkVehicleAvailability,
   getVehicleDetail,
+  listVehicleBranches,
   listVehicleCategories,
   quoteVehicle,
   searchVehicles,
@@ -11,6 +12,7 @@ const vehicleCatalogRouter = Router();
 
 // ---------- แคตตาล็อกสาธารณะ ----------
 vehicleCatalogRouter.get("/vehicle-categories", listVehicleCategories);
+vehicleCatalogRouter.get("/vehicle-branches", listVehicleBranches);
 vehicleCatalogRouter.get("/vehicles", searchVehicles);
 vehicleCatalogRouter.get("/vehicles/:id", getVehicleDetail);
 vehicleCatalogRouter.get("/vehicles/:id/availability", checkVehicleAvailability);
